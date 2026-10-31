@@ -1,5 +1,7 @@
 # Changelog
 
+**Last updated:** 2026-11-01
+
 All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-01
