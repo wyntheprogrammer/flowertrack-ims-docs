@@ -12,9 +12,9 @@ This reference applies to the Supplier/Admin interface only. It does not automat
 
 ## 2. Uploaded visual reference
 
-![Flower shop dashboard visual reference](https://raw.githubusercontent.com/wyntheprogrammer/flowertrack-ims-docs/c8abd54ba809837c98bfe852b571a514263c5a74/Gemma%E2%80%99s%20Flower%20Shop%20Dashboard%20Reference%20UI%20Design.png)
+![Flower shop dashboard visual reference](../assets/ui-references/supplier-dashboard-reference.jpg)
 
-[Open the original uploaded dashboard reference](https://github.com/wyntheprogrammer/flowertrack-ims-docs/blob/c8abd54ba809837c98bfe852b571a514263c5a74/Gemma%E2%80%99s%20Flower%20Shop%20Dashboard%20Reference%20UI%20Design.png).
+The screenshot is stored in the repository at `assets/ui-references/supplier-dashboard-reference.jpg`.
 
 ### Visual characteristics to study
 
