@@ -52,8 +52,10 @@ Do not begin backend implementation while the UI-first phase is still in progres
 - Use custom CSS for colors, font sizes, spacing, sizing, and brand-specific styling.
 - Prefer reusable components and consistent patterns.
 - Build one screen or component at a time, explain it, and review it before moving on.
-- Do not assume a brand palette or invent a logo.
-- The previously mentioned external dashboard reference image is excluded for now. Do not use it as a design requirement unless the user reintroduces it.
+- Do not invent or alter the official FlowerTrack IMS logo.
+- The uploaded flower-shop dashboard screenshot is an approved **visual reference for the Supplier Side only**. Follow the visual direction and design prompt in `SUPPLIER_UI_DESIGN_REFERENCE.md`.
+- Do not copy the reference business name/logo or treat that screenshot as the official FlowerTrack IMS logo. If the official FlowerTrack logo is supplied separately, use it as the primary brand reference.
+- Keep the Client Panel distinct and ecommerce-oriented.
 
 ## Learning and implementation rules
 
@@ -71,7 +73,7 @@ Do not begin backend implementation while the UI-first phase is still in progres
 
 Whenever a meaningful milestone is completed, a new technical concept is learned, or a project decision/requirement changes:
 - Update the relevant Markdown document(s).
-- Update `DEVELOPMENT_PROGRESS.md`.
+- Update `DEVELOPMENT_PROGRESS.md` only when project progress or status changes.
 - Add an entry to `CHANGELOG.md`.
 - Set the **Last updated** date using `YYYY-MM-DD`.
 - Push the documentation changes to `flowertrack-ims-docs` after the user authorizes the push and repository access is available.
