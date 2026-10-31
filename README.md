@@ -15,7 +15,8 @@ This repository contains the planning, requirements, technical references, desig
 4. [`docs/DEVELOPMENT_PLAN.md`](docs/DEVELOPMENT_PLAN.md) — agreed implementation order.
 5. [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) — current progress and next task.
 6. [`docs/UI_UX_GUIDELINES.md`](docs/UI_UX_GUIDELINES.md) — interface and styling rules.
-7. [`docs/TECHNOLOGY_STACK_AND_REFERENCES.md`](docs/TECHNOLOGY_STACK_AND_REFERENCES.md) — planned technologies and useful repositories.
+7. [`docs/SUPPLIER_UI_DESIGN_REFERENCE.md`](docs/SUPPLIER_UI_DESIGN_REFERENCE.md) — approved Supplier Side dashboard visual reference and design prompt.
+8. [`docs/TECHNOLOGY_STACK_AND_REFERENCES.md`](docs/TECHNOLOGY_STACK_AND_REFERENCES.md) — planned technologies and useful repositories.
 
 ## Repository structure
 
@@ -33,11 +34,13 @@ flowertrack-ims-docs/
 │   ├── BUSINESS_LOGIC.md
 │   ├── WORKFLOWS.md
 │   ├── UI_UX_GUIDELINES.md
+│   ├── SUPPLIER_UI_DESIGN_REFERENCE.md
 │   ├── DEVELOPMENT_PLAN.md
 │   ├── DEVELOPMENT_PROGRESS.md
 │   └── CHANGELOG.md
 └── assets/
     └── ui-references/
+        └── README.md
 ```
 
-The `assets/ui-references/` directory is reserved for future approved design references. No external dashboard reference image is currently part of the project requirements.
+The Supplier Side dashboard reference and the owner's design instructions are documented in `docs/SUPPLIER_UI_DESIGN_REFERENCE.md`. The screenshot is a visual reference, not the official FlowerTrack IMS logo.
