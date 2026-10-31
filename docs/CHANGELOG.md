@@ -17,7 +17,8 @@ All meaningful documentation and project-planning updates are recorded here.
 - UI-first development plan.
 - Development progress tracker and AI continuity instructions.
 - Date requirement for meaningful Markdown updates.
-- Supplier Side UI design-reference document with the approved dashboard screenshot link and supplied design-prompt requirements.
+- Supplier Side UI design-reference document with the approved dashboard screenshot and supplied design-prompt requirements.
+- Supplier Side dashboard screenshot stored at `assets/ui-references/supplier-dashboard-reference.jpg`.
 
 ### Clarified
 - JavaScript is the intended frontend scripting language.
