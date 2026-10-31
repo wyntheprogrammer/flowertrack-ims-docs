@@ -19,6 +19,7 @@ Status labels:
 | GEN-06 | UI must be completed and reviewed before backend development begins. | Confirmed |
 | GEN-07 | Development must be taught and completed step by step. | Confirmed |
 | GEN-08 | Meaningful updates and newly learned technical knowledge must be recorded in Markdown and pushed to the docs repository, subject to authorization/access. | Confirmed |
+| GEN-09 | The uploaded flower-shop dashboard screenshot and supplied design prompt are the visual reference for the Supplier Side UI. | Confirmed |
 
 ## 2. Supplier/Admin modules
 
@@ -70,9 +71,12 @@ The confirmed initial navigation order is:
 - Flexbox may be used for layout and alignment.
 - Custom CSS controls the color scheme, font sizes, spacing, dimensions, and other visual details.
 - Build reusable UI patterns where appropriate.
-- Supplier/Admin is management-oriented.
-- Client is ecommerce-oriented.
-- No external dashboard reference image or palette is currently approved.
+- Supplier/Admin is management-oriented and must follow the approved visual reference in `SUPPLIER_UI_DESIGN_REFERENCE.md`.
+- The reference guides visual style and quality; it is not a pixel-for-pixel copy requirement.
+- Do not copy the reference shop's name, logo, or business identity into FlowerTrack IMS.
+- If the official FlowerTrack IMS logo is supplied separately, use it as the primary brand reference and do not alter it.
+- Client is ecommerce-oriented and must remain visually distinct.
+- The Supplier Side screenshot and prompt do not change module scope, workflows, or business rules.
 
 ## 6. Business requirements still to gather
 
@@ -100,5 +104,5 @@ Do not implement these as settled decisions until confirmed:
 - Laravel starter/authentication approach.
 - Whether to use a UI admin template or build the Supplier/Admin UI from Bootstrap components.
 - Whether Python is needed and how it communicates with Laravel.
-- Exact UI colors, fonts, logo assets, and design tokens.
+- Exact FlowerTrack brand colors, fonts, and final design tokens; derive the brand palette from the official FlowerTrack logo when supplied.
 - Exact database schema and business rules.
