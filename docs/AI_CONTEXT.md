@@ -230,8 +230,20 @@ Do not begin backend implementation while the UI-first phase is still in progres
 6. Ask for a decision when a business rule is unknown and materially affects implementation.
 7. Mark assumptions clearly; do not present them as confirmed requirements.
 8. Test each meaningful UI milestone before proceeding.
-9. Keep the documentation synchronized with actual decisions and completed work.
-10. Work in small steps. Give only the current step, wait for the owner's result, and then continue. Do not dump the entire setup or implementation plan as a sequence of actions to execute at once.
+9. Keep the documentation synchronized with actual decisions and completed work; after every completed module, update the relevant Markdown before providing the application Git push script.
+10. Work in small steps. Give only the current implementation step, wait for the owner's result, and then continue. Do not dump the entire setup or implementation plan as a sequence of actions to execute at once. At module completion, however, provide one complete, ready-to-run Git script for that module's build/check, staging, commit, push, and final status verification.
+
+## Per-module completion, documentation, and Git workflow
+
+This is the required workflow after **every completed module or independently reviewable feature**. Follow it consistently; do not batch several completed modules before documenting or pushing them.
+
+1. **Complete and review the module.** Finish the requested UI/feature, preserve approved designs, and let the owner review it. Run the relevant build, test, or manual checks.
+2. **Update documentation immediately after approval.** Update the relevant Markdown files to record what was completed, important decisions, files/areas changed, checks performed, remaining issues, and the next exact task. Update `DEVELOPMENT_PROGRESS.md` for progress/status changes and add a dated entry to `CHANGELOG.md`. Update `AI_CONTEXT.md`, `UI_UX_GUIDELINES.md`, or other requirement/design documents when the module establishes a reusable rule or changes a confirmed decision. Keep `README.md` current when the project status or workflow summary changes.
+3. **Provide the complete application Git script.** Give the owner the exact commands to run from `C:\xampp\htdocs\FlowerTrack`: relevant build/test command(s), `git status`, targeted `git add` for the completed module, another `git status` review, a descriptive `git commit`, `git push origin main`, and a final `git status`. Use `git add -A` only when its scope is safe and ignored files have been verified. Never stage `.env`, `vendor/`, or `node_modules/`.
+4. **Wait for the owner's terminal output and verify.** Inspect staged files before commit when needed. Do not claim commit/push success until the owner provides successful output or the remote state is independently verified. If build/tests fail, stop the Git sequence and resolve the issue first.
+5. **Proceed only after confirmation.** Once the application push is confirmed and the final working tree is clean (or remaining changes are understood), identify the next module from the documented module order and begin it one step at a time.
+
+The documentation repository and application repository are separate. Update and push the documentation repository when documenting the approved module, then provide the owner the application-repository script for the code changes. Keep both repository statuses distinct and never imply that updating one repository pushed the other.
 
 ## Application Git repository
 
