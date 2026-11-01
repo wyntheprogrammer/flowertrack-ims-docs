@@ -26,6 +26,7 @@
 | Laravel local server | `http://127.0.0.1:8000` | Running successfully; welcome page confirmed |
 | Node.js | 26.13.0 | Verified with `node -v` |
 | npm | 11.20.0 | Verified with `npm -v` |
+| Git | 2.52.0.windows.1 | Verified with `git --version` |
 | Separate application Git repository | `flowertrack-ims` | Planned; not created yet |
 
 ### Environment notes
@@ -72,6 +73,7 @@
 - [x] Laravel development server and default welcome page verified at `http://127.0.0.1:8000`.
 - [x] FlowerTrack project opened in Visual Studio Code.
 - [x] Node.js 26.13.0 and npm 11.20.0 installed and verified in a new Command Prompt.
+- [x] Git 2.52.0.windows.1 installed and verified with `git --version`.
 
 ## Open requirements
 
@@ -102,7 +104,8 @@
 - Ran `php artisan serve` and confirmed the Laravel welcome page at `http://127.0.0.1:8000`.
 - Opened the Laravel project in Visual Studio Code using `code .`.
 - Verified Node.js `v26.13.0` with `node -v` and npm `11.20.0` with `npm -v`.
+- Verified Git `2.52.0.windows.1` with `git --version`.
 
 ## Next exact task
 
-Node.js and npm are verified (`node -v` → `v26.13.0`; `npm -v` → `11.20.0`). Next, check Git availability/version before deciding on the separate application repository setup. Continue environment setup one step at a time; do not start building UI screens until the remaining setup decisions and checks are complete.
+Node.js and npm are verified (`node -v` → `v26.13.0`; `npm -v` → `11.20.0`). Next, configure Git user name and email, then decide on the separate application repository setup. Continue environment setup one step at a time; do not start building UI screens until the remaining setup decisions and checks are complete.
