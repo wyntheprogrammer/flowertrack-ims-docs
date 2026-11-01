@@ -4,10 +4,10 @@
 
 ## Current position
 
-- **Overall status:** Initial local development environment installed; Laravel starter application running.
-- **Current phase:** Phase 1 — Environment setup (in progress).
-- **Current task:** Continue the remaining development-tool setup; Node.js and npm are now installed and verified.
-- **Next phase:** Phase 2 — Shared UI foundation.
+- **Overall status:** Initial development environment and application GitHub setup completed; Laravel starter application running.
+- **Current phase:** Phase 2 — Shared UI foundation (next).
+- **Current task:** Begin the shared UI foundation, starting with the Laravel frontend assets and layout structure.
+- **Next phase:** Phase 3 — Supplier/Admin UI.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
 ## Local environment
@@ -27,7 +27,7 @@
 | Node.js | 26.13.0 | Verified with `node -v` |
 | npm | 11.20.0 | Verified with `npm -v` |
 | Git | 2.52.0.windows.1 | Verified with `git --version` |
-| Separate application Git repository | `flowertrack-ims` | Planned; not created yet |
+| Application GitHub repository | [`wyntheprogrammer/flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims) | Public; initial Laravel commit pushed to `main` |
 
 ### Environment notes
 
@@ -42,8 +42,8 @@
 | Phase | Status | Notes |
 |---|---|---|
 | 0. Requirements and documentation | Baseline recorded | Initial modules, technology direction, UI preferences, and workflow rules documented; some business requirements remain open. |
-| 1. Environment setup | In progress | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, and local Laravel startup verified. Node.js/npm and application repository setup remain. |
-| 2. Shared UI foundation | Not started | Bootstrap and custom CSS design foundation. |
+| 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
+| 2. Shared UI foundation | Next | Bootstrap and custom CSS design foundation. |
 | 3. Supplier/Admin UI | Not started | Follow the 12-module order in `MODULES.md`. |
 | 4. Client ecommerce UI | Not started | Follow the 7-item navigation order in `MODULES.md`. |
 | 5. UI review and finalization | Not started | Complete before backend. |
@@ -74,6 +74,11 @@
 - [x] FlowerTrack project opened in Visual Studio Code.
 - [x] Node.js 26.13.0 and npm 11.20.0 installed and verified in a new Command Prompt.
 - [x] Git 2.52.0.windows.1 installed and verified with `git --version`.
+- [x] Git global identity configured as `wyn` / `wyntheprogrammer@gmail.com`.
+- [x] Local Git repository initialized in `C:\\xampp\\htdocs\\FlowerTrack` and branch renamed to `main`.
+- [x] Initial Laravel project committed as `ca10822` (`Initial Laravel project setup`).
+- [x] Public GitHub application repository `wyntheprogrammer/flowertrack-ims` connected as `origin`.
+- [x] Initial push to GitHub succeeded; local `main` tracks `origin/main`.
 
 ## Open requirements
 
@@ -105,7 +110,9 @@
 - Opened the Laravel project in Visual Studio Code using `code .`.
 - Verified Node.js `v26.13.0` with `node -v` and npm `11.20.0` with `npm -v`.
 - Verified Git `2.52.0.windows.1` with `git --version`.
+- Configured Git global identity as `wyn` / `wyntheprogrammer@gmail.com`.
+- Initialized the local Git repository, committed the Laravel starter project (`ca10822`), connected the public GitHub repository as `origin`, renamed the branch to `main`, and successfully pushed it. The local `main` branch now tracks `origin/main`.
 
 ## Next exact task
 
-Node.js and npm are verified (`node -v` → `v26.13.0`; `npm -v` → `11.20.0`). Next, configure Git user name and email, then decide on the separate application repository setup. Continue environment setup one step at a time; do not start building UI screens until the remaining setup decisions and checks are complete.
+Begin Phase 2 — Shared UI foundation. Inspect the installed Laravel frontend setup and establish the shared application layout and styling foundation before building individual Supplier/Admin screens. Continue one step at a time and keep backend/database work deferred until UI review is complete.
