@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-01  
-**Project status:** Laravel and Bootstrap setup are complete. The first Supplier/Admin dashboard UI pass has been completed and approved locally; remaining Supplier/Admin modules and Client UI are next.
+**Project status:** Laravel and Bootstrap setup are complete. The initial Supplier/Admin and Client UI files have been pushed. The Supplier Dashboard has adopted Bootstrap Icons locally; build verification and push of the latest icon refinements are pending.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, and development progress for **FlowerTrack IMS**.
 
@@ -28,7 +28,7 @@ This repository contains the planning, requirements, technical references, desig
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`; its initial Laravel skeleton commit (`ca10822`) has been pushed successfully. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task. The Supplier/Admin dashboard UI and image assets are confirmed in the local working copy; their push to the application repository is the next task and must not be assumed complete until verified. Node.js 26.13.0, npm 11.20.0, and Git 2.52.0.windows.1 are installed and verified. Git identity is configured as `wyn` (`wyntheprogrammer@gmail.com`).
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client UI files have been pushed; the initial UI commit is `488a4eb`. The owner also reported a later logo update push. The newest Bootstrap Icons refinements are local and still need build verification and a confirmed push. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task. Node.js 26.13.0, npm 11.20.0, and Git 2.52.0.windows.1 are installed and verified. Git identity is configured as `wyn` (`wyntheprogrammer@gmail.com`).
 
 ## Repository structure
 
