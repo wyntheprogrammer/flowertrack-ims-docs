@@ -28,6 +28,28 @@ Act as a patient senior software engineer, system analyst, and UI/UX design ment
 
 Do not interpret the user's earlier mention of Java as a requirement for Java programming. The listed frontend category and intended use refer to **JavaScript**.
 
+## Local development environment — installed and verified
+
+The owner has completed the initial local setup on Windows:
+
+| Component | Installed / selected version | Location or verification |
+|---|---|---|
+| XAMPP | Installed; exact XAMPP package version not recorded | `C:\xampp` |
+| PHP | 8.3.36 | `C:\xampp\php\php.exe`; `php -v` verified |
+| Composer | 2.11.1 | `composer -V` verified |
+| Laravel application skeleton | 13.11.0 | Installed in `C:\xampp\htdocs\FlowerTrack` |
+| MariaDB bundled with XAMPP | 10.11.16 | Version shown in XAMPP MariaDB startup log |
+| Visual Studio Code | Installed and project opened | `code .` from project directory |
+| PHP ZIP extension | Enabled | `php -m` lists `zip` |
+| Required Laravel PHP extensions | Verified present | Includes BCMath, Ctype, cURL, DOM, Fileinfo, Mbstring, OpenSSL, PDO, pdo_mysql, Tokenizer, and XML |
+
+XAMPP's local dashboard/phpMyAdmin became accessible after resolving port conflicts with pre-existing MySQL and Apache processes. Do not assume the old services were uninstalled; only their conflicts were resolved during setup. The Laravel development server was started with `php artisan serve`, and the default Laravel welcome page at `http://127.0.0.1:8000` was confirmed working.
+
+Still to verify during environment setup:
+- Node.js and npm versions/availability for frontend asset tooling.
+- XAMPP MariaDB connection from the Laravel application when database configuration is needed.
+- Git setup and creation of the separate application repository.
+
 ## UI-first rule
 
 The user wants to finish and review the UI before starting backend and database implementation.
@@ -68,6 +90,7 @@ Do not begin backend implementation while the UI-first phase is still in progres
 7. Mark assumptions clearly; do not present them as confirmed requirements.
 8. Test each meaningful UI milestone before proceeding.
 9. Keep the documentation synchronized with actual decisions and completed work.
+10. Work in small steps. Give only the current step, wait for the owner's result, and then continue. Do not dump the entire setup or implementation plan as a sequence of actions to execute at once.
 
 ## GitHub documentation update rule
 
