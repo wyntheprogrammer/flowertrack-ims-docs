@@ -24,6 +24,7 @@ Act as a patient senior software engineer, system analyst, and UI/UX design ment
 - Bootstrap for UI components and responsive layout.
 - Flexbox for layout and alignment when appropriate.
 - Custom CSS for brand colors, typography, sizes, spacing, dimensions, and visual refinements.
+- Bootstrap Icons for interface icons across Supplier/Admin and Client panels; use the package through the Vite CSS pipeline.
 - Python is being considered for spoilage prediction; its final role and implementation are not yet decided.
 
 Do not interpret the user's earlier mention of Java as a requirement for Java programming. The listed frontend category and intended use refer to **JavaScript**.
@@ -55,15 +56,16 @@ Database connectivity from Laravel will be tested when database work begins; the
 The owner completed and browser-tested the initial Bootstrap integration locally on 2026-11-01:
 
 - Installed bootstrap@5.3.8 and @popperjs/core@2.11.8 through npm.
+- Installed the `bootstrap-icons` npm package; exact package version has not been recorded.
 - Removed the Tailwind packages tailwindcss and @tailwindcss/vite.
 - Updated vite.config.js to use the Laravel Vite plugin without the Tailwind Vite plugin.
-- Updated resources/css/app.css to import Bootstrap CSS.
+- Updated resources/css/app.css to import Bootstrap CSS and `bootstrap-icons/font/bootstrap-icons.css`.
 - Updated resources/js/app.js to import Bootstrap JavaScript.
 - Ran npm run build successfully; Vite generated the production manifest and CSS/JS assets.
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-These changes are confirmed in the owner's local working copy. Do not assume they have been committed or pushed to the application repository until verified. The Supplier/Admin dashboard UI has since been built and reviewed locally; see the current UI implementation section below. Client screens and backend/database work remain future work.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner subsequently reported completing a logo-only update push. The newer Bootstrap Icons changes described below are local and still require a build check and Git push. Client screens and backend/database work remain future work.
 
 ## Verified application repository structure
 
@@ -178,6 +180,16 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Keep Gemma's Flower Shop (business identity) separate from FlowerTrack IMS (application identity).
 - Use the user's supplied images directly when requested; do not generate replacement images.
 - When positioning banner imagery, preserve the original image proportions and use CSS background sizing/positioning intentionally.
+
+
+### Bootstrap Icons standard — 2026-11-01
+
+- **Confirmed icon standard:** Use Bootstrap Icons for interface/navigation icons throughout FlowerTrack IMS, including Supplier/Admin sidebar, Client sidebar, navbar, dashboard cards, panel headings, quick actions, and activity indicators.
+- Installed the `bootstrap-icons` npm package and imported `bootstrap-icons/font/bootstrap-icons.css` in `resources/css/app.css` after the Bootstrap CSS import.
+- Use the standard Bootstrap Icons markup pattern: `<i class="bi bi-icon-name"></i>`, typically inside the existing icon wrapper span so current layout styling is preserved.
+- Do not use Unicode symbols or emoji as substitutes for interface icons. Emoji or images may remain when they are actual product imagery/content (for example, flower illustrations in the Top Selling Products list), not interface controls.
+- The Supplier sidebar and Supplier Dashboard icon markup have been updated locally to use Bootstrap Icons. Preserve the approved dashboard layout, colors, chart, sample values, and spacing; only change the icon presentation unless the owner requests a broader redesign.
+- Run `npm run build` after the changes. The Bootstrap Icons changes are pending application-repository commit/push until the owner runs and confirms the Git commands.
 
 ## UI-first rule
 
