@@ -40,9 +40,18 @@
 | HTML | Semantic page structure |
 | JavaScript | Interactive behavior |
 
-Bootstrap is the primary UI framework preference. Do not add Tailwind or another competing UI framework without discussing the reason first.
+Bootstrap is the primary UI framework preference. Do not add Tailwind or another competing UI framework without discussing the reason first. Use Bootstrap Icons as the standard icon library for interface icons across both Supplier/Admin and Client panels.
 
-## 5. Design system to establish during UI Foundation
+
+## 5. Iconography
+
+- Use **Bootstrap Icons** for interface icons throughout the application, including sidebars, navbars, dashboard summary cards, panel headings, quick actions, and activity indicators.
+- Install and load the `bootstrap-icons` npm package through the Vite CSS pipeline using `@import 'bootstrap-icons/font/bootstrap-icons.css';` in `resources/css/app.css`.
+- Use Bootstrap Icons markup such as `<i class="bi bi-house-door"></i>`, keeping the icon inside the existing wrapper element when one is used for layout/styling.
+- Avoid Unicode symbols and emoji as replacements for interface icons.
+- Product imagery is different: flower emoji or images may be used as product illustrations/content where appropriate, such as the Top Selling Products list.
+
+## 6. Design system to establish during UI Foundation
 
 - Brand color tokens informed by the official FlowerTrack logo when available.
 - Neutral/background/surface colors.
@@ -56,7 +65,7 @@ Bootstrap is the primary UI framework preference. Do not add Tailwind or another
 - Reusable layout and component patterns.
 - Consistent chart, status, and data-visualization treatments.
 
-## 6. Supplier Side reference image and prompt
+## 7. Supplier Side reference image and prompt
 
 The owner has approved the uploaded flower-shop dashboard screenshot and supplied design prompt as a **visual reference for the Supplier Side**. This newer approval supersedes the earlier exclusion.
 
@@ -68,7 +77,7 @@ The owner has approved the uploaded flower-shop dashboard screenshot and supplie
 - When a task specifically requests a UI image, the supplied prompt calls for one complete high-fidelity image, without variants or accompanying explanation.
 - This reference does not change the Client Panel direction, module order, or any operational business rule.
 
-## 7. UI completion criteria
+## 8. UI completion criteria
 
 A UI phase is complete only when:
 - All planned screens for that phase have been created.
