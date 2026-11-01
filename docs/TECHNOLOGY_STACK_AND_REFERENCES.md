@@ -15,15 +15,34 @@ This document records the requested repositories as learning/reference resources
 
 | Technology | Planned use | Status |
 |---|---|---|
-| Laravel | Main PHP web framework | Core direction |
-| PHP | Server-side language | Core |
-| MySQL | Relational database | Core direction |
+| Laravel | Main PHP web framework | Core direction; Laravel 13.11.0 starter application installed locally |
+| PHP | Server-side language | Core; PHP 8.3.36 installed through XAMPP |
+| MySQL | Relational database | Core direction; XAMPP bundles MariaDB 10.11.16 for local development |
 | HTML | Page structure | Core |
 | JavaScript | Browser interactions | Core |
 | Bootstrap | Main UI component framework | Core preference |
 | Flexbox | Layout and alignment | Core styling technique |
 | Custom CSS | Colors, typography, sizing, spacing, visual refinement | Core styling technique |
 | Python | Potential spoilage prediction work | To decide |
+
+## Local development setup
+
+The initial Windows development environment is installed and the Laravel starter page has been verified locally.
+
+| Tool | Current setup |
+|---|---|
+| XAMPP | Installed in `C:\xampp`; local dashboard/phpMyAdmin accessible |
+| Apache | XAMPP Apache available; ports 80 and 443 had to be freed from an existing Apache process |
+| Database server | XAMPP MariaDB 10.11.16; port 3306 initially conflicted with an existing MySQL process |
+| PHP | 8.3.36 at `C:\xampp\php\php.exe` |
+| Composer | 2.11.1 |
+| PHP ZIP | Enabled in XAMPP's `php.ini` |
+| Laravel | 13.11.0 installed in `C:\xampp\htdocs\FlowerTrack` |
+| Visual Studio Code | Installed; FlowerTrack project opened with `code .` |
+| Local Laravel URL | `http://127.0.0.1:8000` (verified with `php artisan serve`) |
+| Node.js / npm | Not yet verified |
+
+The XAMPP package version itself has not yet been recorded. The bundled database reports MariaDB 10.11.16; document this accurately as MariaDB rather than assuming it is Oracle MySQL.
 
 ## 1. Laravel
 
