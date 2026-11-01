@@ -19,14 +19,17 @@ All meaningful documentation and project-planning updates are recorded here.
 - Date requirement for meaningful Markdown updates.
 - Supplier Side UI design-reference document with the approved dashboard screenshot and supplied design-prompt requirements.
 - Supplier Side dashboard screenshot stored at `assets/ui-references/supplier-dashboard-reference.jpg`.
+- Verified application repository tree snapshot and current frontend file baseline in `docs/AI_CONTEXT.md`.
+- Repository-first inspection rule: inspect the live application repository before asking the owner to provide committed folder/file structure.
 
 ### Clarified
 - JavaScript is the intended frontend scripting language.
 - Python is a possible technology for spoilage prediction, pending requirements.
-- The docs repository is separate from the planned application-code repository.
+- The docs repository is separate from the application-code repository.
 - The Supplier Side dashboard screenshot is an approved visual reference only; it is not the official FlowerTrack IMS logo and must not be copied as a branded template.
 - The earlier exclusion of the external Supplier dashboard reference is superseded by the owner's later approval.
 - The local development environment uses XAMPP's bundled MariaDB 10.11.16; do not refer to that server as Oracle MySQL.
+- The public application repository `wyntheprogrammer/flowertrack-ims` exists on branch `main`; its initial Laravel skeleton is committed and pushed.
 
 ### Completed — initial environment setup
 - Installed XAMPP under `C:\xampp` and resolved initial Apache/MySQL port conflicts so the local XAMPP dashboard/phpMyAdmin became accessible.
@@ -43,6 +46,8 @@ All meaningful documentation and project-planning updates are recorded here.
 - Recorded the actual local environment versions, verified setup, remaining checks, and next task in `DEVELOPMENT_PROGRESS.md`.
 - Updated `AI_CONTEXT.md` with the local setup baseline and the instruction to proceed one step at a time.
 - Updated `TECHNOLOGY_STACK_AND_REFERENCES.md` to distinguish XAMPP's MariaDB from Oracle MySQL and record installed versions.
+- Updated `AI_CONTEXT.md` and `DEVELOPMENT_PROGRESS.md` with the verified application repository tree and current frontend entry-point status.
+- Corrected the documentation README to identify the application repository as already created and pushed.
 
 ### Completed — application Git setup
 - Created the public GitHub application repository `wyntheprogrammer/flowertrack-ims`.
