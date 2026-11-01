@@ -68,7 +68,18 @@ All meaningful documentation and project-planning updates are recorded here.
 - Confirmed the page displays correctly in the browser at http://127.0.0.1:8000.
 - Recorded that these application changes are verified locally; their push to the application GitHub repository has not been confirmed.
 
+### Completed — Supplier/Admin dashboard UI first pass (local working copy)
+- Created the Supplier/Admin Blade layout and dashboard view.
+- Kept Gemma's Flower Shop logo in the sidebar and moved FlowerTrack IMS application name/subtitle to the top navbar to separate business branding from application identity.
+- Removed the navbar search field at the owner's request.
+- Refined sidebar navigation spacing and Quick Actions panel spacing.
+- Added the two owner-supplied images as `public/images/flower-banner.jpg` and `public/images/bloom-business.jpg`.
+- Used the wide flower image on the right side of the welcome banner without stretching it, and the pink rose image in the Bloom Your Business panel.
+- Preserved the previously approved dashboard content/design after the owner requested reverting an alternative redesign.
+- Owner confirmed the current dashboard is acceptable.
+- These application changes are local; the system repository push is the next task and is not yet confirmed.
+
 ### Still pending
-- Reusable shared Blade layout, navigation, and FlowerTrack design tokens.
-- Supplier/Admin and Client UI screens.
-- UI review and approval before backend/database work.
+- Remaining Supplier/Admin modules in the order documented in `MODULES.md`.
+- Client ecommerce UI screens.
+- Full UI review and approval before backend/database work.
