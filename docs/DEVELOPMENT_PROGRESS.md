@@ -6,7 +6,7 @@
 
 - **Overall status:** Initial local development environment installed; Laravel starter application running.
 - **Current phase:** Phase 1 — Environment setup (in progress).
-- **Current task:** Verify Node.js and npm availability, then finish the remaining development-tool setup.
+- **Current task:** Continue the remaining development-tool setup; Node.js and npm are now installed and verified.
 - **Next phase:** Phase 2 — Shared UI foundation.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -24,7 +24,8 @@
 | Required Laravel PHP extensions | BCMath, Ctype, cURL, DOM, Fileinfo, Mbstring, OpenSSL, PDO, pdo_mysql, Tokenizer, XML | Verified |
 | Visual Studio Code | Project opened using `code .` | Verified |
 | Laravel local server | `http://127.0.0.1:8000` | Running successfully; welcome page confirmed |
-| Node.js / npm | Not checked yet | Pending |
+| Node.js | 26.13.0 | Verified with `node -v` |
+| npm | 11.20.0 | Verified with `npm -v` |
 | Separate application Git repository | `flowertrack-ims` | Planned; not created yet |
 
 ### Environment notes
@@ -70,6 +71,7 @@
 - [x] Laravel 13.11.0 project installed in `C:\xampp\htdocs\FlowerTrack`.
 - [x] Laravel development server and default welcome page verified at `http://127.0.0.1:8000`.
 - [x] FlowerTrack project opened in Visual Studio Code.
+- [x] Node.js 26.13.0 and npm 11.20.0 installed and verified in a new Command Prompt.
 
 ## Open requirements
 
@@ -99,7 +101,8 @@
 - Installed Laravel application skeleton 13.11.0 in `C:\xampp\htdocs\FlowerTrack`.
 - Ran `php artisan serve` and confirmed the Laravel welcome page at `http://127.0.0.1:8000`.
 - Opened the Laravel project in Visual Studio Code using `code .`.
+- Verified Node.js `v26.13.0` with `node -v` and npm `11.20.0` with `npm -v`.
 
 ## Next exact task
 
-Verify Node.js and npm from a new Command Prompt using `node -v` and `npm -v`. If either command is unavailable, install the appropriate Node.js LTS release and verify both commands. Continue environment setup one step at a time; do not start building UI screens until the remaining setup decisions and checks are complete.
+Node.js and npm are verified (`node -v` → `v26.13.0`; `npm -v` → `11.20.0`). Next, check Git availability/version before deciding on the separate application repository setup. Continue environment setup one step at a time; do not start building UI screens until the remaining setup decisions and checks are complete.
