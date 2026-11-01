@@ -44,9 +44,12 @@ All meaningful documentation and project-planning updates are recorded here.
 - Updated `AI_CONTEXT.md` with the local setup baseline and the instruction to proceed one step at a time.
 - Updated `TECHNOLOGY_STACK_AND_REFERENCES.md` to distinguish XAMPP's MariaDB from Oracle MySQL and record installed versions.
 
+### Completed — application Git setup
+- Created the public GitHub application repository `wyntheprogrammer/flowertrack-ims`.
+- Initialized Git in `C:\\xampp\\htdocs\\FlowerTrack`, staged the Laravel starter project, and created initial commit `ca10822` (`Initial Laravel project setup`).
+- Renamed the local branch to `main`, added the GitHub repository as `origin`, and successfully pushed `main` to GitHub. The local branch tracks `origin/main`.
+
 ### Not yet done
-- The separate `flowertrack-ims` application repository has not yet been created.
-- The separate `flowertrack-ims` application repository has not yet been created.
 - No UI screens have been implemented.
 - No database schema has been approved.
 - No backend or database implementation has started.
