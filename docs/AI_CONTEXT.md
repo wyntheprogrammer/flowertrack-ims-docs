@@ -10,7 +10,7 @@ Act as a patient senior software engineer, system analyst, and UI/UX design ment
 
 - Project name: **FlowerTrack IMS**
 - Documentation repository: `flowertrack-ims-docs`
-- Planned application repository: `flowertrack-ims`
+- Application repository: [`wyntheprogrammer/flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims) (public; initialized and pushed to `main`)
 - Application type: Web application
 - Main interfaces: Supplier/Admin Panel and Client Panel
 - Supplier/Admin and Client must have distinct user experiences.
@@ -48,9 +48,7 @@ The owner has completed the initial local setup on Windows:
 
 XAMPP's local dashboard/phpMyAdmin became accessible after resolving port conflicts with pre-existing MySQL and Apache processes. Do not assume the old services were uninstalled; only their conflicts were resolved during setup. The Laravel development server was started with `php artisan serve`, and the default Laravel welcome page at `http://127.0.0.1:8000` was confirmed working.
 
-Still to verify during environment setup:
-- XAMPP MariaDB connection from the Laravel application when database configuration is needed.
-- Creation of the separate application repository; Git global user name/email are configured.
+Database connectivity from Laravel will be tested when database work begins; the UI-first phase does not require database configuration yet.
 
 ## UI-first rule
 
@@ -93,6 +91,16 @@ Do not begin backend implementation while the UI-first phase is still in progres
 8. Test each meaningful UI milestone before proceeding.
 9. Keep the documentation synchronized with actual decisions and completed work.
 10. Work in small steps. Give only the current step, wait for the owner's result, and then continue. Do not dump the entire setup or implementation plan as a sequence of actions to execute at once.
+
+## Application Git repository
+
+- Local project: `C:\\xampp\\htdocs\\FlowerTrack`.
+- Git repository initialized locally; current branch: `main`.
+- Initial commit: `ca10822` (`Initial Laravel project setup`).
+- Remote `origin`: `https://github.com/wyntheprogrammer/flowertrack-ims.git`.
+- Initial push succeeded; local `main` tracks `origin/main`.
+- `.env`, `vendor`, and `node_modules` were not included in the initial commit based on the staged-file review.
+- Git global identity configured by the owner: `wyn` / `wyntheprogrammer@gmail.com`.
 
 ## GitHub documentation update rule
 
