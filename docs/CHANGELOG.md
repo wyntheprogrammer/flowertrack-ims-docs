@@ -6,6 +6,12 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-01
 
+### Clarified — per-module documentation and Git workflow
+- Confirmed the repeatable completion cycle: finish and review one module, update the relevant Markdown documentation immediately, provide a complete application Git build/check + stage + commit + push script, verify the owner's push output, and only then proceed to the next module.
+- Clarified that the documentation repository and application repository are separate and their updates/pushes must be tracked independently.
+- Required targeted staging and explicit protection of `.env`, `vendor/`, and `node_modules/`.
+
+
 ### Added
 - Initial FlowerTrack IMS documentation structure.
 - Project overview and requirements baseline.
