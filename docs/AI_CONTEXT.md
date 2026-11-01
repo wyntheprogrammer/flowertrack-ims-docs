@@ -50,6 +50,96 @@ XAMPP's local dashboard/phpMyAdmin became accessible after resolving port confli
 
 Database connectivity from Laravel will be tested when database work begins; the UI-first phase does not require database configuration yet.
 
+## Verified application repository structure
+
+The following snapshot was inspected directly from the public application repository's `main` branch on 2026-11-01 (initial tree commit `ca10822eeea300e23042c5910697f8bc86210e9b`):
+
+```text
+flowertrack-ims/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       └── Controller.php
+│   ├── Models/
+│   │   └── User.php
+│   └── Providers/
+│       └── AppServiceProvider.php
+├── bootstrap/
+│   ├── app.php
+│   ├── cache/
+│   └── providers.php
+├── config/
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── services.php
+│   └── session.php
+├── database/
+│   ├── factories/
+│   │   └── UserFactory.php
+│   ├── migrations/
+│   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   └── 0001_01_01_000002_create_jobs_table.php
+│   └── seeders/
+│       └── DatabaseSeeder.php
+├── public/
+├── resources/
+│   ├── css/
+│   │   └── app.css
+│   ├── js/
+│   │   └── app.js
+│   └── views/
+│       └── welcome.blade.php
+├── routes/
+│   ├── console.php
+│   └── web.php
+├── storage/
+├── tests/
+│   ├── Feature/
+│   │   └── ExampleTest.php
+│   ├── Unit/
+│   │   └── ExampleTest.php
+│   └── TestCase.php
+├── .editorconfig
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── .npmrc
+├── AGENTS.md
+├── CLAUDE.md
+├── artisan
+├── composer.json
+├── composer.lock
+├── package.json
+├── phpunit.xml
+├── vite.config.js
+└── README.md
+```
+
+Current UI-relevant baseline:
+- `resources/views/` contains only the default `welcome.blade.php`.
+- `resources/css/app.css` is the Laravel starter Tailwind CSS entry file.
+- `resources/js/app.js` currently contains only a comment.
+- `routes/web.php` currently maps `/` to the `welcome` view.
+- `app/Providers/AppServiceProvider.php` is still the default empty provider.
+- No custom Supplier/Admin or Client views/layouts have been created yet.
+- This is a snapshot of the inspected `main` branch, not a permanent inventory; re-check GitHub when the structure may have changed.
+
+### Repository inspection rule for AI assistance
+
+Before asking the owner to paste or list application folders/files:
+1. Inspect the latest application repository tree on GitHub (`main`, unless the owner specifies another branch).
+2. Fetch the relevant source file directly from GitHub when its contents are needed.
+3. Use the verified repository structure and the documentation as the baseline; do not repeatedly ask the owner to provide structure that can be inspected from the repository.
+4. Ask the owner to paste code or output only when the relevant content is not available in the repository, local uncommitted changes may matter, or a command/test must be run on the owner's machine.
+5. Clearly distinguish the committed GitHub version from any local changes that have not been pushed.
+
 ## UI-first rule
 
 The user wants to finish and review the UI before starting backend and database implementation.
@@ -94,7 +184,7 @@ Do not begin backend implementation while the UI-first phase is still in progres
 
 ## Application Git repository
 
-- Local project: `C:\\xampp\\htdocs\\FlowerTrack`.
+- Local project: `C:\xampp\htdocs\FlowerTrack`.
 - Git repository initialized locally; current branch: `main`.
 - Initial commit: `ca10822` (`Initial Laravel project setup`).
 - Remote `origin`: `https://github.com/wyntheprogrammer/flowertrack-ims.git`.
