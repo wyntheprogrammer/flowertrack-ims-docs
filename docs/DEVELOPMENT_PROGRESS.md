@@ -4,9 +4,9 @@
 
 ## Current position
 
-- **Overall status:** Initial development environment and application GitHub setup completed; Laravel starter application running.
-- **Current phase:** Phase 2 — Shared UI foundation (inspection and preparation).
-- **Current task:** Use the verified GitHub repository structure to finish reviewing the Laravel frontend baseline, then establish the shared application layout and styling foundation.
+- **Overall status:** Initial development environment and application GitHub setup completed; Bootstrap 5.3.8 integrated and browser-verified locally.
+- **Current phase:** Phase 2 — Shared UI foundation (Bootstrap integration completed; reusable layout/design system next).
+- **Current task:** Plan and build the reusable shared UI foundation on top of the verified Bootstrap setup, one file at a time.
 - **Next phase:** Phase 3 — Supplier/Admin UI.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -22,11 +22,11 @@
 
 | Path | Current state |
 |---|---|
-| `resources/css/app.css` | Laravel starter Tailwind CSS entry file |
-| `resources/js/app.js` | Contains only a comment |
-| `resources/views/welcome.blade.php` | Default Laravel welcome page |
+| `resources/css/app.css` | Locally imports Bootstrap CSS; confirm app repo push status separately |
+| `resources/js/app.js` | Locally imports Bootstrap JavaScript; confirm app repo push status separately |
+| `resources/views/welcome.blade.php` | Local FlowerTrack Bootstrap verification page; browser-tested |
 | `routes/web.php` | Root route returns the `welcome` view |
-| `vite.config.js` | Laravel Vite plugin and Tailwind Vite plugin configured |
+| `vite.config.js` | Locally configured with Laravel Vite plugin only; Tailwind Vite plugin removed |
 | `package.json` | Tailwind/Vite starter dependencies and `dev` / `build` scripts |
 | `app/Providers/AppServiceProvider.php` | Default empty provider |
 
@@ -65,7 +65,7 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 |---|---|---|
 | 0. Requirements and documentation | Baseline recorded | Initial modules, technology direction, UI preferences, and workflow rules documented; some business requirements remain open. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
-| 2. Shared UI foundation | In progress — inspection/preparation | GitHub application structure and current frontend entry files inspected; shared UI foundation not yet implemented. |
+| 2. Shared UI foundation | In progress — Bootstrap integration verified | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Reusable layouts, design tokens, and navigation are still pending. |
 | 3. Supplier/Admin UI | Not started | Follow the 12-module order in `MODULES.md`. |
 | 4. Client ecommerce UI | Not started | Follow the 7-item navigation order in `MODULES.md`. |
 | 5. UI review and finalization | Not started | Complete before backend. |
@@ -104,6 +104,10 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 - [x] Current application repository tree inspected directly from GitHub `main`.
 - [x] Existing frontend entry points and default Laravel view identified and recorded in `AI_CONTEXT.md`.
 - [x] AI continuity rule added: inspect the live repository before asking the owner to list or paste committed project structure.
+- [x] Installed Bootstrap 5.3.8 and Popper 2.11.8 locally; removed Tailwind packages and its Vite plugin.
+- [x] Updated local Vite, CSS, and JavaScript entry points for Bootstrap.
+- [x] npm run build completed successfully after Bootstrap integration.
+- [x] Replaced the local Laravel welcome page with a FlowerTrack IMS Bootstrap verification page and confirmed it displays correctly in the browser.
 
 ## Open requirements
 
@@ -142,4 +146,4 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 
 ## Next exact task
 
-Continue Phase 2 — Shared UI foundation using the already inspected frontend baseline. Review the existing `package.json`, `vite.config.js`, `resources/css/app.css`, `resources/js/app.js`, and `resources/views/welcome.blade.php` directly from the application repository before proposing the first changes. Proceed one step at a time. Keep backend/database work deferred until UI review is complete.
+Continue Phase 2 — Shared UI foundation. Bootstrap integration is complete and browser-verified in the local working copy. Next, plan the reusable Blade layout and shared navigation structure before creating the first layout file. Keep backend/database work deferred until UI review is complete. Remember that the Bootstrap changes are not confirmed pushed to the application GitHub repository.
