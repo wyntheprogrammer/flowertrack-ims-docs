@@ -41,7 +41,7 @@ The initial Windows development environment is installed and the Laravel starter
 | Visual Studio Code | Installed; FlowerTrack project opened with `code .` |
 | Node.js | 26.13.0; verified with `node -v` |
 | npm | 11.20.0; verified with `npm -v` |
-| Git | 2.52.0.windows.1; verified with `git --version` |
+| Git | 2.52.0.windows.1; verified with `git --version`; global identity configured as `wyn` / `wyntheprogrammer@gmail.com` |
 | Local Laravel URL | `http://127.0.0.1:8000` (verified with `php artisan serve`) |
 | Node.js / npm | Installed and verified: Node.js 26.13.0, npm 11.20.0 |
 | Git | Installed and verified: 2.52.0.windows.1 |
