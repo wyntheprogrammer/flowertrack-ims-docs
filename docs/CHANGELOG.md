@@ -79,6 +79,15 @@ All meaningful documentation and project-planning updates are recorded here.
 - Owner confirmed the current dashboard is acceptable.
 - These application changes are local; the system repository push is the next task and is not yet confirmed.
 
+
+### Updated — Bootstrap Icons standard
+- Adopted Bootstrap Icons as the standard icon library for interface icons across Supplier/Admin and Client panels.
+- Installed the `bootstrap-icons` npm package and imported `bootstrap-icons/font/bootstrap-icons.css` through `resources/css/app.css`.
+- Updated Supplier sidebar and Supplier Dashboard interface icons (summary cards, panel headings, Quick Actions, and Recent Activities) to Bootstrap Icons.
+- Kept flower emojis in Top Selling Products as product visuals rather than interface icons.
+- Preserved the approved Supplier Dashboard layout and existing content.
+- Application changes are local; build verification and push to `wyntheprogrammer/flowertrack-ims` are pending.
+
 ### Still pending
 - Remaining Supplier/Admin modules in the order documented in `MODULES.md`.
 - Client ecommerce UI screens.
