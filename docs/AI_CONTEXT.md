@@ -40,13 +40,14 @@ The owner has completed the initial local setup on Windows:
 | Laravel application skeleton | 13.11.0 | Installed in `C:\xampp\htdocs\FlowerTrack` |
 | MariaDB bundled with XAMPP | 10.11.16 | Version shown in XAMPP MariaDB startup log |
 | Visual Studio Code | Installed and project opened | `code .` from project directory |
+| Node.js | 26.13.0 | `node -v` verified |
+| npm | 11.20.0 | `npm -v` verified |
 | PHP ZIP extension | Enabled | `php -m` lists `zip` |
 | Required Laravel PHP extensions | Verified present | Includes BCMath, Ctype, cURL, DOM, Fileinfo, Mbstring, OpenSSL, PDO, pdo_mysql, Tokenizer, and XML |
 
 XAMPP's local dashboard/phpMyAdmin became accessible after resolving port conflicts with pre-existing MySQL and Apache processes. Do not assume the old services were uninstalled; only their conflicts were resolved during setup. The Laravel development server was started with `php artisan serve`, and the default Laravel welcome page at `http://127.0.0.1:8000` was confirmed working.
 
 Still to verify during environment setup:
-- Node.js and npm versions/availability for frontend asset tooling.
 - XAMPP MariaDB connection from the Laravel application when database configuration is needed.
 - Git setup and creation of the separate application repository.
 
