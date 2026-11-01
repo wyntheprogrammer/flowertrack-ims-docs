@@ -58,3 +58,17 @@ All meaningful documentation and project-planning updates are recorded here.
 - No UI screens have been implemented.
 - No database schema has been approved.
 - No backend or database implementation has started.
+
+
+### Completed — Bootstrap foundation (local working copy)
+- Installed Bootstrap 5.3.8 and Popper 2.11.8 with npm; removed the Tailwind packages and Tailwind Vite plugin.
+- Updated Vite configuration and frontend CSS/JavaScript entry points to load Bootstrap.
+- Ran npm run build successfully.
+- Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
+- Confirmed the page displays correctly in the browser at http://127.0.0.1:8000.
+- Recorded that these application changes are verified locally; their push to the application GitHub repository has not been confirmed.
+
+### Still pending
+- Reusable shared Blade layout, navigation, and FlowerTrack design tokens.
+- Supplier/Admin and Client UI screens.
+- UI review and approval before backend/database work.
