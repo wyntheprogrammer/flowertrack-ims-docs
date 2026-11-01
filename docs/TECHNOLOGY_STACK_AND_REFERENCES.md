@@ -41,8 +41,10 @@ The initial Windows development environment is installed and the Laravel starter
 | Visual Studio Code | Installed; FlowerTrack project opened with `code .` |
 | Node.js | 26.13.0; verified with `node -v` |
 | npm | 11.20.0; verified with `npm -v` |
+| Git | 2.52.0.windows.1; verified with `git --version` |
 | Local Laravel URL | `http://127.0.0.1:8000` (verified with `php artisan serve`) |
 | Node.js / npm | Installed and verified: Node.js 26.13.0, npm 11.20.0 |
+| Git | Installed and verified: 2.52.0.windows.1 |
 
 The XAMPP package version itself has not yet been recorded. The bundled database reports MariaDB 10.11.16; document this accurately as MariaDB rather than assuming it is Oracle MySQL.
 
