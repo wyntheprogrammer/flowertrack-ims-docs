@@ -50,6 +50,21 @@ XAMPP's local dashboard/phpMyAdmin became accessible after resolving port confli
 
 Database connectivity from Laravel will be tested when database work begins; the UI-first phase does not require database configuration yet.
 
+## Bootstrap and Vite foundation — locally verified
+
+The owner completed and browser-tested the initial Bootstrap integration locally on 2026-11-01:
+
+- Installed bootstrap@5.3.8 and @popperjs/core@2.11.8 through npm.
+- Removed the Tailwind packages tailwindcss and @tailwindcss/vite.
+- Updated vite.config.js to use the Laravel Vite plugin without the Tailwind Vite plugin.
+- Updated resources/css/app.css to import Bootstrap CSS.
+- Updated resources/js/app.js to import Bootstrap JavaScript.
+- Ran npm run build successfully; Vite generated the production manifest and CSS/JS assets.
+- Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
+- Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
+
+These changes are confirmed in the owner's local working copy. Do not assume they have been committed or pushed to the application repository until verified. Reusable shared layouts, brand design tokens, Supplier/Admin screens, and Client screens are still future work.
+
 ## Verified application repository structure
 
 The following snapshot was inspected directly from the public application repository's `main` branch on 2026-11-01 (initial tree commit `ca10822eeea300e23042c5910697f8bc86210e9b`):
@@ -123,13 +138,13 @@ flowertrack-ims/
 ```
 
 Current UI-relevant baseline:
-- `resources/views/` contains only the default `welcome.blade.php`.
-- `resources/css/app.css` is the Laravel starter Tailwind CSS entry file.
-- `resources/js/app.js` currently contains only a comment.
+- `resources/views/welcome.blade.php` is now a simple local Bootstrap verification page; reusable application layouts and feature screens have not yet been created.
+- `resources/css/app.css` imports Bootstrap CSS in the owner's locally updated working copy; the public GitHub snapshot may still show the earlier starter version until pushed.
+- `resources/js/app.js` imports Bootstrap in the owner's locally updated working copy; verify GitHub before assuming the change has been pushed.
 - `routes/web.php` currently maps `/` to the `welcome` view.
 - `app/Providers/AppServiceProvider.php` is still the default empty provider.
 - No custom Supplier/Admin or Client views/layouts have been created yet.
-- This is a snapshot of the inspected `main` branch, not a permanent inventory; re-check GitHub when the structure may have changed.
+- This is a snapshot of the inspected `main` branch, not a permanent inventory; re-check GitHub when the structure may have changed. The Bootstrap changes above are confirmed locally, not confirmed as pushed to GitHub.
 
 ### Repository inspection rule for AI assistance
 
