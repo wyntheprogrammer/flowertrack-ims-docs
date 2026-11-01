@@ -63,7 +63,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-These changes are confirmed in the owner's local working copy. Do not assume they have been committed or pushed to the application repository until verified. Reusable shared layouts, brand design tokens, Supplier/Admin screens, and Client screens are still future work.
+These changes are confirmed in the owner's local working copy. Do not assume they have been committed or pushed to the application repository until verified. The Supplier/Admin dashboard UI has since been built and reviewed locally; see the current UI implementation section below. Client screens and backend/database work remain future work.
 
 ## Verified application repository structure
 
@@ -154,6 +154,30 @@ Before asking the owner to paste or list application folders/files:
 3. Use the verified repository structure and the documentation as the baseline; do not repeatedly ask the owner to provide structure that can be inspected from the repository.
 4. Ask the owner to paste code or output only when the relevant content is not available in the repository, local uncommitted changes may matter, or a command/test must be run on the owner's machine.
 5. Clearly distinguish the committed GitHub version from any local changes that have not been pushed.
+
+## Current UI implementation — Supplier/Admin dashboard (2026-11-01)
+
+The owner has completed the first Supplier/Admin dashboard UI pass locally in `C:\\xampp\\htdocs\\FlowerTrack`. The following implementation details are confirmed from the working session:
+
+- Created separate Blade layouts and views under `resources/views/layouts/` and `resources/views/supplier/`, including `supplier.blade.php` and `dashboard.blade.php`.
+- Supplier sidebar uses Gemma's Flower Shop logo as the business/client branding; the logo is displayed without a white background.
+- FlowerTrack IMS and the subtitle “Inventory Management System” were moved to the top navbar so the client business logo and application identity are visually distinct.
+- Removed the navbar search field at the owner's request.
+- Refined sidebar navigation spacing to be more compact.
+- Kept the existing dashboard content/design after the owner requested reverting an alternative dashboard redesign; do not replace the current dashboard with the discarded redesign.
+- Added two owner-supplied local image assets under `public/images/`: `flower-banner.jpg` for the welcome banner and `bloom-business.jpg` for the “Bloom Your Business” promotional panel. These are existing supplied images, not generated assets.
+- The welcome banner uses the flower image on the right side, with the welcome text on the left; the image should preserve its aspect ratio and must not be stretched.
+- Inventory Overview and Quick Actions panel spacing was adjusted to reduce excess empty space under Quick Actions.
+- The owner confirmed the current dashboard design is acceptable as of 2026-11-01.
+
+Relevant local files include `resources/css/app.css`, `resources/views/layouts/supplier.blade.php`, `resources/views/supplier/dashboard.blade.php`, and the two image assets in `public/images/`. These changes are local and must not be described as pushed until the application repository is checked and a push is confirmed.
+
+### UI implementation rules learned
+
+- Preserve approved UI and make targeted changes only; do not redesign unrelated dashboard sections when the owner asks to adjust one component.
+- Keep Gemma's Flower Shop (business identity) separate from FlowerTrack IMS (application identity).
+- Use the user's supplied images directly when requested; do not generate replacement images.
+- When positioning banner imagery, preserve the original image proportions and use CSS background sizing/positioning intentionally.
 
 ## UI-first rule
 
