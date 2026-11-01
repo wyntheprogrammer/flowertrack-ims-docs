@@ -5,10 +5,32 @@
 ## Current position
 
 - **Overall status:** Initial development environment and application GitHub setup completed; Laravel starter application running.
-- **Current phase:** Phase 2 — Shared UI foundation (next).
-- **Current task:** Begin the shared UI foundation, starting with the Laravel frontend assets and layout structure.
+- **Current phase:** Phase 2 — Shared UI foundation (inspection and preparation).
+- **Current task:** Use the verified GitHub repository structure to finish reviewing the Laravel frontend baseline, then establish the shared application layout and styling foundation.
 - **Next phase:** Phase 3 — Supplier/Admin UI.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
+
+## Application repository snapshot
+
+- Repository: [`wyntheprogrammer/flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims)
+- Branch inspected: `main`
+- Tree commit inspected: `ca10822eeea300e23042c5910697f8bc86210e9b`
+- The repository currently contains the default Laravel starter structure. No custom Supplier/Admin or Client UI screens have been implemented.
+- The complete verified directory/file snapshot and the AI instruction to inspect GitHub before asking for folder listings are recorded in `docs/AI_CONTEXT.md` in the documentation repository.
+
+### Relevant frontend files currently in the application repository
+
+| Path | Current state |
+|---|---|
+| `resources/css/app.css` | Laravel starter Tailwind CSS entry file |
+| `resources/js/app.js` | Contains only a comment |
+| `resources/views/welcome.blade.php` | Default Laravel welcome page |
+| `routes/web.php` | Root route returns the `welcome` view |
+| `vite.config.js` | Laravel Vite plugin and Tailwind Vite plugin configured |
+| `package.json` | Tailwind/Vite starter dependencies and `dev` / `build` scripts |
+| `app/Providers/AppServiceProvider.php` | Default empty provider |
+
+This snapshot reflects the committed GitHub version inspected on 2026-11-01. Check the live repository again before relying on it after later commits.
 
 ## Local environment
 
@@ -43,7 +65,7 @@
 |---|---|---|
 | 0. Requirements and documentation | Baseline recorded | Initial modules, technology direction, UI preferences, and workflow rules documented; some business requirements remain open. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
-| 2. Shared UI foundation | Next | Bootstrap and custom CSS design foundation. |
+| 2. Shared UI foundation | In progress — inspection/preparation | GitHub application structure and current frontend entry files inspected; shared UI foundation not yet implemented. |
 | 3. Supplier/Admin UI | Not started | Follow the 12-module order in `MODULES.md`. |
 | 4. Client ecommerce UI | Not started | Follow the 7-item navigation order in `MODULES.md`. |
 | 5. UI review and finalization | Not started | Complete before backend. |
@@ -56,7 +78,7 @@
 
 - [x] Project name: FlowerTrack IMS.
 - [x] Documentation repository name: `flowertrack-ims-docs`.
-- [x] Separate future application repository planned: `flowertrack-ims`.
+- [x] Separate application repository `flowertrack-ims` created and pushed.
 - [x] Supplier/Admin module list and order recorded.
 - [x] Client navigation list recorded.
 - [x] Supplier/Admin and Client UI must be distinct.
@@ -79,6 +101,9 @@
 - [x] Initial Laravel project committed as `ca10822` (`Initial Laravel project setup`).
 - [x] Public GitHub application repository `wyntheprogrammer/flowertrack-ims` connected as `origin`.
 - [x] Initial push to GitHub succeeded; local `main` tracks `origin/main`.
+- [x] Current application repository tree inspected directly from GitHub `main`.
+- [x] Existing frontend entry points and default Laravel view identified and recorded in `AI_CONTEXT.md`.
+- [x] AI continuity rule added: inspect the live repository before asking the owner to list or paste committed project structure.
 
 ## Open requirements
 
@@ -112,7 +137,9 @@
 - Verified Git `2.52.0.windows.1` with `git --version`.
 - Configured Git global identity as `wyn` / `wyntheprogrammer@gmail.com`.
 - Initialized the local Git repository, committed the Laravel starter project (`ca10822`), connected the public GitHub repository as `origin`, renamed the branch to `main`, and successfully pushed it. The local `main` branch now tracks `origin/main`.
+- Inspected the current application repository tree on GitHub and recorded its verified Laravel starter structure and frontend file baseline in `AI_CONTEXT.md`.
+- Recorded the repository-first inspection rule so future sessions inspect GitHub before asking the owner to provide folder/file listings.
 
 ## Next exact task
 
-Begin Phase 2 — Shared UI foundation. Inspect the installed Laravel frontend setup and establish the shared application layout and styling foundation before building individual Supplier/Admin screens. Continue one step at a time and keep backend/database work deferred until UI review is complete.
+Continue Phase 2 — Shared UI foundation using the already inspected frontend baseline. Review the existing `package.json`, `vite.config.js`, `resources/css/app.css`, `resources/js/app.js`, and `resources/views/welcome.blade.php` directly from the application repository before proposing the first changes. Proceed one step at a time. Keep backend/database work deferred until UI review is complete.
