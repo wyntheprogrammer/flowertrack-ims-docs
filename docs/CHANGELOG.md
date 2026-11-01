@@ -36,6 +36,7 @@ All meaningful documentation and project-planning updates are recorded here.
 - Started the Laravel development server with `php artisan serve` and confirmed the default welcome page at `http://127.0.0.1:8000`.
 - Opened the project in Visual Studio Code using `code .`.
 - Installed and verified Node.js 26.13.0 (`node -v`) and npm 11.20.0 (`npm -v`).
+- Verified Git 2.52.0.windows.1 with `git --version`.
 
 ### Documentation updates
 - Recorded the actual local environment versions, verified setup, remaining checks, and next task in `DEVELOPMENT_PROGRESS.md`.
@@ -43,7 +44,7 @@ All meaningful documentation and project-planning updates are recorded here.
 - Updated `TECHNOLOGY_STACK_AND_REFERENCES.md` to distinguish XAMPP's MariaDB from Oracle MySQL and record installed versions.
 
 ### Not yet done
-- Git availability/version still needs to be checked.
+- Git user name/email configuration and the separate application repository setup remain.
 - The separate `flowertrack-ims` application repository has not yet been created.
 - No UI screens have been implemented.
 - No database schema has been approved.
