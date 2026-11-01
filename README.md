@@ -28,7 +28,7 @@ This repository contains the planning, requirements, technical references, desig
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for verified details and remaining environment tasks. Node.js 26.13.0, npm 11.20.0, and Git 2.52.0.windows.1 are installed and verified.
+See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for verified details and remaining environment tasks. Node.js 26.13.0, npm 11.20.0, and Git 2.52.0.windows.1 are installed and verified. Git identity is configured as `wyn` (`wyntheprogrammer@gmail.com`).
 
 ## Repository structure
 
