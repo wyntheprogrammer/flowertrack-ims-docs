@@ -42,7 +42,7 @@ The owner has completed the initial local setup on Windows:
 | Visual Studio Code | Installed and project opened | `code .` from project directory |
 | Node.js | 26.13.0 | `node -v` verified |
 | npm | 11.20.0 | `npm -v` verified |
-| Git | 2.52.0.windows.1 | `git --version` verified |
+| Git | 2.52.0.windows.1 | `git --version` verified; global identity configured as `wyn` / `wyntheprogrammer@gmail.com` |
 | PHP ZIP extension | Enabled | `php -m` lists `zip` |
 | Required Laravel PHP extensions | Verified present | Includes BCMath, Ctype, cURL, DOM, Fileinfo, Mbstring, OpenSSL, PDO, pdo_mysql, Tokenizer, and XML |
 
@@ -50,7 +50,7 @@ XAMPP's local dashboard/phpMyAdmin became accessible after resolving port confli
 
 Still to verify during environment setup:
 - XAMPP MariaDB connection from the Laravel application when database configuration is needed.
-- Git user identity configuration and creation of the separate application repository.
+- Creation of the separate application repository; Git global user name/email are configured.
 
 ## UI-first rule
 
