@@ -4,10 +4,10 @@
 
 ## Current position
 
-- **Overall status:** Initial environment setup, application GitHub initialization, Bootstrap integration, and first Supplier/Admin dashboard UI pass completed locally.
+- **Overall status:** Initial environment setup, Bootstrap integration, initial Supplier/Admin and Client UI files, and the first Supplier/Admin dashboard pass have been completed. The initial UI files were pushed to the application repository; the latest Bootstrap Icons refinements are local and awaiting build/commit/push.
 - **Current phase:** Phase 3 — Supplier/Admin UI (dashboard first-pass completed; remaining Supplier/Admin modules are pending).
-- **Current task:** Review the current local Git changes, commit, and push the completed UI work to the application repository.
-- **Next phase:** Continue the remaining Supplier/Admin modules in the order recorded in `MODULES.md`.
+- **Current task:** Run `npm run build`, inspect the changed files, then commit and push the Bootstrap Icons updates to the application repository.
+- **Next phase:** Continue the remaining Supplier/Admin modules in the order recorded in `MODULES.md`, then proceed with Client UI.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
 ## Application repository snapshot
@@ -22,10 +22,10 @@
 
 | Path | Current state |
 |---|---|
-| `resources/css/app.css` | Bootstrap import plus custom Supplier/Admin dashboard and sidebar styling; local changes not yet confirmed pushed |
+| `resources/css/app.css` | Bootstrap and Bootstrap Icons imports plus custom Supplier/Admin dashboard and sidebar styling; Bootstrap Icons import is part of the local pending update |
 | `resources/js/app.js` | Imports Bootstrap JavaScript; confirm app repo push status separately |
-| `resources/views/layouts/supplier.blade.php` | Supplier/Admin shared layout with Gemma's logo in sidebar and FlowerTrack IMS branding in navbar; local change |
-| `resources/views/supplier/dashboard.blade.php` | Supplier dashboard view; owner approved current design locally |
+| `resources/views/layouts/supplier.blade.php` | Supplier/Admin shared layout with Gemma's logo, FlowerTrack IMS navbar branding, and Bootstrap Icons sidebar; icon changes are local pending push |
+| `resources/views/supplier/dashboard.blade.php` | Supplier dashboard view; approved layout retained and dashboard interface icons changed to Bootstrap Icons locally |
 | `public/images/flower-banner.jpg` | Owner-supplied welcome banner image; local asset |
 | `public/images/bloom-business.jpg` | Owner-supplied Bloom Your Business image; local asset |
 | `resources/views/welcome.blade.php` | Local FlowerTrack Bootstrap verification page; browser-tested |
@@ -34,7 +34,7 @@
 | `package.json` | Tailwind/Vite starter dependencies and `dev` / `build` scripts |
 | `app/Providers/AppServiceProvider.php` | Default empty provider |
 
-This snapshot reflects the committed GitHub version inspected on 2026-11-01. Check the live repository again before relying on it after later commits.
+This file list is a working-session snapshot. The initial Supplier/Admin and Client starter UI was pushed in commit `488a4eb`; the owner later reported a logo update push. The Bootstrap Icons refinements remain pending a confirmed application-repository push. Check the live repository again before relying on the latest commit state.
 
 ## Local environment
 
@@ -166,6 +166,16 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 - Inspected the current application repository tree on GitHub and recorded its verified Laravel starter structure and frontend file baseline in `AI_CONTEXT.md`.
 - Recorded the repository-first inspection rule so future sessions inspect GitHub before asking the owner to provide folder/file listings.
 
+
+### 2026-11-01 — Bootstrap Icons adoption
+- Confirmed Bootstrap Icons as the standard icon library for interface icons throughout the Supplier/Admin and Client panels.
+- Installed the `bootstrap-icons` npm package and added its CSS import to `resources/css/app.css`.
+- Replaced Supplier sidebar Unicode icon characters with Bootstrap Icons markup.
+- Updated Supplier Dashboard summary-card icons, panel-heading icons, Quick Actions icons, and Recent Activities icons to Bootstrap Icons.
+- Kept flower emoji illustrations in Top Selling Products because they represent product imagery rather than interface controls.
+- Preserved the approved Supplier Dashboard layout and existing sample content.
+- Next: run `npm run build`, inspect `git status`, then commit and push the application changes. Push is not yet confirmed.
+
 ## Next exact task
 
-From `C:\\xampp\\htdocs\\FlowerTrack`, inspect `git status` and `git remote -v`. Review the changed/untracked files, ensure `.env`, `vendor/`, and `node_modules/` are not staged, then commit and push the approved Supplier/Admin dashboard UI to `origin main`. After the push, verify the commit on GitHub. Continue the remaining Supplier/Admin modules in the order in `MODULES.md`. Keep backend/database work deferred until the full UI review is complete.
+From `C:\\xampp\\htdocs\\FlowerTrack`, run `npm run build`, then inspect `git status`. Stage only the intended Bootstrap Icons changes (expected: `package.json`, `package-lock.json`, `resources/css/app.css`, `resources/views/layouts/supplier.blade.php`, and `resources/views/supplier/dashboard.blade.php`, depending on the actual diff). Ensure `.env`, `vendor/`, and `node_modules/` are not staged. Commit and push to `origin main`, then verify the final Git status and GitHub commit. Continue the remaining Supplier/Admin modules in the order in `MODULES.md`. Keep backend/database work deferred until the full UI review is complete.
