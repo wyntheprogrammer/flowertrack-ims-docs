@@ -4,10 +4,10 @@
 
 ## Current position
 
-- **Overall status:** Initial development environment and application GitHub setup completed; Bootstrap 5.3.8 integrated and browser-verified locally.
-- **Current phase:** Phase 2 — Shared UI foundation (Bootstrap integration completed; reusable layout/design system next).
-- **Current task:** Plan and build the reusable shared UI foundation on top of the verified Bootstrap setup, one file at a time.
-- **Next phase:** Phase 3 — Supplier/Admin UI.
+- **Overall status:** Initial environment setup, application GitHub initialization, Bootstrap integration, and first Supplier/Admin dashboard UI pass completed locally.
+- **Current phase:** Phase 3 — Supplier/Admin UI (dashboard first-pass completed; remaining Supplier/Admin modules are pending).
+- **Current task:** Review the current local Git changes, commit, and push the completed UI work to the application repository.
+- **Next phase:** Continue the remaining Supplier/Admin modules in the order recorded in `MODULES.md`.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
 ## Application repository snapshot
@@ -22,10 +22,14 @@
 
 | Path | Current state |
 |---|---|
-| `resources/css/app.css` | Locally imports Bootstrap CSS; confirm app repo push status separately |
-| `resources/js/app.js` | Locally imports Bootstrap JavaScript; confirm app repo push status separately |
+| `resources/css/app.css` | Bootstrap import plus custom Supplier/Admin dashboard and sidebar styling; local changes not yet confirmed pushed |
+| `resources/js/app.js` | Imports Bootstrap JavaScript; confirm app repo push status separately |
+| `resources/views/layouts/supplier.blade.php` | Supplier/Admin shared layout with Gemma's logo in sidebar and FlowerTrack IMS branding in navbar; local change |
+| `resources/views/supplier/dashboard.blade.php` | Supplier dashboard view; owner approved current design locally |
+| `public/images/flower-banner.jpg` | Owner-supplied welcome banner image; local asset |
+| `public/images/bloom-business.jpg` | Owner-supplied Bloom Your Business image; local asset |
 | `resources/views/welcome.blade.php` | Local FlowerTrack Bootstrap verification page; browser-tested |
-| `routes/web.php` | Root route returns the `welcome` view |
+| `routes/web.php` | Root route returns the `welcome` view; supplier dashboard route was used during UI review |
 | `vite.config.js` | Locally configured with Laravel Vite plugin only; Tailwind Vite plugin removed |
 | `package.json` | Tailwind/Vite starter dependencies and `dev` / `build` scripts |
 | `app/Providers/AppServiceProvider.php` | Default empty provider |
@@ -65,8 +69,8 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 |---|---|---|
 | 0. Requirements and documentation | Baseline recorded | Initial modules, technology direction, UI preferences, and workflow rules documented; some business requirements remain open. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
-| 2. Shared UI foundation | In progress — Bootstrap integration verified | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Reusable layouts, design tokens, and navigation are still pending. |
-| 3. Supplier/Admin UI | Not started | Follow the 12-module order in `MODULES.md`. |
+| 2. Shared UI foundation | Initial foundation completed | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Supplier layout and navigation foundation created locally. |
+| 3. Supplier/Admin UI | In progress | First dashboard UI pass completed and approved locally; continue the remaining modules in the 12-module order in `MODULES.md`. |
 | 4. Client ecommerce UI | Not started | Follow the 7-item navigation order in `MODULES.md`. |
 | 5. UI review and finalization | Not started | Complete before backend. |
 | 6. Backend and database | Blocked by UI-first rule | Start after UI approval. |
@@ -108,6 +112,13 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 - [x] Updated local Vite, CSS, and JavaScript entry points for Bootstrap.
 - [x] npm run build completed successfully after Bootstrap integration.
 - [x] Replaced the local Laravel welcome page with a FlowerTrack IMS Bootstrap verification page and confirmed it displays correctly in the browser.
+- [x] Created the Supplier/Admin Blade layout and dashboard view in the local working copy.
+- [x] Separated Gemma's Flower Shop business branding (sidebar logo) from FlowerTrack IMS application branding (top navbar).
+- [x] Removed the Supplier navbar search field at the owner's request.
+- [x] Refined sidebar navigation spacing and dashboard panel spacing.
+- [x] Added the owner's supplied flower banner and Bloom Your Business images to the local `public/images` folder and applied them to the dashboard.
+- [x] Positioned the welcome banner image on the right without stretching it; welcome text remains on the left.
+- [x] Owner reviewed and approved the current Supplier dashboard appearance locally.
 
 ## Open requirements
 
@@ -122,6 +133,17 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
+
+### 2026-11-01 — Supplier dashboard UI first pass
+- Created/refined the Supplier/Admin layout and dashboard Blade views in the local application project.
+- Kept the original dashboard design after the owner rejected an alternative redesign; future edits must be targeted and must preserve approved sections.
+- Moved FlowerTrack IMS application branding to the top navbar and retained Gemma's Flower Shop logo in the sidebar without a white background.
+- Removed the navbar search field.
+- Tightened sidebar navigation spacing and reduced excess empty space in the Quick Actions panel.
+- Added the two user-supplied flower images as `public/images/flower-banner.jpg` and `public/images/bloom-business.jpg`.
+- Applied the wide floral image to the welcome banner on the right side without stretching it, and used the rose image for the Bloom Your Business promotional panel.
+- Owner confirmed the current dashboard is acceptable.
+- App-code changes are still local; next, inspect Git status and push the system repository after confirming the intended files.
 
 ### 2026-11-01
 - Recorded the initial Supplier/Admin modules and their requested UI order.
@@ -146,4 +168,4 @@ This snapshot reflects the committed GitHub version inspected on 2026-11-01. Che
 
 ## Next exact task
 
-Continue Phase 2 — Shared UI foundation. Bootstrap integration is complete and browser-verified in the local working copy. Next, plan the reusable Blade layout and shared navigation structure before creating the first layout file. Keep backend/database work deferred until UI review is complete. Remember that the Bootstrap changes are not confirmed pushed to the application GitHub repository.
+From `C:\\xampp\\htdocs\\FlowerTrack`, inspect `git status` and `git remote -v`. Review the changed/untracked files, ensure `.env`, `vendor/`, and `node_modules/` are not staged, then commit and push the approved Supplier/Admin dashboard UI to `origin main`. After the push, verify the commit on GitHub. Continue the remaining Supplier/Admin modules in the order in `MODULES.md`. Keep backend/database work deferred until the full UI review is complete.
