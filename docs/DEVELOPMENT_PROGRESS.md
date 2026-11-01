@@ -10,6 +10,18 @@
 - **Next phase:** Continue the remaining Supplier/Admin modules in the order recorded in `MODULES.md`, then proceed with Client UI.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
+## Required workflow for every module
+
+For each module or independently reviewable feature, use this repeatable cycle:
+
+1. Complete the module and have the owner review/approve it; run the relevant build, tests, and manual checks.
+2. Immediately update the relevant Markdown documentation before starting another module. Record completed work, important decisions, files/areas changed, checks, remaining issues, and the next exact task. Update `DEVELOPMENT_PROGRESS.md` and add a dated `CHANGELOG.md` entry; update other relevant docs when reusable rules or confirmed requirements change.
+3. Provide one complete, copy-ready application Git script with the relevant build/check, `git status`, targeted `git add`, staged-file review, descriptive commit, `git push origin main`, and final `git status`.
+4. Review the owner's terminal output and confirm the commit/push. Never assume success. Do not stage `.env`, `vendor/`, or `node_modules/`.
+5. Only after the push is confirmed, proceed to the next module in `MODULES.md`.
+
+The documentation repository (`flowertrack-ims-docs`) and application repository (`flowertrack-ims`) are separate. Document and push documentation updates separately; the application Git script applies to the code repository. Keep the two push statuses distinct.
+
 ## Application repository snapshot
 
 - Repository: [`wyntheprogrammer/flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims)
