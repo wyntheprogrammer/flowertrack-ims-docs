@@ -4,18 +4,43 @@
 
 ## Current position
 
-- **Overall status:** Requirements gathering and documentation baseline.
-- **Current phase:** Phase 0 — Requirements and documentation.
-- **Current task:** Complete remaining business requirements before environment setup.
-- **Next phase:** Phase 1 — Environment setup.
-- **UI-first commitment:** Confirmed. Backend work starts only after UI review/finalization.
+- **Overall status:** Initial local development environment installed; Laravel starter application running.
+- **Current phase:** Phase 1 — Environment setup (in progress).
+- **Current task:** Verify Node.js and npm availability, then finish the remaining development-tool setup.
+- **Next phase:** Phase 2 — Shared UI foundation.
+- **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
+
+## Local environment
+
+| Component | Verified version / detail | Status |
+|---|---|---|
+| Operating system | Windows (build 10.0.26200.9711) | Confirmed |
+| XAMPP | Installed under `C:\xampp` | Installed; dashboard/phpMyAdmin accessible |
+| PHP | 8.3.36 | Verified |
+| Composer | 2.11.1 | Verified |
+| Laravel application skeleton | 13.11.0 | Installed |
+| XAMPP MariaDB | 10.11.16 | Bundled server; startup log version recorded |
+| PHP ZIP extension | Enabled | Verified |
+| Required Laravel PHP extensions | BCMath, Ctype, cURL, DOM, Fileinfo, Mbstring, OpenSSL, PDO, pdo_mysql, Tokenizer, XML | Verified |
+| Visual Studio Code | Project opened using `code .` | Verified |
+| Laravel local server | `http://127.0.0.1:8000` | Running successfully; welcome page confirmed |
+| Node.js / npm | Not checked yet | Pending |
+| Separate application Git repository | `flowertrack-ims` | Planned; not created yet |
+
+### Environment notes
+
+- XAMPP initially encountered port conflicts: an existing `mysqld.exe` process used port 3306, and an existing `httpd.exe` process used ports 80 and 443. The conflicts were resolved sufficiently for XAMPP to become accessible. Do not assume those pre-existing services were uninstalled.
+- Composer initially could not download package archives because PHP's ZIP extension was disabled. The ZIP extension was enabled in `C:\xampp\php\php.ini`, after which the Laravel project installation succeeded.
+- The application folder is `C:\xampp\htdocs\FlowerTrack`.
+- The Laravel development server was tested with `php artisan serve`; the default Laravel welcome page loaded successfully.
+- The project was opened in Visual Studio Code from the project directory.
 
 ## Phase tracker
 
 | Phase | Status | Notes |
 |---|---|---|
-| 0. Requirements and documentation | In progress | Initial modules, technology direction, UI preferences, and workflow rules recorded. |
-| 1. Environment setup | Not started | Confirm OS/tools/versions and prepare local Laravel environment. |
+| 0. Requirements and documentation | Baseline recorded | Initial modules, technology direction, UI preferences, and workflow rules documented; some business requirements remain open. |
+| 1. Environment setup | In progress | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, and local Laravel startup verified. Node.js/npm and application repository setup remain. |
 | 2. Shared UI foundation | Not started | Bootstrap and custom CSS design foundation. |
 | 3. Supplier/Admin UI | Not started | Follow the 12-module order in `MODULES.md`. |
 | 4. Client ecommerce UI | Not started | Follow the 7-item navigation order in `MODULES.md`. |
@@ -38,7 +63,13 @@
 - [x] UI must be completed before backend.
 - [x] Step-by-step teaching and implementation required.
 - [x] Meaningful updates must be dated and documented.
-- [x] External Supplier dashboard reference image excluded for now.
+- [x] Supplier Side dashboard visual reference approved and documented.
+- [x] XAMPP installed and local dashboard/phpMyAdmin accessible.
+- [x] PHP 8.3.36 and Composer 2.11.1 installed and verified.
+- [x] Required PHP extensions verified; ZIP extension enabled.
+- [x] Laravel 13.11.0 project installed in `C:\xampp\htdocs\FlowerTrack`.
+- [x] Laravel development server and default welcome page verified at `http://127.0.0.1:8000`.
+- [x] FlowerTrack project opened in Visual Studio Code.
 
 ## Open requirements
 
@@ -51,7 +82,6 @@
 - [ ] Confirm user roles and permissions.
 - [ ] Confirm reporting requirements.
 - [ ] Confirm single-store versus multi-branch scope.
-- [ ] Confirm local development environment and exact tool versions.
 
 ## Session log
 
@@ -62,9 +92,14 @@
 - Added the requested technology/reference repository list.
 - Confirmed UI-first development and step-by-step teaching.
 - Added the rule to date every meaningful documentation update.
-- Excluded the external Supplier dashboard reference image at the owner's request.
-- Created this initial documentation baseline.
+- Added the approved Supplier Side visual reference and design prompt.
+- Installed XAMPP under `C:\xampp`; resolved port conflicts so its local dashboard/phpMyAdmin became accessible.
+- Installed Composer 2.11.1 using XAMPP PHP 8.3.36.
+- Enabled PHP ZIP extension and verified the required Laravel PHP extensions.
+- Installed Laravel application skeleton 13.11.0 in `C:\xampp\htdocs\FlowerTrack`.
+- Ran `php artisan serve` and confirmed the Laravel welcome page at `http://127.0.0.1:8000`.
+- Opened the Laravel project in Visual Studio Code using `code .`.
 
 ## Next exact task
 
-Continue requirements gathering, starting with flower/product types and units, then batch and inventory behavior. Do not start environment setup until the owner is ready and the remaining essential requirements have been gathered.
+Verify Node.js and npm from a new Command Prompt using `node -v` and `npm -v`. If either command is unavailable, install the appropriate Node.js LTS release and verify both commands. Continue environment setup one step at a time; do not start building UI screens until the remaining setup decisions and checks are complete.
