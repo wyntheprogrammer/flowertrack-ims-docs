@@ -7,6 +7,10 @@ This repository contains the planning, requirements, technical references, desig
 
 > This repository is documentation-only. The application source code is maintained separately in the public [`flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims) repository. The local working copy is `C:\xampp\htdocs\FlowerTrack`.
 
+## Development workflow
+
+After each completed and owner-approved module, update the relevant Markdown documentation first, then provide a complete copy-ready script to build/check, stage, commit, and push that module to the application repository. Verify the push before proceeding to the next module. The documentation repository and application repository are separate and are updated independently.
+
 ## Start here
 
 1. [`docs/AI_CONTEXT.md`](docs/AI_CONTEXT.md) — instructions for AI-assisted development, verified application structure, and continuity.
