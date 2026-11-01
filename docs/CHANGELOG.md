@@ -35,6 +35,7 @@ All meaningful documentation and project-planning updates are recorded here.
 - Installed Laravel application skeleton 13.11.0 in `C:\xampp\htdocs\FlowerTrack`.
 - Started the Laravel development server with `php artisan serve` and confirmed the default welcome page at `http://127.0.0.1:8000`.
 - Opened the project in Visual Studio Code using `code .`.
+- Installed and verified Node.js 26.13.0 (`node -v`) and npm 11.20.0 (`npm -v`).
 
 ### Documentation updates
 - Recorded the actual local environment versions, verified setup, remaining checks, and next task in `DEVELOPMENT_PROGRESS.md`.
@@ -42,7 +43,7 @@ All meaningful documentation and project-planning updates are recorded here.
 - Updated `TECHNOLOGY_STACK_AND_REFERENCES.md` to distinguish XAMPP's MariaDB from Oracle MySQL and record installed versions.
 
 ### Not yet done
-- Node.js and npm have not yet been verified.
+- Git availability/version still needs to be checked.
 - The separate `flowertrack-ims` application repository has not yet been created.
 - No UI screens have been implemented.
 - No database schema has been approved.
