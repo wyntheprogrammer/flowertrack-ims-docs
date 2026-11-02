@@ -68,6 +68,19 @@
 - Do not claim model accuracy until training and validation demonstrate it. The ML algorithm and risk thresholds are not yet selected.
 - Historical risk-assessment snapshots and manual condition-observation scoring are excluded from the initial scope.
 
+### Client accounts
+
+**Confirmed — Client Management (2026-11-02)**
+- Supplier/Admin users manually create client accounts. Public/self-service client registration is not included in the initial scope.
+- Full Name, Email Address, Contact Number, and Address are required. Email Address must be unique per account.
+- Client ID is automatically generated; Registration Date is recorded automatically; Account Status is Active or Inactive.
+- No email verification is required for the initial account flow.
+- Admin assigns a temporary password. The client must change it on first login. Passwords must be securely hashed and never stored as plain text.
+- Inactive clients cannot place new orders. Existing orders and transaction history remain accessible after deactivation; reactivation restores eligibility to place new orders.
+- Client records with transaction history cannot be permanently deleted.
+- Client Management owns client information and account status. Order Management owns order creation, processing, and statuses.
+- Client profiles support Order History and Purchase Summary. Summary metrics are derived from Order Management records: total order count, total purchase amount, completed orders, and pending/ongoing orders.
+
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
 - Is there an entered expiry/shelf-life date, condition score, or observation history?
