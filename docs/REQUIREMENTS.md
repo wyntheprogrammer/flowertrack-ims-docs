@@ -152,6 +152,24 @@ The confirmed initial navigation order is:
 - Derive purchase summary values from Order Management records: total order count, total purchase amount, completed orders, and pending/ongoing orders. Do not maintain separate manually edited totals.
 - Client Management owns client information and account status; Order Management owns order creation, processing, and statuses.
 
+### Order Management — approved 2026-11-02
+
+- Orders can originate from the Client Panel or be created manually by Supplier/Admin. Admin manually reviews and confirms orders.
+- Each order has an automatically generated unique Order ID, a registered Client, automatically recorded Order Date, and at least one order item.
+- Each order item links to a Flower and requires a quantity greater than zero. Unit Price comes from Sales and Payment Management and is saved as a snapshot; later price changes must not alter existing orders. Item subtotals and order total are calculated automatically.
+- Delivery Address is required for Delivery and not required for Customer Pickup. Order Notes are optional.
+- Order Status and Payment Status are tracked separately.
+- Order statuses: Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, and Cancelled.
+- Payment statuses displayed by Order Management: Unpaid, Partially Paid, Paid, and Refunded. Sales and Payment Management owns payment recording and transactions.
+- Check available stock before confirmation; do not confirm an order that cannot be fulfilled in full.
+- Reserve inventory when an order is Confirmed. Reservation does not deduct stock. Actual Stock-Out is a separate Inventory Management transaction at the fulfillment point; prevent double deduction.
+- Partial fulfillment is not allowed in the initial scope.
+- Clients may edit and cancel Pending orders. Supplier/Admin may edit orders before Processing and may cancel later non-completed orders with a required reason. Completed orders cannot be cancelled.
+- Release reservations when an order is cancelled. If Stock-Out already occurred, inventory must be corrected/restored through Inventory Management before cancellation is finalized.
+- Support Delivery and Customer Pickup. Delivery Management owns delivery assignment and delivery-specific tracking; Customer Pickup skips Out for Delivery.
+- Preserve cancelled orders and status history, including date/time and responsible user.
+- **One operational detail remains to be finalized before implementation:** the exact fulfillment event when reserved quantity is converted into an actual Stock-Out.
+
 ## 7. Business requirements still to gather
 
 - Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
@@ -161,10 +179,10 @@ The confirmed initial navigation order is:
 - Batch aging, shelf-life, and spoilage definition.
 - Spoilage prediction data, method, and intended output.
 - Whether a separate supplier/vendor directory is needed for any future purchasing workflow; Supplier / Source is not part of the approved Batch Management record.
-- Checkout, guest shopping, and detailed client ordering rules; client account creation and initial access are already confirmed.
-- Order statuses and cancellation/return rules.
+- Checkout presentation and guest shopping policy; client account creation and initial access are already confirmed.
+- Returns and post-completion order corrections.
 - Delivery assignment, fees, and delivery statuses.
-- Payment methods, proof of payment, verification, refunds, and reconciliation.
+- Payment methods, proof of payment, verification, and reconciliation; payment status display and transaction ownership are confirmed.
 - Reports and export formats.
 - Roles, permissions, and account lifecycle.
 - Audit trail events and retention.
