@@ -225,3 +225,13 @@ All meaningful documentation and project-planning updates are recorded here.
 - Added Audit Trail requirements for account lifecycle events and protection against deactivating the last active Admin.
 - Excluded account-creation email notifications from the initial scope.
 - Requirements/documentation only; no application UI, authentication, backend authorization, session invalidation, or database schema changed.
+
+
+### Approved — Audit Trail requirements (2026-11-02)
+
+- Finalized centralized automatic audit coverage for important authentication, operational, financial, and administrative activities, including failed security-sensitive attempts.
+- Approved audit record fields, sensitive-secret exclusions, append-only application behavior, and Admin-only access.
+- Approved search, date/module/user/action/result filters, sorting, pagination, activity details, PDF/Excel export, and direct printing.
+- Confirmed indefinite initial retention with no automatic deletion or archival; excluded real-time monitoring, alerts, advanced security analytics, and external log storage.
+- Documented implementation considerations for unauthenticated event actors and protection of append-only audit integrity.
+- Requirements/documentation only; no Audit Trail UI, event capture, export/print functionality, backend, or database schema changed.
