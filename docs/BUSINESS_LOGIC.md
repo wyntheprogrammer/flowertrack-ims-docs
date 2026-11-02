@@ -56,12 +56,23 @@
 - Approaching freshness/expiry dates produce warnings only. Warnings do not automatically deduct stock or change batch status.
 - Spoilage Prediction does not automatically mark batches Spoiled or deduct inventory.
 
+**Confirmed — Spoilage Prediction (2026-11-02)**
+- Use Machine Learning (ML) to estimate spoilage risk for flower batches.
+- Use Harvest Date and Expected Freshness / Expiry Date as the confirmed date basis. The expiry/freshness date remains optional; batches without it must be handled using supported available data.
+- Use four risk levels: Low, Medium, High, and Critical. Numerical thresholds and algorithm selection remain pending dataset assessment and model validation.
+- Show spoilage-risk summaries/alerts on the Supplier/Admin Dashboard and provide a dedicated Spoilage Prediction page.
+- Provide warnings and recommendations only, including a recommendation to prioritize high-risk batches for Stock-Out.
+- Predictions must not automatically change batch status, deduct stock, alter FIFO allocation, or create Stock-Out transactions. Actual spoilage remains manual.
+- Active risk monitoring applies to batches with remaining usable inventory.
+- Record actual Spoilage Events linked to Flower and Batch, including Spoilage Date, Spoiled Quantity, and Spoilage Reason. These records form the labeled historical dataset for future ML training and evaluation.
+- Do not claim model accuracy until training and validation demonstrate it. The ML algorithm and risk thresholds are not yet selected.
+- Historical risk-assessment snapshots and manual condition-observation scoring are excluded from the initial scope.
+
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
 - Is there an entered expiry/shelf-life date, condition score, or observation history?
-- What historical data is available?
-- Should prediction be a warning, risk score, estimated date, or another output?
-- Is Python/ML necessary, or would transparent date/rule-based alerts meet the requirement?
+- Assess the volume, quality, and representativeness of Spoilage Event Records before selecting an ML algorithm or claiming prediction accuracy.
+- Decide the model implementation/runtime and calibrated numerical risk thresholds during technical design after dataset assessment.
 
 ### Orders and sales
 - When is stock reserved or deducted?
