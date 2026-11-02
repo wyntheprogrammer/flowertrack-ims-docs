@@ -408,6 +408,19 @@ Confirm that XAMPP's MariaDB service is running, then verify `DB_HOST`, `DB_PORT
 
 Another local service may already occupy ports 80/443 or 3306. Identify the process before stopping anything. Do not terminate an unknown service; choose a free port or configure the local environment deliberately.
 
+### XAMPP shows `MySQL shutdown unexpectedly` when multiple XAMPP instances are open
+
+In one FlowerTrack development setup, this error was resolved because **two XAMPP instances/control panels were running at the same time**. Closing the duplicate instance allowed MySQL to start normally.
+
+1. Close the XAMPP Control Panel windows you do not need.
+2. Open **Task Manager** (`Ctrl+Shift+Esc`).
+3. In **Processes** (or **Details**), look for duplicate XAMPP Control Panel processes, commonly named `xampp-control.exe`.
+4. Confirm which entry belongs to the extra XAMPP Control Panel, then select **End task** for that duplicate only.
+5. Keep one XAMPP Control Panel open. If needed, right-click it and choose **Run as administrator**, then try starting MySQL again.
+6. If MySQL still shuts down unexpectedly, check the XAMPP MySQL log and verify whether another MySQL/MariaDB service is using port 3306. Do not end an unknown `mysqld.exe` process, delete database files, or replace anything inside `C:\\xampp\\mysql\\data` as a first fix.
+
+**Important:** This fix applies when duplicate XAMPP Control Panel instances are actually present. If there is only one instance, investigate the MySQL error log and port usage instead; the same message can have other causes.
+
 ---
 
 ## Official technical references
