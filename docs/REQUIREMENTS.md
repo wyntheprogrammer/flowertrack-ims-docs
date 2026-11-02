@@ -90,13 +90,21 @@ The confirmed initial navigation order is:
 - Deactivate flowers with related records instead of permanently deleting them.
 - Unit and Selling Price are not included in the approved scope yet.
 
-### Inventory Management — confirmed so far 2026-11-02
-- Use batch-based inventory.
-- Every Stock-In must create a corresponding Batch Record.
-- Consolidated inventory is derived from batch quantities; do not maintain an independent stock quantity separate from batches.
-- Use FIFO (First In, First Out) as the default Stock-Out allocation method, consuming the oldest received batch first.
-- Record stock movements in Inventory History.
-- Stock adjustment and physical inventory counting are not decided yet.
+### Inventory Management — approved 2026-11-02
+- Provide an Inventory Overview with total and per-flower available quantities, stock statuses (Normal, Low Stock, Out of Stock), and Low Stock alerts.
+- Use batch-based inventory. Every Stock-In automatically creates a Batch Record with a unique Batch Number.
+- Derive consolidated inventory from batch quantities; do not maintain a separate independent stock quantity.
+- Each flower has a configurable inventory unit and unit conversion. Stem is the standard base unit for inventory computation.
+- Configure a fixed minimum stock threshold per flower in Flower Management; use it for Low Stock monitoring.
+- Stock-In accepts the configured unit, converts the quantity to Stems, and includes a Remarks field/column. Stock-In records can be edited.
+- Stock-Out is manual, includes a Remarks field/column, and covers outgoing stock such as customer orders and spoiled flowers.
+- FIFO is the default Stock-Out allocation method. Automatically split a Stock-Out across batches as needed, consuming the oldest available batch first.
+- Allow authorized users to override FIFO and select another batch; record the reason in Remarks.
+- Allow partial batch consumption and retain the remaining quantity in the batch. Retain depleted batch records for traceability.
+- Block Stock-Out when available stock is insufficient; negative inventory is not allowed.
+- Record every Stock-In and Stock-Out in Inventory History with date/time, flower, batch, movement type, quantity, Remarks, and user.
+- For stock correction, edit the Stock-In record and its Remarks as specified by the owner; no separate reversal-transaction workflow is included.
+- Stock Adjustment / Physical Inventory Counting is explicitly deferred and excluded from the current scope.
 
 ## 7. Business requirements still to gather
 
