@@ -5,8 +5,8 @@
 ## Current position
 
 - **Overall status:** Initial environment setup, Bootstrap integration, initial Supplier/Admin and Client UI files, and the first Supplier/Admin dashboard pass have been completed. The initial UI files were pushed to the application repository; the latest Bootstrap Icons refinements are local and awaiting build/commit/push.
-- **Current phase:** Phase 3 — Supplier/Admin UI (dashboard first-pass completed; remaining Supplier/Admin modules are pending).
-- **Current task:** Run `npm run build`, inspect the changed files, then commit and push the Bootstrap Icons updates to the application repository.
+- **Current phase:** Requirements planning for Supplier/Admin modules; Flower Management and Inventory Management scopes are approved.
+- **Current task:** Await the owner's direction to begin the approved Inventory Management UI. No Inventory Management application code, database schema, or backend has been implemented.
 - **Next phase:** Continue the remaining Supplier/Admin modules in the order recorded in `MODULES.md`, then proceed with Client UI.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -135,7 +135,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 ## Open requirements
 
 - [ ] Confirm flower/product types, categories, and selling units.
-- [ ] Confirm batch receiving, stock movement, and stock calculation rules.
+- [ ] Confirm any additional batch lifecycle details not covered by the approved Inventory Management scope.
 - [ ] Confirm spoilage definition and prediction expectations.
 - [ ] Confirm supplier/vendor management scope.
 - [ ] Confirm customer account and checkout rules.
@@ -149,12 +149,16 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 ### 2026-11-02 — Flower Management and Inventory Management requirements
 - Owner approved Flower Management fields: automatically generated Flower Code; required Flower Name, Category, and Description; optional single Primary Flower Image; Active/Inactive status.
 - Owner approved Flower Management actions and controls: add, view, edit, deactivate when related records exist, search by flower name/code, and filter by category/status.
-- Unit and Selling Price remain outside the approved Flower Management scope pending inventory/pricing decisions.
-- Owner selected batch-based inventory: every Stock-In must create a Batch Record, and consolidated inventory is derived from batch quantities rather than a separate independent stock quantity.
-- Owner selected FIFO as the default Stock-Out allocation method; oldest received batch is consumed first.
-- Inventory History must record stock movements.
-- Stock adjustment and physical inventory counting were explicitly deferred and remain undecided.
-- These are requirements-planning decisions only; no database or backend behavior is implemented by this documentation update.
+- Unit and Selling Price remain outside the approved Flower Management scope pending separate pricing decisions.
+- Owner approved the complete Inventory Management scope: Inventory Overview, Stock-In, Stock-Out, Inventory List, Batch Details, and Inventory History.
+- Every Stock-In creates a unique Batch Record. Consolidated stock is derived from batch quantities.
+- Each flower has a configurable inventory unit with conversion to the standard base unit, Stem. Low Stock uses a fixed minimum threshold per flower, configured in Flower Management.
+- Stock-Out is manual, including spoiled flowers, and uses FIFO by default. The system automatically splits quantities across batches; authorized users may override FIFO with a reason in Remarks.
+- Partial batch consumption is allowed. Stock-Out is blocked when stock is insufficient; negative inventory is prohibited.
+- Every Stock-In and Stock-Out includes a Remarks field/column and is recorded in Inventory History with the affected batch and user.
+- Stock-In records can be edited; the owner specified using Stock-In editing and Remarks for stock correction. No separate reversal workflow is included.
+- Stock Adjustment / Physical Inventory Counting is explicitly deferred.
+- These are requirements-planning decisions only; no Inventory Management application code, database schema, or backend behavior was implemented by this documentation update.
 
 ### 2026-11-01 — Supplier dashboard UI first pass
 - Created/refined the Supplier/Admin layout and dashboard Blade views in the local application project.
