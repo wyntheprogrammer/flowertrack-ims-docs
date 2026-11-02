@@ -249,7 +249,7 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 
 ## UI-first rule
 
-The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, and Order Management requirements are approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the owner confirms that the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
+The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports requirements are approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the owner confirms that the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
 
 High-level sequence:
 1. Environment setup and shared UI foundation (completed baseline).
@@ -401,3 +401,19 @@ resources/
 - Provide daily, weekly, monthly, and yearly summaries with PDF and Excel export.
 - Sales and Payment Management owns prices, Sales Records, payment transactions, and refunds; Order Management displays payment status and summary only.
 - No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented. Reports is the next planning module.
+
+
+## Reports — approved requirements (2026-11-02)
+
+- Seven categories: Sales, Payments, Inventory, Orders, Delivery, Clients, and Spoilage.
+- Filters: Daily, Weekly, Monthly, Yearly, and Custom Date Range; category-appropriate search and filters.
+- Presentation: summary cards, charts, detailed tables, and print-friendly layout.
+- Output: PDF export, Excel export, and direct printing.
+- Access: Supplier/Admin only.
+- Reports is read-only, uses source records owned by other modules, and must not create or modify transactions.
+- Sales reporting counts completed orders less recorded refunds; partial payments are not separate sales; cancelled orders are excluded.
+- Inventory reporting distinguishes physical batch quantities from reservations; reservation is not Stock-Out.
+- Spoilage reporting uses actual recorded Spoilage Events, not prediction risk alone.
+- Exclude scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics from the initial scope.
+- No Reports UI, backend, database schema, report generator, exports, or print implementation has been created.
+- Next Supplier/Admin module to plan: User and Access Management.
