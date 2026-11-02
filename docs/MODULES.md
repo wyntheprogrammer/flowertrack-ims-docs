@@ -429,3 +429,17 @@ These are analysis topics, not finalized business rules:
 - Inventory Management presents overall stock and stock movements.
 - Spoilage Prediction uses batch-related information, subject to the eventual prediction design.
 - Sales and payment workflows still need detailed planning. Delivery Management requirements are approved, including a system-configured fixed delivery fee and client-side status/schedule tracking.
+
+
+#### User and Access Management — approved role structure (2026-11-02)
+
+**Confirmed account roles**
+- **Admin** — full system access, including User and Access Management and Reports.
+- **Supplier/Staff** — access to authorized operational modules according to the permissions assigned by the system.
+- **Delivery Personnel** — access to Delivery Management functions required for assigned delivery work.
+
+**Planning status**
+- The owner approved these three account roles as the initial role structure.
+- Detailed account fields, account creation workflow, permission boundaries for Supplier/Staff, delivery-personnel actions, password lifecycle, and account deactivation rules remain to be finalized.
+- A custom permission editor and whether permissions are fixed by role remain to be confirmed.
+- No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
