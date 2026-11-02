@@ -106,15 +106,29 @@ The confirmed initial navigation order is:
 - For stock correction, edit the Stock-In record and its Remarks as specified by the owner; no separate reversal-transaction workflow is included.
 - Stock Adjustment / Physical Inventory Counting is explicitly deferred and excluded from the current scope.
 
+### Batch Management — confirmed 2026-11-02
+- Every Stock-In automatically creates one Batch Record with a unique, automatically generated Batch Number.
+- Each batch is linked to its flower and originating Stock-In. Date Received and Initial Quantity are captured from Stock-In; inventory quantities use Stem as the standard base unit.
+- Do not include a Supplier / Source field or column; the owner confirmed that the business sources the flowers directly.
+- Harvest Date is required. Expected Freshness / Expiry Date is optional.
+- Remaining Quantity is updated through Inventory Management Stock-Out allocations and is not directly editable in Batch Management.
+- Batch statuses: Available, Partially Used, Depleted, and Spoiled. Available, Partially Used, and Depleted are derived from initial and remaining quantities; Spoiled is marked manually.
+- Before marking a batch Spoiled, record its remaining spoiled quantity through a manual Stock-Out transaction with a required spoilage reason/remark.
+- Batch Management supports viewing batch details and movement history; searching by Batch Number or Flower Name; filtering by Flower, Status, and Date Received; and editing metadata only.
+- Do not allow direct quantity edits in Batch Management.
+- Retain depleted and spoiled batch records for traceability; do not permanently delete batches with inventory history.
+- Show warnings as the optional Expected Freshness / Expiry Date approaches. Warnings do not automatically deduct stock or mark a batch Spoiled.
+- Spoilage Prediction does not automatically change batch status or deduct stock.
+
 ## 7. Business requirements still to gather
 
 - Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
 - Whether products include bouquets, plants, vases, wrappers, gifts, or other items.
-- Detailed batch fields, receiving validation, and batch lifecycle.
+- Any additional batch receiving validations or lifecycle behavior beyond the confirmed Batch Management scope.
 - Other stock movement rules, including damaged, missing, reserved, returned, and adjusted quantities.
 - Batch aging, shelf-life, and spoilage definition.
 - Spoilage prediction data, method, and intended output.
-- Supplier/vendor management needs (the current module list does not include a dedicated supplier directory; confirm whether one is needed).
+- Whether a separate supplier/vendor directory is needed for any future purchasing workflow; Supplier / Source is not part of the approved Batch Management record.
 - Customer registration and account approval rules.
 - Order statuses and cancellation/return rules.
 - Delivery assignment, fees, and delivery statuses.
