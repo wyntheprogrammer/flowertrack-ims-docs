@@ -6,6 +6,16 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
+### Approved — Sales and Payment Management requirements
+- Confirmed manual flower selling-price management in Sales and Payment Management; price changes apply to new orders while existing order items retain price snapshots.
+- Confirmed automatic Sales Record creation when an order becomes Completed, with unique Sales ID, Order ID/client linkage, and duplicate prevention.
+- Confirmed Cash, Bank Transfer, and E-wallet, with Admin verification/confirmation and applicable online payment reference numbers.
+- Confirmed partial and multiple payments, payment history and outstanding balances, and Admin-recorded/approved refunds.
+- Confirmed sales reporting based on completed orders less refunds; partial payments are not double-counted and cancelled orders are excluded.
+- Confirmed daily, weekly, monthly, and yearly summaries plus PDF and Excel exports.
+- Updated the next planning task to Reports. No application UI, backend, database, payment gateway, or report generator was implemented.
+
+
 ### Approved — Order Management requirements
 - Confirmed Client Panel and Supplier/Admin order creation, with manual Admin review and confirmation.
 - Confirmed generated Order ID, client/order/item data, positive quantities, automatic totals, conditional delivery address, and optional order notes.
