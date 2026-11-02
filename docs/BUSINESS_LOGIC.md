@@ -167,3 +167,16 @@ Each rule must be confirmed and dated before implementation.
 - Supplier/Staff access is limited to operational modules authorized by the system.
 - Delivery Personnel access is limited to delivery-work functions in Delivery Management.
 - Detailed role permission boundaries and account lifecycle rules remain subject to owner approval.
+
+
+### User account creation — confirmed rules (2026-11-02)
+
+- Only an Admin may create Supplier/Staff and Delivery Personnel accounts. There is no public/self-service registration for these roles.
+- Full Name, Email Address, Contact Number, and Role are required during account creation.
+- Generate a unique User ID automatically.
+- Enforce a unique Email Address across user accounts.
+- Admin assigns a temporary password when creating the account.
+- Require the account holder to change the temporary password on first login before accessing the system.
+- Passwords must be securely hashed and must never be stored in plain text.
+- New accounts have an Account Status of Active or Inactive.
+- Role-specific permissions, deactivation/reactivation effects, session handling, password recovery, and account-creation notifications remain unresolved until approved.
