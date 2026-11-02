@@ -116,3 +116,15 @@
 - How are failed, pending, partial, and refunded payments handled?
 
 Each rule must be confirmed and dated before implementation.
+
+### Delivery workflow — confirmed rules (2026-11-02)
+
+- Delivery applies only to orders whose fulfillment method is Delivery. Customer Pickup does not create a delivery record.
+- When a Delivery order reaches Ready for Delivery, create one linked delivery record with a unique Delivery ID and an address snapshot.
+- Admin manually assigns/reassigns active, authorized delivery personnel and schedules the delivery date/time. Preserve assignment and status history with timestamps and responsible users.
+- Dispatch is allowed only after the related order is Ready for Delivery.
+- Delivery statuses are Pending, Scheduled, Assigned, Out for Delivery, Delivered, Failed, Rescheduled, and Cancelled. These remain distinct from Order Status.
+- Delivered requires recipient name, delivery remarks, photo proof, and completion date/time. Coordinate successful delivery with Order Management to complete the order.
+- Failed requires a reason, remains in history, and does not automatically cancel the order. Admin handles rescheduling/reassignment. No fixed attempt cap is imposed initially; further attempts are subject to Admin decision.
+- Initial delivery tracking is status-based only; no GPS tracking or continuous location tracking.
+- Delivery fee policy and client-side visibility remain To decide.
