@@ -87,16 +87,18 @@
 - Every order has a unique generated Order ID, registered Client, automatic Order Date, and at least one item. Each item requires a Flower and positive quantity.
 - Unit Price is sourced from Sales and Payment Management and snapshotted per order item; future price changes do not modify existing orders. Item subtotals and order total are calculated.
 - Delivery Address is required for Delivery; Order Notes are optional. Customer Pickup does not require a delivery address.
-- Order Status and Payment Status are independent. Order statuses are Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, and Cancelled.
+- Order Status and Payment Status are independent. Order statuses are Pending, Confirmed, Processing, Ready for Delivery or Ready for Pickup, Out for Delivery (Delivery only), Completed, and Cancelled.
 - Payment statuses shown on orders are Unpaid, Partially Paid, Paid, and Refunded. Sales and Payment Management owns payment recording and transactions; Order Management displays status and summary only.
-- Admin confirmation is manual. Check stock before confirmation and reject an order that cannot be fulfilled in full.
-- Reserve inventory at confirmation. Reservation does not reduce physical stock; actual Stock-Out is a separate Inventory Management transaction at the fulfillment point. Prevent duplicate deduction.
+- Admin confirmation is manual. Check available-to-allocate stock before confirmation, accounting for quantities already reserved by other confirmed orders. Reject an order if the full quantity cannot be allocated; do not create a pending-stock queue or allow overselling.
+- Reserve inventory when an order becomes Confirmed. Reservation does not reduce physical on-hand stock and is not a Stock-Out.
+- Actual customer-order Stock-Out is recorded through Inventory Management at the fulfillment-specific trigger: Delivery orders are stocked out only when successfully marked Delivered; Customer Pickup orders are stocked out when marked Ready for Pickup.
+- Apply FIFO/batch allocation at the actual Stock-Out and coordinate it with the reservation so the same quantity is never deducted twice.
 - Partial fulfillment is excluded from the initial scope.
 - Clients may edit/cancel Pending orders. Supplier/Admin may edit orders before Processing and may cancel later non-completed orders with a required reason. Completed orders cannot be cancelled.
 - Cancellation releases any active reservation. If Stock-Out has already occurred, inventory must be corrected/restored through Inventory Management before cancellation is finalized.
 - Preserve cancelled orders and status history, including timestamp and responsible user.
 - Support Delivery and Customer Pickup. Delivery Management owns delivery assignment and delivery-specific tracking; Pickup skips Out for Delivery.
-- **Still to decide:** the precise fulfillment event that triggers conversion of reserved stock into an actual Stock-Out. Keep reservation and Stock-Out as separate operations.
+- No pending-stock queue is included. Reject an order when the available-to-allocate stock, after existing reservations, is insufficient for full fulfillment.
 
 ### Sales and payments — confirmed Sales and Payment Management (2026-11-02)
 
