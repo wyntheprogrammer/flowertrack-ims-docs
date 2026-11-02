@@ -4,9 +4,9 @@
 
 ## Current position
 
-- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and Delivery Management are approved. Requirements planning remains in progress.
-- **Current phase:** Requirements planning — not UI implementation. Seven module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and Delivery Management.
-- **Current task:** Plan and finalize Sales and Payment Management requirements, the next Supplier/Admin module after Delivery Management in `MODULES.md`.
+- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Requirements planning remains in progress.
+- **Current phase:** Requirements planning — not UI implementation. Eight module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management.
+- **Current task:** Plan Reports requirements, the next Supplier/Admin module after Sales and Payment Management in `MODULES.md`.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -140,9 +140,9 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [ ] Confirm supplier/vendor management scope.
 - [x] Finalize client account creation, required fields, account access, deactivation, duplicate email, and client history rules.
 - [ ] Confirm checkout and detailed client ordering rules.
-- [ ] Confirm order, delivery, and payment lifecycles.
+- [x] Finalize initial order, delivery, sales, and payment lifecycles; exact reservation-to-Stock-Out timing and detailed return/reconciliation rules remain open.
 - [ ] Confirm user roles and permissions.
-- [ ] Confirm reporting requirements.
+- [ ] Finalize Reports module requirements (Sales and Payment Management report periods and PDF/Excel export are approved).
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
@@ -266,3 +266,4 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Confirmed delivery-only workflow, separate delivery/order statuses, delivery history, failed-attempt reasons, and coordination with Order Management.
 - Documentation/planning update only; no Delivery Management UI, backend, database schema, or GPS integration was implemented.
 - Next task: plan and finalize Sales and Payment Management requirements.
+\n\n### 2026-11-02 — Sales and Payment Management requirements approved\n- Owner approved the consolidated recommendations for selling-price ownership, price snapshots, sales recognition, payment methods, verification, partial/multiple payments, refunds, reporting periods, and export formats.\n- Confirmed that Supplier/Admin manually sets each flower's selling price in Sales and Payment Management; price changes affect new orders only, while existing order item prices remain snapshotted.\n- Confirmed automatic creation of one Sales Record when an order becomes Completed, with a unique Sales ID linked to the Order ID and client.\n- Confirmed Cash, Bank Transfer, and E-wallet; Admin manually verifies online payments and records/confirms cash payments. Applicable online payments require a reference number.\n- Confirmed partial and multiple payments per order, Admin-recorded/approved refunds, payment history and outstanding balance, and separate Sales Records versus payment transactions.\n- Confirmed sales reporting based on completed orders less recorded refunds, with partial payments excluded from duplicate sales counting; cancelled orders are excluded.\n- Confirmed daily, weekly, monthly, and yearly summaries and PDF/Excel exports.\n- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator was implemented.\n- Next task: plan and finalize Reports module requirements.\n
