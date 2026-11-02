@@ -26,7 +26,44 @@ The project owner supplied the following module order. This is also the initial 
 - Management-oriented layout.
 - Desktop-first and responsive.
 - Bootstrap components, custom CSS, and Flexbox as appropriate.
-- Detailed fields, actions, filters, table columns, dashboard metrics, and workflows are still to be gathered.
+#### Flower Management — approved scope (2026-11-02)
+
+**Purpose:** Maintain the flower records used by inventory and the Client catalog.
+
+**Fields**
+- Flower Code — automatically generated.
+- Flower Name — required.
+- Category — required.
+- Description — required.
+- Primary Flower Image — optional; one primary image per flower.
+- Status — Active or Inactive.
+
+**Actions and controls**
+- Add, view, and edit flower records.
+- Deactivate a flower instead of permanently deleting it when related records exist.
+- Search by flower name or flower code.
+- Filter by category and status.
+
+**Confirmed rules**
+- A flower can be saved without an image, but not without its name, category, or description.
+- Unit and selling price are not part of the approved Flower Management scope yet; decide them with the inventory and pricing workflows.
+
+#### Inventory Management — decisions confirmed so far (2026-11-02)
+
+**Purpose:** Show consolidated stock and track stock movements. Detailed scope is still being finalized.
+
+**Confirmed rules**
+- Inventory is batch-based. Every Stock-In must create a corresponding Batch Record.
+- Overall inventory quantity is derived from the quantities of its batches; there is no separate independent stock quantity.
+- FIFO (First In, First Out) is the approved default allocation method for Stock-Out: consume stock from the oldest received batch first.
+- Stock movements must be recorded in Inventory History.
+
+**Still to decide**
+- Stock adjustment and physical inventory counting workflow.
+- Other stock movement types and handling of damaged, missing, reserved, or returned quantities.
+- Detailed fields, filters, table columns, permissions, and validation rules.
+
+- For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
 
 ## B. Client Panel
