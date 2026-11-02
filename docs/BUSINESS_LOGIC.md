@@ -179,4 +179,49 @@ Each rule must be confirmed and dated before implementation.
 - Require the account holder to change the temporary password on first login before accessing the system.
 - Passwords must be securely hashed and must never be stored in plain text.
 - New accounts have an Account Status of Active or Inactive.
-- Role-specific permissions, deactivation/reactivation effects, session handling, password recovery, and account-creation notifications remain unresolved until approved.
+- Apply the fixed role permissions and account lifecycle rules approved in `REQUIREMENTS.md`. Account-creation email notifications are excluded from the initial scope.
+
+### User and Access Management — approved permissions and account lifecycle (2026-11-02)
+
+#### Fixed role permissions
+
+Permissions are fixed by the three initial system roles; individually configurable permission sets are excluded from the initial scope.
+
+| Module / Function | Admin | Supplier/Staff | Delivery Personnel |
+|---|---|---|---|
+| Dashboard | Full access | Operational dashboard | Delivery-focused dashboard |
+| Flower Management | Full access | View, Add, Edit, Deactivate | No access |
+| Inventory Management | Full access | View, Stock-In, Stock-Out | No access |
+| Batch Management | Full access | View and edit metadata | No access |
+| Spoilage Prediction | Full access | View predictions and recommendations | No access |
+| Client Management | Full access | View, Add, Edit, Activate/Deactivate | No access |
+| Order Management | Full access | View, Confirm, Update Status, Cancel | No access |
+| Delivery Management | Full access; manage and assign deliveries | Authorized operational access | Assigned deliveries only |
+| Sales and Payment Management | Full access | Manage sales and payment operations | No access |
+| Reports | Full access | No access | No access |
+| User and Access Management | Full access | No access | No access |
+| Audit Trail | Full access | No access | No access |
+
+- Delivery Personnel may update delivery status and submit required Proof of Delivery only for deliveries assigned to their account.
+- Delivery Personnel cannot modify orders, inventory, payments, delivery fees, or delivery assignments.
+- Supplier/Staff cannot access Reports, User and Access Management, or Audit Trail.
+- Enforce permissions on the server/backend, not only by hiding navigation items or UI controls.
+- Supplier/Staff permissions are role-defined and are not individually configurable in the initial scope.
+
+#### Account lifecycle rules
+
+- Users may change their own passwords.
+- Forgot-password/password-reset requests are handled by Admin. Admin issues a temporary password; the user must change it at next login.
+- Admin alone may deactivate, reactivate, or change the role of an account.
+- Admin alone may change a user's email address; the new address must remain unique.
+- Deactivate accounts instead of permanently deleting them. Preserve associated records and audit history.
+- Block login and invalidate active sessions when an account is deactivated.
+- Record account creation, deactivation, reactivation, role changes, and Admin password resets in Audit Trail.
+- Do not display or reveal passwords to Admin or other users; store only secure password hashes.
+- Prevent deactivation of the last active Admin account.
+- Account-creation email notifications are excluded from the initial scope.
+
+#### Implementation status
+
+These are approved requirements only. No User and Access Management UI, authentication implementation, backend authorization, session invalidation, or database schema has been implemented by this documentation update.
+
