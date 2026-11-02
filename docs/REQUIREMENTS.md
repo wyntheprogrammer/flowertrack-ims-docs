@@ -1,6 +1,6 @@
 # Requirements
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 
 Status labels:
 - **Confirmed** — explicitly provided or approved by the project owner.
@@ -78,12 +78,32 @@ The confirmed initial navigation order is:
 - Client is ecommerce-oriented and must remain visually distinct.
 - The Supplier Side screenshot and prompt do not change module scope, workflows, or business rules.
 
-## 6. Business requirements still to gather
+## 6. Confirmed module requirements
 
-- Flower product categories, varieties, units, and product attributes.
+### Flower Management — confirmed 2026-11-02
+- Flower Code is automatically generated.
+- Flower Name, Category, and Description are required.
+- Primary Flower Image is optional, with one primary image per flower.
+- Status options are Active and Inactive.
+- Users can add, view, and edit flower records.
+- Users can search by Flower Name or Flower Code and filter by Category or Status.
+- Deactivate flowers with related records instead of permanently deleting them.
+- Unit and Selling Price are not included in the approved scope yet.
+
+### Inventory Management — confirmed so far 2026-11-02
+- Use batch-based inventory.
+- Every Stock-In must create a corresponding Batch Record.
+- Consolidated inventory is derived from batch quantities; do not maintain an independent stock quantity separate from batches.
+- Use FIFO (First In, First Out) as the default Stock-Out allocation method, consuming the oldest received batch first.
+- Record stock movements in Inventory History.
+- Stock adjustment and physical inventory counting are not decided yet.
+
+## 7. Business requirements still to gather
+
+- Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
 - Whether products include bouquets, plants, vases, wrappers, gifts, or other items.
-- Batch creation and receiving process.
-- Stock unit and stock movement rules.
+- Detailed batch fields, receiving validation, and batch lifecycle.
+- Other stock movement rules, including damaged, missing, reserved, returned, and adjusted quantities.
 - Batch aging, shelf-life, and spoilage definition.
 - Spoilage prediction data, method, and intended output.
 - Supplier/vendor management needs (the current module list does not include a dedicated supplier directory; confirm whether one is needed).
@@ -97,7 +117,7 @@ The confirmed initial navigation order is:
 - Single-store or multi-branch operation.
 - Security, backup, hosting, and deployment requirements.
 
-## 7. Open decisions
+## 8. Open decisions
 
 Do not implement these as settled decisions until confirmed:
 - Exact Laravel/PHP/Node versions.
