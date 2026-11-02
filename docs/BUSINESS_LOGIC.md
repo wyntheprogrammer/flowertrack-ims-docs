@@ -158,3 +158,12 @@ Each rule must be confirmed and dated before implementation.
 - Only Supplier/Admin users may access Reports.
 - Reports must not create or modify orders, payments, inventory movements, deliveries, client records, or spoilage events.
 - Scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics are excluded from the initial scope.
+
+
+### User and Access Management — confirmed role structure (2026-11-02)
+
+- Initial roles: Admin, Supplier/Staff, and Delivery Personnel.
+- Admin has full system access, including user administration and Reports.
+- Supplier/Staff access is limited to operational modules authorized by the system.
+- Delivery Personnel access is limited to delivery-work functions in Delivery Management.
+- Detailed role permission boundaries and account lifecycle rules remain subject to owner approval.
