@@ -387,4 +387,15 @@ resources/
 - Clients can view delivery status and scheduled delivery information. Do not expose delivery personnel's personal contact details.
 - No Delivery Management UI, backend, database schema, or GPS integration has been implemented.
 
-\n\n## Sales and Payment Management — approved requirements (2026-11-02)\n\n- Supplier/Admin manually sets selling prices for each flower in Sales and Payment Management; price changes affect new orders only. Existing order item prices remain immutable snapshots.\n- Automatically create one unique Sales Record when an order becomes Completed. Link it to the Order ID and client, preserve item/price/total snapshots and applicable delivery fee, and prevent duplicate records.\n- Sales reporting counts completed orders less recorded refunds. Partial payments are not additional sales; cancelled orders are excluded.\n- Supported payment methods: Cash, Bank Transfer, and E-wallet. Require reference numbers for applicable online payments. Admin manually verifies online payments and records/confirms cash payments.\n- Allow partial and multiple payments per order. Track Unpaid, Partially Paid, Paid, and Refunded; retain payment history and outstanding balances. Admin records and approves refunds.\n- Provide daily, weekly, monthly, and yearly summaries with PDF and Excel export.\n- Sales and Payment Management owns prices, Sales Records, payment transactions, and refunds; Order Management displays payment status and summary only.\n- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented. Reports is the next planning module.\n
+
+
+## Sales and Payment Management — approved requirements (2026-11-02)
+
+- Supplier/Admin manually sets selling prices for each flower in Sales and Payment Management; price changes affect new orders only. Existing order item prices remain immutable snapshots.
+- Automatically create one unique Sales Record when an order becomes Completed. Link it to the Order ID and client, preserve item/price/total snapshots and applicable delivery fee, and prevent duplicate records.
+- Sales reporting counts completed orders less recorded refunds. Partial payments are not additional sales; cancelled orders are excluded.
+- Supported payment methods: Cash, Bank Transfer, and E-wallet. Require reference numbers for applicable online payments. Admin manually verifies online payments and records/confirms cash payments.
+- Allow partial and multiple payments per order. Track Unpaid, Partially Paid, Paid, and Refunded; retain payment history and outstanding balances. Admin records and approves refunds.
+- Provide daily, weekly, monthly, and yearly summaries with PDF and Excel export.
+- Sales and Payment Management owns prices, Sales Records, payment transactions, and refunds; Order Management displays payment status and summary only.
+- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented. Reports is the next planning module.
