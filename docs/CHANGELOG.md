@@ -6,6 +6,15 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
+### Finalized — Order fulfillment and Inventory Stock-Out rules
+- Confirmed that reservation at order confirmation does not reduce physical on-hand stock.
+- Confirmed that reserved quantities are excluded from stock available for new orders.
+- Confirmed that orders must be rejected when the full quantity cannot be allocated; no pending-stock queue or overselling.
+- Confirmed Delivery Stock-Out on successful `Delivered` status and Customer Pickup Stock-Out on `Ready for Pickup`.
+- Kept reservation and actual Stock-Out as separate coordinated operations to prevent double deduction.
+- Updated Order Management, Inventory Management, requirements, business logic, progress, and AI continuity documentation. No application code or database behavior changed.
+- Next planning task: Reports.
+
 ### Approved — Sales and Payment Management requirements
 - Confirmed manual flower selling-price management in Sales and Payment Management; price changes apply to new orders while existing order items retain price snapshots.
 - Confirmed automatic Sales Record creation when an order becomes Completed, with unique Sales ID, Order ID/client linkage, and duplicate prevention.
