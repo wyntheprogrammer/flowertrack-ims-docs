@@ -48,20 +48,48 @@ The project owner supplied the following module order. This is also the initial 
 - A flower can be saved without an image, but not without its name, category, or description.
 - Unit and selling price are not part of the approved Flower Management scope yet; decide them with the inventory and pricing workflows.
 
-#### Inventory Management — decisions confirmed so far (2026-11-02)
+#### Inventory Management — approved scope (2026-11-02)
 
-**Purpose:** Show consolidated stock and track stock movements. Detailed scope is still being finalized.
+**Purpose:** Monitor consolidated flower stock, receive and issue stock, track batches, and review every stock movement.
 
-**Confirmed rules**
-- Inventory is batch-based. Every Stock-In must create a corresponding Batch Record.
-- Overall inventory quantity is derived from the quantities of its batches; there is no separate independent stock quantity.
-- FIFO (First In, First Out) is the approved default allocation method for Stock-Out: consume stock from the oldest received batch first.
-- Stock movements must be recorded in Inventory History.
+**Inventory overview**
+- Show total available inventory and per-flower quantities.
+- Show stock status: Normal, Low Stock, or Out of Stock.
+- Show Low Stock alerts using each flower's fixed minimum stock threshold, configured in Flower Management.
 
-**Still to decide**
-- Stock adjustment and physical inventory counting workflow.
-- Other stock movement types and handling of damaged, missing, reserved, or returned quantities.
-- Detailed fields, filters, table columns, permissions, and validation rules.
+**Stock-In**
+- Record incoming stock.
+- Every Stock-In automatically creates a corresponding Batch Record with a unique Batch Number.
+- Allow entry using the flower's configured inventory unit (for example, Bunch, Bundle, or Box).
+- Convert entered quantities to the standard base unit, Stem, for inventory computation.
+- Include a Remarks field/column for every Stock-In movement.
+- Allow editing of Stock-In records.
+
+**Stock-Out**
+- Record outgoing stock manually, including customer-order stock and spoiled flowers.
+- Include a Remarks field/column for every Stock-Out movement.
+- Use FIFO by default: allocate from the oldest available batch first.
+- Automatically split a Stock-Out across multiple batches when the requested quantity exceeds the remaining quantity in the oldest batch.
+- Allow authorized users to override FIFO and select another batch; record the reason in Remarks.
+- Block the transaction when available stock is insufficient. Negative inventory is not allowed.
+
+**Batch-based inventory and units**
+- Consolidated available quantity is derived from batch quantities; do not maintain a separate independent stock quantity.
+- Each flower has a configurable inventory unit and conversion to the standard base unit, Stem (for example, 1 Bunch = 10 Stems).
+- Every Stock-In creates its own batch.
+- Support partial batch consumption; a batch remains available with its remaining quantity until depleted.
+- Retain batch records after depletion for history and traceability.
+
+**Inventory History**
+- Record every Stock-In and Stock-Out movement.
+- Show date/time, flower, affected batch, movement type, quantity, Remarks, and the user who performed the movement.
+- Preserve the history of batch allocations, including FIFO allocation or an authorized manual override.
+
+**Stock correction**
+- The owner specified that a correction should be handled by editing the Stock-In record and its Remarks; no separate reversal-transaction workflow is included in the approved scope.
+
+**Deferred**
+- Stock Adjustment / Physical Inventory Counting is explicitly excluded for now.
 
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
