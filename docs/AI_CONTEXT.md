@@ -65,7 +65,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and the initial Delivery Management scope are approved. Delivery-fee policy and client-side delivery visibility remain open. Sales and Payment Management is the next module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and the initial Delivery Management scope are approved. Delivery Management is fully approved, including a fixed system-configured delivery fee and Client Panel tracking of delivery status and scheduled delivery information. Sales and Payment Management is the next module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
 
 ## Verified application repository structure
 
@@ -383,5 +383,7 @@ resources/
 - Failed attempts require a reason, remain in history, and do not automatically cancel the order. Admin handles rescheduling/reassignment. No fixed attempt limit initially; further attempts are subject to Admin decision.
 - Initial tracking is status updates only; no GPS or continuous location tracking.
 - Delivery fee policy and Client Panel visibility are still To decide. Do not invent or implement either as a confirmed rule.
+- Apply a fixed delivery fee configured in system settings to eligible Delivery orders; exact fee amount/configuration controls are deferred to detailed design.
+- Clients can view delivery status and scheduled delivery information. Do not expose delivery personnel's personal contact details.
 - No Delivery Management UI, backend, database schema, or GPS integration has been implemented.
 
