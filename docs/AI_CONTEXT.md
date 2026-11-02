@@ -1,6 +1,6 @@
 # AI Context — FlowerTrack IMS
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 
 ## Role and working style
 
@@ -285,3 +285,33 @@ At the end of each session, record:
 ## Accuracy rule
 
 Only treat items marked **Confirmed** in the documentation as approved requirements. Items marked **To decide**, **Proposed**, or **Assumption** must not be implemented as settled business rules.
+
+
+## Frontend file organization standard — 2026-11-02
+
+For new Supplier/Admin feature modules, keep the Blade view, module-specific CSS, and module-specific JavaScript in separate files when the module has its own styling or browser interactions. Do not combine a module's full CSS and JavaScript into its Blade view.
+
+Recommended pattern for Flower Management:
+
+```text
+resources/
+├── css/
+│   ├── app.css
+│   └── supplier/
+│       └── flowers.css
+├── js/
+│   ├── app.js
+│   └── supplier/
+│       └── flowers.js
+└── views/
+    └── supplier/
+        └── flowers.blade.php
+```
+
+- `resources/views/supplier/flowers.blade.php`: Blade markup and Laravel view directives; keep page-specific CSS/JS out of this file.
+- `resources/css/supplier/flowers.css`: Flower Management-specific styles.
+- `resources/js/supplier/flowers.js`: Flower Management interactions and behavior.
+- `resources/css/app.css` and `resources/js/app.js`: shared/global entry points and shared imports or initialization, not containers for every module's page-specific code.
+- Load module assets through the existing Vite pipeline. Ensure the relevant CSS and JavaScript are included by the page/layout using the project's established Vite conventions.
+- Apply the same organization to later Supplier modules when they have module-specific styles or interactions. Avoid creating empty or unnecessary files for modules that do not need them; shared styles and scripts should remain shared.
+- This is an agreed frontend organization standard. It does not imply that Flower Management has already been implemented or tested.
