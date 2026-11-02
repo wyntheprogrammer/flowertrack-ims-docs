@@ -60,8 +60,7 @@ flowertrack-ims-docs/
 │   ├── SUPPLIER_UI_DESIGN_REFERENCE.md
 │   ├── DEVELOPMENT_PLAN.md
 │   ├── DEVELOPMENT_PROGRESS.md
-│   ├── CHANGELOG.md
-│   └── SETUP_GUIDE.md
+│   └── CHANGELOG.md
 └── assets/
     └── ui-references/
         └── README.md
