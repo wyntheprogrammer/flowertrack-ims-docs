@@ -5,8 +5,8 @@
 ## Current position
 
 - **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports are approved. Requirements planning remains in progress.
-- **Current phase:** Requirements planning — not UI implementation. Nine module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports.
-- **Current task:** Plan User and Access Management requirements, the next Supplier/Admin module after Reports in `MODULES.md`.
+- **Current phase:** Requirements planning — not UI implementation. Nine module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports. User and Access Management role structure is approved; detailed requirements planning is in progress.
+- **Current task:** Finalize User and Access Management requirements, beginning with the approved Admin, Supplier/Staff, and Delivery Personnel role structure.
 - **Latest Order Management decisions:** Customer-order Stock-Out timing is finalized: Delivery on successful `Delivered`; Customer Pickup on `Ready for Pickup`. Confirmed reservations do not reduce physical on-hand stock. New orders are rejected when available-to-allocate stock after existing reservations is insufficient; no pending-stock queue or overselling.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
@@ -304,3 +304,13 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Excluded scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics from the initial scope.
 - No Reports UI, backend, database schema, report generator, export, or print implementation was created.
 - Next task: plan and finalize User and Access Management requirements.
+
+
+### 2026-11-02 — User and Access Management role structure approved
+
+- Owner approved three initial account roles: Admin, Supplier/Staff, and Delivery Personnel.
+- Confirmed Admin full access, including User and Access Management and Reports.
+- Confirmed Supplier/Staff access to authorized operational modules and Delivery Personnel access to delivery-work functions in Delivery Management.
+- Detailed account fields, account lifecycle, password workflow, and exact role permissions remain to be decided.
+- No User and Access Management UI, authentication changes, backend, or database schema was implemented.
+- Continue planning the remaining User and Access Management requirements.
