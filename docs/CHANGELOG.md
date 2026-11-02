@@ -161,3 +161,10 @@ All meaningful documentation and project-planning updates are recorded here.
 - Clarified that `resources/css/app.css` and `resources/js/app.js` remain shared/global Vite entry points, rather than holding all module-specific code.
 - Required module assets to be loaded through the existing Vite pipeline and discouraged unnecessary empty files.
 - This records the agreed structure only; Flower Management implementation has not started yet.
+
+
+### 2026-11-02 — Delivery Management requirements
+
+- Documented the approved initial Delivery Management workflow, delivery fields, statuses, assignment/scheduling, Proof of Delivery, failed-delivery handling, and status-only tracking.
+- Recorded delivery-fee policy and client-side visibility as open decisions.
+- No application code, UI, backend, database, or GPS integration changed.
