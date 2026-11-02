@@ -127,4 +127,5 @@ Each rule must be confirmed and dated before implementation.
 - Delivered requires recipient name, delivery remarks, photo proof, and completion date/time. Coordinate successful delivery with Order Management to complete the order.
 - Failed requires a reason, remains in history, and does not automatically cancel the order. Admin handles rescheduling/reassignment. No fixed attempt cap is imposed initially; further attempts are subject to Admin decision.
 - Initial delivery tracking is status-based only; no GPS tracking or continuous location tracking.
-- Delivery fee policy and client-side visibility remain To decide.
+- Apply a fixed system-configured delivery fee to eligible Delivery orders; fee amount/configuration details are deferred to detailed design.
+- Clients can view delivery status and scheduled delivery information; do not expose delivery personnel's personal contact details.
