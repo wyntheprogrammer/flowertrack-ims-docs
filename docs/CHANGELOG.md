@@ -6,6 +6,15 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
+### Approved — Spoilage Prediction requirements
+- Confirmed ML-based batch spoilage-risk prediction using Harvest Date and optional Expected Freshness / Expiry Date.
+- Confirmed Low, Medium, High, and Critical risk levels; numerical thresholds and algorithm selection are deferred until dataset assessment and model validation.
+- Confirmed Dashboard risk summaries/alerts and a dedicated prediction page with batch risk details, search, and filters.
+- Confirmed advisory-only recommendations; predictions do not automatically alter batch status, stock quantities, FIFO allocation, or create Stock-Out transactions.
+- Added approved Spoilage Event Records linked to Flower and Batch, capturing Spoilage Date, Spoiled Quantity, and Spoilage Reason, as labeled historical data for future ML training/evaluation.
+- Recorded that model accuracy cannot be claimed until sufficient representative data and validation are available. No UI, backend, database, or ML model was implemented.
+- Updated planning status: Spoilage Prediction is approved; Client Management is next to plan. Requirements planning remains active.
+
 ### Approved — Batch Management requirements
 - Finalized Batch Management as the module for individual batch details, status monitoring, freshness warnings, and traceability; Inventory Management remains responsible for stock movement and quantity calculations.
 - Confirmed the batch fields and removed Supplier / Source because the business sources flowers directly.
