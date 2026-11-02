@@ -340,3 +340,66 @@ Permissions are fixed by the three initial system roles; individually configurab
 #### Implementation status
 
 These are approved requirements only. No User and Access Management UI, authentication implementation, backend authorization, session invalidation, or database schema has been implemented by this documentation update.
+
+
+## Audit Trail — finalized requirements (2026-11-02)
+
+### Purpose and access
+- Provide a centralized, chronological record of important operational, financial, administrative, and security-related system activities.
+- Admin only may view, search, filter, export, and print Audit Trail records.
+- Audit events are generated automatically by the system; ordinary users cannot manually create audit records.
+
+### Activity coverage
+Record important activities across these categories:
+- Authentication: successful login, failed login, logout, password change, and password reset.
+- Flower Management: flower created, updated, activated, and deactivated.
+- Inventory Management: Stock-In, Stock-Out, and inventory record edits.
+- Batch Management: batch created, metadata updated, and marked Spoiled.
+- Spoilage Prediction: prediction generated.
+- Client Management: client created, updated, activated, and deactivated.
+- Order Management: order created, confirmed, status changed, and cancelled.
+- Delivery Management: delivery created, assigned, reassigned, rescheduled, status changed, delivered/completed, and failed.
+- Sales and Payment Management: selling price changed, Sales Record created, payment recorded/confirmed, and refund recorded.
+- User and Access Management: account created, role changed, account deactivated/reactivated, and password reset.
+- Include failed attempts for security-sensitive actions, not only successful actions.
+- Ordinary page views and routine navigation are not included in the initial scope.
+
+### Audit record fields
+Each audit event should store, where applicable:
+- Unique, automatically generated Audit ID.
+- Server-side date and time.
+- User ID, user-name snapshot, and role snapshot for the actor, when an authenticated account exists.
+- Action and module/category.
+- Affected Record ID, when applicable.
+- Short description of the activity.
+- Relevant previous values and new values for changes.
+- Source IP address, when available.
+- Result: Success or Failed.
+- For unauthenticated events, retain available non-secret context even when no authenticated User ID exists.
+- Never record passwords, temporary passwords, password hashes, or other authentication secrets.
+
+### Audit log interface and retrieval
+- Display audit records in a table, newest first.
+- Provide search by User Name, User ID, Action, Module, and Record ID.
+- Provide date filters: Today, Yesterday, Last 7 Days, Last 30 Days, and Custom Date Range.
+- Provide filters by Module, User, Action, and Result (Success/Failed).
+- Support sorting and pagination.
+- Provide an activity detail view with the available actor, timestamp, action, module, affected record, description, previous/new values, IP address, and result.
+- Support PDF export, Excel export, and direct printing of the filtered audit results.
+
+### Integrity, retention, and security rules
+- Audit records are append-only in the application: no user, including Admin, may edit or permanently delete them through the application.
+- Corrections to business data create new audit events; they do not rewrite prior audit entries.
+- Preserve audit history when related user accounts or business records are deactivated or otherwise changed.
+- Use server-side date and time as the official event timestamp.
+- Record the responsible actor and result; for unauthenticated activity, record the available context without inventing an account identity.
+- Access is Admin only and must be enforced server-side.
+- Keep records indefinitely in the initial scope. No automatic deletion or archival is included.
+- Exclude real-time activity monitoring, email/SMS alerts, automatic suspicious-activity detection, advanced user-behavior analytics, and external log-storage integrations from the initial scope.
+
+### Essential unresolved technical detail
+- Define the actor-identification policy for events without an authenticated user (for example, failed login attempts): store no authenticated User ID and capture only safe, available context such as the submitted account identifier where appropriate, IP address when available, timestamp, and result. Never store submitted passwords or secrets.
+- The append-only requirement is an application rule. Implementation design must also consider restricted database permissions and protected backups so ordinary application operations cannot silently rewrite or erase audit history.
+
+### Implementation status
+These requirements are finalized and documented only. No Audit Trail UI, event-capture implementation, export/print functionality, backend, or database schema has been implemented.
