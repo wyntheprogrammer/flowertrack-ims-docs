@@ -1,6 +1,6 @@
 # Development Progress
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 
 ## Current position
 
@@ -145,6 +145,16 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
+
+### 2026-11-02 — Flower Management and Inventory Management requirements
+- Owner approved Flower Management fields: automatically generated Flower Code; required Flower Name, Category, and Description; optional single Primary Flower Image; Active/Inactive status.
+- Owner approved Flower Management actions and controls: add, view, edit, deactivate when related records exist, search by flower name/code, and filter by category/status.
+- Unit and Selling Price remain outside the approved Flower Management scope pending inventory/pricing decisions.
+- Owner selected batch-based inventory: every Stock-In must create a Batch Record, and consolidated inventory is derived from batch quantities rather than a separate independent stock quantity.
+- Owner selected FIFO as the default Stock-Out allocation method; oldest received batch is consumed first.
+- Inventory History must record stock movements.
+- Stock adjustment and physical inventory counting were explicitly deferred and remain undecided.
+- These are requirements-planning decisions only; no database or backend behavior is implemented by this documentation update.
 
 ### 2026-11-01 — Supplier dashboard UI first pass
 - Created/refined the Supplier/Admin layout and dashboard Blade views in the local application project.
