@@ -273,3 +273,13 @@ Do not implement these as settled decisions until confirmed:
 - Clients can view delivery status and scheduled delivery information in the Client Panel. Personal contact details of delivery personnel are not exposed.
 - Apply a fixed delivery fee configured in system settings to eligible Delivery orders. The fee amount and detailed configuration controls will be determined during detailed design.
 - No Delivery Management UI, backend, database schema, or GPS integration has been implemented.
+
+
+### User and Access Management — approved role structure (2026-11-02)
+
+- The initial account roles are **Admin**, **Supplier/Staff**, and **Delivery Personnel**.
+- Admin has full system access, including User and Access Management and Reports.
+- Supplier/Staff can access authorized operational modules according to the system's permission rules.
+- Delivery Personnel can access Delivery Management functions needed for assigned delivery work.
+- Detailed account fields, account creation and password workflows, role-specific permission boundaries, deactivation behavior, and whether permissions are fixed or configurable remain to be finalized.
+- No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
