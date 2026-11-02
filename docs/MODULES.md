@@ -273,8 +273,8 @@ The project owner supplied the following module order. This is also the initial 
 - Delivery tracking uses status updates only; live GPS tracking and continuous location tracking are excluded from the initial scope.
 
 **Open decisions**
-- Delivery Fee: To decide whether the fee is manually set per order, configured as a fixed system fee, or excluded initially.
-- Client Visibility: To decide whether the Client Panel shows delivery status only, status plus schedule/personnel details, or no client delivery tracking initially. Do not expose personal contact details of delivery personnel without an explicit requirement.
+- Delivery Fee: Use a fixed fee configured in system settings and apply it to eligible Delivery orders. The actual fee amount and configuration controls will be specified during detailed design.
+- Client Visibility: Clients can view delivery status and scheduled delivery information in the Client Panel. Do not expose personal contact details of delivery personnel.
 
 **Not implemented**
 - This is a requirements/documentation milestone only. No Delivery Management UI, backend, database schema, GPS integration, or delivery transaction code has been implemented.
@@ -350,4 +350,4 @@ These are analysis topics, not finalized business rules:
 - Batch Management records individual stock lots and supports batch-level tracking.
 - Inventory Management presents overall stock and stock movements.
 - Spoilage Prediction uses batch-related information, subject to the eventual prediction design.
-- Sales and payment workflows still need detailed planning. Delivery Management has an approved initial workflow; delivery-fee policy and client-side delivery visibility remain open.
+- Sales and payment workflows still need detailed planning. Delivery Management requirements are approved, including a system-configured fixed delivery fee and client-side status/schedule tracking.
