@@ -5,8 +5,8 @@
 ## Current position
 
 - **Overall status:** Initial environment setup and shared UI foundation are complete. The initial Supplier/Admin and Client starter UI files and the first Supplier/Admin dashboard pass exist; the owner confirmed the logo update and Bootstrap Icons refinement build/push. Requirements planning is still in progress.
-- **Current phase:** Requirements planning — not UI implementation. Flower Management and Inventory Management scopes are approved.
-- **Current task:** Plan and finalize the Batch Management requirements, the next Supplier/Admin module after Inventory Management in `MODULES.md`.
+- **Current phase:** Requirements planning — not UI implementation. Flower Management, Inventory Management, and Batch Management scopes are approved.
+- **Current task:** Plan and finalize Spoilage Prediction requirements, the next Supplier/Admin module after Batch Management in `MODULES.md`.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -79,7 +79,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 
 | Phase | Status | Notes |
 |---|---|---|
-| 0. Requirements planning and documentation | In progress | Flower Management and Inventory Management are approved; Batch Management is next to plan. Other Supplier/Admin and Client requirements remain open. |
+| 0. Requirements planning and documentation | In progress | Flower Management, Inventory Management, and Batch Management are approved; Spoilage Prediction is next to plan. Other Supplier/Admin and Client requirements remain open. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
 | 2. Shared UI foundation | Initial foundation completed | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Supplier layout and navigation foundation created locally. |
 | 3. Supplier/Admin UI | Not started as a module implementation phase | The initial dashboard/layout foundation exists. Detailed module UI implementation is on hold while requirements planning continues. |
@@ -135,7 +135,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 ## Open requirements
 
 - [ ] Confirm flower/product types, categories, and selling units.
-- [ ] Confirm any additional batch lifecycle details not covered by the approved Inventory Management scope.
+- [x] Finalize Batch Management fields, statuses, actions, expiry warnings, and spoilage workflow.
 - [ ] Confirm spoilage definition and prediction expectations.
 - [ ] Confirm supplier/vendor management scope.
 - [ ] Confirm customer account and checkout rules.
@@ -145,6 +145,19 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
+
+### 2026-11-02 — Batch Management requirements approved
+- Owner approved Batch Management as a batch-level record and traceability module, separate from Inventory Management stock movement transactions.
+- Confirmed batch fields: automatically generated unique Batch Number, linked Flower, Date Received, Initial Quantity, Remaining Quantity, required Harvest Date, optional Expected Freshness / Expiry Date, and optional Remarks.
+- Removed Supplier / Source from the batch record because the business sources the flowers directly.
+- Confirmed statuses: Available, Partially Used, and Depleted are quantity-derived; Spoiled is marked manually.
+- Confirmed metadata-only editing. Batch quantities remain controlled by Inventory Management Stock-In / Stock-Out allocations.
+- Confirmed that approaching freshness/expiry dates show warnings only; no automatic stock deduction or spoilage marking.
+- Confirmed the spoilage workflow: record the remaining spoiled quantity as a manual Stock-Out with a required spoilage remark before marking the batch Spoiled.
+- Confirmed search by Batch Number or Flower Name; filters by Flower, Status, and Date Received; batch details and movement history; and retention of depleted/spoiled records for traceability.
+- No UI, backend, database schema, or prediction algorithm was implemented by this planning update.
+- Next task: plan and finalize Spoilage Prediction requirements.
+
 
 ### 2026-11-02 — Flower Management and Inventory Management requirements
 - Owner approved Flower Management fields: automatically generated Flower Code; required Flower Name, Category, and Description; optional single Primary Flower Image; Active/Inactive status.
@@ -204,4 +217,4 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 
 ## Next exact task
 
-From `C:\\xampp\\htdocs\\FlowerTrack`, run `npm run build`, then inspect `git status`. Stage only the intended Bootstrap Icons changes (expected: `package.json`, `package-lock.json`, `resources/css/app.css`, `resources/views/layouts/supplier.blade.php`, and `resources/views/supplier/dashboard.blade.php`, depending on the actual diff). Ensure `.env`, `vendor/`, and `node_modules/` are not staged. Commit and push to `origin main`, then verify the final Git status and GitHub commit. Continue the remaining Supplier/Admin modules in the order in `MODULES.md`. Keep backend/database work deferred until the full UI review is complete.
+Continue requirements planning with Spoilage Prediction, the next Supplier/Admin module after the approved Batch Management scope. Do not begin module UI implementation until the owner confirms that requirements planning is complete. Keep backend/database work deferred until the full UI review is complete.
