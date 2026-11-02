@@ -280,6 +280,49 @@ The project owner supplied the following module order. This is also the initial 
 - This is a requirements/documentation milestone only. No Delivery Management UI, backend, database schema, GPS integration, or delivery transaction code has been implemented.
 
 
+#### Sales and Payment Management — approved scope (2026-11-02)
+
+**Purpose:** Manage flower selling prices, recognize completed orders as sales, record payment transactions, track balances/refunds, and provide sales/payment summaries and reports.
+
+**Selling price and sales records**
+- Supplier/Admin manually sets the selling price for each flower in Sales and Payment Management.
+- A price change applies to new orders only. Existing orders retain the unit-price snapshot saved on each order item.
+- Automatically create one Sales Record when an order becomes Completed.
+- Generate a unique Sales ID and link the record to its Order ID and client.
+- Preserve the completed order's flower items, quantities, unit-price snapshots, subtotals, order total, and applicable fixed delivery fee.
+- Retain historical sales records; do not create duplicate sales records for the same order.
+- Dashboard metrics: Total Sales, Number of Sales Transactions, Sales Today, Sales This Month, Top Selling Flowers, and Sales Trend Chart.
+- Support viewing, searching, and filtering sales transactions, plus sales reports.
+
+**Payment records and transactions**
+- Generate a unique Payment ID for each payment transaction and link it to the related Order ID; obtain client details from the order.
+- Record payment date/time automatically, payment method, amount paid, payment status, and applicable reference number.
+- Supported payment methods: Cash, Bank Transfer, and E-wallet.
+- Require a Reference Number for applicable online payments (Bank Transfer and E-wallet).
+- Admin manually verifies and confirms online payments. Cash payments are also recorded and confirmed by Admin.
+- Allow partial payments and multiple payment transactions for one order.
+- Track payment statuses: Unpaid, Partially Paid, Paid, and Refunded.
+- Show payment history, total amount paid, and outstanding balance per order.
+- Admin records and approves refunds; retain the original payment and refund history.
+- Support searching/filtering payment records and payment summaries.
+
+**Reports and exports**
+- Provide daily, weekly, monthly, and yearly sales summaries.
+- Support PDF and Excel export for reports.
+
+**Confirmed business rules**
+- Sales are recognized when the related order reaches Completed, not merely when payment is received.
+- Sales reporting is based on completed orders and subtracts recorded refunds. Partial payments must not be counted as additional sales.
+- Payment transactions are separate from Sales Records.
+- Payment Status is Unpaid until a confirmed payment is recorded; Partially Paid when confirmed payments are below the required total; Paid when confirmed payments meet the required total; Refunded when a refund is recorded according to the refund workflow.
+- Order Management displays payment status and summary; Sales and Payment Management owns price setting, Sales Records, payment transactions, and refunds.
+- Cancelled orders are not recognized as completed sales.
+- Delivery fees are included in the order total when applicable, using the fixed fee configured in system settings.
+
+**Not implemented**
+- This is a requirements/documentation milestone only. No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented.
+
+
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
 
