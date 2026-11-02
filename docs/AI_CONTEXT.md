@@ -231,9 +231,23 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Client Management owns client information and account status; Order Management owns order creation, processing, and statuses.
 - No Client Management UI, authentication implementation, backend, or database schema has been implemented by this planning update.
 
+## Order Management — approved requirements (2026-11-02)
+
+- Orders can be created through the Client Panel or manually by Supplier/Admin; Admin manually reviews and confirms.
+- Generated unique Order ID; registered Client; automatic Order Date; at least one item; each item has a Flower and positive quantity.
+- Unit Price comes from Sales and Payment Management and is snapshotted per order item; subtotals and order total are calculated. Delivery Address is required for Delivery; Order Notes are optional.
+- Separate Order Status and Payment Status. Order statuses: Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, Cancelled. Payment statuses: Unpaid, Partially Paid, Paid, Refunded.
+- Sales and Payment Management owns payment recording/transactions; Order Management displays payment status and summary only.
+- Check available inventory before confirmation; reserve stock when Confirmed; reservation is not a Stock-Out. Actual Stock-Out is a separate Inventory Management transaction at the fulfillment point. No partial fulfillment.
+- Clients may edit/cancel Pending orders. Admin may edit before Processing and cancel later non-completed orders with a required reason. Completed orders cannot be cancelled.
+- Cancellation releases reservations. If Stock-Out occurred, inventory must be corrected/restored before cancellation is finalized. Retain cancelled orders and status history.
+- Support Delivery and Customer Pickup. Delivery Management owns assignment and delivery-specific tracking; Pickup skips Out for Delivery.
+- Exact event for converting reservation to actual Stock-Out remains unresolved and must be decided before implementation.
+- No Order Management UI, backend, database schema, or transaction code has been implemented.
+
 ## UI-first rule
 
-The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management requirements are approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the owner confirms that the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
+The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, and Order Management requirements are approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the owner confirms that the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
 
 High-level sequence:
 1. Environment setup and shared UI foundation (completed baseline).
