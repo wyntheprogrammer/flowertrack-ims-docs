@@ -1,6 +1,6 @@
 # UI/UX Guidelines
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 
 ## 1. Overall design direction
 
@@ -87,3 +87,33 @@ A UI phase is complete only when:
 - Empty, loading, validation, and error states are considered where relevant.
 - The owner has reviewed and approved the visual direction.
 - Progress and relevant design decisions are documented with a date.
+
+
+## 9. Frontend file organization
+
+Keep page structure, styling, and browser behavior separated for maintainability as Supplier modules grow.
+
+For a module with its own styles and interactions, use separate files following this pattern:
+
+```text
+resources/
+├── css/
+│   ├── app.css
+│   └── supplier/
+│       └── flowers.css
+├── js/
+│   ├── app.js
+│   └── supplier/
+│       └── flowers.js
+└── views/
+    └── supplier/
+        └── flowers.blade.php
+```
+
+- Blade files contain the page's semantic markup and Laravel Blade directives.
+- Module CSS contains page-specific presentation rules.
+- Module JavaScript contains page-specific interactions and behavior.
+- Keep `app.css` and `app.js` for shared/global styles, imports, and initialization; do not put every module's page-specific code into these entry files.
+- Load assets through Vite according to the project's established Laravel/Vite setup.
+- Reuse shared styles and scripts where appropriate. Do not create empty or unnecessary module files when a page has no module-specific styling or interaction.
+- Follow this pattern for Flower Management and subsequent Supplier modules as applicable.
