@@ -1,6 +1,6 @@
 # Business Logic
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 
 **Status:** Partially confirmed. Only rules explicitly approved by the project owner are listed as confirmed below. All other rules remain undecided.
 
