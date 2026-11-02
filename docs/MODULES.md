@@ -165,6 +165,65 @@ The project owner supplied the following module order. This is also the initial 
 - Do not claim prediction accuracy until a model has been trained, tested, and validated using sufficiently representative data.
 - Historical risk-assessment snapshots and manual condition-observation scoring are not included in the initial scope.
 
+#### Order Management — approved scope (2026-11-02)
+
+**Purpose:** Manage client orders from submission through fulfillment, coordinate inventory reservation and stock movement, and display payment status while Sales and Payment Management owns payment transactions.
+
+**Order information**
+- Order ID — automatically generated and unique.
+- Client — linked to a registered client account.
+- Order Date — recorded automatically.
+- Each order must contain at least one item; every item links to a Flower and requires a quantity greater than zero.
+- Unit Price comes from Sales and Payment Management and is saved as a snapshot on each order item. Later price changes must not alter existing orders.
+- Item Subtotal and Order Total are calculated automatically.
+- Delivery Address is required for Delivery, not Customer Pickup. Order Notes are optional.
+- Order Status and Payment Status are tracked separately.
+
+**Order sources and confirmation**
+- Orders may be submitted through the Client Panel or created manually by Supplier/Admin.
+- Admin manually reviews and confirms submitted orders.
+- Inactive clients cannot place new orders, consistent with Client Management rules.
+
+**Order statuses**
+- Pending — submitted and awaiting Admin review.
+- Confirmed — reviewed and accepted by Admin.
+- Processing — preparation is underway.
+- Ready for Delivery / Pickup — preparation is complete and the order is awaiting handover.
+- Out for Delivery — handed to the delivery process; applies to Delivery only.
+- Completed — delivered to the client or collected through Customer Pickup.
+- Cancelled — terminal status; retain the order and cancellation reason for history and audit.
+
+**Payment status display**
+- Track Unpaid, Partially Paid, Paid, and Refunded separately from Order Status.
+- Order Management displays payment status and summary only.
+- Sales and Payment Management owns payment recording and transaction operations.
+
+**Inventory coordination**
+- Check available inventory before confirmation; do not confirm an order that cannot be fulfilled in full.
+- Reserve required inventory when the order becomes Confirmed.
+- Reservation is not an actual Stock-Out and must not deduct stock a second time.
+- Actual Stock-Out is recorded through Inventory Management at the fulfillment point, following its batch allocation and FIFO rules.
+- Partial fulfillment is not allowed in the initial scope.
+- Cancellation releases any active reservation. If Stock-Out has already occurred, inventory must be corrected/restored through Inventory Management before cancellation is finalized.
+- Negative inventory is prohibited.
+
+**Editing and cancellation**
+- Clients may edit their own Pending orders.
+- Supplier/Admin may edit an order before it reaches Processing.
+- Clients may cancel Pending orders.
+- Supplier/Admin may cancel later non-completed orders with a required cancellation reason.
+- Completed orders cannot be cancelled.
+- Preserve cancelled orders and status history; record each status change with date/time and responsible user.
+
+**Fulfillment**
+- Support Delivery and Customer Pickup.
+- Delivery orders require a delivery address. Delivery Management owns delivery assignment and delivery-specific tracking.
+- Customer Pickup skips Out for Delivery.
+- Order Management displays fulfillment progress; Delivery Management owns delivery operations.
+
+**Still to resolve before implementation**
+- Exact operational event when reserved quantity becomes an actual Inventory Stock-Out (for example, preparation completion or handover/dispatch). Reservation and Stock-Out must remain distinct to prevent double deduction.
+
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
 
