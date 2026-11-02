@@ -6,6 +6,17 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
+### Approved — Order Management requirements
+- Confirmed Client Panel and Supplier/Admin order creation, with manual Admin review and confirmation.
+- Confirmed generated Order ID, client/order/item data, positive quantities, automatic totals, conditional delivery address, and optional order notes.
+- Confirmed price ownership in Sales and Payment Management and immutable unit-price snapshots on order items.
+- Confirmed separate order/payment statuses, with payment transactions owned by Sales and Payment Management.
+- Confirmed inventory check and reservation at confirmation, full-order fulfillment only, and a separate actual Stock-Out through Inventory Management at fulfillment.
+- Confirmed Pending-order client editing/cancellation, Admin editing before Processing, reason-required Admin cancellation for later non-completed orders, reservation release, and inventory correction when Stock-Out already occurred.
+- Confirmed Delivery and Customer Pickup, with Delivery Management owning delivery assignment/tracking.
+- Recorded the remaining operational decision: the exact event that converts reserved inventory into actual Stock-Out. No UI, backend, database schema, or inventory transaction code was implemented.
+
+
 ### Approved — Client Management requirements and account access flow
 - Confirmed that only Supplier/Admin users create client accounts manually; public/self-service client registration is excluded from the initial scope.
 - Confirmed required Full Name, Email Address, Contact Number, and Address; automatically generated Client ID; automatically recorded Registration Date; and Active/Inactive account status.
