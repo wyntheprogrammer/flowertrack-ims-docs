@@ -79,7 +79,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 
 | Phase | Status | Notes |
 |---|---|---|
-| 0. Requirements planning and documentation | In progress | Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management are approved; Order Management is next to plan. Other Supplier/Admin and Client requirements remain open. |
+| 0. Requirements planning and documentation | In progress | Eight Supplier/Admin module scopes are approved through Sales and Payment Management. Reports is next to plan; remaining Supplier/Admin modules and Client modules still require planning. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
 | 2. Shared UI foundation | Initial foundation completed | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Supplier layout and navigation foundation created locally. |
 | 3. Supplier/Admin UI | Not started as a module implementation phase | The initial dashboard/layout foundation exists. Detailed module UI implementation is on hold while requirements planning continues. |
