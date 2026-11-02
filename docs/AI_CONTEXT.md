@@ -417,3 +417,14 @@ resources/
 - Exclude scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics from the initial scope.
 - No Reports UI, backend, database schema, report generator, exports, or print implementation has been created.
 - Next Supplier/Admin module to plan: User and Access Management.
+
+
+## User and Access Management — approved role structure (2026-11-02)
+
+- Three initial roles: Admin, Supplier/Staff, and Delivery Personnel.
+- Admin has full system access, including User and Access Management and Reports.
+- Supplier/Staff can access authorized operational modules.
+- Delivery Personnel can access delivery-work functions in Delivery Management.
+- Detailed account fields, creation workflow, password lifecycle, role-specific permissions, deactivation rules, and fixed-versus-configurable permissions remain to be finalized.
+- No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
+- Current planning task: finalize the remaining User and Access Management requirements.
