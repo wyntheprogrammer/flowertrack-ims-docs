@@ -223,6 +223,62 @@ The project owner supplied the following module order. This is also the initial 
 
 **Still to resolve before implementation**
 - Exact operational event when reserved quantity becomes an actual Inventory Stock-Out (for example, preparation completion or handover/dispatch). Reservation and Stock-Out must remain distinct to prevent double deduction.
+#### Delivery Management — approved scope with two open decisions (2026-11-02)
+
+**Purpose:** Coordinate and monitor deliveries for orders using the Delivery fulfillment method. Customer Pickup is not managed as a delivery.
+
+**Delivery information**
+- Delivery ID — automatically generated and unique.
+- Order ID — linked to one Delivery order.
+- Client Name and Contact Number — sourced from the related order/client record.
+- Delivery Address — required and retained as a snapshot for the delivery.
+- Assigned Delivery Personnel — selected from active, authorized delivery personnel.
+- Scheduled Delivery Date and Time — set by Admin.
+- Delivery Status — tracked separately from Order Status.
+- Delivery Notes — optional.
+- Proof of Delivery — recipient name, delivery remarks, and photo proof.
+
+**Core features**
+- View all delivery records and complete delivery details.
+- Search by Delivery ID, Order ID, or Client Name.
+- Filter by Delivery Status and scheduled date.
+- Assign and reassign delivery personnel; retain assignment history.
+- Schedule and reschedule deliveries.
+- Update delivery status and record failed attempts with reasons.
+- Record Proof of Delivery and view delivery history per order.
+- Coordinate delivery progress with Order Management.
+
+**Delivery statuses**
+- Pending — delivery record exists but is not yet scheduled/assigned.
+- Scheduled — delivery date and time have been set.
+- Assigned — delivery personnel has been assigned.
+- Out for Delivery — order has been dispatched.
+- Delivered — successfully received by the client/recipient.
+- Failed — a delivery attempt was unsuccessful.
+- Rescheduled — the delivery schedule has been changed.
+- Cancelled — delivery operation has been cancelled.
+
+**Confirmed workflow and business rules**
+- A delivery record is automatically created when a Delivery order reaches Ready for Delivery.
+- Only Delivery orders may have delivery records; Customer Pickup does not create a delivery.
+- Admin/Supplier and dedicated Delivery Personnel accounts may participate in delivery operations. Admin manually assigns or reassigns active, authorized delivery personnel.
+- Admin sets the delivery date and time.
+- An order must be Ready for Delivery before it can be dispatched / marked Out for Delivery.
+- Reassignment and status changes retain their history, including date/time and responsible user.
+- Marking a delivery Delivered requires recipient name, delivery remarks, and photo proof, plus the delivery completion date/time.
+- Marking a delivery Failed requires a failure reason. Failed attempts remain in history and do not automatically cancel the order.
+- Admin handles rescheduling and reassignment after a failed attempt.
+- No fixed attempt limit is imposed initially; further attempts are subject to Admin decision.
+- Delivery status remains separate from Order Status. A successfully delivered order is eligible to move to Completed in Order Management; delivery status updates must be coordinated with that module.
+- Delivery tracking uses status updates only; live GPS tracking and continuous location tracking are excluded from the initial scope.
+
+**Open decisions**
+- Delivery Fee: To decide whether the fee is manually set per order, configured as a fixed system fee, or excluded initially.
+- Client Visibility: To decide whether the Client Panel shows delivery status only, status plus schedule/personnel details, or no client delivery tracking initially. Do not expose personal contact details of delivery personnel without an explicit requirement.
+
+**Not implemented**
+- This is a requirements/documentation milestone only. No Delivery Management UI, backend, database schema, GPS integration, or delivery transaction code has been implemented.
+
 
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
@@ -294,4 +350,4 @@ These are analysis topics, not finalized business rules:
 - Batch Management records individual stock lots and supports batch-level tracking.
 - Inventory Management presents overall stock and stock movements.
 - Spoilage Prediction uses batch-related information, subject to the eventual prediction design.
-- Orders, deliveries, sales, and payments need a confirmed lifecycle and relationship model.
+- Sales and payment workflows still need detailed planning. Delivery Management has an approved initial workflow; delivery-fee policy and client-side delivery visibility remain open.
