@@ -323,6 +323,41 @@ The project owner supplied the following module order. This is also the initial 
 - This is a requirements/documentation milestone only. No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented.
 
 
+
+#### Reports — approved scope (2026-11-02)
+
+**Purpose:** Provide Supplier/Admin with a centralized, read-only view of business performance and operational activity using records owned by the relevant modules.
+
+**Report categories**
+- **Sales Reports:** gross sales, refunds, net sales, sales by date/period, top-selling flowers, and sales trends.
+- **Payment Reports:** confirmed payments, unpaid/outstanding balances, payment methods, and refund totals/history.
+- **Inventory Reports:** current stock by flower, Normal/Low Stock/Out of Stock status, Stock-In/Stock-Out history, and batch quantities/remaining stock.
+- **Order Reports:** order counts, order status breakdown, Delivery versus Customer Pickup, and cancelled orders.
+- **Delivery Reports:** delivered and failed deliveries, rescheduled deliveries, delivery performance, and delivery volume by period.
+- **Client Reports:** registered clients, Active/Inactive counts, top clients by completed purchases, and client order activity.
+- **Spoilage Reports:** actual spoiled quantities, spoilage events by flower and batch, and spoilage trends.
+
+**Filters and presentation**
+- Support Daily, Weekly, Monthly, Yearly, and Custom Date Range filters.
+- Provide category-appropriate search and filters.
+- Present suitable summary cards, charts, and detailed tables.
+- Provide a printable report layout.
+
+**Export and access**
+- Support PDF export, Excel export, and direct printing.
+- Reports access is restricted to Supplier/Admin users.
+
+**Confirmed business rules**
+- Reports are read-only and use the source records maintained by their respective modules; Reports does not create or modify operational transactions.
+- Sales figures follow Sales and Payment Management rules: completed orders less recorded refunds. Partial payments are not additional sales, and cancelled orders are excluded.
+- Inventory reporting reflects batch-based physical quantities and reservations accurately; reservations are not physical Stock-Out transactions.
+- Spoilage reporting uses actual recorded Spoilage Events, not predicted risk alone.
+- No additional features such as scheduled email delivery, custom report builder, automatic sharing, or predictive business analytics are included in the initial scope.
+
+**Not implemented**
+- This is a requirements/documentation milestone only. No Reports UI, backend, database schema, report generator, PDF/Excel export, or print implementation has been created.
+
+
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
 
