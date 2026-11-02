@@ -206,6 +206,28 @@ The confirmed initial navigation order is:
 - Sales and Payment Management owns selling prices, Sales Records, payment transactions, and refunds. Order Management displays payment status and summary only.
 - No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented by this planning update.
 
+
+### Reports — approved 2026-11-02
+
+- Provide seven report categories: Sales, Payments, Inventory, Orders, Delivery, Clients, and Spoilage.
+- Sales Reports include gross sales, refunds, net sales, sales by date/period, top-selling flowers, and sales trends.
+- Payment Reports include confirmed payments, unpaid/outstanding balances, payment methods, and refund totals/history.
+- Inventory Reports include current stock by flower, stock status, Stock-In/Stock-Out history, and batch quantities/remaining stock.
+- Order Reports include order counts, status breakdown, Delivery versus Customer Pickup, and cancelled orders.
+- Delivery Reports include delivered/failed/rescheduled deliveries, delivery performance, and delivery volume by period.
+- Client Reports include registered clients, Active/Inactive counts, top clients by completed purchases, and client order activity.
+- Spoilage Reports use actual spoilage quantities/events by flower and batch, plus spoilage trends.
+- Support Daily, Weekly, Monthly, Yearly, and Custom Date Range filters, with category-appropriate search and filters.
+- Present suitable summary cards, charts, and detailed tables.
+- Support PDF export, Excel export, and direct printing through a print-friendly layout.
+- Restrict Reports access to Supplier/Admin users.
+- Reports are read-only and consume source records from their owning modules; they do not create or modify transactions.
+- Sales calculations follow Sales and Payment Management: completed orders less recorded refunds; partial payments are not additional sales and cancelled orders are excluded.
+- Inventory reports reflect batch-based physical stock and reservations accurately; reservations are not Stock-Out.
+- Spoilage reports use actual recorded Spoilage Events, not predicted risk alone.
+- Scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics are excluded from the initial scope.
+- This is a planning milestone only; no Reports UI, backend, database schema, report generator, exports, or print implementation has been created.
+
 ## 7. Business requirements still to gather
 
 - Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
