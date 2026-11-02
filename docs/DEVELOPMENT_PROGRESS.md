@@ -314,3 +314,14 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Detailed account fields, account lifecycle, password workflow, and exact role permissions remain to be decided.
 - No User and Access Management UI, authentication changes, backend, or database schema was implemented.
 - Continue planning the remaining User and Access Management requirements.
+
+
+### 2026-11-02 — User account creation requirements approved
+
+- Confirmed that only Admin can create Supplier/Staff and Delivery Personnel accounts; public/self-service registration is excluded.
+- Confirmed required fields: Full Name, Email Address, Contact Number, and Role.
+- Confirmed automatic unique User ID generation and unique Email Address validation across user accounts.
+- Confirmed Admin-assigned temporary passwords and mandatory password change on first login.
+- Confirmed secure password hashing and Active/Inactive account status.
+- No User and Access Management UI, authentication changes, backend, or database schema was implemented.
+- Next task: consolidate and finalize role-specific permissions and account lifecycle rules.
