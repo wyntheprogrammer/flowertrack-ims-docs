@@ -81,17 +81,33 @@
 - Client Management owns client information and account status. Order Management owns order creation, processing, and statuses.
 - Client profiles support Order History and Purchase Summary. Summary metrics are derived from Order Management records: total order count, total purchase amount, completed orders, and pending/ongoing orders.
 
+### Orders — confirmed Order Management (2026-11-02)
+
+- Orders may come from the Client Panel or be created manually by Supplier/Admin. Admin manually reviews and confirms orders.
+- Every order has a unique generated Order ID, registered Client, automatic Order Date, and at least one item. Each item requires a Flower and positive quantity.
+- Unit Price is sourced from Sales and Payment Management and snapshotted per order item; future price changes do not modify existing orders. Item subtotals and order total are calculated.
+- Delivery Address is required for Delivery; Order Notes are optional. Customer Pickup does not require a delivery address.
+- Order Status and Payment Status are independent. Order statuses are Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, and Cancelled.
+- Payment statuses shown on orders are Unpaid, Partially Paid, Paid, and Refunded. Sales and Payment Management owns payment recording and transactions; Order Management displays status and summary only.
+- Admin confirmation is manual. Check stock before confirmation and reject an order that cannot be fulfilled in full.
+- Reserve inventory at confirmation. Reservation does not reduce physical stock; actual Stock-Out is a separate Inventory Management transaction at the fulfillment point. Prevent duplicate deduction.
+- Partial fulfillment is excluded from the initial scope.
+- Clients may edit/cancel Pending orders. Supplier/Admin may edit orders before Processing and may cancel later non-completed orders with a required reason. Completed orders cannot be cancelled.
+- Cancellation releases any active reservation. If Stock-Out has already occurred, inventory must be corrected/restored through Inventory Management before cancellation is finalized.
+- Preserve cancelled orders and status history, including timestamp and responsible user.
+- Support Delivery and Customer Pickup. Delivery Management owns delivery assignment and delivery-specific tracking; Pickup skips Out for Delivery.
+- **Still to decide:** the precise fulfillment event that triggers conversion of reserved stock into an actual Stock-Out. Keep reservation and Stock-Out as separate operations.
+
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
 - Is there an entered expiry/shelf-life date, condition score, or observation history?
 - Assess the volume, quality, and representativeness of Spoilage Event Records before selecting an ML algorithm or claiming prediction accuracy.
 - Decide the model implementation/runtime and calibrated numerical risk thresholds during technical design after dataset assessment.
 
-### Orders and sales
-- When is stock reserved or deducted?
-- Which order statuses are needed?
-- How are cancellations, refunds, and returns handled?
-- When does an order become a sale?
+### Orders and sales — remaining decisions
+- What is the exact operational event for actual Stock-Out after inventory reservation?
+- What return and post-completion correction rules apply?
+- At what point is a completed order recognized as a sale, and what sales reporting rules apply?
 
 ### Delivery and payments
 - Which delivery methods and statuses are supported?
