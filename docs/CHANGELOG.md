@@ -1,6 +1,6 @@
 # Changelog
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-02
 
 All meaningful documentation and project-planning updates are recorded here.
 
@@ -98,3 +98,13 @@ All meaningful documentation and project-planning updates are recorded here.
 - Remaining Supplier/Admin modules in the order documented in `MODULES.md`.
 - Client ecommerce UI screens.
 - Full UI review and approval before backend/database work.
+
+
+## 2026-11-02
+
+### Clarified — frontend module file organization
+- Established separate Blade, CSS, and JavaScript files as the standard for Supplier modules that have page-specific styling or interactions.
+- Recorded the Flower Management example structure: `resources/views/supplier/flowers.blade.php`, `resources/css/supplier/flowers.css`, and `resources/js/supplier/flowers.js`.
+- Clarified that `resources/css/app.css` and `resources/js/app.js` remain shared/global Vite entry points, rather than holding all module-specific code.
+- Required module assets to be loaded through the existing Vite pipeline and discouraged unnecessary empty files.
+- This records the agreed structure only; Flower Management implementation has not started yet.
