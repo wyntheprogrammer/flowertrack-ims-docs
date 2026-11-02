@@ -206,3 +206,12 @@ All meaningful documentation and project-planning updates are recorded here.
 - Confirmed Admin full access, Supplier/Staff access to authorized operational modules, and Delivery Personnel access to delivery-work functions.
 - Detailed role permissions and account lifecycle remain under requirements planning.
 - No application code, authentication behavior, or database schema changed.
+
+
+### Approved — User account creation requirements (2026-11-02)
+
+- Confirmed Admin-only account creation for Supplier/Staff and Delivery Personnel; public/self-service registration is excluded.
+- Confirmed required account fields, automatic unique User ID, and unique Email Address.
+- Confirmed Admin-assigned temporary password, mandatory password change on first login, secure password hashing, and Active/Inactive account status.
+- Recorded remaining decisions for role-specific permissions, account deactivation/reactivation, password recovery, and account notifications.
+- Documentation/planning only; no application UI, authentication behavior, backend, or database schema changed.
