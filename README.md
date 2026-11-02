@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-02  
-**Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and the initial Delivery Management scope are approved. Delivery-fee policy and client-side delivery visibility remain open; **Sales and Payment Management is the next module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
+**Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and the initial Delivery Management scope are approved. Delivery Management is fully approved, including a fixed system-configured delivery fee and Client Panel tracking of delivery status and scheduled delivery information; **Sales and Payment Management is the next module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
