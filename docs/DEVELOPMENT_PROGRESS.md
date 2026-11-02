@@ -4,9 +4,9 @@
 
 ## Current position
 
-- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management requirements are approved. Requirements planning remains in progress.
-- **Current phase:** Requirements planning — not UI implementation. Five module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management.
-- **Current task:** Plan and finalize Order Management requirements, the next Supplier/Admin module after Client Management in `MODULES.md`.
+- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, and Order Management requirements are approved. Requirements planning remains in progress.
+- **Current phase:** Requirements planning — not UI implementation. Six module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, and Order Management.
+- **Current task:** Plan and finalize Delivery Management requirements, the next Supplier/Admin module after Order Management in `MODULES.md`.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -182,6 +182,21 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - No UI, backend, database schema, or prediction algorithm was implemented by this planning update.
 - Next task: plan and finalize Spoilage Prediction requirements.
 
+
+### 2026-11-02 — Order Management requirements
+
+- Owner approved the consolidated Order Management proposal and its recommended defaults.
+- Confirmed order sources: Client Panel and manual Supplier/Admin creation; Admin manually reviews and confirms orders.
+- Confirmed order data: generated Order ID, registered Client, automatic Order Date, at least one item, required Flower and positive quantity per item, computed subtotals/total, conditional Delivery Address, and optional Order Notes.
+- Confirmed pricing ownership: Sales and Payment Management maintains prices; each order item stores a price snapshot so later price changes do not rewrite historical orders.
+- Confirmed separate Order Status and Payment Status. Order statuses are Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, and Cancelled. Payment statuses displayed are Unpaid, Partially Paid, Paid, and Refunded; actual payment transactions remain in Sales and Payment Management.
+- Confirmed inventory rules: check stock before confirmation, reserve inventory at confirmation, do not allow partial fulfillment, and record actual Stock-Out separately through Inventory Management at fulfillment. Reservation must not itself deduct stock.
+- Confirmed editing/cancellation: clients may edit/cancel Pending orders; Admin may edit before Processing and cancel later non-completed orders with a required reason; Completed orders cannot be cancelled. Release reservations on cancellation; if Stock-Out occurred, inventory must be corrected/restored before cancellation is finalized.
+- Confirmed Delivery and Customer Pickup; Delivery Management owns assignment and delivery-specific tracking, while Pickup skips Out for Delivery.
+- Confirmed retention of cancelled orders and status history with timestamp and responsible user.
+- One essential operational detail remains: the exact fulfillment event when reserved quantity becomes an actual Stock-Out. Returns/post-completion corrections and sale-recognition details remain for their relevant later workflows.
+- Documentation/planning update only; no Order Management UI, backend, database schema, or inventory transaction code was implemented.
+- Next task: plan and finalize Delivery Management requirements.
 
 ### 2026-11-02 — Flower Management and Inventory Management requirements
 - Owner approved Flower Management fields: automatically generated Flower Code; required Flower Name, Category, and Description; optional single Primary Flower Image; Active/Inactive status.
