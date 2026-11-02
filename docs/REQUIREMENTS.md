@@ -170,6 +170,41 @@ The confirmed initial navigation order is:
 - Preserve cancelled orders and status history, including date/time and responsible user.
 - **One operational detail remains to be finalized before implementation:** the exact fulfillment event when reserved quantity is converted into an actual Stock-Out.
 
+### Sales and Payment Management — approved 2026-11-02
+
+**Selling prices and Sales Records**
+- Supplier/Admin manually sets the selling price for each flower in Sales and Payment Management.
+- A price change applies to new orders only. Existing orders retain their saved unit-price snapshots.
+- Automatically create one Sales Record when an order becomes Completed. Generate a unique Sales ID and link it to the Order ID and client.
+- Preserve the completed order's flower items, quantities, price snapshots, subtotals, order total, and applicable fixed delivery fee.
+- Prevent duplicate Sales Records for the same order.
+- Dashboard metrics: Total Sales, Number of Sales Transactions, Sales Today, Sales This Month, Top Selling Flowers, and Sales Trend Chart.
+- Support sales transaction listing, details, search, filters, reports, and exports.
+
+**Payments**
+- Generate a unique Payment ID for each payment transaction and link it to the Order ID; client details come from the order.
+- Record payment date/time automatically, payment method, amount paid, status, and applicable reference number.
+- Supported methods: Cash, Bank Transfer, and E-wallet.
+- Reference Number is required for applicable online payments (Bank Transfer and E-wallet).
+- Admin manually verifies/confirms online payments and records/confirms cash payments.
+- Allow partial payments and multiple payment transactions per order.
+- Payment statuses: Unpaid, Partially Paid, Paid, and Refunded.
+- Show payment history, total confirmed amount paid, and outstanding balance.
+- Admin records and approves refunds; retain original payment and refund history.
+
+**Reporting**
+- Provide daily, weekly, monthly, and yearly sales summaries.
+- Support PDF and Excel exports.
+
+**Confirmed business rules**
+- Recognize sales when the related order becomes Completed; payment receipt alone does not create a Sales Record.
+- Sales reports count completed orders and subtract recorded refunds. Partial payments are not separate sales and must not be double-counted.
+- Payment transactions are separate from Sales Records.
+- Cancelled orders are excluded from completed sales.
+- Include the fixed delivery fee in the order total when applicable.
+- Sales and Payment Management owns selling prices, Sales Records, payment transactions, and refunds. Order Management displays payment status and summary only.
+- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented by this planning update.
+
 ## 7. Business requirements still to gather
 
 - Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
@@ -181,9 +216,8 @@ The confirmed initial navigation order is:
 - Whether a separate supplier/vendor directory is needed for any future purchasing workflow; Supplier / Source is not part of the approved Batch Management record.
 - Checkout presentation and guest shopping policy; client account creation and initial access are already confirmed.
 - Returns and post-completion order corrections.
-- Delivery assignment, fees, and delivery statuses.
-- Payment methods, proof of payment, verification, and reconciliation; payment status display and transaction ownership are confirmed.
-- Reports and export formats.
+- Detailed delivery personnel administration and any future delivery enhancements beyond the approved delivery workflow.
+- Detailed reconciliation/accounting treatment beyond the approved Sales and Payment Management rules.
 - Roles, permissions, and account lifecycle.
 - Audit trail events and retention.
 - Single-store or multi-branch operation.
@@ -197,7 +231,7 @@ Do not implement these as settled decisions until confirmed:
 - Whether to use a UI admin template or build the Supplier/Admin UI from Bootstrap components.
 - Whether Python is needed and how it communicates with Laravel.
 - Exact FlowerTrack brand colors, fonts, and final design tokens; derive the brand palette from the official FlowerTrack logo when supplied.
-- Exact database schema and business rules.
+- Exact database schema and technical implementation details.
 
 ### Delivery Management — approved scope (2026-11-02)
 
