@@ -188,7 +188,7 @@ The project owner supplied the following module order. This is also the initial 
 - Pending — submitted and awaiting Admin review.
 - Confirmed — reviewed and accepted by Admin.
 - Processing — preparation is underway.
-- Ready for Delivery / Pickup — preparation is complete and the order is awaiting handover.
+- Ready for Delivery or Ready for Pickup — preparation is complete and the order is awaiting handover.
 - Out for Delivery — handed to the delivery process; applies to Delivery only.
 - Completed — delivered to the client or collected through Customer Pickup.
 - Cancelled — terminal status; retain the order and cancellation reason for history and audit.
@@ -199,10 +199,10 @@ The project owner supplied the following module order. This is also the initial 
 - Sales and Payment Management owns payment recording and transaction operations.
 
 **Inventory coordination**
-- Check available inventory before confirmation; do not confirm an order that cannot be fulfilled in full.
-- Reserve required inventory when the order becomes Confirmed.
-- Reservation is not an actual Stock-Out and must not deduct stock a second time.
-- Actual Stock-Out is recorded through Inventory Management at the fulfillment point, following its batch allocation and FIFO rules.
+- Check available-to-allocate inventory before confirmation, subtracting quantities already reserved by other confirmed orders. Reject an order if the full quantity is unavailable; do not create a pending-stock queue or allow overselling.
+- Reserve required inventory when the order becomes Confirmed. Reservation does not reduce physical on-hand stock and is not an actual Stock-Out.
+- Record actual customer-order Stock-Out through Inventory Management at the fulfillment-specific trigger: Delivery orders are stocked out when successfully marked Delivered; Customer Pickup orders are stocked out when marked Ready for Pickup.
+- Apply Inventory Management batch allocation and FIFO rules to actual Stock-Out, coordinating reservation and deduction to prevent double-counting.
 - Partial fulfillment is not allowed in the initial scope.
 - Cancellation releases any active reservation. If Stock-Out has already occurred, inventory must be corrected/restored through Inventory Management before cancellation is finalized.
 - Negative inventory is prohibited.
@@ -222,7 +222,7 @@ The project owner supplied the following module order. This is also the initial 
 - Order Management displays fulfillment progress; Delivery Management owns delivery operations.
 
 **Still to resolve before implementation**
-- Exact operational event when reserved quantity becomes an actual Inventory Stock-Out (for example, preparation completion or handover/dispatch). Reservation and Stock-Out must remain distinct to prevent double deduction.
+- No pending-stock queue is included. Reject a new order when available-to-allocate stock, after existing reservations, is insufficient for full fulfillment.
 #### Delivery Management — approved scope (2026-11-02)
 
 **Purpose:** Coordinate and monitor deliveries for orders using the Delivery fulfillment method. Customer Pickup is not managed as a delivery.
