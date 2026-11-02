@@ -223,7 +223,7 @@ The project owner supplied the following module order. This is also the initial 
 
 **Still to resolve before implementation**
 - Exact operational event when reserved quantity becomes an actual Inventory Stock-Out (for example, preparation completion or handover/dispatch). Reservation and Stock-Out must remain distinct to prevent double deduction.
-#### Delivery Management — approved scope with two open decisions (2026-11-02)
+#### Delivery Management — approved scope (2026-11-02)
 
 **Purpose:** Coordinate and monitor deliveries for orders using the Delivery fulfillment method. Customer Pickup is not managed as a delivery.
 
@@ -272,9 +272,9 @@ The project owner supplied the following module order. This is also the initial 
 - Delivery status remains separate from Order Status. A successfully delivered order is eligible to move to Completed in Order Management; delivery status updates must be coordinated with that module.
 - Delivery tracking uses status updates only; live GPS tracking and continuous location tracking are excluded from the initial scope.
 
-**Open decisions**
-- Delivery Fee: Use a fixed fee configured in system settings and apply it to eligible Delivery orders. The actual fee amount and configuration controls will be specified during detailed design.
-- Client Visibility: Clients can view delivery status and scheduled delivery information in the Client Panel. Do not expose personal contact details of delivery personnel.
+**Confirmed decisions**
+- Apply a fixed delivery fee configured in system settings to eligible Delivery orders; the actual fee amount and detailed configuration controls will be specified during detailed design.
+- Clients can view delivery status and scheduled delivery information in the Client Panel. Do not expose personal contact details of delivery personnel.
 
 **Not implemented**
 - This is a requirements/documentation milestone only. No Delivery Management UI, backend, database schema, GPS integration, or delivery transaction code has been implemented.
