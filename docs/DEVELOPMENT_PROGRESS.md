@@ -266,4 +266,15 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Confirmed delivery-only workflow, separate delivery/order statuses, delivery history, failed-attempt reasons, and coordination with Order Management.
 - Documentation/planning update only; no Delivery Management UI, backend, database schema, or GPS integration was implemented.
 - Next task: plan and finalize Sales and Payment Management requirements.
-\n\n### 2026-11-02 — Sales and Payment Management requirements approved\n- Owner approved the consolidated recommendations for selling-price ownership, price snapshots, sales recognition, payment methods, verification, partial/multiple payments, refunds, reporting periods, and export formats.\n- Confirmed that Supplier/Admin manually sets each flower's selling price in Sales and Payment Management; price changes affect new orders only, while existing order item prices remain snapshotted.\n- Confirmed automatic creation of one Sales Record when an order becomes Completed, with a unique Sales ID linked to the Order ID and client.\n- Confirmed Cash, Bank Transfer, and E-wallet; Admin manually verifies online payments and records/confirms cash payments. Applicable online payments require a reference number.\n- Confirmed partial and multiple payments per order, Admin-recorded/approved refunds, payment history and outstanding balance, and separate Sales Records versus payment transactions.\n- Confirmed sales reporting based on completed orders less recorded refunds, with partial payments excluded from duplicate sales counting; cancelled orders are excluded.\n- Confirmed daily, weekly, monthly, and yearly summaries and PDF/Excel exports.\n- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator was implemented.\n- Next task: plan and finalize Reports module requirements.\n
+
+
+### 2026-11-02 — Sales and Payment Management requirements approved
+- Owner approved the consolidated recommendations for selling-price ownership, price snapshots, sales recognition, payment methods, verification, partial/multiple payments, refunds, reporting periods, and export formats.
+- Confirmed that Supplier/Admin manually sets each flower's selling price in Sales and Payment Management; price changes affect new orders only, while existing order item prices remain snapshotted.
+- Confirmed automatic creation of one Sales Record when an order becomes Completed, with a unique Sales ID linked to the Order ID and client.
+- Confirmed Cash, Bank Transfer, and E-wallet; Admin manually verifies online payments and records/confirms cash payments. Applicable online payments require a reference number.
+- Confirmed partial and multiple payments per order, Admin-recorded/approved refunds, payment history and outstanding balance, and separate Sales Records versus payment transactions.
+- Confirmed sales reporting based on completed orders less recorded refunds, with partial payments excluded from duplicate sales counting; cancelled orders are excluded.
+- Confirmed daily, weekly, monthly, and yearly summaries and PDF/Excel exports.
+- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator was implemented.
+- Next task: plan and finalize Reports module requirements.
