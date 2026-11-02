@@ -431,15 +431,29 @@ These are analysis topics, not finalized business rules:
 - Sales and payment workflows still need detailed planning. Delivery Management requirements are approved, including a system-configured fixed delivery fee and client-side status/schedule tracking.
 
 
-#### User and Access Management — approved role structure (2026-11-02)
+#### User and Access Management — approved initial account setup (2026-11-02)
 
 **Confirmed account roles**
 - **Admin** — full system access, including User and Access Management and Reports.
-- **Supplier/Staff** — access to authorized operational modules according to the permissions assigned by the system.
+- **Supplier/Staff** — access to authorized operational modules according to the system's permission rules.
 - **Delivery Personnel** — access to Delivery Management functions required for assigned delivery work.
 
-**Planning status**
-- The owner approved these three account roles as the initial role structure.
-- Detailed account fields, account creation workflow, permission boundaries for Supplier/Staff, delivery-personnel actions, password lifecycle, and account deactivation rules remain to be finalized.
-- A custom permission editor and whether permissions are fixed by role remain to be confirmed.
+**Account creation**
+- Admin is the only role authorized to create user accounts.
+- No public/self-service registration is provided for Supplier/Staff or Delivery Personnel.
+- Required account fields: Full Name, Email Address, Contact Number, and Role.
+- User ID is automatically generated and unique.
+- Email Address must be unique across user accounts.
+- Admin assigns a temporary password during account creation.
+- The account holder must change the temporary password on first login before continuing.
+- Passwords must be securely hashed; plain-text password storage is prohibited.
+- Account Status is Active or Inactive.
+
+**Still to finalize**
+- Detailed role-specific permissions and whether permissions are fixed or configurable.
+- Account deactivation/reactivation behavior and its effect on existing sessions or assigned work.
+- Password reset, password change, and account recovery rules beyond the first-login change.
+- Whether account creation sends any notification to the account holder.
+
+**Implementation status**
 - No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
