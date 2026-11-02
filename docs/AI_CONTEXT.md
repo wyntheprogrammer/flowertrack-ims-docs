@@ -65,7 +65,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management and Inventory Management scopes are approved, and Batch Management is the next module to plan. Do not begin the next module's UI implementation yet.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, and Batch Management scopes are approved, and Spoilage Prediction is the next module to plan. Do not begin the next module's UI implementation yet.
 
 ## Verified application repository structure
 
@@ -189,6 +189,20 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Use the standard Bootstrap Icons markup pattern: `<i class="bi bi-icon-name"></i>`, typically inside the existing icon wrapper span so current layout styling is preserved.
 - Do not use Unicode symbols or emoji as substitutes for interface icons. Emoji or images may remain when they are actual product imagery/content (for example, flower illustrations in the Top Selling Products list), not interface controls.
 - The Supplier sidebar and Supplier Dashboard use Bootstrap Icons. The owner confirmed the Bootstrap Icons refinement build and application-repository push. Preserve the approved dashboard layout, colors, chart, sample values, and spacing; only change the icon presentation unless the owner requests a broader redesign.
+
+## Batch Management — approved requirements (2026-11-02)
+
+- Every Stock-In automatically creates one batch with a unique, automatically generated Batch Number.
+- Batch information: linked Flower, Date Received, Initial Quantity, Remaining Quantity, required Harvest Date, optional Expected Freshness / Expiry Date, and optional Remarks.
+- Do not include Supplier / Source; the business sources flowers directly.
+- Remaining Quantity is controlled by Inventory Management Stock-Out allocations; Batch Management cannot directly edit quantities.
+- Available, Partially Used, and Depleted statuses are derived from initial and remaining quantities. Spoiled is marked manually.
+- Before marking a batch Spoiled, record its remaining spoiled quantity through a manual Stock-Out with a required spoilage remark.
+- Batch Management supports batch details and movement history, search by Batch Number or Flower Name, filters by Flower / Status / Date Received, and metadata-only editing.
+- Retain depleted and spoiled batch records for traceability.
+- Approaching freshness/expiry dates produce warnings only; they do not automatically deduct stock or mark a batch Spoiled.
+- Spoilage Prediction does not automatically change batch status or deduct stock.
+- Current planning phase remains active. The next module to plan is Spoilage Prediction; do not start module UI implementation until the owner confirms requirements planning is complete.
 
 ## UI-first rule
 
