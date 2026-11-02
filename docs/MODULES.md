@@ -129,6 +129,42 @@ The project owner supplied the following module order. This is also the initial 
 - Expiry/freshness dates generate warnings as the date approaches; warnings do not automatically deduct stock or mark a batch as Spoiled.
 - Spoilage Prediction does not automatically change batch status or deduct stock.
 
+#### Spoilage Prediction — approved scope (2026-11-02)
+
+**Purpose:** Use a Machine Learning (ML) model to estimate spoilage risk for flower batches and help the owner prioritize attention. Predictions are advisory only.
+
+**Prediction inputs**
+- Harvest Date and Expected Freshness / Expiry Date are the two confirmed date inputs.
+- Expected Freshness / Expiry Date is optional; the prediction workflow must handle batches where it is not provided, using only supported available inputs.
+- Relevant batch context may include Flower, Date Received, and Remaining Quantity when supported by the trained model and available data.
+- The exact ML algorithm, numerical risk thresholds, and model metrics are not selected yet; determine these only after dataset assessment and model validation.
+
+**Risk levels**
+- Low — low predicted spoilage risk.
+- Medium — increasing spoilage concern.
+- High — high predicted spoilage risk.
+- Critical — very high predicted risk requiring prompt attention.
+- Do not invent fixed percentage thresholds before model calibration and validation.
+
+**Dashboard and prediction page**
+- Show spoilage-risk summaries and at-risk batch counts on the Supplier/Admin Dashboard.
+- Provide a dedicated Spoilage Prediction page with batch risk list, search by Batch Number or Flower Name, filters by risk level and flower, and prediction details.
+- Show the prediction basis/reason where the model can provide a reliable explanation.
+- Provide recommendations to prioritize high-risk batches for Stock-Out.
+
+**Advisory-only rules**
+- Predictions and recommendations do not automatically change batch status, deduct inventory, change FIFO allocation, or create Stock-Out transactions.
+- Actual spoilage remains a manual process under Batch Management and Inventory Management.
+- Only batches with remaining usable inventory are included in active risk monitoring.
+- Spoiled/depleted batches remain in records for traceability but are not active prediction targets.
+
+**Spoilage Event Records for ML training**
+- Record actual spoilage outcomes and link each event to the relevant Flower and Batch.
+- Capture Spoilage Date, Spoiled Quantity, and Spoilage Reason.
+- Use accumulated event records as labeled historical data for future model training and evaluation.
+- Do not claim prediction accuracy until a model has been trained, tested, and validated using sufficiently representative data.
+- Historical risk-assessment snapshots and manual condition-observation scoring are not included in the initial scope.
+
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
 
