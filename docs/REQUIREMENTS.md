@@ -283,3 +283,25 @@ Do not implement these as settled decisions until confirmed:
 - Delivery Personnel can access Delivery Management functions needed for assigned delivery work.
 - Detailed account fields, account creation and password workflows, role-specific permission boundaries, deactivation behavior, and whether permissions are fixed or configurable remain to be finalized.
 - No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
+
+
+### User and Access Management — account creation approved (2026-11-02)
+
+**Confirmed**
+- Only Admin can create Supplier/Staff and Delivery Personnel accounts. Public/self-service registration is excluded.
+- Required fields are Full Name, Email Address, Contact Number, and Role.
+- Generate a unique User ID automatically.
+- Email Address must be unique across user accounts.
+- Admin assigns a temporary password during account creation.
+- The user must change the temporary password on first login before continuing.
+- Store passwords using secure hashing; never store plain-text passwords.
+- Each account has an Active or Inactive status.
+
+**Still to decide**
+- Exact role-specific permissions and whether they are fixed or configurable.
+- Deactivation/reactivation behavior, including existing sessions and assigned delivery work.
+- Password reset and recovery rules beyond the required first-login password change.
+- Whether account creation triggers an email or other notification.
+
+**Implementation status**
+- This is a requirements/documentation update only. No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
