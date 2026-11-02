@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-02  
-**Project status:** Laravel and Bootstrap setup are complete. The initial Supplier/Admin and Client UI files are pushed. Bootstrap Icons have been adopted in the Supplier sidebar and dashboard, and the owner confirmed the build and push are complete. Supplier UI development is continuing, starting with Flower Management.
+**Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management and Inventory Management requirements are approved; **Batch Management is the next module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -9,7 +9,7 @@ This repository contains the planning, requirements, technical references, desig
 
 ## Development workflow
 
-After each completed and owner-approved module, update the relevant Markdown documentation first, then provide a complete copy-ready script to build/check, stage, commit, and push that module to the application repository. Verify the push before proceeding to the next module. The documentation repository and application repository are separate and are updated independently.
+Current workflow: finalize and approve the requirements for all modules first, following the order in `docs/MODULES.md`. Do not start a module's UI merely because its requirements have been approved; the owner will confirm when the planning phase is complete. After planning, implement and review modules one at a time. After each completed and owner-approved module, update the relevant Markdown documentation first, then provide a complete copy-ready script to build/check, stage, commit, and push that module to the application repository. Verify the push before proceeding. The documentation repository and application repository are separate and are updated independently.
 
 ## Start here
 
@@ -36,7 +36,7 @@ After each completed and owner-approved module, update the relevant Markdown doc
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client UI files have been pushed; the initial UI commit is `488a4eb`. The owner also reported a later logo update push and confirmed the Bootstrap Icons refinement build and push. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. These foundation/dashboard milestones do not mean module UI implementation is currently underway. The current work is requirements planning, with Batch Management next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
 
 ## Repository structure
 
