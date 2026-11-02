@@ -4,9 +4,9 @@
 
 ## Current position
 
-- **Overall status:** Initial environment setup and shared UI foundation are complete. The initial Supplier/Admin and Client starter UI files and the first Supplier/Admin dashboard pass exist; the owner confirmed the logo update and Bootstrap Icons refinement build/push. Requirements planning is still in progress.
-- **Current phase:** Requirements planning — not UI implementation. Flower Management, Inventory Management, Batch Management, and Spoilage Prediction scopes are approved.
-- **Current task:** Plan and finalize Client Management requirements, the next Supplier/Admin module after Spoilage Prediction in `MODULES.md`.
+- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management requirements are approved. Requirements planning remains in progress.
+- **Current phase:** Requirements planning — not UI implementation. Five module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management.
+- **Current task:** Plan and finalize Order Management requirements, the next Supplier/Admin module after Client Management in `MODULES.md`.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -79,7 +79,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 
 | Phase | Status | Notes |
 |---|---|---|
-| 0. Requirements planning and documentation | In progress | Flower Management, Inventory Management, Batch Management, and Spoilage Prediction are approved; Client Management is next to plan. Other Supplier/Admin and Client requirements remain open. |
+| 0. Requirements planning and documentation | In progress | Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management are approved; Order Management is next to plan. Other Supplier/Admin and Client requirements remain open. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
 | 2. Shared UI foundation | Initial foundation completed | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Supplier layout and navigation foundation created locally. |
 | 3. Supplier/Admin UI | Not started as a module implementation phase | The initial dashboard/layout foundation exists. Detailed module UI implementation is on hold while requirements planning continues. |
@@ -138,13 +138,25 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [x] Finalize Batch Management fields, statuses, actions, expiry warnings, and spoilage workflow.
 - [x] Finalize Spoilage Prediction scope, ML risk levels, dashboard alerts, advisory recommendations, and Spoilage Event Records for training data.
 - [ ] Confirm supplier/vendor management scope.
-- [ ] Confirm customer account and checkout rules.
+- [x] Finalize client account creation, required fields, account access, deactivation, duplicate email, and client history rules.
+- [ ] Confirm checkout and detailed client ordering rules.
 - [ ] Confirm order, delivery, and payment lifecycles.
 - [ ] Confirm user roles and permissions.
 - [ ] Confirm reporting requirements.
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
+
+### 2026-11-02 — Client Management requirements approved
+- Owner approved Admin-only manual client account creation; public/self-service client registration is excluded from the initial scope.
+- Confirmed required Full Name, Email Address, Contact Number, and Address; automatically generated Client ID; automatically recorded Registration Date; and Active/Inactive account status.
+- Confirmed unique email per client, no email verification, and the initial access flow: Admin assigns a temporary password, client must change it on first login, and passwords must be securely hashed.
+- Confirmed inactive clients cannot place new orders while existing orders and transaction history remain accessible; reactivation restores ordering eligibility.
+- Confirmed clients with transaction history cannot be permanently deleted.
+- Confirmed Order History and Purchase Summary, with summary values derived from Order Management records (total orders, total purchase amount, completed orders, pending/ongoing orders).
+- Confirmed Client Management owns client information/account status, while Order Management owns order creation, processing, and statuses.
+- This is a requirements/documentation update only; no Client Management UI, backend, authentication flow, or database schema was implemented.
+- Next task: plan and finalize Order Management requirements.
 
 ### 2026-11-02 — Spoilage Prediction requirements approved
 - Owner approved Machine Learning (ML) as the prediction method.
@@ -229,4 +241,4 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 
 ## Next exact task
 
-Continue requirements planning with Client Management, the next Supplier/Admin module after the approved Spoilage Prediction scope. Do not begin module UI implementation until the owner confirms that requirements planning is complete. Keep backend/database work deferred until the full UI review is complete.
+Continue requirements planning with Order Management, the next Supplier/Admin module after the approved Client Management scope. Do not begin module UI implementation until the owner confirms that requirements planning is complete. Keep backend/database work deferred until the full UI review is complete.
