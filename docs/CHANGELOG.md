@@ -166,5 +166,5 @@ All meaningful documentation and project-planning updates are recorded here.
 ### 2026-11-02 — Delivery Management requirements
 
 - Documented the approved initial Delivery Management workflow, delivery fields, statuses, assignment/scheduling, Proof of Delivery, failed-delivery handling, and status-only tracking.
-- Recorded delivery-fee policy and client-side visibility as open decisions.
+- Confirmed a fixed system-configured delivery fee and Client Panel visibility for delivery status and scheduled delivery information; personnel personal contact details remain private.
 - No application code, UI, backend, database, or GPS integration changed.
