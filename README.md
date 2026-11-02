@@ -13,7 +13,7 @@ After each completed and owner-approved module, update the relevant Markdown doc
 
 ## Start here
 
-1. [`docs/SETUP_GUIDE.md`](docs/SETUP_GUIDE.md) — step-by-step Windows setup instructions for a new development device.
+1. [`docs/SETUP_GUIDE.md`](docs/SETUP_GUIDE.md) — complete Windows setup manual with official installer download links, installation/configuration steps, PHP extensions and PATH checks, compatibility notes, and verification commands.
 2. [`docs/AI_CONTEXT.md`](docs/AI_CONTEXT.md) — instructions for AI-assisted development, verified application structure, and continuity.
 3. [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md) — project purpose and scope.
 4. [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) — confirmed requirements and open questions.
@@ -60,7 +60,8 @@ flowertrack-ims-docs/
 │   ├── SUPPLIER_UI_DESIGN_REFERENCE.md
 │   ├── DEVELOPMENT_PLAN.md
 │   ├── DEVELOPMENT_PROGRESS.md
-│   └── CHANGELOG.md
+│   ├── CHANGELOG.md
+│   └── SETUP_GUIDE.md
 └── assets/
     └── ui-references/
         └── README.md
