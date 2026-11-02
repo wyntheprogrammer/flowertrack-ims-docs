@@ -4,9 +4,9 @@
 
 ## Current position
 
-- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, and Order Management requirements are approved. Requirements planning remains in progress.
-- **Current phase:** Requirements planning — not UI implementation. Six module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, and Order Management.
-- **Current task:** Plan and finalize Delivery Management requirements, the next Supplier/Admin module after Order Management in `MODULES.md`.
+- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and the initial Delivery Management scope are approved. Requirements planning remains in progress.
+- **Current phase:** Requirements planning — not UI implementation. Seven module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and Delivery Management (with delivery-fee and client-visibility decisions still open).
+- **Current task:** Plan and finalize Sales and Payment Management requirements, the next Supplier/Admin module after Delivery Management in `MODULES.md`.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -257,3 +257,12 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 ## Next exact task
 
 Continue requirements planning with Order Management, the next Supplier/Admin module after the approved Client Management scope. Do not begin module UI implementation until the owner confirms that requirements planning is complete. Keep backend/database work deferred until the full UI review is complete.
+
+
+### 2026-11-02 — Delivery Management requirements
+
+- Approved the consolidated Delivery Management scope and recommended defaults: delivery record auto-created at Ready for Delivery; Admin manually assigns personnel and sets schedule; Proof of Delivery includes recipient name, remarks, and photo; Admin handles failed-delivery rescheduling/reassignment; no fixed attempt cap; status-only tracking without GPS.
+- Confirmed delivery-only workflow, separate delivery/order statuses, delivery history, failed-attempt reasons, and coordination with Order Management.
+- Delivery fee policy and client-side delivery visibility remain To decide; do not implement these as settled rules.
+- Documentation/planning update only; no Delivery Management UI, backend, database schema, or GPS integration was implemented.
+- Next task: plan and finalize Sales and Payment Management requirements.
