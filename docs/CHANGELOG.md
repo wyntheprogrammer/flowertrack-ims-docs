@@ -6,6 +6,15 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
+### Approved — Client Management requirements and account access flow
+- Confirmed that only Supplier/Admin users create client accounts manually; public/self-service client registration is excluded from the initial scope.
+- Confirmed required Full Name, Email Address, Contact Number, and Address; automatically generated Client ID; automatically recorded Registration Date; and Active/Inactive account status.
+- Confirmed unique email per client, no email verification, and temporary-password first-login flow: Admin assigns the temporary password and the client must change it on first login.
+- Recorded the security requirement that passwords must be securely hashed and never stored as plain text.
+- Confirmed inactive-client ordering restrictions, retention of existing order/transaction history, reactivation behavior, and prohibition on permanently deleting clients with transaction history.
+- Confirmed Order History and Purchase Summary, derived from Order Management records, and the separation of responsibilities between Client Management and Order Management.
+- Updated the next planning task to Order Management. This is a documentation/planning update only; no UI, authentication, backend, or database schema was implemented.
+
 ### Approved — Spoilage Prediction requirements
 - Confirmed ML-based batch spoilage-risk prediction using Harvest Date and optional Expected Freshness / Expiry Date.
 - Confirmed Low, Medium, High, and Critical risk levels; numerical thresholds and algorithm selection are deferred until dataset assessment and model validation.
