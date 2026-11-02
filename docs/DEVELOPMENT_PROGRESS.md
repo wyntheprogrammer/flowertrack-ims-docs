@@ -325,3 +325,19 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Confirmed secure password hashing and Active/Inactive account status.
 - No User and Access Management UI, authentication changes, backend, or database schema was implemented.
 - Next task: consolidate and finalize role-specific permissions and account lifecycle rules.
+
+
+### Approved — User and Access Management permissions and account lifecycle (2026-11-02)
+
+- Approved fixed permissions for Admin, Supplier/Staff, and Delivery Personnel.
+- Admin has full access; Supplier/Staff has defined operational access but no Reports, User and Access Management, or Audit Trail access.
+- Delivery Personnel can access assigned deliveries only, update delivery status, and submit Proof of Delivery; they cannot modify orders, inventory, payments, fees, or assignments.
+- Confirmed backend-enforced authorization; hiding UI controls alone is insufficient.
+- Users may change their own passwords. Admin handles password resets by issuing a temporary password that must be changed at next login.
+- Admin alone may deactivate/reactivate accounts, change roles, and change email addresses subject to uniqueness.
+- Deactivation blocks login and invalidates active sessions; preserve account-linked records and audit history. Permanent account deletion is excluded.
+- Audit Trail must record account creation, deactivation/reactivation, role changes, and Admin password resets.
+- Prevent deactivation of the last active Admin account. Passwords remain hashed and are never revealed to Admin.
+- Account-creation email notifications are excluded from the initial scope.
+- No UI, authentication, backend authorization, session invalidation, or database schema was implemented.
+- Next planning module: Audit Trail.
