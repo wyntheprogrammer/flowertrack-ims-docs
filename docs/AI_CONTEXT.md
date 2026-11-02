@@ -65,7 +65,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, and Spoilage Prediction scopes are approved, and Client Management is the next module to plan. Do not begin the next module's UI implementation yet.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management scopes are approved. Order Management is the next module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
 
 ## Verified application repository structure
 
@@ -202,7 +202,7 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Retain depleted and spoiled batch records for traceability.
 - Approaching freshness/expiry dates produce warnings only; they do not automatically deduct stock or mark a batch Spoiled.
 - Spoilage Prediction does not automatically change batch status or deduct stock.
-- Current planning phase remains active. The next module to plan is Client Management; do not start module UI implementation until the owner confirms requirements planning is complete.
+- Client Management requirements are now approved; Order Management is the next module to plan. Do not start module UI implementation until the owner confirms requirements planning is complete.
 
 ## Spoilage Prediction — approved requirements (2026-11-02)
 
@@ -216,11 +216,24 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Record actual Spoilage Events linked to Flower and Batch with Spoilage Date, Spoiled Quantity, and Spoilage Reason. These are labeled historical outcomes for future ML training and evaluation.
 - Do not claim prediction accuracy until sufficient representative data is available and the model has been tested and validated.
 - Historical risk-assessment snapshots and manual condition-observation scoring are excluded from the initial scope.
-- Next planning module: Client Management. Requirements planning remains active; no module UI implementation until the owner confirms planning is complete.
+- Client Management is approved. The next planning module is Order Management. Requirements planning remains active; no module UI implementation until the owner confirms planning is complete.
+
+## Client Management — approved requirements (2026-11-02)
+
+- Only Supplier/Admin users create client accounts manually; public/self-service client registration is excluded from the initial scope.
+- Client ID is automatically generated. Full Name, Email Address, Contact Number, and Address are required. Registration Date is recorded automatically; Account Status is Active or Inactive.
+- Email Address must be unique per client account. No email verification is required.
+- Admin assigns a temporary password when creating the account. The client must change it on first login. Passwords must be securely hashed and never stored as plain text.
+- Inactive clients cannot place new orders; existing orders and transaction history remain accessible. Reactivating the account restores eligibility to place new orders.
+- Client records with transaction history cannot be permanently deleted.
+- Client Management supports listing, adding, viewing, editing, activating/deactivating, searching by Client ID / Full Name / Email, and filtering by Account Status / Registration Date.
+- Provide Order History and Purchase Summary. Derive summary metrics from Order Management records: total order count, total purchase amount, completed orders, and pending/ongoing orders.
+- Client Management owns client information and account status; Order Management owns order creation, processing, and statuses.
+- No Client Management UI, authentication implementation, backend, or database schema has been implemented by this planning update.
 
 ## UI-first rule
 
-The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management and Inventory Management requirements are approved; Batch Management is the next module whose requirements must be planned and approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
+The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management requirements are approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the owner confirms that the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
 
 High-level sequence:
 1. Environment setup and shared UI foundation (completed baseline).
