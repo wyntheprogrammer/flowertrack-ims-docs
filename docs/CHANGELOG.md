@@ -215,3 +215,13 @@ All meaningful documentation and project-planning updates are recorded here.
 - Confirmed Admin-assigned temporary password, mandatory password change on first login, secure password hashing, and Active/Inactive account status.
 - Recorded remaining decisions for role-specific permissions, account deactivation/reactivation, password recovery, and account notifications.
 - Documentation/planning only; no application UI, authentication behavior, backend, or database schema changed.
+
+
+### Approved — User and Access Management permissions and account lifecycle (2026-11-02)
+
+- Finalized the fixed permission matrix for Admin, Supplier/Staff, and Delivery Personnel, including assigned-delivery-only access for Delivery Personnel.
+- Confirmed server-side authorization, user-managed password changes, Admin-managed temporary-password resets, and Admin-only account deactivation/reactivation, role changes, and email changes.
+- Confirmed deactivation blocks login and invalidates active sessions; accounts are deactivated rather than permanently deleted, and related records/audit history are retained.
+- Added Audit Trail requirements for account lifecycle events and protection against deactivating the last active Admin.
+- Excluded account-creation email notifications from the initial scope.
+- Requirements/documentation only; no application UI, authentication, backend authorization, session invalidation, or database schema changed.
