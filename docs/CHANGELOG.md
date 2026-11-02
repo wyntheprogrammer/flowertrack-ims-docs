@@ -6,6 +6,18 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
+### Approved — Reports requirements
+- Approved all seven categories: Sales, Payments, Inventory, Orders, Delivery, Clients, and Spoilage.
+- Confirmed Daily, Weekly, Monthly, Yearly, and Custom Date Range filters, category-appropriate search/filters, summary cards, charts, and detailed tables.
+- Confirmed PDF, Excel, and direct print support.
+- Restricted access to Supplier/Admin users.
+- Confirmed read-only reporting based on source records, with no transaction creation or modification.
+- Recorded sales calculation, reservation/physical inventory distinction, and actual Spoilage Event reporting rules.
+- Excluded scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics from the initial scope.
+- No Reports UI, backend, database schema, report generator, exports, or print implementation was created.
+- Next planning task: User and Access Management.
+
+
 ### Finalized — Order fulfillment and Inventory Stock-Out rules
 - Confirmed that reservation at order confirmation does not reduce physical on-hand stock.
 - Confirmed that reserved quantities are excluded from stock available for new orders.
