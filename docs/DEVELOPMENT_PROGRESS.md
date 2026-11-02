@@ -4,9 +4,9 @@
 
 ## Current position
 
-- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Requirements planning remains in progress.
-- **Current phase:** Requirements planning — not UI implementation. Eight module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management.
-- **Current task:** Plan Reports requirements, the next Supplier/Admin module after Sales and Payment Management in `MODULES.md`.
+- **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports are approved. Requirements planning remains in progress.
+- **Current phase:** Requirements planning — not UI implementation. Nine module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports.
+- **Current task:** Plan User and Access Management requirements, the next Supplier/Admin module after Reports in `MODULES.md`.
 - **Latest Order Management decisions:** Customer-order Stock-Out timing is finalized: Delivery on successful `Delivered`; Customer Pickup on `Ready for Pickup`. Confirmed reservations do not reduce physical on-hand stock. New orders are rejected when available-to-allocate stock after existing reservations is insufficient; no pending-stock queue or overselling.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
@@ -291,3 +291,16 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Kept reservation and actual Stock-Out as separate coordinated operations to prevent double deduction.
 - Updated Order Management, Inventory Management, requirements, business logic, and AI continuity documentation. Documentation/planning only; no application code, UI, backend, or database behavior was implemented.
 - Next task: plan and finalize Reports requirements.
+
+
+### 2026-11-02 — Reports requirements approved
+
+- Approved all seven report categories: Sales, Payments, Inventory, Orders, Delivery, Clients, and Spoilage.
+- Confirmed Daily, Weekly, Monthly, Yearly, and Custom Date Range filters, category-appropriate search/filters, summary cards, charts, and detailed tables.
+- Confirmed PDF export, Excel export, and direct printing with a print-friendly layout.
+- Restricted Reports access to Supplier/Admin users.
+- Confirmed Reports is read-only and uses source records from the owning modules; it does not create or modify transactions.
+- Confirmed sales, inventory/reservation, and actual spoilage reporting rules, including the use of recorded Spoilage Events rather than predicted risk alone.
+- Excluded scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics from the initial scope.
+- No Reports UI, backend, database schema, report generator, export, or print implementation was created.
+- Next task: plan and finalize User and Access Management requirements.
