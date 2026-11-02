@@ -144,3 +144,17 @@ Each rule must be confirmed and dated before implementation.
 - Initial delivery tracking is status-based only; no GPS tracking or continuous location tracking.
 - Apply a fixed system-configured delivery fee to eligible Delivery orders; fee amount/configuration details are deferred to detailed design.
 - Clients can view delivery status and scheduled delivery information; do not expose delivery personnel's personal contact details.
+
+
+### Reports — confirmed rules (2026-11-02)
+
+- Reports are read-only and derive their information from the source records owned by each operational module.
+- Provide Sales, Payments, Inventory, Orders, Delivery, Clients, and Spoilage report categories.
+- Sales reporting follows the Sales and Payment Management rules: count completed orders less recorded refunds; do not count partial payments as separate sales; exclude cancelled orders.
+- Inventory reports must distinguish physical batch quantities from reserved quantities. Reservation is not Stock-Out.
+- Spoilage reports use actual recorded Spoilage Events; ML risk predictions alone are not actual spoilage.
+- Support Daily, Weekly, Monthly, Yearly, and Custom Date Range filters, suitable category filters/search, summary cards, charts, and detail tables.
+- Support PDF export, Excel export, and direct printing.
+- Only Supplier/Admin users may access Reports.
+- Reports must not create or modify orders, payments, inventory movements, deliveries, client records, or spoilage events.
+- Scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics are excluded from the initial scope.
