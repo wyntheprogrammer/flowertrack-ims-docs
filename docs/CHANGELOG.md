@@ -199,3 +199,10 @@ All meaningful documentation and project-planning updates are recorded here.
 - Documented the approved initial Delivery Management workflow, delivery fields, statuses, assignment/scheduling, Proof of Delivery, failed-delivery handling, and status-only tracking.
 - Confirmed a fixed system-configured delivery fee and Client Panel visibility for delivery status and scheduled delivery information; personnel personal contact details remain private.
 - No application code, UI, backend, database, or GPS integration changed.
+
+
+### Approved — User and Access Management role structure
+- Approved the three initial roles: Admin, Supplier/Staff, and Delivery Personnel.
+- Confirmed Admin full access, Supplier/Staff access to authorized operational modules, and Delivery Personnel access to delivery-work functions.
+- Detailed role permissions and account lifecycle remain under requirements planning.
+- No application code, authentication behavior, or database schema changed.
