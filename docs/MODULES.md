@@ -46,7 +46,7 @@ The project owner supplied the following module order. This is also the initial 
 
 **Confirmed rules**
 - A flower can be saved without an image, but not without its name, category, or description.
-- Unit and selling price are not part of the approved Flower Management scope yet; decide them with the inventory and pricing workflows.
+- Inventory unit and minimum stock threshold are configured through the inventory workflow. Selling prices are owned by Sales and Payment Management, not Flower Management.
 
 #### Inventory Management — approved scope (2026-11-02)
 
