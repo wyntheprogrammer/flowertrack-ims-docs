@@ -134,6 +134,24 @@ The confirmed initial navigation order is:
 - The exact ML algorithm, numerical risk thresholds, and model performance criteria remain for technical design after dataset assessment.
 - Historical risk-assessment snapshots and manual condition-observation scoring are not included in the initial scope.
 
+### Client Management — confirmed 2026-11-02
+
+- Client ID is automatically generated.
+- Full Name, Email Address, Contact Number, and Address are all required.
+- Registration Date is recorded automatically; Account Status is Active or Inactive.
+- Only Supplier/Admin users can create client accounts manually. Public/self-service client registration is not included in the initial scope.
+- No email verification is required.
+- Admin assigns a temporary password at account creation. The client must change it on first login.
+- Passwords must be securely hashed and must never be stored as plain text.
+- Email Address must be unique per client account.
+- Support viewing all clients, adding clients, viewing complete profiles, editing client information, and activating/deactivating accounts.
+- Search by Client ID, Full Name, or Email Address; filter by Account Status and Registration Date.
+- Inactive clients cannot place new orders, but existing orders and transaction history remain accessible. Reactivation restores eligibility to place new orders.
+- Client records with transaction history cannot be permanently deleted.
+- Provide each client's Order History and Purchase Summary.
+- Derive purchase summary values from Order Management records: total order count, total purchase amount, completed orders, and pending/ongoing orders. Do not maintain separate manually edited totals.
+- Client Management owns client information and account status; Order Management owns order creation, processing, and statuses.
+
 ## 7. Business requirements still to gather
 
 - Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
@@ -143,7 +161,7 @@ The confirmed initial navigation order is:
 - Batch aging, shelf-life, and spoilage definition.
 - Spoilage prediction data, method, and intended output.
 - Whether a separate supplier/vendor directory is needed for any future purchasing workflow; Supplier / Source is not part of the approved Batch Management record.
-- Customer registration and account approval rules.
+- Checkout, guest shopping, and detailed client ordering rules; client account creation and initial access are already confirmed.
 - Order statuses and cancellation/return rules.
 - Delivery assignment, fees, and delivery statuses.
 - Payment methods, proof of payment, verification, refunds, and reconciliation.
