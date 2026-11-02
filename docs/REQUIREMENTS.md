@@ -199,7 +199,7 @@ Do not implement these as settled decisions until confirmed:
 - Exact FlowerTrack brand colors, fonts, and final design tokens; derive the brand palette from the official FlowerTrack logo when supplied.
 - Exact database schema and business rules.
 
-### Delivery Management — approved scope; two decisions remain open (2026-11-02)
+### Delivery Management — approved scope (2026-11-02)
 
 **Confirmed**
 - Delivery Management handles Delivery fulfillment only; Customer Pickup is excluded.
@@ -213,8 +213,6 @@ Do not implement these as settled decisions until confirmed:
 - Failed attempts require a reason, remain in history, and do not automatically cancel the order. Admin manages rescheduling/reassignment. No fixed maximum attempt count is imposed initially; further attempts are subject to Admin decision.
 - Delivery status is separate from Order Status. Successful delivery is coordinated with Order Management so the order can become Completed.
 - Initial tracking is status updates only; no live GPS or continuous location tracking.
+- Clients can view delivery status and scheduled delivery information in the Client Panel. Personal contact details of delivery personnel are not exposed.
+- Apply a fixed delivery fee configured in system settings to eligible Delivery orders. The fee amount and detailed configuration controls will be determined during detailed design.
 - No Delivery Management UI, backend, database schema, or GPS integration has been implemented.
-
-**To decide before implementation**
-- Delivery Fee policy: per-order manual fee, fixed configured fee, or excluded initially.
-- Client Panel visibility: status only, status plus schedule/personnel details, or no client-side tracking.
