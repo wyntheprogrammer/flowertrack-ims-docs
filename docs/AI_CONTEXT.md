@@ -65,7 +65,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner subsequently reported completing a logo-only update push. The newer Bootstrap Icons changes described below are local and still require a build check and Git push. Client screens and backend/database work remain future work.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management and Inventory Management scopes are approved, and Batch Management is the next module to plan. Do not begin the next module's UI implementation yet.
 
 ## Verified application repository structure
 
@@ -188,23 +188,23 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Installed the `bootstrap-icons` npm package and imported `bootstrap-icons/font/bootstrap-icons.css` in `resources/css/app.css` after the Bootstrap CSS import.
 - Use the standard Bootstrap Icons markup pattern: `<i class="bi bi-icon-name"></i>`, typically inside the existing icon wrapper span so current layout styling is preserved.
 - Do not use Unicode symbols or emoji as substitutes for interface icons. Emoji or images may remain when they are actual product imagery/content (for example, flower illustrations in the Top Selling Products list), not interface controls.
-- The Supplier sidebar and Supplier Dashboard icon markup have been updated locally to use Bootstrap Icons. Preserve the approved dashboard layout, colors, chart, sample values, and spacing; only change the icon presentation unless the owner requests a broader redesign.
-- Run `npm run build` after the changes. The Bootstrap Icons changes are pending application-repository commit/push until the owner runs and confirms the Git commands.
+- The Supplier sidebar and Supplier Dashboard use Bootstrap Icons. The owner confirmed the Bootstrap Icons refinement build and application-repository push. Preserve the approved dashboard layout, colors, chart, sample values, and spacing; only change the icon presentation unless the owner requests a broader redesign.
 
 ## UI-first rule
 
-The user wants to finish and review the UI before starting backend and database implementation.
+The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management and Inventory Management requirements are approved; Batch Management is the next module whose requirements must be planned and approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
 
-Agreed high-level sequence:
-1. Environment setup.
-2. Shared UI foundation and design system.
-3. Supplier/Admin UI, following the supplied module order.
-4. Client ecommerce-style UI.
-5. UI review and finalization.
-6. Backend and database.
-7. Integration, algorithms, testing, and deployment.
+High-level sequence:
+1. Environment setup and shared UI foundation (completed baseline).
+2. Requirements planning and approval for all Supplier/Admin modules.
+3. Requirements planning and approval for Client modules.
+4. Supplier/Admin UI implementation in the documented module order.
+5. Client ecommerce-style UI implementation.
+6. UI review and finalization.
+7. Backend and database.
+8. Integration, algorithms, testing, and deployment.
 
-Do not begin backend implementation while the UI-first phase is still in progress unless the user explicitly changes this decision.
+Do not jump from an approved module scope directly into its UI while the owner is still planning the remaining modules. Do not begin backend implementation before UI review/finalization.
 
 ## UI design rules
 
@@ -271,8 +271,8 @@ Never claim a GitHub push succeeded unless the host confirms it. If direct repos
 At the start of each resumed work session:
 1. Read this file and `DEVELOPMENT_PROGRESS.md`.
 2. Check the latest requirements and relevant module/design documents.
-3. Identify the last completed task and current task.
-4. Continue from the recorded next step rather than restarting or assuming progress.
+3. Identify the current phase and next module from the planning status.
+4. Continue requirements planning until the owner explicitly confirms that planning is complete; do not assume an approved module is a signal to start its UI.
 
 At the end of each session, record:
 - What was completed.
