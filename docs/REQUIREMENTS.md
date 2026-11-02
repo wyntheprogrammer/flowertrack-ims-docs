@@ -198,3 +198,23 @@ Do not implement these as settled decisions until confirmed:
 - Whether Python is needed and how it communicates with Laravel.
 - Exact FlowerTrack brand colors, fonts, and final design tokens; derive the brand palette from the official FlowerTrack logo when supplied.
 - Exact database schema and business rules.
+
+### Delivery Management — approved scope; two decisions remain open (2026-11-02)
+
+**Confirmed**
+- Delivery Management handles Delivery fulfillment only; Customer Pickup is excluded.
+- Automatically create a unique Delivery ID and delivery record when a Delivery order reaches Ready for Delivery. Link one delivery to one order.
+- Retain Order ID, client name/contact, delivery-address snapshot, assigned personnel, scheduled date/time, status, optional notes, and delivery proof.
+- Admin/Supplier and dedicated Delivery Personnel accounts participate. Admin manually assigns/reassigns active, authorized personnel and sets the delivery schedule.
+- Search by Delivery ID, Order ID, or Client Name; filter by Delivery Status and scheduled date; view delivery details and per-order delivery history.
+- Statuses: Pending, Scheduled, Assigned, Out for Delivery, Delivered, Failed, Rescheduled, Cancelled.
+- An order must be Ready for Delivery before dispatch. Reassignment and status changes retain date/time and responsible-user history.
+- Proof of Delivery requires recipient name, delivery remarks, photo proof, and delivery completion date/time.
+- Failed attempts require a reason, remain in history, and do not automatically cancel the order. Admin manages rescheduling/reassignment. No fixed maximum attempt count is imposed initially; further attempts are subject to Admin decision.
+- Delivery status is separate from Order Status. Successful delivery is coordinated with Order Management so the order can become Completed.
+- Initial tracking is status updates only; no live GPS or continuous location tracking.
+- No Delivery Management UI, backend, database schema, or GPS integration has been implemented.
+
+**To decide before implementation**
+- Delivery Fee policy: per-order manual fee, fixed configured fee, or excluded initially.
+- Client Panel visibility: status only, status plus schedule/personnel details, or no client-side tracking.
