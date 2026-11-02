@@ -186,7 +186,47 @@ The Client Panel must have a distinct ecommerce-style user experience.
 
 - Online-shop-style browsing and purchasing experience.
 - Do not reuse the Supplier/Admin dashboard as the Client design.
-- Product detail, checkout, registration, and guest-shopping rules need confirmation.
+- Client accounts are created manually by Supplier/Admin; public/self-service client registration is not part of the approved initial scope.
+- Clients receive a temporary password from the account-creation process and must change it on first login.
+- No email verification is required for this initial account flow.
+- Checkout, guest shopping, and detailed ordering rules remain to be confirmed.
+
+#### Client Management — approved scope (2026-11-02)
+
+**Purpose:** Allow Supplier/Admin users to create and maintain client accounts, manage account status, and review each client's order and purchase history.
+
+**Client information**
+- Client ID — automatically generated.
+- Full Name — required.
+- Email Address — required and unique per client account.
+- Contact Number — required.
+- Address — required.
+- Registration Date — recorded automatically.
+- Account Status — Active or Inactive.
+
+**Account creation and access**
+- Supplier/Admin users create client accounts manually. Public/self-service client registration is not included in the initial scope.
+- No email verification is required.
+- The Admin assigns a temporary password when creating the account.
+- The client uses the temporary password for the first login and must change it before continuing.
+- Passwords must be securely hashed; plain-text password storage is prohibited.
+
+**Features and controls**
+- View all registered clients and each client's complete profile.
+- Add a client manually, edit client information, and activate/deactivate client accounts.
+- Search by Client ID, Full Name, or Email Address.
+- Filter by Account Status and Registration Date.
+- View the client's complete Order History and Purchase Summary.
+
+**Confirmed business rules**
+- Each email address can belong to only one client account.
+- Inactive clients cannot place new orders.
+- Existing orders and transaction history remain accessible after deactivation.
+- Reactivating an account restores eligibility to place new orders.
+- Client records with transaction history cannot be permanently deleted.
+- Client Management owns client information and account status; Order Management owns order creation, processing, and order statuses.
+- Order History is sourced from Order Management records.
+- Purchase Summary is derived from order records and includes total order count, total purchase amount, completed orders, and pending/ongoing orders; summary figures are not manually maintained as separate totals.
 
 ## C. Module dependencies to investigate
 
