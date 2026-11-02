@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-02  
-**Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management, Inventory Management, Batch Management, and Spoilage Prediction requirements are approved; **Client Management is the next module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
+**Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management requirements are approved; **Order Management is the next module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -36,7 +36,7 @@ Current workflow: finalize and approve the requirements for all modules first, f
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. These foundation/dashboard milestones do not mean module UI implementation is currently underway. The current work is requirements planning, with Client Management next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. These foundation/dashboard milestones do not mean module UI implementation is currently underway. The current work is requirements planning, with Order Management next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
 
 ## Repository structure
 
