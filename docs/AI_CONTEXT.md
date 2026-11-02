@@ -430,6 +430,7 @@ resources/
 - Admin assigns a temporary password; first login requires the account holder to change it before continuing.
 - Passwords must be securely hashed and never stored as plain text.
 - Account Status: Active or Inactive.
-- Still to finalize: detailed role permissions and fixed/configurable permission approach; deactivation/reactivation and session/assigned-work effects; password reset/recovery; account creation notifications.
-- No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
-- Current planning task: finalize role-specific permissions and account lifecycle rules.
+- Fixed role permissions and account lifecycle rules are approved; see the User and Access Management section in `REQUIREMENTS.md` and `BUSINESS_LOGIC.md`.
+- Account-creation email notifications are excluded from the initial scope.
+- No User and Access Management UI, authentication changes, backend authorization, session invalidation, or database schema has been implemented.
+- Next Supplier/Admin planning module: Audit Trail.
