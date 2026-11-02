@@ -65,7 +65,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, and Client Management scopes are approved. Order Management is the next module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, and the initial Delivery Management scope are approved. Delivery-fee policy and client-side delivery visibility remain open. Sales and Payment Management is the next module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
 
 ## Verified application repository structure
 
@@ -370,3 +370,18 @@ resources/
 - Load module assets through the existing Vite pipeline. Ensure the relevant CSS and JavaScript are included by the page/layout using the project's established Vite conventions.
 - Apply the same organization to later Supplier modules when they have module-specific styles or interactions. Avoid creating empty or unnecessary files for modules that do not need them; shared styles and scripts should remain shared.
 - This is an agreed frontend organization standard. It does not imply that Flower Management has already been implemented or tested.
+
+
+## Delivery Management — approved initial requirements (2026-11-02)
+
+- Delivery records are created automatically when a Delivery order reaches Ready for Delivery; Customer Pickup does not create a delivery.
+- Each delivery has a unique Delivery ID and links to one order. Retain an address snapshot, client/order reference, assigned personnel, schedule, status, optional notes, and delivery history.
+- Admin/Supplier and dedicated Delivery Personnel accounts participate. Admin manually assigns/reassigns active, authorized personnel and sets delivery date/time.
+- Delivery statuses: Pending, Scheduled, Assigned, Out for Delivery, Delivered, Failed, Rescheduled, Cancelled. Keep delivery status separate from Order Status.
+- Dispatch requires the related order to be Ready for Delivery. Preserve assignment and status history with timestamp and responsible user.
+- Proof of Delivery requires recipient name, delivery remarks, photo proof, and completion date/time.
+- Failed attempts require a reason, remain in history, and do not automatically cancel the order. Admin handles rescheduling/reassignment. No fixed attempt limit initially; further attempts are subject to Admin decision.
+- Initial tracking is status updates only; no GPS or continuous location tracking.
+- Delivery fee policy and Client Panel visibility are still To decide. Do not invent or implement either as a confirmed rule.
+- No Delivery Management UI, backend, database schema, or GPS integration has been implemented.
+
