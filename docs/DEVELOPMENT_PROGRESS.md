@@ -341,3 +341,18 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Account-creation email notifications are excluded from the initial scope.
 - No UI, authentication, backend authorization, session invalidation, or database schema was implemented.
 - Next planning module: Audit Trail.
+
+
+### Approved — Audit Trail requirements (2026-11-02)
+
+- Finalized centralized automatic audit logging across authentication, Flower, Inventory, Batch, Spoilage Prediction, Client, Order, Delivery, Sales/Payment, and User Management activities.
+- Include failed security-sensitive attempts; ordinary page views/navigation are excluded.
+- Approved audit fields: unique Audit ID, server timestamp, actor User ID/name/role snapshots when authenticated, action, module, affected Record ID, description, previous/new values where relevant, IP address when available, and Success/Failed result.
+- Never log passwords, temporary passwords, password hashes, or authentication secrets. Unauthenticated events retain safe available context without inventing an authenticated actor identity.
+- Approved append-only application behavior; no user, including Admin, may edit/delete audit records through the application.
+- Admin-only access, server-side enforcement, search, date/module/user/action/result filters, sorting, pagination, activity details, PDF/Excel export, and direct printing.
+- Indefinite retention in the initial scope; no automatic deletion or archival.
+- Excluded real-time monitoring, email/SMS alerts, suspicious-activity detection, advanced behavior analytics, and external log-storage integration.
+- Essential technical detail for implementation: define safe actor identification for unauthenticated events and protect append-only integrity with restricted database permissions and protected backups.
+- No Audit Trail UI, event capture, export/print functionality, backend, or database schema was implemented.
+- Supplier/Admin requirements planning is complete pending final overall review and user confirmation; do not begin UI/code implementation until the user confirms.
