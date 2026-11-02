@@ -91,6 +91,44 @@ The project owner supplied the following module order. This is also the initial 
 **Deferred**
 - Stock Adjustment / Physical Inventory Counting is explicitly excluded for now.
 
+#### Batch Management — approved scope (2026-11-02)
+
+**Purpose:** Manage individual flower batches created by Stock-In, including batch details, status, freshness monitoring, and traceability. Inventory Management remains responsible for stock movement transactions and quantity calculations.
+
+**Batch information**
+- Batch Number — automatically generated and unique.
+- Flower — linked automatically from the Stock-In that created the batch.
+- Date Received — recorded automatically from Stock-In.
+- Initial Quantity — captured from Stock-In and normalized to the standard base unit, Stem.
+- Remaining Quantity — maintained through Inventory Management Stock-Out allocations; not directly editable in Batch Management.
+- Harvest Date — required.
+- Expected Freshness / Expiry Date — optional.
+- Remarks — optional batch notes.
+- Supplier / Source is not recorded; the owner confirmed that the flowers are sourced directly by the business, so no Supplier/Source column is needed.
+
+**Batch status**
+- Available — remaining quantity equals the initial quantity and the batch is usable.
+- Partially Used — remaining quantity is greater than zero but lower than the initial quantity.
+- Depleted — remaining quantity is zero due to stock consumption.
+- Spoiled — manually marked after the remaining spoiled quantity has first been recorded as a Stock-Out in Inventory Management.
+
+**Actions and controls**
+- View batches and complete Batch Details.
+- Search by Batch Number or Flower Name.
+- Filter by Flower, Status, and Date Received.
+- View batch-specific Stock-In and Stock-Out history.
+- Edit batch metadata only; quantities and inventory movements cannot be edited directly from Batch Management.
+- Manually mark a batch as Spoiled, with a required reason/remark.
+- Retain depleted and spoiled batch records for traceability; do not permanently delete batches with inventory history.
+
+**Confirmed rules**
+- Every Stock-In automatically creates one Batch Record with a unique Batch Number.
+- Remaining Quantity is updated through Inventory Management transactions and batch allocations.
+- FIFO remains the default Stock-Out allocation method; authorized FIFO overrides follow the Inventory Management rules.
+- A spoiled batch must first have its remaining spoiled quantity recorded through a manual Stock-Out with a spoilage remark. Only then may its status be marked Spoiled. This keeps stock balances and Inventory History consistent.
+- Expiry/freshness dates generate warnings as the date approaches; warnings do not automatically deduct stock or mark a batch as Spoiled.
+- Spoilage Prediction does not automatically change batch status or deduct stock.
+
 - For modules without an approved scope below, detailed fields, actions, filters, table columns, metrics, and workflows remain to be gathered.
 - Do not invent operational rules from module names alone.
 
