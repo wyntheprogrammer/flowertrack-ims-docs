@@ -98,6 +98,22 @@
 - Support Delivery and Customer Pickup. Delivery Management owns delivery assignment and delivery-specific tracking; Pickup skips Out for Delivery.
 - **Still to decide:** the precise fulfillment event that triggers conversion of reserved stock into an actual Stock-Out. Keep reservation and Stock-Out as separate operations.
 
+### Sales and payments — confirmed Sales and Payment Management (2026-11-02)
+
+- Supplier/Admin manually sets each flower's selling price in Sales and Payment Management; Flower Management does not own selling prices.
+- A price change applies to new orders only. Existing order items retain their immutable unit-price snapshots.
+- Automatically create one unique Sales Record when an order reaches Completed. Link it to the Order ID and client; prevent duplicate sales records for one order.
+- Sales Records preserve the completed order's item quantities, price snapshots, subtotals, order total, and applicable fixed delivery fee.
+- Sales reporting counts completed orders and subtracts recorded refunds. Partial payments are not separate sales and must not be double-counted; cancelled orders are excluded.
+- Payment transactions are separate from Sales Records. Each transaction has a unique Payment ID, Order ID, automatically recorded date/time, payment method, amount paid, status, and applicable reference number.
+- Accepted payment methods are Cash, Bank Transfer, and E-wallet. Require a reference number for applicable online payments (Bank Transfer and E-wallet).
+- Admin manually verifies/confirms online payments and records/confirms cash payments.
+- Partial payments and multiple payment transactions per order are allowed. Track Unpaid, Partially Paid, Paid, and Refunded, plus payment history and outstanding balance.
+- Admin records and approves refunds. Preserve the original payment and refund history.
+- Provide daily, weekly, monthly, and yearly sales summaries and PDF/Excel exports.
+- Order Management displays payment status and summary; Sales and Payment Management owns selling prices, Sales Records, payment transactions, and refunds.
+- No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator has been implemented.
+
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
 - Is there an entered expiry/shelf-life date, condition score, or observation history?
@@ -107,13 +123,10 @@
 ### Orders and sales — remaining decisions
 - What is the exact operational event for actual Stock-Out after inventory reservation?
 - What return and post-completion correction rules apply?
-- At what point is a completed order recognized as a sale, and what sales reporting rules apply?
 
 ### Delivery and payments
-- Which delivery methods and statuses are supported?
-- Which payment methods are accepted?
-- Who verifies payments?
-- How are failed, pending, partial, and refunded payments handled?
+- Detailed delivery personnel administration and future delivery enhancements remain to be assessed beyond the approved delivery workflow.
+- Detailed reconciliation/accounting treatment beyond the approved payment workflow remains for later technical design.
 
 Each rule must be confirmed and dated before implementation.
 
