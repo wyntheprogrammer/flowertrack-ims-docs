@@ -25,16 +25,23 @@
 ### Inventory and batches
 
 **Confirmed — Inventory Management (2026-11-02)**
-- Inventory is batch-based.
-- Every Stock-In transaction must create a corresponding Batch Record.
-- Overall inventory is calculated from the quantities in its batches; it is not maintained as a separate independent quantity.
-- FIFO (First In, First Out) is the default Stock-Out allocation method. The oldest received batch is consumed first.
-- Stock movements must be recorded in Inventory History.
+- Inventory is batch-based. Every Stock-In automatically creates its own Batch Record with a unique Batch Number.
+- Consolidated inventory is derived from batch quantities; there is no separate independent stock quantity.
+- Each flower has a configurable inventory unit. Unit conversions are supported, and Stem is the standard base unit for all inventory computation.
+- Stock-In accepts the configured unit and converts the quantity to Stems.
+- Each flower has a fixed minimum stock threshold configured in Flower Management. Low Stock alerts use that per-flower threshold.
+- FIFO is the default Stock-Out allocation method: consume the oldest available batch first.
+- Partial batch consumption is allowed; the remaining quantity stays in that batch until depleted. Depleted batch records remain for traceability.
+- Stock-Out automatically splits its quantity across batches when required by FIFO.
+- Authorized users may override FIFO and select another batch; the reason must be recorded in Remarks.
+- Stock-Out is blocked when available inventory is insufficient. Negative inventory is not allowed.
+- Stock-Out is manual, including for spoiled flowers; spoilage prediction does not automatically deduct stock.
+- Every Stock-In and Stock-Out has a Remarks field/column, and every movement is recorded in Inventory History.
+- Inventory History records date/time, flower, batch, movement type, quantity, Remarks, and the user who performed the transaction.
+- Stock-In records may be edited. For stock correction, the owner specified editing the Stock-In record and its Remarks; a separate reversal-transaction workflow is not included in the approved scope.
 
-**Still to decide**
-- How are damaged, missing, reserved, returned, and adjusted quantities handled?
-- What is the stock adjustment and physical inventory counting workflow?
-- What other movement types, validations, and permissions are needed?
+**Deferred**
+- Stock Adjustment / Physical Inventory Counting is explicitly deferred and is not part of the current implementation scope.
 
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
