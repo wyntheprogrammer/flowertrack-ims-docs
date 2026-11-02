@@ -65,7 +65,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, and Batch Management scopes are approved, and Spoilage Prediction is the next module to plan. Do not begin the next module's UI implementation yet.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, and Spoilage Prediction scopes are approved, and Client Management is the next module to plan. Do not begin the next module's UI implementation yet.
 
 ## Verified application repository structure
 
@@ -202,7 +202,21 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Retain depleted and spoiled batch records for traceability.
 - Approaching freshness/expiry dates produce warnings only; they do not automatically deduct stock or mark a batch Spoiled.
 - Spoilage Prediction does not automatically change batch status or deduct stock.
-- Current planning phase remains active. The next module to plan is Spoilage Prediction; do not start module UI implementation until the owner confirms requirements planning is complete.
+- Current planning phase remains active. The next module to plan is Client Management; do not start module UI implementation until the owner confirms requirements planning is complete.
+
+## Spoilage Prediction — approved requirements (2026-11-02)
+
+- Use Machine Learning (ML) to estimate spoilage risk for flower batches.
+- Confirmed date inputs: Harvest Date and optional Expected Freshness / Expiry Date. Handle batches without an expiry/freshness date using supported available data.
+- Four risk levels: Low, Medium, High, Critical. Algorithm and numerical thresholds are not selected until dataset assessment and model validation.
+- Show risk summaries/alerts on the Supplier/Admin Dashboard and provide a dedicated prediction page with batch risk details, search, and filters.
+- Provide advisory warnings and recommendations, including prioritizing high-risk batches for Stock-Out.
+- Predictions must not automatically change batch status, deduct inventory, alter FIFO allocation, or create Stock-Out transactions. Actual spoilage remains manual.
+- Only batches with remaining usable inventory are active prediction targets.
+- Record actual Spoilage Events linked to Flower and Batch with Spoilage Date, Spoiled Quantity, and Spoilage Reason. These are labeled historical outcomes for future ML training and evaluation.
+- Do not claim prediction accuracy until sufficient representative data is available and the model has been tested and validated.
+- Historical risk-assessment snapshots and manual condition-observation scoring are excluded from the initial scope.
+- Next planning module: Client Management. Requirements planning remains active; no module UI implementation until the owner confirms planning is complete.
 
 ## UI-first rule
 
