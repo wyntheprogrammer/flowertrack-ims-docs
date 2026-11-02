@@ -102,15 +102,17 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-02
 
-### Confirmed — Flower Management and initial Inventory Management rules
-- Approved Flower Management fields: automatically generated Flower Code; required Flower Name, Category, and Description; optional one Primary Flower Image; Active/Inactive status.
-- Approved Flower Management actions: add, view, edit, deactivate when related records exist, search by flower name/code, and filter by category/status.
-- Deferred Unit and Selling Price from the Flower Management scope until inventory/pricing workflows are decided.
-- Confirmed batch-based inventory: every Stock-In creates a Batch Record, and consolidated inventory is derived from batch quantities.
-- Confirmed FIFO as the default Stock-Out allocation method, consuming the oldest received batch first.
-- Confirmed that stock movements must be recorded in Inventory History.
-- Stock adjustment and physical inventory counting remain undecided and were intentionally set aside.
-- Updated MODULES.md, BUSINESS_LOGIC.md, REQUIREMENTS.md, and DEVELOPMENT_PROGRESS.md to reflect the approved decisions. This is a documentation/planning update only; no application code or backend behavior was changed.
+### Approved — complete Inventory Management scope
+- Finalized Inventory Overview, Stock-In, Stock-Out, Inventory List, Batch Details, and Inventory History sections.
+- Confirmed unique batch creation for every Stock-In and consolidated inventory derived from batch quantities.
+- Confirmed configurable inventory units per flower, unit conversion, and Stem as the standard base unit.
+- Confirmed fixed minimum stock thresholds per flower, configured in Flower Management, for Low Stock alerts.
+- Confirmed manual Stock-Out, including spoiled flowers; FIFO default allocation; automatic batch splitting; partial batch consumption; and authorized FIFO override with reason in Remarks.
+- Confirmed insufficient-stock validation: block Stock-Out and prohibit negative inventory.
+- Confirmed a Remarks field/column for every Stock-In and Stock-Out and Inventory History fields for date/time, flower, batch, movement type, quantity, Remarks, and user.
+- Confirmed Stock-In record editing and Remarks as the agreed stock-correction approach; no separate reversal workflow.
+- Explicitly deferred Stock Adjustment / Physical Inventory Counting.
+- Updated MODULES.md, BUSINESS_LOGIC.md, REQUIREMENTS.md, and DEVELOPMENT_PROGRESS.md. This is a documentation/planning update only; no application code, database schema, or backend behavior was changed.
 
 ### Clarified — frontend module file organization
 - Established separate Blade, CSS, and JavaScript files as the standard for Supplier modules that have page-specific styling or interactions.
