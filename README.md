@@ -1,9 +1,9 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-01  
-**Project status:** Laravel and Bootstrap setup are complete. The initial Supplier/Admin and Client UI files have been pushed. The Supplier Dashboard has adopted Bootstrap Icons locally; build verification and push of the latest icon refinements are pending.
+**Last updated:** 2026-11-02  
+**Project status:** Laravel and Bootstrap setup are complete. The initial Supplier/Admin and Client UI files are pushed. Bootstrap Icons have been adopted in the Supplier sidebar and dashboard, and the owner confirmed the build and push are complete. Supplier UI development is continuing, starting with Flower Management.
 
-This repository contains the planning, requirements, technical references, design rules, workflows, and development progress for **FlowerTrack IMS**.
+This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
 > This repository is documentation-only. The application source code is maintained separately in the public [`flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims) repository. The local working copy is `C:\xampp\htdocs\FlowerTrack`.
 
@@ -13,14 +13,15 @@ After each completed and owner-approved module, update the relevant Markdown doc
 
 ## Start here
 
-1. [`docs/AI_CONTEXT.md`](docs/AI_CONTEXT.md) — instructions for AI-assisted development, verified application structure, and continuity.
-2. [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md) — project purpose and scope.
-3. [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) — confirmed requirements and open questions.
-4. [`docs/DEVELOPMENT_PLAN.md`](docs/DEVELOPMENT_PLAN.md) — agreed implementation order.
-5. [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) — current progress, installed environment, and next task.
-6. [`docs/UI_UX_GUIDELINES.md`](docs/UI_UX_GUIDELINES.md) — interface and styling rules.
-7. [`docs/SUPPLIER_UI_DESIGN_REFERENCE.md`](docs/SUPPLIER_UI_DESIGN_REFERENCE.md) — approved Supplier Side dashboard visual reference and design prompt.
-8. [`docs/TECHNOLOGY_STACK_AND_REFERENCES.md`](docs/TECHNOLOGY_STACK_AND_REFERENCES.md) — planned technologies, actual local setup, and useful repositories.
+1. [`docs/SETUP_GUIDE.md`](docs/SETUP_GUIDE.md) — step-by-step Windows setup instructions for a new development device.
+2. [`docs/AI_CONTEXT.md`](docs/AI_CONTEXT.md) — instructions for AI-assisted development, verified application structure, and continuity.
+3. [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md) — project purpose and scope.
+4. [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) — confirmed requirements and open questions.
+5. [`docs/DEVELOPMENT_PLAN.md`](docs/DEVELOPMENT_PLAN.md) — agreed implementation order.
+6. [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) — current progress, installed environment, and next task.
+7. [`docs/UI_UX_GUIDELINES.md`](docs/UI_UX_GUIDELINES.md) — interface and styling rules.
+8. [`docs/SUPPLIER_UI_DESIGN_REFERENCE.md`](docs/SUPPLIER_UI_DESIGN_REFERENCE.md) — approved Supplier Side dashboard visual reference and design prompt.
+9. [`docs/TECHNOLOGY_STACK_AND_REFERENCES.md`](docs/TECHNOLOGY_STACK_AND_REFERENCES.md) — planned technologies, actual local setup, and useful repositories.
 
 ## Local setup snapshot
 
@@ -29,10 +30,13 @@ After each completed and owner-approved module, update the relevant Markdown doc
 - Composer: 2.11.1
 - Laravel application skeleton: 13.11.0
 - Bundled database: MariaDB 10.11.16
+- Node.js: 26.13.0
+- npm: 11.20.0
+- Git: 2.52.0.windows.1
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client UI files have been pushed; the initial UI commit is `488a4eb`. The owner also reported a later logo update push. The newest Bootstrap Icons refinements are local and still need build verification and a confirmed push. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task. Node.js 26.13.0, npm 11.20.0, and Git 2.52.0.windows.1 are installed and verified. Git identity is configured as `wyn` (`wyntheprogrammer@gmail.com`).
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client UI files have been pushed; the initial UI commit is `488a4eb`. The owner also reported a later logo update push and confirmed the Bootstrap Icons refinement build and push. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
 
 ## Repository structure
 
@@ -42,6 +46,7 @@ This is the **documentation repository** structure:
 flowertrack-ims-docs/
 ├── README.md
 ├── docs/
+│   ├── SETUP_GUIDE.md
 │   ├── AI_CONTEXT.md
 │   ├── PROJECT_OVERVIEW.md
 │   ├── REQUIREMENTS.md
