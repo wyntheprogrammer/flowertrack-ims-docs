@@ -63,7 +63,7 @@ The confirmed initial navigation order is:
 | Bootstrap | UI components and responsive layout | Confirmed preference |
 | Flexbox | Layout and alignment | Confirmed preference |
 | Custom CSS | Colors, sizes, spacing, typography and visual styling | Confirmed preference |
-| Python | Possible spoilage prediction/algorithm support | To decide |
+| Python | Possible ML model implementation/runtime | To decide during technical design |
 
 ## 5. UI requirements
 
@@ -119,6 +119,20 @@ The confirmed initial navigation order is:
 - Retain depleted and spoiled batch records for traceability; do not permanently delete batches with inventory history.
 - Show warnings as the optional Expected Freshness / Expiry Date approaches. Warnings do not automatically deduct stock or mark a batch Spoiled.
 - Spoilage Prediction does not automatically change batch status or deduct stock.
+
+### Spoilage Prediction — confirmed 2026-11-02
+- Use Machine Learning (ML) to estimate spoilage risk for flower batches.
+- Use Harvest Date and Expected Freshness / Expiry Date as the two confirmed date inputs. Expected Freshness / Expiry Date is optional; batches without it must be handled using supported available data.
+- Classify risk into Low, Medium, High, and Critical. Do not hardcode numerical thresholds until the model is calibrated and validated.
+- Display spoilage-risk summaries and alerts on the Supplier/Admin Dashboard.
+- Provide a dedicated prediction page with a batch risk list, search by Batch Number or Flower Name, filters by risk level and flower, prediction details, and available prediction explanations.
+- Show warnings and recommendations only, including recommendations to prioritize high-risk batches for Stock-Out.
+- Predictions must not automatically change batch status, deduct inventory, alter FIFO allocation, or create Stock-Out transactions. Actual spoilage remains manual.
+- Include only batches with remaining usable inventory in active risk monitoring.
+- Add Spoilage Event Records linked to Flower and Batch, capturing Spoilage Date, Spoiled Quantity, and Spoilage Reason. Use accumulated actual outcomes as labeled historical data for future ML training and evaluation.
+- Do not claim model accuracy until the model has been trained, tested, and validated against sufficiently representative data.
+- The exact ML algorithm, numerical risk thresholds, and model performance criteria remain for technical design after dataset assessment.
+- Historical risk-assessment snapshots and manual condition-observation scoring are not included in the initial scope.
 
 ## 7. Business requirements still to gather
 
