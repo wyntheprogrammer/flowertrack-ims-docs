@@ -4,6 +4,18 @@
 
 All meaningful documentation and project-planning updates are recorded here.
 
+## 2026-11-02
+
+### Approved — Batch Management requirements
+- Finalized Batch Management as the module for individual batch details, status monitoring, freshness warnings, and traceability; Inventory Management remains responsible for stock movement and quantity calculations.
+- Confirmed the batch fields and removed Supplier / Source because the business sources flowers directly.
+- Confirmed required Harvest Date and optional Expected Freshness / Expiry Date.
+- Confirmed Available, Partially Used, and Depleted as quantity-derived statuses; Spoiled is marked manually.
+- Confirmed metadata-only editing, batch search/filter, detail and movement-history views, and retention of depleted/spoiled records.
+- Confirmed expiry warnings only; no automatic stock deduction or spoilage marking.
+- Confirmed the spoilage workflow: first record remaining spoiled quantity through manual Stock-Out with a required spoilage remark, then mark the batch Spoiled.
+- Updated the planning status: Batch Management is approved; Spoilage Prediction is the next module to plan. Requirements planning remains active; no module UI or backend work was started.
+
 ## 2026-11-01
 
 ### Clarified — per-module documentation and Git workflow
