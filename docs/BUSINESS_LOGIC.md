@@ -43,6 +43,19 @@
 **Deferred**
 - Stock Adjustment / Physical Inventory Counting is explicitly deferred and is not part of the current implementation scope.
 
+**Confirmed — Batch Management (2026-11-02)**
+- Every Stock-In creates one batch with an automatically generated unique Batch Number.
+- Batch records link to the originating Stock-In and flower. Date Received and Initial Quantity come from Stock-In; quantities are normalized to Stems.
+- Supplier / Source is not recorded because the business sources the flowers directly.
+- Harvest Date is required. Expected Freshness / Expiry Date is optional.
+- Remaining Quantity is controlled by Inventory Management Stock-Out allocations; Batch Management cannot directly change quantities.
+- Available, Partially Used, and Depleted statuses are derived from the relationship between Initial Quantity and Remaining Quantity.
+- Spoiled is a manually assigned status. Before a batch is marked Spoiled, its remaining spoiled quantity must be recorded as a manual Stock-Out with a required spoilage reason/remark.
+- Batch Management supports viewing batch details and movement history, searching by Batch Number or Flower Name, filtering by Flower, Status, and Date Received, and editing metadata only.
+- Depleted and spoiled batch records are retained for traceability and cannot be permanently deleted when inventory history exists.
+- Approaching freshness/expiry dates produce warnings only. Warnings do not automatically deduct stock or change batch status.
+- Spoilage Prediction does not automatically mark batches Spoiled or deduct inventory.
+
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
 - Is there an entered expiry/shelf-life date, condition score, or observation history?
