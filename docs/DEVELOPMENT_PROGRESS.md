@@ -7,6 +7,7 @@
 - **Overall status:** Initial environment setup and shared UI/dashboard foundation are complete. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Requirements planning remains in progress.
 - **Current phase:** Requirements planning — not UI implementation. Eight module scopes are approved: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management.
 - **Current task:** Plan Reports requirements, the next Supplier/Admin module after Sales and Payment Management in `MODULES.md`.
+- **Latest Order Management decisions:** Customer-order Stock-Out timing is finalized: Delivery on successful `Delivered`; Customer Pickup on `Ready for Pickup`. Confirmed reservations do not reduce physical on-hand stock. New orders are rejected when available-to-allocate stock after existing reservations is insufficient; no pending-stock queue or overselling.
 - **Next phase:** Continue planning the remaining Supplier/Admin modules in the documented order, then plan the Client modules. Begin module UI implementation only after the owner confirms requirements planning is complete.
 - **UI-first commitment:** Confirmed. Backend and database implementation start only after UI review/finalization.
 
@@ -278,3 +279,15 @@ Continue requirements planning with Order Management, the next Supplier/Admin mo
 - Confirmed daily, weekly, monthly, and yearly summaries and PDF/Excel exports.
 - No Sales and Payment Management UI, backend, database schema, payment gateway integration, or report generator was implemented.
 - Next task: plan and finalize Reports module requirements.
+
+
+### 2026-11-02 — Order fulfillment and Stock-Out rules finalized
+
+- Confirmed that stock reservation on order confirmation does not reduce physical on-hand inventory.
+- Confirmed that quantities reserved by other confirmed orders are excluded when checking stock available for a new order.
+- Confirmed that an order must be rejected when full quantity cannot be allocated; no pending-stock queue and no overselling.
+- Confirmed Delivery Stock-Out only after successful `Delivered` status.
+- Confirmed Customer Pickup Stock-Out when the order is marked `Ready for Pickup`.
+- Kept reservation and actual Stock-Out as separate coordinated operations to prevent double deduction.
+- Updated Order Management, Inventory Management, requirements, business logic, and AI continuity documentation. Documentation/planning only; no application code, UI, backend, or database behavior was implemented.
+- Next task: plan and finalize Reports requirements.
