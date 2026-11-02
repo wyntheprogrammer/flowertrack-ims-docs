@@ -419,12 +419,17 @@ resources/
 - Next Supplier/Admin module to plan: User and Access Management.
 
 
-## User and Access Management — approved role structure (2026-11-02)
+## User and Access Management — approved initial account setup (2026-11-02)
 
 - Three initial roles: Admin, Supplier/Staff, and Delivery Personnel.
 - Admin has full system access, including User and Access Management and Reports.
-- Supplier/Staff can access authorized operational modules.
-- Delivery Personnel can access delivery-work functions in Delivery Management.
-- Detailed account fields, creation workflow, password lifecycle, role-specific permissions, deactivation rules, and fixed-versus-configurable permissions remain to be finalized.
+- Supplier/Staff can access authorized operational modules; Delivery Personnel can access delivery-work functions in Delivery Management.
+- Only Admin can create Supplier/Staff and Delivery Personnel accounts; no public/self-service registration.
+- Required account fields: Full Name, Email Address, Contact Number, and Role.
+- User ID is automatically generated and unique; Email Address must be unique across user accounts.
+- Admin assigns a temporary password; first login requires the account holder to change it before continuing.
+- Passwords must be securely hashed and never stored as plain text.
+- Account Status: Active or Inactive.
+- Still to finalize: detailed role permissions and fixed/configurable permission approach; deactivation/reactivation and session/assigned-work effects; password reset/recovery; account creation notifications.
 - No User and Access Management UI, authentication changes, backend, or database schema has been implemented.
-- Current planning task: finalize the remaining User and Access Management requirements.
+- Current planning task: finalize role-specific permissions and account lifecycle rules.
