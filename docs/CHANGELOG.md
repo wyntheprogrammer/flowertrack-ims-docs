@@ -6,6 +6,14 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-03
 
+### Approved — Spoilage Prediction UI
+
+- Owner approved the sample advisory screen after matching Flower Management typography, controls, badges and pagination sizes.
+- Recorded risk summary cards, searchable/sortable/paginated table, table-only scrolling and view-only assessment modal.
+- Fixed sample assessments are not ML output; there is no automatic stock deduction or status update. Inventory owns confirmed spoilage recording.
+- Documented view/CSS/JS, app imports and replacement of the Spoilage placeholder route.
+- Owner approved local appearance; independent browser/build checks and application push remain unverified. Next: check/build and push this module, then Supplier Client Management UI.
+
 ### Accepted — Supplier sidebar links and module placeholders
 
 - Documented all twelve Supplier links, stable named routes, active highlighting and accessible current-page state.
