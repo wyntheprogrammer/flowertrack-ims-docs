@@ -4,14 +4,14 @@
 
 ## Current position
 
-- **Phase:** Supplier/Admin UI implementation; Supplier requirements planning is complete.
-- **Approved milestone:** Flower Management UI approved by the owner on 2026-11-03.
-- **Design baseline:** Use Flower Management as the reference for subsequent Supplier module screens, while retaining the approved dashboard/shared shell.
-- **Immediate task:** Build, stage, commit and push the approved Flower Management application files; verify the application push before moving on.
-- **Next module:** Inventory Management UI, following the documented module order and the Flower Management design baseline.
-- **Implementation boundary:** This is UI approval, not completion of database persistence, backend validation, authentication or inventory business logic.
-- **Verification:** JavaScript syntax and isolated search-handler checks passed during the cleanup; a full browser check and a new local production build were not independently verified in this session. Owner approval is recorded separately from those checks.
-- **Application Git status:** The latest Flower Management commit/push is not yet confirmed.
+- **Phase:** Supplier/Admin UI implementation.
+- **Approved modules:** Flower Management and Inventory Management UI, approved on 2026-11-03.
+- **Design reference:** Continue using Flower Management as the approved reference for Supplier module cards, headers, toolbars, tables, buttons, dialogs and pagination.
+- **Immediate task:** Build, stage, commit and push the approved Inventory Management application files, then verify the push.
+- **Next module:** Batch Management UI after Inventory Management push verification.
+- **Scope:** Inventory is currently a frontend prototype with sample flowers, batches, reservations, orders and movements; changes reset on refresh. Backend/database persistence and cross-module synchronization are future work.
+- **Checks:** JavaScript syntax, view/JavaScript element IDs and isolated inventory-model checks passed (FIFO splitting, reservations, fulfillment gates, duplicate order Stock-Out prevention, receipt correction bounds and unit-conversion snapshots). Full browser and current local production-build verification were not independently completed here; UI approval is the owner's confirmation.
+- **Git status:** Flower Management commit `3f580e52ef191939681ca3231c24ea4cb2f0bef6` was verified on GitHub. The Inventory Management application commit/push is not yet confirmed.
 
 ## Required workflow for every module
 
@@ -85,7 +85,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 | 0. Requirements planning and documentation | Supplier/Admin requirements finalized | Continue documenting approved UI milestones; Client-specific details can be finalized before Client implementation. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
 | 2. Shared UI foundation | Initial foundation completed | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Supplier layout and navigation foundation created locally. |
-| 3. Supplier/Admin UI | In progress | Dashboard foundation and Flower Management UI approved. Verify Flower Management application push, then implement Inventory Management using the approved module design baseline. |
+| 3. Supplier/Admin UI | In progress | Dashboard foundation, Flower Management UI and Inventory Management UI approved. Verify Inventory application push, then implement Batch Management using the Flower Management design reference. |
 | 4. Client ecommerce UI | Not started | Plan and approve Client module requirements before implementation. |
 | 5. UI review and finalization | Not started | Complete before backend. |
 | 6. Backend and database | Blocked by UI-first rule | Start after UI approval. |
@@ -97,7 +97,9 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 
 - [x] Flower Management UI reviewed and approved by the owner on 2026-11-03.
 - [x] Flower Management selected as the design reference for subsequent Supplier/Admin modules.
-- [ ] Verify the latest Flower Management application build/commit/push before starting Inventory Management UI.
+- [x] Flower Management commit `3f580e5` verified on GitHub.
+- [x] Inventory Management UI approved by the owner on 2026-11-03.
+- [ ] Verify the latest Inventory Management application build/commit/push before starting Batch Management UI.
 
 - [x] Project name: FlowerTrack IMS.
 - [x] Documentation repository name: `flowertrack-ims-docs`.
@@ -153,6 +155,23 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
+
+### 2026-11-03 — Inventory Management UI approved
+
+- **Phase:** Supplier/Admin UI implementation.
+- **Approved modules:** Flower Management and Inventory Management UI, approved on 2026-11-03.
+- **Design reference:** Continue using Flower Management as the approved reference for Supplier module cards, headers, toolbars, tables, buttons, dialogs and pagination.
+- **Immediate task:** Build, stage, commit and push the approved Inventory Management application files, then verify the push.
+- **Next module:** Batch Management UI after Inventory Management push verification.
+- **Scope:** Inventory is currently a frontend prototype with sample flowers, batches, reservations, orders and movements; changes reset on refresh. Backend/database persistence and cross-module synchronization are future work.
+- **Checks:** JavaScript syntax, view/JavaScript element IDs and isolated inventory-model checks passed (FIFO splitting, reservations, fulfillment gates, duplicate order Stock-Out prevention, receipt correction bounds and unit-conversion snapshots). Full browser and current local production-build verification were not independently completed here; UI approval is the owner's confirmation.
+- **Git status:** Flower Management commit `3f580e52ef191939681ca3231c24ea4cb2f0bef6` was verified on GitHub. The Inventory Management application commit/push is not yet confirmed.
+
+- Recorded the approved overview, Stock-In/Out, unit conversions, FIFO preview, batch details, history and search/sort/pagination screens.
+- Clarified On-Hand, Reserved, Available, Initial, Remaining, Receipt/Edit Stock-In and Minimum Stock ownership.
+- Receipt correction needs Remarks and must preserve issued-stock and reservation bounds.
+- Flower Management remains the design reference for upcoming Supplier modules.
+
 
 ### 2026-11-03 — Flower Management UI approved and adopted as reference
 
@@ -280,7 +299,7 @@ Earlier dated session entries below describe historical planning states, not the
 
 ## Next exact task
 
-Complete and verify the approved Flower Management application's build/commit/push. Then begin Inventory Management UI one step at a time, using Flower Management as the approved module-page design reference and preserving the shared Supplier dashboard scheme. Keep Client UI deferred until Supplier UI is finished; backend/database work follows full UI review.
+Complete and verify the approved Inventory Management application's build/commit/push. Then begin Batch Management UI one step at a time, using Flower Management as the approved module-page design reference. Keep Client UI deferred until Supplier UI is finished; backend/database work follows full UI review.
 
 
 ### 2026-11-02 — Delivery Management requirements
