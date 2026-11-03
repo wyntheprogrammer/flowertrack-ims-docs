@@ -4,6 +4,20 @@
 
 
 
+
+## Client Management UI — owner-approved 2026-11-03
+
+- Owner approved Supplier Client Management after removing Account Status, Registered From/To and Reset filters.
+- Approved UI: Add/Edit Client, view profile, Activate/Deactivate confirmation, sample order history and derived purchase summary.
+- Keep Show Entries, compact Client ID/name/email search, native column sorting, pagination and table-only horizontal scrolling. Reuse Flower typography and controls; do not reintroduce filter rows automatically.
+- Required name/email/contact/address, generated Client ID, automatic registration date and Active/Inactive status. Prototype email uniqueness is case-insensitive.
+- Temporary password input is creation-only and preview-only; it is cleared and never copied into client records or persisted. Actual password hashing, first-login password change, authentication, authorization and inactive-account enforcement remain backend work.
+- All client changes use in-memory sample data and reset on refresh. Sample order history is read-only. Completed Purchases sums completed sample order amounts; it is not a payment balance or final financial integration.
+- Application areas: `resources/views/supplier/clients.blade.php`, `resources/css/supplier/clients.css`, `resources/js/supplier/clients.js`, app CSS/JS imports and `routes/web.php`. Keep route `supplier.clients` at `/supplier/clients`; remove its placeholder mapping.
+- Validation: owner accepted the local UI. No independent current production build, browser execution or Client application commit/push has been verified.
+- Next task: build/check and push Client Management, verify the application push, then begin Order Management UI. The separate Client storefront panel remains deferred.
+
+
 ## Client Management controls — owner decision 2026-11-03
 
 - Remove Account Status, Registered From, Registered To and Reset controls from Client Management.
@@ -11,7 +25,7 @@
 - Remove obsolete Blade markup, CSS selectors, JavaScript event bindings and date/status filtering logic together. Never reference removed element IDs.
 - For upcoming Supplier module UI drafts, use this compact toolbar by default. Do not add extra filter rows automatically; ask for module-specific confirmation before introducing them. Previously documented Reports/Audit and other specialized filter requirements remain recorded for review when those modules are built.
 - This decision supersedes the earlier Client status/registration-date filter requirement. Client account status and registration date remain record/profile fields; status editing and activation/deactivation remain available.
-- Client UI is under revision, not yet owner-approved as a completed module. Application changes, build and push are not verified by this documentation update.
+- Client Management UI is now owner-approved after filter removal. Its application build and push remain unverified.
 ## Spoilage Prediction UI — owner-approved 2026-11-03
 
 - Owner approved the screen after typography was matched to Flower Management.
