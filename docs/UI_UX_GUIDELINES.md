@@ -3,6 +3,15 @@
 **Last updated:** 2026-11-03
 
 
+
+## Client Management controls — owner decision 2026-11-03
+
+- Remove Account Status, Registered From, Registered To and Reset controls from Client Management.
+- Keep Show Entries, compact search by Client ID/name/email, native DataTables column sorting and pagination.
+- Remove obsolete Blade markup, CSS selectors, JavaScript event bindings and date/status filtering logic together. Never reference removed element IDs.
+- For upcoming Supplier module UI drafts, use this compact toolbar by default. Do not add extra filter rows automatically; ask for module-specific confirmation before introducing them. Previously documented Reports/Audit and other specialized filter requirements remain recorded for review when those modules are built.
+- This decision supersedes the earlier Client status/registration-date filter requirement. Client account status and registration date remain record/profile fields; status editing and activation/deactivation remain available.
+- Client UI is under revision, not yet owner-approved as a completed module. Application changes, build and push are not verified by this documentation update.
 ## Spoilage Prediction UI — owner-approved 2026-11-03
 
 - Owner approved the screen after typography was matched to Flower Management.
@@ -144,7 +153,7 @@ The owner approved Flower Management UI and explicitly selected it as the visual
 - Keep header labels aligned with their body values. The accepted Flower table uses left-aligned Flower Details/Category and centered Minimum Stock/Status/Actions.
 - Keep Flower Details proportional to the other columns rather than allowing it to consume the remaining table width. The Flower-specific approved widths are 30% / 22% / 18% / 14% / 16%, with a fixed-layout table and horizontal scrolling when needed. Adapt widths to each future module's actual data.
 - Flower Management has no duplicate Flower Catalog heading, record-count badge, category/status toolbar filters or separate sort dropdown in the approved UI.
-- Adapt fields, columns, actions and any necessary filters to each module's approved scope. Reuse the design, not Flower Management's business data or an identical column list.
+- Adapt fields, columns and actions to each module's scope. Default to Show Entries, compact search, native sorting and pagination; confirm additional filters before adding them.
 - Keep Blade, CSS and JavaScript separate. Consolidate component styles rather than appending repeated conflicting overrides.
 - Review each subsequent module with the owner and follow the documentation/build/commit/push/verification cycle before proceeding.
 
