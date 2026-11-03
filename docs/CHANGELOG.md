@@ -6,6 +6,18 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-03
 
+### Approved — Batch Management UI and Inventory-owned spoilage workflow
+
+- Owner approved Batch Management UI using the Flower Management visual reference.
+- Recorded overview, batch search/list, native sorting/pagination, details/history and metadata-only editing.
+- Removed Flower/Status/Received-date filters and the separate Mark as Spoiled button.
+- Restricted horizontal scrolling to the table; results and pagination remain outside the scroller.
+- Superseded the earlier separate manual Batch marking action: Inventory spoilage Stock-Out with required remarks must also set Spoiled when it consumes the batch's remaining quantity; partial spoilage retains its usable remainder. No duplicate deduction, expiry-triggered spoilage or ML-triggered deduction.
+- Updated canonical requirements, business logic and workflows alongside progress, plan, AI context and design guidance.
+- Verified Inventory commit `e758bf8` on GitHub. Batch application build/commit/push still requires verification; backend cross-module behavior remains future work.
+- Next module after push verification: Spoilage Prediction UI.
+
+
 ### Approved — Inventory Management UI
 
 - Owner approved the Inventory Management local UI prototype.
