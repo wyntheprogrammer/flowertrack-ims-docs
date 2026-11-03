@@ -6,6 +6,14 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-03
 
+### Approved — Order Management UI
+
+- Owner approved Add/Edit, multi-item orders, details, status transitions, cancellation reasons/history and the compact table UI.
+- Clarified that Mark Confirmed approves/reserves; pickup Stock-Out occurs at Ready for Pickup and collection moves to Completed without another deduction.
+- Delivery prototype stops at Ready for Delivery; future Delivered processing belongs to Delivery Management with Inventory coordination.
+- Recorded standalone sample availability/reservation checks, immutable existing item price snapshots, sample fee and read-only payment boundary.
+- No independent build/browser run or Order application push verified. Next: build/check and push, verify success, then Delivery Management UI.
+
 ### Approved — Supplier Client Management UI
 
 - Owner accepted the revised UI without Account Status, registration-date or Reset filters.
