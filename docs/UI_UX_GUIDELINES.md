@@ -2,6 +2,20 @@
 
 **Last updated:** 2026-11-03
 
+
+## Spoilage Prediction UI — owner-approved 2026-11-03
+
+- Owner approved the screen after typography was matched to Flower Management.
+- Four summary cards: monitored batches, Low, Medium and combined High/Critical risk.
+- Card-contained heading, compact Show Entries/search, native DataTables column sorting (risk severity order), pagination and table-only horizontal scrolling.
+- View-only assessment modal shows batch/flower information, remaining stems, receiving/harvest/optional freshness dates, sample assessment date, indicators and recommended actions.
+- Typography reference: title 25px, description 13px, table headers 11px, body/name 12px, code and risk badges 10px, search/select 12px, results info 11px and pagination 12px. Controls are 40px high; desktop action buttons 32px; modal title 19px.
+- Fixed sample assessment date: 2026-11-03. Risk levels are explicit sample values, not computed predictions. No trained ML model, confidence score or accuracy claim.
+- No stock deduction or batch-status mutation. Confirmed spoilage remains an Inventory Stock-Out with required remarks; a passed freshness date does not establish spoilage.
+- Files: `resources/views/supplier/spoilage-prediction.blade.php`, `resources/css/supplier/spoilage-prediction.css`, `resources/js/supplier/spoilage-prediction.js`; CSS/JS imports in `resources/css/app.css` and `resources/js/app.js`.
+- Replace the spoilage placeholder with an explicit view route, keeping `/supplier/spoilage-prediction` and `supplier.spoilage-prediction`.
+- Validation: owner approved the local appearance. No independent browser run, current production build or application commit/push was verified for this module.
+- Next exact task: build/check, commit and push Spoilage Prediction UI, verify push, then begin Supplier Client Management UI. The separate Client panel remains deferred.
 ## 1. Overall design direction
 
 - Platform: web application.
