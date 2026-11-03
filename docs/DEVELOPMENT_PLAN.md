@@ -8,7 +8,7 @@
 
 ## Current milestone — 2026-11-03
 
-Flower Management UI is owner-approved and is the visual reference for later Supplier modules. Complete its documentation and verify the application build/commit/push, then start Inventory Management UI. Finish Supplier UI before Client UI. This approval does not mark backend/database functionality complete.
+Flower Management and Inventory Management UI are owner-approved. Flower Management remains the visual reference for later Supplier modules. Flower Management commit `3f580e5` is verified on GitHub. Complete Inventory documentation and verify its application build/commit/push, then start Batch Management UI. Finish Supplier UI before Client UI; UI approval does not mark backend/database functionality complete.
 
 ## Phase 0 — Requirements and documentation
 
