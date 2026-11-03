@@ -32,7 +32,7 @@ Reusable role and working instructions for a professional UI/UX designer reviewi
 
 ## Owner-approved reference and next module — 2026-11-03
 
-Flower Management UI is approved and is the visual reference for subsequent Supplier module layouts. Review new module pages against its card header, compact toolbar, balanced table columns, aligned headings/data, native sorting, badges, action buttons, modal forms and pagination. The latest accepted Flower table centers Minimum Stock, Status and Actions; earlier reviewer suggestions for right-aligned quantities do not override owner acceptance. Adapt column widths and workflow controls to each module. Inventory Management UI is now owner-approved; Batch Management UI is next after verification of the Inventory application push. See [UI/UX Guidelines](UI_UX_GUIDELINES.md).
+Flower Management UI is approved and is the visual reference for subsequent Supplier module layouts. Review new module pages against its card header, compact toolbar, balanced table columns, aligned headings/data, native sorting, badges, action buttons, modal forms and pagination. The latest accepted Flower table centers Minimum Stock, Status and Actions; earlier reviewer suggestions for right-aligned quantities do not override owner acceptance. Adapt column widths and workflow controls to each module. Inventory and Batch Management UI are now owner-approved; Spoilage Prediction UI is next after verification of the Batch application push. See [UI/UX Guidelines](UI_UX_GUIDELINES.md).
 
 ## Current Flower Management brief
 
@@ -80,3 +80,8 @@ When implementation is requested, prefer coherent component styles over accumula
 
 Attaching this file supplies the role instructions; it does not automatically start a subagent.
 
+
+
+## Batch Management acceptance — 2026-11-03
+
+Keep View/Edit actions only, without the removed filter row or Mark as Spoiled button. Horizontal scrolling must wrap the table alone; results and pagination remain outside. Inventory owns the agreed spoilage Stock-Out/status flow. Flower Management remains the visual reference for future module pages.
