@@ -3,6 +3,15 @@
 **Last updated:** 2026-11-03
 
 
+
+## Client Management controls — owner decision 2026-11-03
+
+- Remove Account Status, Registered From, Registered To and Reset controls from Client Management.
+- Keep Show Entries, compact search by Client ID/name/email, native DataTables column sorting and pagination.
+- Remove obsolete Blade markup, CSS selectors, JavaScript event bindings and date/status filtering logic together. Never reference removed element IDs.
+- For upcoming Supplier module UI drafts, use this compact toolbar by default. Do not add extra filter rows automatically; ask for module-specific confirmation before introducing them. Previously documented Reports/Audit and other specialized filter requirements remain recorded for review when those modules are built.
+- This decision supersedes the earlier Client status/registration-date filter requirement. Client account status and registration date remain record/profile fields; status editing and activation/deactivation remain available.
+- Client UI is under revision, not yet owner-approved as a completed module. Application changes, build and push are not verified by this documentation update.
 ## Spoilage Prediction UI — owner-approved 2026-11-03
 
 - Owner approved the screen after typography was matched to Flower Management.
@@ -429,7 +438,7 @@ The Client Panel must have a distinct ecommerce-style user experience.
 - View all registered clients and each client's complete profile.
 - Add a client manually, edit client information, and activate/deactivate client accounts.
 - Search by Client ID, Full Name, or Email Address.
-- Filter by Account Status and Registration Date.
+- Owner decision (2026-11-03): no Account Status or Registration Date filters or Reset control. Keep Show Entries, search, native column sorting and pagination.
 - View the client's complete Order History and Purchase Summary.
 
 **Confirmed business rules**
