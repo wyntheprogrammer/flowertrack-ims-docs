@@ -1,6 +1,6 @@
 # Supplier Side UI Design Reference
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-03
 
 **Status:** Confirmed visual reference for the Supplier/Admin (Supplier Side) UI.
 
@@ -71,3 +71,21 @@ The logo-specific instructions apply when an actual FlowerTrack IMS logo is prov
 - [Requirements](REQUIREMENTS.md)
 - [System Modules](MODULES.md)
 - [AI Context](AI_CONTEXT.md)
+
+
+## Approved module UI reference — Flower Management (2026-11-03)
+
+The owner approved Flower Management UI and explicitly selected it as the visual reference for the next Supplier/Admin modules. Preserve the approved dashboard and shared shell; use Flower Management for module-page cards, toolbars, tables and dialogs.
+
+- Put the module heading, short description and primary action inside the card header.
+- Use a compact toolbar with Show Entries on the left and a compact search field on the right, separated by space; stack controls on narrow screens.
+- Keep the approved colors, typography, button/icon treatment, card borders/radii, spacing, row density, status badges, modal forms and footer/pagination styling consistent.
+- Use DataTables native sortable column headers. Actions is unsortable; do not add a separate Sort dropdown.
+- Keep header labels aligned with their body values. The accepted Flower table uses left-aligned Flower Details/Category and centered Minimum Stock/Status/Actions.
+- Keep Flower Details proportional to the other columns rather than allowing it to consume the remaining table width. The Flower-specific approved widths are 30% / 22% / 18% / 14% / 16%, with a fixed-layout table and horizontal scrolling when needed. Adapt widths to each future module's actual data.
+- Flower Management has no duplicate Flower Catalog heading, record-count badge, category/status toolbar filters or separate sort dropdown in the approved UI.
+- Adapt fields, columns, actions and any necessary filters to each module's approved scope. Reuse the design, not Flower Management's business data or an identical column list.
+- Keep Blade, CSS and JavaScript separate. Consolidate component styles rather than appending repeated conflicting overrides.
+- Review each subsequent module with the owner and follow the documentation/build/commit/push/verification cycle before proceeding.
+
+Reference application files: `resources/views/supplier/flowers.blade.php`, `resources/css/supplier/flowers.css`, and `resources/js/supplier/flowers.js`. The owner approved the local UI; the latest application push still requires verification.
