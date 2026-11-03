@@ -23,7 +23,7 @@ The project owner supplied the following module order. This is also the initial 
 
 ### Supplier/Admin UI notes
 
-- **2026-11-03:** Flower Management UI is owner-approved and is the visual reference for the next Supplier modules. Inventory Management UI is next after the Flower Management application push is verified. Reuse styling while preserving each module's own business workflow.
+- **2026-11-03:** Flower Management UI is owner-approved and is the visual reference for the next Supplier modules. Inventory Management UI is also approved; Batch Management UI is next after the Inventory Management application push is verified. Reuse styling while preserving each module's own business workflow.
 
 - Management-oriented layout.
 - Desktop-first and responsive.
@@ -52,6 +52,8 @@ The project owner supplied the following module order. This is also the initial 
 - Inventory unit/conversion belongs to Inventory Management. The minimum stock threshold is configured per flower in Flower Management. Selling prices are owned by Sales and Payment Management, not Flower Management.
 
 #### Inventory Management — approved scope (2026-11-02)
+
+**UI status — 2026-11-03:** Owner-approved local frontend prototype. Includes overview, Inventory List/History, Stock-In/Out, FIFO allocation preview, batch details, Stock-In editing and unit configuration. Follow the Flower Management design reference. Backend persistence and application push are tracked separately.
 
 **Purpose:** Monitor consolidated flower stock, receive and issue stock, track batches, and review every stock movement.
 
