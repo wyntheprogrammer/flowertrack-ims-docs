@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-03
 
+### Changed — Client toolbar and future Supplier UI defaults
+
+- Owner removed Account Status, Registered From/To and Reset controls from Client Management; supersedes earlier filter requirements for that module.
+- Keep Show Entries, compact search, native column sorting and pagination. Remove corresponding markup, styling and JS bindings together.
+- Future Supplier UI drafts should not introduce extra filter rows automatically; confirm specialized filters when building the relevant module.
+- Client UI remains under revision; no application build/push or completion approval is claimed.
+
 ### Approved — Spoilage Prediction UI
 
 - Owner approved the sample advisory screen after matching Flower Management typography, controls, badges and pagination sizes.
