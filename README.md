@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-03  
-**Project status:** Supplier/Admin UI implementation is underway. The owner approved Flower Management UI on 2026-11-03 and designated it as the reference for subsequent Supplier module layouts. First document this milestone and verify the Flower Management application build/commit/push; Inventory Management UI is next. Client UI remains deferred until Supplier UI is finished. Backend/database work remains deferred under the UI-first rule.
+**Project status:** Supplier/Admin UI implementation is underway. Flower Management and Inventory Management UI are owner-approved as of 2026-11-03. Flower Management remains the visual reference for subsequent Supplier modules. Verify the Inventory Management application build/commit/push, then begin Batch Management UI. Client UI remains deferred until Supplier UI is finished; backend/database implementation follows UI review.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -40,7 +40,7 @@ For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. Flower Management UI is now owner-approved locally; its latest application commit/push is not yet confirmed. Inventory Management UI follows after push verification. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. Flower Management commit `3f580e5` has been verified on GitHub. Inventory Management UI is now owner-approved locally; its latest application build/commit/push still needs verification. Batch Management UI is next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
 
 ## Repository structure
 
