@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-03
 
+### Accepted — Supplier sidebar links and module placeholders
+
+- Documented all twelve Supplier links, stable named routes, active highlighting and accessible current-page state.
+- Recorded grouped Supplier routes and a reusable Coming Soon view for eight upcoming modules; replace each mapping with its actual view when implemented.
+- Verified Batch application commit `4472a2a8f471b81ec91be03db11bb67e3f8d861f` (`Complete approved Batch Management UI`) on GitHub.
+- Navigation setup is owner-accepted; its local runtime checks and application push remain unverified. Next module is Spoilage Prediction UI; backend work remains deferred.
+
 ### Approved — Batch Management UI and Inventory-owned spoilage workflow
 
 - Owner approved Batch Management UI using the Flower Management visual reference.
