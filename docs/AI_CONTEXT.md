@@ -3,6 +3,20 @@
 **Last updated:** 2026-11-03
 
 
+
+## Client Management UI — owner-approved 2026-11-03
+
+- Owner approved Supplier Client Management after removing Account Status, Registered From/To and Reset filters.
+- Approved UI: Add/Edit Client, view profile, Activate/Deactivate confirmation, sample order history and derived purchase summary.
+- Keep Show Entries, compact Client ID/name/email search, native column sorting, pagination and table-only horizontal scrolling. Reuse Flower typography and controls; do not reintroduce filter rows automatically.
+- Required name/email/contact/address, generated Client ID, automatic registration date and Active/Inactive status. Prototype email uniqueness is case-insensitive.
+- Temporary password input is creation-only and preview-only; it is cleared and never copied into client records or persisted. Actual password hashing, first-login password change, authentication, authorization and inactive-account enforcement remain backend work.
+- All client changes use in-memory sample data and reset on refresh. Sample order history is read-only. Completed Purchases sums completed sample order amounts; it is not a payment balance or final financial integration.
+- Application areas: `resources/views/supplier/clients.blade.php`, `resources/css/supplier/clients.css`, `resources/js/supplier/clients.js`, app CSS/JS imports and `routes/web.php`. Keep route `supplier.clients` at `/supplier/clients`; remove its placeholder mapping.
+- Validation: owner accepted the local UI. No independent current production build, browser execution or Client application commit/push has been verified.
+- Next task: build/check and push Client Management, verify the application push, then begin Order Management UI. The separate Client storefront panel remains deferred.
+
+
 ## Client Management controls — owner decision 2026-11-03
 
 - Remove Account Status, Registered From, Registered To and Reset controls from Client Management.
@@ -10,14 +24,14 @@
 - Remove obsolete Blade markup, CSS selectors, JavaScript event bindings and date/status filtering logic together. Never reference removed element IDs.
 - For upcoming Supplier module UI drafts, use this compact toolbar by default. Do not add extra filter rows automatically; ask for module-specific confirmation before introducing them. Previously documented Reports/Audit and other specialized filter requirements remain recorded for review when those modules are built.
 - This decision supersedes the earlier Client status/registration-date filter requirement. Client account status and registration date remain record/profile fields; status editing and activation/deactivation remain available.
-- Client UI is under revision, not yet owner-approved as a completed module. Application changes, build and push are not verified by this documentation update.
+- Client Management UI is now owner-approved after filter removal. Its application build and push remain unverified.
 ## Current development state — 2026-11-03
 
 - **Phase:** Supplier/Admin UI implementation.
-- **Approved UI modules:** Flower Management, Inventory Management, Batch Management and Spoilage Prediction (owner-approved on 2026-11-03).
+- **Approved UI modules:** Flower Management, Inventory Management, Batch Management, Spoilage Prediction and Supplier Client Management (owner-approved on 2026-11-03).
 - **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
-- **Current task:** Build/check, commit and push the approved Spoilage Prediction UI; verify the application push. Earlier navigation push remains unverified.
-- **Next module:** Supplier Client Management UI after Spoilage Prediction application push verification.
+- **Current task:** Build/check, commit and push the approved Supplier Client Management UI, then verify the application push.
+- **Next module:** Order Management UI after Client Management application push verification.
 - **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
 - **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
 - **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
@@ -51,7 +65,7 @@ The owner accepted the shared sidebar link and route setup. Keep `Route::prefix(
 | Inventory Management | /supplier/inventory | supplier.inventory | supplier.inventory |
 | Batch Management | /supplier/batches | supplier.batches | supplier.batches |
 | Spoilage Prediction | /supplier/spoilage-prediction | supplier.spoilage-prediction | supplier.spoilage-prediction |
-| Client Management | /supplier/clients | supplier.clients | supplier.module-placeholder |
+| Client Management | /supplier/clients | supplier.clients | supplier.clients |
 | Order Management | /supplier/orders | supplier.orders | supplier.module-placeholder |
 | Delivery Management | /supplier/deliveries | supplier.deliveries | supplier.module-placeholder |
 | Sales & Payments | /supplier/sales-payments | supplier.sales-payments | supplier.module-placeholder |
