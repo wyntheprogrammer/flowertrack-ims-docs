@@ -5,6 +5,27 @@
 
 
 
+
+## Order Management UI — owner-approved 2026-11-03
+
+This is the latest UI milestone and next-task reference; older milestone sections retain their historical context.
+
+- Owner accepted the supplied Order Management UI after clarification of approval and completion flows.
+- Approved screen: Add/Edit orders before Processing, multiple flower items, generated Order ID, registered client selection, Delivery/Pickup, required delivery address, optional notes, price snapshots, calculated subtotal/fee/total, view details, status history and cancellation with a reason.
+- Reuse Flower typography, Show Entries, compact search, native column sorting, pagination and table-only horizontal scrolling. No extra filter row.
+- Approval is in Order Management: Pending → Confirmed via the next-status arrow and Mark Confirmed. Confirmation checks full sample availability and reserves stock without reducing physical on-hand.
+- Pickup flow: Pending → Confirmed → Processing → Ready for Pickup → Completed. Ready for Pickup simulates Stock-Out once; completion confirms collection without another deduction.
+- Delivery flow: Pending → Confirmed → Processing → Ready for Delivery → Out for Delivery → Completed. This prototype stops at Ready for Delivery; Delivery Management will own dispatch and Delivered proof. Future successful Delivered coordinates Inventory Stock-Out and Order completion.
+- Order Status and Payment Status are separate. Payments are read-only samples; Sales & Payments owns transactions and refunds.
+- Reject insufficient full sample allocation; aggregate repeated flower quantities. No partial fulfillment or pending-stock queue. Pending orders do not reserve stock.
+- Preserve cancellation reasons/history; release active reservations on cancellation. Completed orders cannot be cancelled. Already-stocked-out orders are blocked from cancellation in this prototype until future Inventory correction integration.
+- Prototype boundaries: separate in-memory sample clients, flowers, aggregate stock and orders; reset on refresh. No actual Inventory/FIFO, Delivery record, payment, Sales record, database, authorization or cross-module synchronization.
+- Sample fixed delivery fee is PHP 150 for UI review only; actual system configuration remains undecided. Editing an order with sample payments blocks total changes until future financial adjustment integration.
+- Files: `resources/views/supplier/orders.blade.php`, `resources/css/supplier/orders.css`, `resources/js/supplier/orders.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/orders` and `supplier.orders`; replace the orders placeholder mapping.
+- Validation: owner approved local UI; independent production build, browser execution and Order application commit/push have not been verified.
+- Current task: build/check, stage, commit and push Order Management; verify push. Next module: Delivery Management UI. Separate Client storefront and backend/database work remain deferred.
+
+
 ## Client Management UI — owner-approved 2026-11-03
 
 - Owner approved Supplier Client Management after removing Account Status, Registered From/To and Reset filters.
