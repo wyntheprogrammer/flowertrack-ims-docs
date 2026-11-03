@@ -1,6 +1,19 @@
 # AI Context — FlowerTrack IMS
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-03
+
+## Current development state — 2026-11-03
+
+- **Phase:** Supplier/Admin UI implementation; Supplier requirements planning is complete.
+- **Approved milestone:** Flower Management UI approved by the owner on 2026-11-03.
+- **Design baseline:** Use Flower Management as the reference for subsequent Supplier module screens, while retaining the approved dashboard/shared shell.
+- **Immediate task:** Build, stage, commit and push the approved Flower Management application files; verify the application push before moving on.
+- **Next module:** Inventory Management UI, following the documented module order and the Flower Management design baseline.
+- **Implementation boundary:** This is UI approval, not completion of database persistence, backend validation, authentication or inventory business logic.
+- **Verification:** JavaScript syntax and isolated search-handler checks passed during the cleanup; a full browser check and a new local production build were not independently verified in this session. Owner approval is recorded separately from those checks.
+- **Application Git status:** The latest Flower Management commit/push is not yet confirmed.
+
+This current state supersedes earlier dated planning/next-step statements and old repository-tree snapshots below. Use [UI/UX Guidelines](UI_UX_GUIDELINES.md) for the approved Flower Management module-page reference.
 
 ## Role and working style
 
@@ -65,7 +78,7 @@ The owner completed and browser-tested the initial Bootstrap integration locally
 - Replaced the Laravel starter welcome view with a simple FlowerTrack IMS Bootstrap verification page.
 - Confirmed in the browser at http://127.0.0.1:8000 that the page displays the FlowerTrack IMS heading and Bootstrap 5.3.8 Ready badge.
 
-The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. The project is currently in requirements-planning: Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Delivery Management includes a fixed system-configured delivery fee and Client Panel tracking of delivery status and scheduled delivery information. Sales and Payment Management includes manual flower pricing, sales recognition on order completion, Cash/Bank Transfer/E-wallet, Admin payment verification, partial/multiple payments, Admin-managed refunds, completed-order sales reporting less refunds, and daily-to-yearly PDF/Excel reports. Reports is the next Supplier/Admin module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
+The Bootstrap foundation and initial Supplier/Admin UI were committed and pushed to the application repository. The initial Supplier/Admin and Client starter UI commit was `488a4eb` (`Build initial Supplier and Client UI layouts`). The owner later confirmed the logo update and Bootstrap Icons refinement build/push. Client feature screens and backend/database work remain future work. Historical requirements-planning snapshot (superseded by the current development state above): Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Delivery Management includes a fixed system-configured delivery fee and Client Panel tracking of delivery status and scheduled delivery information. Sales and Payment Management includes manual flower pricing, sales recognition on order completion, Cash/Bank Transfer/E-wallet, Admin payment verification, partial/multiple payments, Admin-managed refunds, completed-order sales reporting less refunds, and daily-to-yearly PDF/Excel reports. Reports is the next Supplier/Admin module to plan. Do not begin module UI implementation until the owner confirms the full planning phase is complete.
 
 ## Verified application repository structure
 
@@ -249,19 +262,7 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 
 ## UI-first rule
 
-The user wants to complete requirements planning before proceeding with module UI implementation. The current phase is requirements planning, not UI coding. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, Sales and Payment Management, and Reports requirements are approved. Continue through the remaining Supplier/Admin modules in the order in `MODULES.md`, then plan the Client modules. Only after the owner confirms that the planned module requirements have been finalized should module UI implementation proceed. After UI review/finalization, begin backend and database work.
-
-High-level sequence:
-1. Environment setup and shared UI foundation (completed baseline).
-2. Requirements planning and approval for all Supplier/Admin modules.
-3. Requirements planning and approval for Client modules.
-4. Supplier/Admin UI implementation in the documented module order.
-5. Client ecommerce-style UI implementation.
-6. UI review and finalization.
-7. Backend and database.
-8. Integration, algorithms, testing, and deployment.
-
-Do not jump from an approved module scope directly into its UI while the owner is still planning the remaining modules. Do not begin backend implementation before UI review/finalization.
+Supplier/Admin requirements planning is complete and module UI implementation is underway. Flower Management UI is owner-approved and establishes the visual reference for subsequent Supplier modules. Verify its application build/commit/push before beginning Inventory Management UI. Finish Supplier UI before Client UI, and complete full UI review before backend/database implementation. Continue one module and one focused implementation step at a time.
 
 ## UI design rules
 
