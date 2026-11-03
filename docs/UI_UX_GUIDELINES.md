@@ -134,4 +134,38 @@ The owner approved Flower Management UI and explicitly selected it as the visual
 - Keep Blade, CSS and JavaScript separate. Consolidate component styles rather than appending repeated conflicting overrides.
 - Review each subsequent module with the owner and follow the documentation/build/commit/push/verification cycle before proceeding.
 
-Reference application files: `resources/views/supplier/flowers.blade.php`, `resources/css/supplier/flowers.css`, and `resources/js/supplier/flowers.js`. The owner approved the local UI; the latest application push still requires verification.
+Reference application files: `resources/views/supplier/flowers.blade.php`, `resources/css/supplier/flowers.css`, and `resources/js/supplier/flowers.js`. The owner approved the local Flower UI; its application commit `3f580e5` was subsequently verified on GitHub.
+
+
+## Inventory Management UI — owner-approved (2026-11-03)
+
+The owner approved the Inventory Management UI after reviewing its screens and the meanings of its stock fields. Keep the approved Flower Management visual pattern for this and later Supplier modules.
+
+### Approved prototype screens and interactions
+
+- Overview cards for On-Hand, Reserved, Available and Stock Alerts.
+- Inventory List and Inventory History tabs with compact Show Entries/search controls, native DataTables header sorting and pagination; Actions remains unsortable.
+- Stock-In modal with generated Batch Number, flower, quantity/unit conversion to Stems, Date Received, required Harvest Date, optional freshness/expiry date and Remarks.
+- Stock-Out modal with FIFO allocation preview, automatic multi-batch splitting, insufficient-stock prevention, spoilage remarks and an authorized batch-override prototype.
+- Customer-order Stock-Out sample flow honors Delivered for Delivery and Ready for Pickup for Pickup, issues the full quantity and prevents repeating the same sample order Stock-Out.
+- Batch Details with quantities, dates, statuses and movement history; its Receipt edit action opens Edit Stock-In.
+- Per-flower Bunch/Bundle/Box conversion settings; Stem remains the base unit and existing batch conversion snapshots are preserved.
+- Separate `resources/views/supplier/inventory.blade.php`, `resources/css/supplier/inventory.css` and `resources/js/supplier/inventory.js`; assets use the existing app imports/Vite pipeline, with the Inventory route and sidebar link.
+
+### Stock terminology and ownership clarified
+
+| Term | Meaning |
+| --- | --- |
+| On-Hand | Physical stock remaining in usable batches, including reserved quantities |
+| Reserved | Stock held for confirmed orders and not yet stocked out |
+| Available | On-Hand minus Reserved |
+| Initial | Recorded quantity received into a batch; corrected when its Stock-In is corrected |
+| Remaining | Batch quantity after actual Stock-Out; reservations alone do not reduce it |
+| Receipt action | Edits the Stock-In that created the batch; not a payment receipt |
+| Minimum Stock | Configured in Flower Management; Inventory displays/uses it for low-stock monitoring |
+
+Stock-In correction requires explanatory Remarks. The prototype prevents reducing a receipt below quantities already issued or reducing on-hand stock below existing reservations. No separate reversal or physical-count/stock-adjustment screen was added.
+
+### Implementation and next task
+
+This approval covers the local UI prototype. Sample data is held separately from Flower Management and resets on refresh; common persisted flower/minimum-stock values, authorization and server-side transaction rules remain for backend integration. The documentation update does not claim a successful Inventory application push. Verify that build/commit/push before starting Batch Management UI.
