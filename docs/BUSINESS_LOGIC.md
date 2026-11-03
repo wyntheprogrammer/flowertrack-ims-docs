@@ -1,6 +1,6 @@
 # Business Logic
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-03
 
 **Status:** Partially confirmed. Only rules explicitly approved by the project owner are listed as confirmed below. All other rules remain undecided.
 
@@ -50,8 +50,8 @@
 - Harvest Date is required. Expected Freshness / Expiry Date is optional.
 - Remaining Quantity is controlled by Inventory Management Stock-Out allocations; Batch Management cannot directly change quantities.
 - Available, Partially Used, and Depleted statuses are derived from the relationship between Initial Quantity and Remaining Quantity.
-- Spoiled is a manually assigned status. Before a batch is marked Spoiled, its remaining spoiled quantity must be recorded as a manual Stock-Out with a required spoilage reason/remark.
-- Batch Management supports viewing batch details and movement history, searching by Batch Number or Flower Name, filtering by Flower, Status, and Date Received, and editing metadata only.
+- Updated 2026-11-03: the user records spoilage through Inventory Stock-Out with required remarks. When that Stock-Out consumes the batch's remaining quantity, the backend transaction also sets the batch to Spoiled. Partial spoilage leaves its usable remainder. No separate Batch marking action or second deduction.
+- Batch Management supports details/history, Batch Number/Flower search, pagination, native sorting and metadata-only editing. The Flower/Status/Date filter row and separate spoilage-marking action were removed from the approved UI on 2026-11-03.
 - Depleted and spoiled batch records are retained for traceability and cannot be permanently deleted when inventory history exists.
 - Approaching freshness/expiry dates produce warnings only. Warnings do not automatically deduct stock or change batch status.
 - Spoilage Prediction does not automatically mark batches Spoiled or deduct inventory.
@@ -288,3 +288,17 @@ Each audit event should store, where applicable:
 
 ### Implementation status
 These requirements are finalized and documented only. No Audit Trail UI, event-capture implementation, export/print functionality, backend, or database schema has been implemented.
+
+
+### Updated — spoilage workflow and Batch controls (2026-11-03)
+
+This owner-approved change supersedes the earlier separate manual Mark as Spoiled action in Batch Management.
+
+- The user records a Stock-Out with purpose Spoilage and required explanatory remarks in Inventory Management.
+- For partial spoilage, deduct only the spoiled quantity; retain the usable remainder and its quantity-derived batch status.
+- When a spoilage Stock-Out consumes a batch's entire remaining quantity, the backend transaction must also set that batch's status to Spoiled, without a second stock deduction.
+- A batch depleted by ordinary consumption remains Depleted; a passed freshness date or ML prediction does not mark it Spoiled.
+- Batch Management displays the resulting status and supports viewing/history and metadata editing. It has no separate Mark as Spoiled button.
+- Keep depleted/spoiled batches and their transaction history.
+- Batch listing uses search, Show Entries, native column sorting and pagination. Flower/status/received-date filter controls were removed from the approved UI.
+- These cross-module status updates are the agreed backend behavior; current separate sample-data prototypes do not implement shared persistence.
