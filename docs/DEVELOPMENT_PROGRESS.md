@@ -5,13 +5,15 @@
 ## Current position
 
 - **Phase:** Supplier/Admin UI implementation.
-- **Approved modules:** Flower Management and Inventory Management UI, approved on 2026-11-03.
-- **Design reference:** Continue using Flower Management as the approved reference for Supplier module cards, headers, toolbars, tables, buttons, dialogs and pagination.
-- **Immediate task:** Build, stage, commit and push the approved Inventory Management application files, then verify the push.
-- **Next module:** Batch Management UI after Inventory Management push verification.
-- **Scope:** Inventory is currently a frontend prototype with sample flowers, batches, reservations, orders and movements; changes reset on refresh. Backend/database persistence and cross-module synchronization are future work.
-- **Checks:** JavaScript syntax, view/JavaScript element IDs and isolated inventory-model checks passed (FIFO splitting, reservations, fulfillment gates, duplicate order Stock-Out prevention, receipt correction bounds and unit-conversion snapshots). Full browser and current local production-build verification were not independently completed here; UI approval is the owner's confirmation.
-- **Git status:** Flower Management commit `3f580e52ef191939681ca3231c24ea4cb2f0bef6` was verified on GitHub. The Inventory Management application commit/push is not yet confirmed.
+- **Approved UI modules:** Flower Management, Inventory Management and Batch Management (owner-approved on 2026-11-03).
+- **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
+- **Current task:** Build, stage, commit and push the approved Batch Management application files; verify the push before continuing.
+- **Next module:** Spoilage Prediction UI after Batch Management application push verification.
+- **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
+- **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
+- **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
+- **Checks:** Batch JavaScript syntax and isolated metadata/spoilage-rule checks passed; owner approved the local UI. Full browser validation and the final local production build were not independently run here.
+- **Application Git:** Flower commit `3f580e5` and Inventory commit `e758bf83be6b795cafbe85a458edd9c1db8e89c1` are verified on GitHub. Batch Management application push is not yet confirmed.
 
 ## Required workflow for every module
 
@@ -85,7 +87,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 | 0. Requirements planning and documentation | Supplier/Admin requirements finalized | Continue documenting approved UI milestones; Client-specific details can be finalized before Client implementation. |
 | 1. Environment setup | Completed | XAMPP, PHP, Composer, Laravel, PHP extensions, VS Code, Node.js, npm, and local Laravel startup verified. |
 | 2. Shared UI foundation | Initial foundation completed | Bootstrap 5.3.8 and Popper 2.11.8 installed locally; Vite build and browser verification passed. Supplier layout and navigation foundation created locally. |
-| 3. Supplier/Admin UI | In progress | Dashboard foundation, Flower Management UI and Inventory Management UI approved. Verify Inventory application push, then implement Batch Management using the Flower Management design reference. |
+| 3. Supplier/Admin UI | In progress | Dashboard foundation plus Flower, Inventory and Batch Management UI approved. Verify Batch application push, then implement Spoilage Prediction UI. |
 | 4. Client ecommerce UI | Not started | Plan and approve Client module requirements before implementation. |
 | 5. UI review and finalization | Not started | Complete before backend. |
 | 6. Backend and database | Blocked by UI-first rule | Start after UI approval. |
@@ -99,7 +101,9 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [x] Flower Management selected as the design reference for subsequent Supplier/Admin modules.
 - [x] Flower Management commit `3f580e5` verified on GitHub.
 - [x] Inventory Management UI approved by the owner on 2026-11-03.
-- [ ] Verify the latest Inventory Management application build/commit/push before starting Batch Management UI.
+- [x] Inventory Management application commit `e758bf8` verified on GitHub.
+- [x] Batch Management UI approved on 2026-11-03, including removal of filters/Mark as Spoiled and table-only scrolling.
+- [ ] Verify the approved Batch Management application build/commit/push before Spoilage Prediction UI.
 
 - [x] Project name: FlowerTrack IMS.
 - [x] Documentation repository name: `flowertrack-ims-docs`.
@@ -155,6 +159,22 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [ ] Confirm single-store versus multi-branch scope.
 
 ## Session log
+
+### 2026-11-03 — Batch Management UI approved; spoilage ownership simplified
+
+- **Phase:** Supplier/Admin UI implementation.
+- **Approved UI modules:** Flower Management, Inventory Management and Batch Management (owner-approved on 2026-11-03).
+- **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
+- **Current task:** Build, stage, commit and push the approved Batch Management application files; verify the push before continuing.
+- **Next module:** Spoilage Prediction UI after Batch Management application push verification.
+- **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
+- **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
+- **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
+- **Checks:** Batch JavaScript syntax and isolated metadata/spoilage-rule checks passed; owner approved the local UI. Full browser validation and the final local production build were not independently run here.
+- **Application Git:** Flower commit `3f580e5` and Inventory commit `e758bf83be6b795cafbe85a458edd9c1db8e89c1` are verified on GitHub. Batch Management application push is not yet confirmed.
+
+Earlier dated planning entries retain historical decisions. The 2026-11-03 workflow supersedes the separate Batch Mark as Spoiled action and filter row.
+
 
 ### 2026-11-03 — Inventory Management UI approved
 
@@ -299,7 +319,7 @@ Earlier dated session entries below describe historical planning states, not the
 
 ## Next exact task
 
-Complete and verify the approved Inventory Management application's build/commit/push. Then begin Batch Management UI one step at a time, using Flower Management as the approved module-page design reference. Keep Client UI deferred until Supplier UI is finished; backend/database work follows full UI review.
+Complete and verify the approved Batch Management application's build/commit/push. Then begin Spoilage Prediction UI one step at a time, using the approved Supplier module design. Preserve the Inventory-owned spoilage workflow; Client UI follows Supplier UI, and backend/database implementation follows full UI review.
 
 
 ### 2026-11-02 — Delivery Management requirements
