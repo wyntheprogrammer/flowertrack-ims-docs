@@ -4,16 +4,16 @@
 
 ## Current development state — 2026-11-03
 
-- **Phase:** Supplier/Admin UI implementation; Supplier requirements planning is complete.
-- **Approved milestone:** Flower Management UI approved by the owner on 2026-11-03.
-- **Design baseline:** Use Flower Management as the reference for subsequent Supplier module screens, while retaining the approved dashboard/shared shell.
-- **Immediate task:** Build, stage, commit and push the approved Flower Management application files; verify the application push before moving on.
-- **Next module:** Inventory Management UI, following the documented module order and the Flower Management design baseline.
-- **Implementation boundary:** This is UI approval, not completion of database persistence, backend validation, authentication or inventory business logic.
-- **Verification:** JavaScript syntax and isolated search-handler checks passed during the cleanup; a full browser check and a new local production build were not independently verified in this session. Owner approval is recorded separately from those checks.
-- **Application Git status:** The latest Flower Management commit/push is not yet confirmed.
+- **Phase:** Supplier/Admin UI implementation.
+- **Approved modules:** Flower Management and Inventory Management UI, approved on 2026-11-03.
+- **Design reference:** Continue using Flower Management as the approved reference for Supplier module cards, headers, toolbars, tables, buttons, dialogs and pagination.
+- **Immediate task:** Build, stage, commit and push the approved Inventory Management application files, then verify the push.
+- **Next module:** Batch Management UI after Inventory Management push verification.
+- **Scope:** Inventory is currently a frontend prototype with sample flowers, batches, reservations, orders and movements; changes reset on refresh. Backend/database persistence and cross-module synchronization are future work.
+- **Checks:** JavaScript syntax, view/JavaScript element IDs and isolated inventory-model checks passed (FIFO splitting, reservations, fulfillment gates, duplicate order Stock-Out prevention, receipt correction bounds and unit-conversion snapshots). Full browser and current local production-build verification were not independently completed here; UI approval is the owner's confirmation.
+- **Git status:** Flower Management commit `3f580e52ef191939681ca3231c24ea4cb2f0bef6` was verified on GitHub. The Inventory Management application commit/push is not yet confirmed.
 
-This current state supersedes earlier dated planning/next-step statements and old repository-tree snapshots below. Use [UI/UX Guidelines](UI_UX_GUIDELINES.md) for the approved Flower Management module-page reference.
+This current state supersedes earlier dated planning/next-step statements and historical repository-tree snapshots below. Consult the UI/UX Guidelines for the approved module design reference.
 
 ## Role and working style
 
@@ -262,7 +262,7 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 
 ## UI-first rule
 
-Supplier/Admin requirements planning is complete and module UI implementation is underway. Flower Management UI is owner-approved and establishes the visual reference for subsequent Supplier modules. Verify its application build/commit/push before beginning Inventory Management UI. Finish Supplier UI before Client UI, and complete full UI review before backend/database implementation. Continue one module and one focused implementation step at a time.
+Supplier/Admin requirements planning is complete and module UI implementation is underway. Flower Management and Inventory Management UI are owner-approved. Keep Flower Management as the visual reference. Verify the Inventory application build/commit/push before beginning Batch Management UI. Finish Supplier UI before Client UI, and complete full UI review before backend/database implementation. Continue one module and one focused implementation step at a time.
 
 ## UI design rules
 
@@ -435,3 +435,37 @@ resources/
 - Account-creation email notifications are excluded from the initial scope.
 - No User and Access Management UI, authentication changes, backend authorization, session invalidation, or database schema has been implemented.
 - Next Supplier/Admin planning module: Audit Trail.
+
+
+## Inventory Management UI — owner-approved (2026-11-03)
+
+The owner approved the Inventory Management UI after reviewing its screens and the meanings of its stock fields. Keep the approved Flower Management visual pattern for this and later Supplier modules.
+
+### Approved prototype screens and interactions
+
+- Overview cards for On-Hand, Reserved, Available and Stock Alerts.
+- Inventory List and Inventory History tabs with compact Show Entries/search controls, native DataTables header sorting and pagination; Actions remains unsortable.
+- Stock-In modal with generated Batch Number, flower, quantity/unit conversion to Stems, Date Received, required Harvest Date, optional freshness/expiry date and Remarks.
+- Stock-Out modal with FIFO allocation preview, automatic multi-batch splitting, insufficient-stock prevention, spoilage remarks and an authorized batch-override prototype.
+- Customer-order Stock-Out sample flow honors Delivered for Delivery and Ready for Pickup for Pickup, issues the full quantity and prevents repeating the same sample order Stock-Out.
+- Batch Details with quantities, dates, statuses and movement history; its Receipt edit action opens Edit Stock-In.
+- Per-flower Bunch/Bundle/Box conversion settings; Stem remains the base unit and existing batch conversion snapshots are preserved.
+- Separate `resources/views/supplier/inventory.blade.php`, `resources/css/supplier/inventory.css` and `resources/js/supplier/inventory.js`; assets use the existing app imports/Vite pipeline, with the Inventory route and sidebar link.
+
+### Stock terminology and ownership clarified
+
+| Term | Meaning |
+| --- | --- |
+| On-Hand | Physical stock remaining in usable batches, including reserved quantities |
+| Reserved | Stock held for confirmed orders and not yet stocked out |
+| Available | On-Hand minus Reserved |
+| Initial | Recorded quantity received into a batch; corrected when its Stock-In is corrected |
+| Remaining | Batch quantity after actual Stock-Out; reservations alone do not reduce it |
+| Receipt action | Edits the Stock-In that created the batch; not a payment receipt |
+| Minimum Stock | Configured in Flower Management; Inventory displays/uses it for low-stock monitoring |
+
+Stock-In correction requires explanatory Remarks. The prototype prevents reducing a receipt below quantities already issued or reducing on-hand stock below existing reservations. No separate reversal or physical-count/stock-adjustment screen was added.
+
+### Implementation and next task
+
+This approval covers the local UI prototype. Sample data is held separately from Flower Management and resets on refresh; common persisted flower/minimum-stock values, authorization and server-side transaction rules remain for backend integration. The documentation update does not claim a successful Inventory application push. Verify that build/commit/push before starting Batch Management UI.
