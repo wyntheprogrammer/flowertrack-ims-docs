@@ -5,15 +5,17 @@
 ## Current development state — 2026-11-03
 
 - **Phase:** Supplier/Admin UI implementation.
-- **Approved modules:** Flower Management and Inventory Management UI, approved on 2026-11-03.
-- **Design reference:** Continue using Flower Management as the approved reference for Supplier module cards, headers, toolbars, tables, buttons, dialogs and pagination.
-- **Immediate task:** Build, stage, commit and push the approved Inventory Management application files, then verify the push.
-- **Next module:** Batch Management UI after Inventory Management push verification.
-- **Scope:** Inventory is currently a frontend prototype with sample flowers, batches, reservations, orders and movements; changes reset on refresh. Backend/database persistence and cross-module synchronization are future work.
-- **Checks:** JavaScript syntax, view/JavaScript element IDs and isolated inventory-model checks passed (FIFO splitting, reservations, fulfillment gates, duplicate order Stock-Out prevention, receipt correction bounds and unit-conversion snapshots). Full browser and current local production-build verification were not independently completed here; UI approval is the owner's confirmation.
-- **Git status:** Flower Management commit `3f580e52ef191939681ca3231c24ea4cb2f0bef6` was verified on GitHub. The Inventory Management application commit/push is not yet confirmed.
+- **Approved UI modules:** Flower Management, Inventory Management and Batch Management (owner-approved on 2026-11-03).
+- **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
+- **Current task:** Build, stage, commit and push the approved Batch Management application files; verify the push before continuing.
+- **Next module:** Spoilage Prediction UI after Batch Management application push verification.
+- **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
+- **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
+- **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
+- **Checks:** Batch JavaScript syntax and isolated metadata/spoilage-rule checks passed; owner approved the local UI. Full browser validation and the final local production build were not independently run here.
+- **Application Git:** Flower commit `3f580e5` and Inventory commit `e758bf83be6b795cafbe85a458edd9c1db8e89c1` are verified on GitHub. Batch Management application push is not yet confirmed.
 
-This current state supersedes earlier dated planning/next-step statements and historical repository-tree snapshots below. Consult the UI/UX Guidelines for the approved module design reference.
+This current state supersedes earlier dated next-task and manual-marking instructions below.
 
 ## Role and working style
 
@@ -209,9 +211,9 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Batch information: linked Flower, Date Received, Initial Quantity, Remaining Quantity, required Harvest Date, optional Expected Freshness / Expiry Date, and optional Remarks.
 - Do not include Supplier / Source; the business sources flowers directly.
 - Remaining Quantity is controlled by Inventory Management Stock-Out allocations; Batch Management cannot directly edit quantities.
-- Available, Partially Used, and Depleted statuses are derived from initial and remaining quantities. Spoiled is marked manually.
-- Before marking a batch Spoiled, record its remaining spoiled quantity through a manual Stock-Out with a required spoilage remark.
-- Batch Management supports batch details and movement history, search by Batch Number or Flower Name, filters by Flower / Status / Date Received, and metadata-only editing.
+- Available, Partially Used and Depleted derive from quantities. Spoiled is set by the integrated Inventory spoilage Stock-Out that consumes the batch's remaining quantity; no separate Batch marking action (updated 2026-11-03).
+- Inventory records spoilage Stock-Out with required remarks. A full remaining-quantity spoilage Stock-Out also updates batch status to Spoiled in the same backend transaction; partial spoilage retains the usable remainder. Do not deduct stock again in Batch Management.
+- Batch Management supports details/history, Batch Number/Flower search, pagination, native sorting and metadata-only editing. The Flower/Status/Date filter row and Mark as Spoiled button are removed from the approved UI.
 - Retain depleted and spoiled batch records for traceability.
 - Approaching freshness/expiry dates produce warnings only; they do not automatically deduct stock or mark a batch Spoiled.
 - Spoilage Prediction does not automatically change batch status or deduct stock.
@@ -262,7 +264,7 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 
 ## UI-first rule
 
-Supplier/Admin requirements planning is complete and module UI implementation is underway. Flower Management and Inventory Management UI are owner-approved. Keep Flower Management as the visual reference. Verify the Inventory application build/commit/push before beginning Batch Management UI. Finish Supplier UI before Client UI, and complete full UI review before backend/database implementation. Continue one module and one focused implementation step at a time.
+Supplier requirements planning is complete. Flower Management, Inventory Management and Batch Management UI are owner-approved. Flower Management remains the module-page reference. Verify the Batch application build/commit/push before starting Spoilage Prediction UI. Finish Supplier UI before Client UI; full UI review precedes backend/database work. Implement one focused step at a time.
 
 ## UI design rules
 
@@ -469,3 +471,31 @@ Stock-In correction requires explanatory Remarks. The prototype prevents reducin
 ### Implementation and next task
 
 This approval covers the local UI prototype. Sample data is held separately from Flower Management and resets on refresh; common persisted flower/minimum-stock values, authorization and server-side transaction rules remain for backend integration. The documentation update does not claim a successful Inventory application push. Verify that build/commit/push before starting Batch Management UI.
+
+
+## Batch Management UI — owner-approved (2026-11-03)
+
+- Owner approved the Batch Management local UI using Flower Management as the visual reference.
+- Approved Available / Partially Used / Depleted / Spoiled overview cards, batch listing, freshness warnings, details/history and metadata-only editing.
+- Retained compact Show Entries and search controls, native DataTables header sorting and pagination; Actions is unsortable.
+- Removed the Flower, Status, Received From/To and Reset filter row.
+- Horizontal scrolling belongs to the table only. Keep the card header, overview, toolbar, results text and pagination outside the horizontal scroller.
+- Removed the separate Mark as Spoiled action. Inventory spoilage Stock-Out owns the future integrated status update; see the updated workflow below.
+- Metadata editing cannot change initial/remaining quantities, linked flower, receiving records or inventory movements.
+- Source files: `resources/views/supplier/batches.blade.php`, `resources/css/supplier/batches.css`, `resources/js/supplier/batches.js`; app CSS/JS imports, route and sidebar provide integration.
+- Sample data is temporary and separate from Inventory. The three-day approaching-freshness window is a UI demonstration setting, not a finalized business or ML threshold.
+- JavaScript syntax and isolated batch-rule checks passed. The owner approved the local UI; the final local build/full browser checks and application push were not independently confirmed here.
+- Next: verify Batch Management application build/commit/push, then start Spoilage Prediction UI. Keep Client UI/backend work deferred according to the UI-first sequence.
+
+### Updated — spoilage workflow and Batch controls (2026-11-03)
+
+This owner-approved change supersedes the earlier separate manual Mark as Spoiled action in Batch Management.
+
+- The user records a Stock-Out with purpose Spoilage and required explanatory remarks in Inventory Management.
+- For partial spoilage, deduct only the spoiled quantity; retain the usable remainder and its quantity-derived batch status.
+- When a spoilage Stock-Out consumes a batch's entire remaining quantity, the backend transaction must also set that batch's status to Spoiled, without a second stock deduction.
+- A batch depleted by ordinary consumption remains Depleted; a passed freshness date or ML prediction does not mark it Spoiled.
+- Batch Management displays the resulting status and supports viewing/history and metadata editing. It has no separate Mark as Spoiled button.
+- Keep depleted/spoiled batches and their transaction history.
+- Batch listing uses search, Show Entries, native column sorting and pagination. Flower/status/received-date filter controls were removed from the approved UI.
+- These cross-module status updates are the agreed backend behavior; current separate sample-data prototypes do not implement shared persistence.
