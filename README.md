@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-03  
-**Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Order fulfillment Stock-Out timing is finalized: Delivery on successful Delivered status and Customer Pickup on Ready for Pickup. Orders are rejected when stock available after reservations is insufficient; no pending-stock queue is used. Sales and Payment Management includes manual flower pricing, sales creation on order completion, Cash/Bank Transfer/E-wallet, Admin payment verification, partial/multiple payments, Admin-managed refunds, completed-order sales reporting less refunds, and daily-to-yearly PDF/Excel reports; **User and Access Management is the next Supplier/Admin module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
+**Project status:** Supplier/Admin UI implementation is underway. The owner approved Flower Management UI on 2026-11-03 and designated it as the reference for subsequent Supplier module layouts. First document this milestone and verify the Flower Management application build/commit/push; Inventory Management UI is next. Client UI remains deferred until Supplier UI is finished. Backend/database work remains deferred under the UI-first rule.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -9,7 +9,7 @@ This repository contains the planning, requirements, technical references, desig
 
 ## Development workflow
 
-Current workflow: finalize and approve the requirements for all modules first, following the order in `docs/MODULES.md`. Do not start a module's UI merely because its requirements have been approved; the owner will confirm when the planning phase is complete. After planning, implement and review modules one at a time. After each completed and owner-approved module, update the relevant Markdown documentation first, then provide a complete copy-ready script to build/check, stage, commit, and push that module to the application repository. Verify the push before proceeding. The documentation repository and application repository are separate and are updated independently.
+Current workflow: implement and review Supplier/Admin modules one at a time in the order in `docs/MODULES.md`. Flower Management is the approved module-page visual reference; preserve the approved dashboard/shared shell. After each owner-approved module, update the relevant Markdown first, provide the complete application build/check + staging + commit + push script, and verify push success before starting the next module. Finish Supplier UI before Client UI; backend/database implementation follows full UI review. Documentation and application repositories are updated independently.
 
 ## Start here
 
@@ -25,6 +25,8 @@ Current workflow: finalize and approve the requirements for all modules first, f
 
 10. [`docs/UI_UX_DESIGNER_SUBAGENT.md`](docs/UI_UX_DESIGNER_SUBAGENT.md) — reusable UI/UX designer subagent role, project constraints, current Flower Management layout brief, and reuse prompt.
 
+For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX_GUIDELINES.md#approved-module-ui-reference--flower-management-2026-11-03).
+
 ## Local setup snapshot
 
 - XAMPP: `C:\xampp`
@@ -38,7 +40,7 @@ Current workflow: finalize and approve the requirements for all modules first, f
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. These foundation/dashboard milestones do not mean module UI implementation is currently underway. The current work is requirements planning, with Sales and Payment Management next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. Flower Management UI is now owner-approved locally; its latest application commit/push is not yet confirmed. Inventory Management UI follows after push verification. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
 
 ## Repository structure
 
