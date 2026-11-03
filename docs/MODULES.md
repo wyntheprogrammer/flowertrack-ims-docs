@@ -1,6 +1,6 @@
 # System Modules
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-03
 
 ## A. Supplier / Admin Panel
 
@@ -23,6 +23,8 @@ The project owner supplied the following module order. This is also the initial 
 
 ### Supplier/Admin UI notes
 
+- **2026-11-03:** Flower Management UI is owner-approved and is the visual reference for the next Supplier modules. Inventory Management UI is next after the Flower Management application push is verified. Reuse styling while preserving each module's own business workflow.
+
 - Management-oriented layout.
 - Desktop-first and responsive.
 - Bootstrap components, custom CSS, and Flexbox as appropriate.
@@ -36,17 +38,18 @@ The project owner supplied the following module order. This is also the initial 
 - Category — required.
 - Description — required.
 - Primary Flower Image — optional; one primary image per flower.
+- Minimum Stock Threshold — required, positive integer; used by Inventory Management for low-stock monitoring.
 - Status — Active or Inactive.
 
 **Actions and controls**
 - Add, view, and edit flower records.
 - Deactivate a flower instead of permanently deleting it when related records exist.
 - Search by flower name or flower code.
-- Filter by category and status.
+- Approved UI (2026-11-03): Show Entries and compact search toolbar, native DataTables header sorting, and bottom pagination; category/status toolbar filters and a separate Sort dropdown are removed.
 
 **Confirmed rules**
 - A flower can be saved without an image, but not without its name, category, or description.
-- Inventory unit and minimum stock threshold are configured through the inventory workflow. Selling prices are owned by Sales and Payment Management, not Flower Management.
+- Inventory unit/conversion belongs to Inventory Management. The minimum stock threshold is configured per flower in Flower Management. Selling prices are owned by Sales and Payment Management, not Flower Management.
 
 #### Inventory Management — approved scope (2026-11-02)
 
