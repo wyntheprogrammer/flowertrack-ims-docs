@@ -1,6 +1,6 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-02  
+**Last updated:** 2026-11-03  
 **Project status:** Laravel and Bootstrap setup and the initial shared UI/dashboard foundation are complete. The project is currently in **requirements planning**, not module UI implementation. Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Client Management, Order Management, Delivery Management, and Sales and Payment Management are approved. Order fulfillment Stock-Out timing is finalized: Delivery on successful Delivered status and Customer Pickup on Ready for Pickup. Orders are rejected when stock available after reservations is insufficient; no pending-stock queue is used. Sales and Payment Management includes manual flower pricing, sales creation on order completion, Cash/Bank Transfer/E-wallet, Admin payment verification, partial/multiple payments, Admin-managed refunds, completed-order sales reporting less refunds, and daily-to-yearly PDF/Excel reports; **User and Access Management is the next Supplier/Admin module to plan**. Remaining Supplier/Admin and Client module requirements must be finalized before proceeding with module UI implementation.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
@@ -22,6 +22,8 @@ Current workflow: finalize and approve the requirements for all modules first, f
 7. [`docs/UI_UX_GUIDELINES.md`](docs/UI_UX_GUIDELINES.md) — interface and styling rules.
 8. [`docs/SUPPLIER_UI_DESIGN_REFERENCE.md`](docs/SUPPLIER_UI_DESIGN_REFERENCE.md) — approved Supplier Side dashboard visual reference and design prompt.
 9. [`docs/TECHNOLOGY_STACK_AND_REFERENCES.md`](docs/TECHNOLOGY_STACK_AND_REFERENCES.md) — planned technologies, actual local setup, and useful repositories.
+
+10. [`docs/UI_UX_DESIGNER_SUBAGENT.md`](docs/UI_UX_DESIGNER_SUBAGENT.md) — reusable UI/UX designer subagent role, project constraints, current Flower Management layout brief, and reuse prompt.
 
 ## Local setup snapshot
 
@@ -56,6 +58,7 @@ flowertrack-ims-docs/
 │   ├── DATABASE_SCHEMA.md
 │   ├── BUSINESS_LOGIC.md
 │   ├── WORKFLOWS.md
+│   ├── UI_UX_DESIGNER_SUBAGENT.md
 │   ├── UI_UX_GUIDELINES.md
 │   ├── SUPPLIER_UI_DESIGN_REFERENCE.md
 │   ├── DEVELOPMENT_PLAN.md
