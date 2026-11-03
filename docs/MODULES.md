@@ -23,7 +23,7 @@ The project owner supplied the following module order. This is also the initial 
 
 ### Supplier/Admin UI notes
 
-- **2026-11-03:** Flower Management UI is owner-approved and is the visual reference for the next Supplier modules. Inventory Management UI is also approved; Batch Management UI is next after the Inventory Management application push is verified. Reuse styling while preserving each module's own business workflow.
+- **2026-11-03:** Flower Management UI is owner-approved and is the visual reference for the next Supplier modules. Inventory and Batch Management UI are also approved; Spoilage Prediction UI is next after the Batch application push is verified. Reuse styling while preserving each module's own business workflow.
 
 - Management-oriented layout.
 - Desktop-first and responsive.
@@ -96,7 +96,9 @@ The project owner supplied the following module order. This is also the initial 
 **Deferred**
 - Stock Adjustment / Physical Inventory Counting is explicitly excluded for now.
 
-#### Batch Management — approved scope (2026-11-02)
+#### Batch Management — approved scope (updated 2026-11-03)
+
+**UI status:** Owner-approved. Keep View/Edit actions, compact Show Entries/search and native sorting. Remove the filter row and separate Mark as Spoiled action; scroll only the table, with results/pagination outside the scroll area.
 
 **Purpose:** Manage individual flower batches created by Stock-In, including batch details, status, freshness monitoring, and traceability. Inventory Management remains responsible for stock movement transactions and quantity calculations.
 
@@ -115,22 +117,22 @@ The project owner supplied the following module order. This is also the initial 
 - Available — remaining quantity equals the initial quantity and the batch is usable.
 - Partially Used — remaining quantity is greater than zero but lower than the initial quantity.
 - Depleted — remaining quantity is zero due to stock consumption.
-- Spoiled — manually marked after the remaining spoiled quantity has first been recorded as a Stock-Out in Inventory Management.
+- Spoiled — set by the backend Inventory spoilage Stock-Out that consumes the batch's remaining quantity; no separate Batch marking action.
 
 **Actions and controls**
 - View batches and complete Batch Details.
 - Search by Batch Number or Flower Name.
-- Filter by Flower, Status, and Date Received.
+- Flower/Status/Date Received filter controls are removed from the approved Batch UI (2026-11-03).
 - View batch-specific Stock-In and Stock-Out history.
 - Edit batch metadata only; quantities and inventory movements cannot be edited directly from Batch Management.
-- Manually mark a batch as Spoiled, with a required reason/remark.
+- View the Spoiled status produced by Inventory; required spoilage remarks are recorded on the Inventory Stock-Out.
 - Retain depleted and spoiled batch records for traceability; do not permanently delete batches with inventory history.
 
 **Confirmed rules**
 - Every Stock-In automatically creates one Batch Record with a unique Batch Number.
 - Remaining Quantity is updated through Inventory Management transactions and batch allocations.
 - FIFO remains the default Stock-Out allocation method; authorized FIFO overrides follow the Inventory Management rules.
-- A spoiled batch must first have its remaining spoiled quantity recorded through a manual Stock-Out with a spoilage remark. Only then may its status be marked Spoiled. This keeps stock balances and Inventory History consistent.
+- Inventory records the spoiled quantity as a Stock-Out with a required reason/remark. If it consumes the batch's remaining quantity, the same backend transaction sets the batch to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform a second deduction.
 - Expiry/freshness dates generate warnings as the date approaches; warnings do not automatically deduct stock or mark a batch as Spoiled.
 - Spoilage Prediction does not automatically change batch status or deduct stock.
 
