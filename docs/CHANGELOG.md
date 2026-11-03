@@ -1,8 +1,16 @@
 # Changelog
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-03
 
 All meaningful documentation and project-planning updates are recorded here.
+
+## 2026-11-03
+
+### Added — reusable UI/UX designer subagent instructions
+
+- Added `docs/UI_UX_DESIGNER_SUBAGENT.md` with the designer role, project constraints, review scope, and reuse prompt.
+- Recorded the current Flower Management layout brief: card-contained page header, Show Entries left, compact search right, and native DataTables column sorting without separate category/status/sort dropdowns.
+- Linked the instructions from README. The Markdown preserves a reusable agent brief, not a running session; application code and runtime behavior are unchanged by this documentation update.
 
 ## 2026-11-02
 
