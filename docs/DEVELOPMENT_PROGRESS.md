@@ -4,6 +4,27 @@
 
 
 
+
+## Order Management UI — owner-approved 2026-11-03
+
+This is the latest UI milestone and next-task reference; older milestone sections retain their historical context.
+
+- Owner accepted the supplied Order Management UI after clarification of approval and completion flows.
+- Approved screen: Add/Edit orders before Processing, multiple flower items, generated Order ID, registered client selection, Delivery/Pickup, required delivery address, optional notes, price snapshots, calculated subtotal/fee/total, view details, status history and cancellation with a reason.
+- Reuse Flower typography, Show Entries, compact search, native column sorting, pagination and table-only horizontal scrolling. No extra filter row.
+- Approval is in Order Management: Pending → Confirmed via the next-status arrow and Mark Confirmed. Confirmation checks full sample availability and reserves stock without reducing physical on-hand.
+- Pickup flow: Pending → Confirmed → Processing → Ready for Pickup → Completed. Ready for Pickup simulates Stock-Out once; completion confirms collection without another deduction.
+- Delivery flow: Pending → Confirmed → Processing → Ready for Delivery → Out for Delivery → Completed. This prototype stops at Ready for Delivery; Delivery Management will own dispatch and Delivered proof. Future successful Delivered coordinates Inventory Stock-Out and Order completion.
+- Order Status and Payment Status are separate. Payments are read-only samples; Sales & Payments owns transactions and refunds.
+- Reject insufficient full sample allocation; aggregate repeated flower quantities. No partial fulfillment or pending-stock queue. Pending orders do not reserve stock.
+- Preserve cancellation reasons/history; release active reservations on cancellation. Completed orders cannot be cancelled. Already-stocked-out orders are blocked from cancellation in this prototype until future Inventory correction integration.
+- Prototype boundaries: separate in-memory sample clients, flowers, aggregate stock and orders; reset on refresh. No actual Inventory/FIFO, Delivery record, payment, Sales record, database, authorization or cross-module synchronization.
+- Sample fixed delivery fee is PHP 150 for UI review only; actual system configuration remains undecided. Editing an order with sample payments blocks total changes until future financial adjustment integration.
+- Files: `resources/views/supplier/orders.blade.php`, `resources/css/supplier/orders.css`, `resources/js/supplier/orders.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/orders` and `supplier.orders`; replace the orders placeholder mapping.
+- Validation: owner approved local UI; independent production build, browser execution and Order application commit/push have not been verified.
+- Current task: build/check, stage, commit and push Order Management; verify push. Next module: Delivery Management UI. Separate Client storefront and backend/database work remain deferred.
+
+
 ## Client Management UI — owner-approved 2026-11-03
 
 - Owner approved Supplier Client Management after removing Account Status, Registered From/To and Reset filters.
@@ -28,10 +49,10 @@
 ## Current position
 
 - **Phase:** Supplier/Admin UI implementation.
-- **Approved UI modules:** Flower Management, Inventory Management, Batch Management, Spoilage Prediction and Supplier Client Management (owner-approved on 2026-11-03).
+- **Approved UI modules:** Flower Management, Inventory Management, Batch Management, Spoilage Prediction and Supplier Client Management and Order Management (owner-approved on 2026-11-03).
 - **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
-- **Current task:** Build/check, commit and push the approved Supplier Client Management UI, then verify the application push.
-- **Next module:** Order Management UI after Client Management application push verification.
+- **Current task:** Build/check, commit and push the approved Order Management UI, then verify the application push.
+- **Next module:** Delivery Management UI after Order Management application push verification.
 - **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
 - **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
 - **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
@@ -64,7 +85,7 @@ The owner accepted the shared sidebar link and route setup. Keep `Route::prefix(
 | Batch Management | /supplier/batches | supplier.batches | supplier.batches |
 | Spoilage Prediction | /supplier/spoilage-prediction | supplier.spoilage-prediction | supplier.spoilage-prediction |
 | Client Management | /supplier/clients | supplier.clients | supplier.clients |
-| Order Management | /supplier/orders | supplier.orders | supplier.module-placeholder |
+| Order Management | /supplier/orders | supplier.orders | supplier.orders |
 | Delivery Management | /supplier/deliveries | supplier.deliveries | supplier.module-placeholder |
 | Sales & Payments | /supplier/sales-payments | supplier.sales-payments | supplier.module-placeholder |
 | Reports | /supplier/reports | supplier.reports | supplier.module-placeholder |
@@ -231,8 +252,8 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - **Phase:** Supplier/Admin UI implementation.
 - **Approved UI modules:** Flower Management, Inventory Management, Batch Management, Spoilage Prediction and Supplier Client Management (owner-approved on 2026-11-03).
 - **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
-- **Current task:** Build/check, commit and push the approved Supplier Client Management UI, then verify the application push.
-- **Next module:** Order Management UI after Client Management application push verification.
+- **Current task:** Build/check, commit and push the approved Order Management UI, then verify the application push.
+- **Next module:** Delivery Management UI after Order Management application push verification.
 - **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
 - **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
 - **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
@@ -387,7 +408,8 @@ Earlier dated session entries below describe historical planning states, not the
 
 
 
-Build/check, commit and push approved Supplier Client Management and verify application push success. Then begin Order Management UI with the compact toolbar and Flower Management visual reference.
+
+Build/check, commit and push approved Order Management and verify application push success. Then begin Delivery Management UI using the Flower Management reference and compact toolbar.
 
 
 ### 2026-11-02 — Delivery Management requirements
