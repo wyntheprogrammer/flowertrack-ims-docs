@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-03  
-**Project status:** Supplier/Admin UI implementation is underway. Flower Management and Inventory Management UI are owner-approved as of 2026-11-03. Flower Management remains the visual reference for subsequent Supplier modules. Verify the Inventory Management application build/commit/push, then begin Batch Management UI. Client UI remains deferred until Supplier UI is finished; backend/database implementation follows UI review.
+**Project status:** Flower Management, Inventory Management and Batch Management UI are owner-approved. Flower Management remains the visual reference for Supplier module screens. Verify the Batch Management application build/commit/push, then begin Spoilage Prediction UI. Batch Management has View/Edit actions, search without the removed filter row, and table-only horizontal scrolling. Inventory spoilage Stock-Out owns the agreed future batch Spoiled-status update. Client UI and backend/database work remain deferred under the UI-first process.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -40,7 +40,7 @@ For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX
 - Local project: `C:\xampp\htdocs\FlowerTrack`
 - Laravel development URL (when `php artisan serve` is running): `http://127.0.0.1:8000`
 
-The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. Flower Management commit `3f580e5` has been verified on GitHub. Inventory Management UI is now owner-approved locally; its latest application build/commit/push still needs verification. Batch Management UI is next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
+The application repository is initialized on branch `main`. The initial Laravel skeleton and the first Supplier/Admin and Client starter UI files have been pushed; the initial UI commit is `488a4eb`. The owner also confirmed the later logo update and Bootstrap Icons refinement build/push. Flower Management commit `3f580e5` has been verified on GitHub. Inventory Management commit `e758bf8` is also verified on GitHub. Batch Management UI is now owner-approved locally; its latest application build/commit/push needs verification. Spoilage Prediction UI is next. See [`docs/DEVELOPMENT_PROGRESS.md`](docs/DEVELOPMENT_PROGRESS.md) for the current phase and next task.
 
 ## Repository structure
 
