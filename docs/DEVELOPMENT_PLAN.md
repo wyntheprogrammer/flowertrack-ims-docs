@@ -1,10 +1,14 @@
 # Development Plan
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-03
 
 ## Guiding rule
 
 **Finish and review the UI before beginning backend implementation.**
+
+## Current milestone — 2026-11-03
+
+Flower Management UI is owner-approved and is the visual reference for later Supplier modules. Complete its documentation and verify the application build/commit/push, then start Inventory Management UI. Finish Supplier UI before Client UI. This approval does not mark backend/database functionality complete.
 
 ## Phase 0 — Requirements and documentation
 
@@ -52,6 +56,8 @@ Build in the exact module order supplied by the owner:
 11. User and Access Management
 12. Audit Trail
 
+For each module, reuse the approved Flower Management card/header, compact toolbar, table, buttons, status, modal and pagination styling, adapting the contents to the module's requirements. See `UI_UX_GUIDELINES.md`.
+
 For each module:
 - Confirm screen requirements.
 - Sketch/plan the page structure.
@@ -59,7 +65,9 @@ For each module:
 - Add realistic placeholder/sample content where appropriate, clearly marked as mock data.
 - Check responsive behavior and visual consistency.
 - Review with the owner.
-- Record completion and update documentation.
+- Record completion and update documentation first.
+- Provide the full application build/check + stage + commit + push script.
+- Verify the application push before proceeding to the next module.
 
 ## Phase 4 — Client ecommerce UI
 
