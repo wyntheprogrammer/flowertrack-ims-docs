@@ -30,6 +30,10 @@ Reusable role and working instructions for a professional UI/UX designer reviewi
 - Work one focused step at a time.
 - After a module is completed and approved, update relevant Markdown documentation first, then provide the build/commit/push script. Verify push success before proceeding.
 
+## Owner-approved reference and next module — 2026-11-03
+
+Flower Management UI is approved and is the visual reference for subsequent Supplier module layouts. Review new module pages against its card header, compact toolbar, balanced table columns, aligned headings/data, native sorting, badges, action buttons, modal forms and pagination. The latest accepted Flower table centers Minimum Stock, Status and Actions; earlier reviewer suggestions for right-aligned quantities do not override owner acceptance. Adapt column widths and workflow controls to each module. Inventory Management UI is next after verification of the Flower Management application push. See [UI/UX Guidelines](UI_UX_GUIDELINES.md).
+
 ## Current Flower Management brief
 
 1. Put the Flower Management heading, description and Add New Flower button inside the card header.
