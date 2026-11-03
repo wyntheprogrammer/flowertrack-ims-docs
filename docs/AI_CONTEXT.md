@@ -2,6 +2,15 @@
 
 **Last updated:** 2026-11-03
 
+
+## Client Management controls — owner decision 2026-11-03
+
+- Remove Account Status, Registered From, Registered To and Reset controls from Client Management.
+- Keep Show Entries, compact search by Client ID/name/email, native DataTables column sorting and pagination.
+- Remove obsolete Blade markup, CSS selectors, JavaScript event bindings and date/status filtering logic together. Never reference removed element IDs.
+- For upcoming Supplier module UI drafts, use this compact toolbar by default. Do not add extra filter rows automatically; ask for module-specific confirmation before introducing them. Previously documented Reports/Audit and other specialized filter requirements remain recorded for review when those modules are built.
+- This decision supersedes the earlier Client status/registration-date filter requirement. Client account status and registration date remain record/profile fields; status editing and activation/deactivation remain available.
+- Client UI is under revision, not yet owner-approved as a completed module. Application changes, build and push are not verified by this documentation update.
 ## Current development state — 2026-11-03
 
 - **Phase:** Supplier/Admin UI implementation.
@@ -283,7 +292,7 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Admin assigns a temporary password when creating the account. The client must change it on first login. Passwords must be securely hashed and never stored as plain text.
 - Inactive clients cannot place new orders; existing orders and transaction history remain accessible. Reactivating the account restores eligibility to place new orders.
 - Client records with transaction history cannot be permanently deleted.
-- Client Management supports listing, adding, viewing, editing, activating/deactivating, searching by Client ID / Full Name / Email, and filtering by Account Status / Registration Date.
+- Client Management supports listing, adding, viewing, editing, activating/deactivating, searching by Client ID / Full Name / Email, with Show Entries, native column sorting and pagination. Account Status / Registration Date filters and Reset were removed by owner decision on 2026-11-03.
 - Provide Order History and Purchase Summary. Derive summary metrics from Order Management records: total order count, total purchase amount, completed orders, and pending/ongoing orders.
 - Client Management owns client information and account status; Order Management owns order creation, processing, and statuses.
 - No Client Management UI, authentication implementation, backend, or database schema has been implemented by this planning update.
