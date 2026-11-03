@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-03  
-**Project status:** Flower Management, Inventory Management, Batch Management and Spoilage Prediction UI are owner-approved. Flower Management remains the visual reference for Supplier module screens. Batch Management application push is verified (`4472a2a`). Supplier sidebar links and named routes are accepted, with Coming Soon pages for upcoming modules; navigation runtime checks and application push remain unverified. Spoilage Prediction UI is approved with sample advisory data and typography matched to Flower Management. Its application build/commit/push remains unverified; Supplier Client Management UI is next after push verification. Batch Management has View/Edit actions, search without the removed filter row, and table-only horizontal scrolling. Inventory spoilage Stock-Out owns the agreed future batch Spoiled-status update. Client UI and backend/database work remain deferred under the UI-first process.
+**Project status:** Flower, Inventory, Batch, Spoilage Prediction and Supplier Client Management UI are owner-approved. Flower Management remains the visual reference. Client Management uses Show Entries/search/native sorting/pagination without extra filters. Build/check and verify its application commit/push before Order Management UI. Client data and order summaries remain sample-only; authentication, backend/database work and the separate Client storefront panel remain deferred. Documentation updates do not establish application push success.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
