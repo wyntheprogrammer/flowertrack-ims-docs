@@ -10,6 +10,26 @@
 
 
 
+
+## Stems and supplier-made bouquets — confirmed 2026-11-04
+
+This current scope supersedes earlier stem-only catalog/order assumptions.
+
+- The shop sells both loose flower stems and pre-made bouquets received already assembled from the supplier.
+- Treat stems and finished bouquets as distinct stock items with their own product code, information, minimum-stock threshold, selling price and receiving batch records.
+- Base stock/sales units: Stem for loose flowers; Bouquet for ready-made bouquets. Receiving conversions must remain within the same item's base unit; never infer a bouquet-to-stems conversion.
+- Receive supplier-made bouquets directly through Stock-In as finished Bouquet units. No shop production, assembly recipe/BOM or loose-stem deduction is required for these receipts.
+- Example: receiving 10 bouquets increases finished bouquet stock by 10; loose stem stock is unchanged.
+- Orders may mix items, e.g. 5 stems and 1 bouquet. Snapshot each item's type/unit/price, calculate totals per unit and reserve quantities from each item's own stock.
+- Confirmation reserves stock; Ready for Pickup, Ready for Delivery and Out for Delivery do not deduct physical inventory.
+- Actual collection confirmed as Pickup Completed, or successful Delivered coordinated with the linked order becoming Completed, triggers the order-linked Inventory Stock-Out once. FIFO reduces the corresponding Stem or Bouquet batch quantities and consumes reservations in the same backend transaction.
+- Selling a bouquet deducts finished Bouquet units only; never deduct its component stems again.
+- Keep the confirmed one-exact-full-payment rule. Payment itself does not deduct stock.
+- Required implementation scope: catalog item type/unit, Inventory receiving/reservation/Stock-Out, Batch units, mixed Order lines, Sales price labels/snapshots and Reports unit-aware quantities. Preserve the approved visual design and compact table controls.
+- UI/code changes for bouquet support are not implemented by this documentation update. Existing approved screens are a visual baseline and still require functional adaptation.
+- Next task: adapt the Flower Management catalog to distinguish Stem and Bouquet items, then update dependent modules before continuing Reports. Keep naming/navigation changes for separate review; no automatic module rename is implied.
+
+
 ## Pickup Stock-Out timing — owner decision 2026-11-04
 
 This decision supersedes all earlier Ready for Pickup Stock-Out instructions.
