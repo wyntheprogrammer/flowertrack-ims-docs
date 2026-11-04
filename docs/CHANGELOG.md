@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Confirmed — loose stems and supplier-made pre-made bouquets
+
+- Owner confirmed the shop sells loose stems and bouquets already assembled by its supplier.
+- Record bouquets as separate finished stock items with Bouquet base units, independent codes/prices/batches and direct Stock-In; no loose-stem deduction or production workflow.
+- Support mixed orders and item-specific reservations/FIFO fulfillment. Actual collection/Completed or successful Delivered coordinated with Completed deducts each sold item's own units once.
+- Bouquet UI/schema/integration changes remain pending; adapt the catalog and dependent modules before Reports.
+
 ### Changed — Pickup stock deduction at actual collection
 
 - Owner moved Customer Pickup Stock-Out from Ready for Pickup to staff-confirmed collection / Completed.
