@@ -1,14 +1,34 @@
 # System Modules
 
-**Last updated:** 2026-11-03
+**Last updated:** 2026-11-04
 
 
 
+
+
+
+## Delivery Management UI — owner-approved 2026-11-04
+
+This is the current milestone and next-task reference. Earlier dated milestone sections are historical.
+
+- Owner approved Delivery Management UI. Preserve Flower Management typography, compact Show Entries/search, native column sorting, pagination and table-only horizontal scrolling; no extra filter row.
+- Approved operations: View Details, Schedule/Reschedule with remarks, Assign/Reassign active authorized delivery personnel, Dispatch, Delivered with proof, Failed attempt with reason, Cancel Delivery and timestamped actor/status history.
+- No Add Delivery button: future backend integration creates one linked delivery record when a Delivery order reaches Ready for Delivery. Pickup orders do not create deliveries.
+- Dispatch requires a Ready for Delivery linked order, schedule and active assigned personnel. Dispatch changes sample delivery/order to Out for Delivery without Stock-Out.
+- Delivered requires recipient name, delivery remarks and a readable JPEG/PNG/WebP photo up to 5 MB. Completion time is automatic. The prototype changes its local linked-order status to Completed and marks the sample fulfillment trigger once; no actual Inventory/FIFO deduction or Sales record is created.
+- Proof uses a browser-session object URL only: no upload or persistent storage. Data and images reset on refresh.
+- Failed attempts remain in history and do not cancel the order. Reschedule before redispatch; reassignment alone does not clear Failed. No fixed attempt cap.
+- Cancellation requires a reason, preserves history and does not cancel the linked order or release its reservation. Prototype cancellation is available before dispatch; Out for Delivery exposes Delivered/Failed operations.
+- Delivered and Cancelled are terminal/read-only in this prototype. Revision and busy checks guard repeated updates.
+- Standalone sample delivery/personnel/order states are not synchronized with the existing Order module. Actual permissions, delivery creation, durable proof uploads, Inventory Stock-Out and order completion coordination remain backend work.
+- Files: `resources/views/supplier/deliveries.blade.php`, `resources/css/supplier/deliveries.css`, `resources/js/supplier/deliveries.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/deliveries` and `supplier.deliveries`; remove its placeholder mapping.
+- Validation: owner approved the local UI. Independent current build/browser checks and Delivery application commit/push have not been verified.
+- Current task: build/check, stage, commit and push Delivery Management; verify push success. Next module: Sales & Payments UI. Separate Client storefront and backend/database work remain deferred.
 
 
 ## Order Management UI — owner-approved 2026-11-03
 
-This is the latest UI milestone and next-task reference; older milestone sections retain their historical context.
+This is an earlier UI milestone; the Delivery Management milestone above is the current next-task reference.
 
 - Owner accepted the supplied Order Management UI after clarification of approval and completion flows.
 - Approved screen: Add/Edit orders before Processing, multiple flower items, generated Order ID, registered client selection, Delivery/Pickup, required delivery address, optional notes, price snapshots, calculated subtotal/fee/total, view details, status history and cancellation with a reason.
