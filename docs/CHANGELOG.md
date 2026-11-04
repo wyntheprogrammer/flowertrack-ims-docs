@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Approved — User Management UI
+
+- Owner explicitly approved Add/Edit, details, Activate/Deactivate, temporary-password reset preview, fixed roles and session activity.
+- Recorded last-active-Admin deactivation/demotion protection, case-insensitive email uniqueness and no stored/logged credentials.
+- Syntax and isolated account-rule checks passed; owner approved local UI. Independent browser/build checks and application push remain unverified.
+- Next: build/check and push User Management, verify success, then review the already supplied Audit Trail draft. Audit Trail is not yet owner-approved or completed.
+
 ### Updated — Reports export setup
 
 - Added `npm install jspdf jspdf-autotable exceljs` and the build command to the Windows setup guide.
