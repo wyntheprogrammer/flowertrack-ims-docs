@@ -14,6 +14,24 @@
 
 
 
+
+## User Management UI — owner-approved 2026-11-04
+
+This is the current approval and next-task reference. Earlier module next-task entries are historical.
+
+- Owner explicitly approved User Management UI after clarifying that its approval had not yet been recorded.
+- Approved operations: Add/Edit User, View Details, Activate/Deactivate, temporary-password reset preview, fixed role permission reference and per-user session activity.
+- Fixed roles: Admin, Supplier/Staff and Delivery Personnel. Account administration belongs to Admin; Supplier/Staff cannot access Reports, User Management or Audit Trail; Delivery Personnel operate assigned deliveries only.
+- Enforce case-insensitive unique email, generated User IDs and valid role/status values. Prevent deactivation or demotion of the last active Admin, including edits through the form.
+- New users and Admin password resets set the next-login password-change requirement in sample state. Dummy password inputs are cleared, never copied into records or activity history, and never displayed in details.
+- Preserve approved Flower typography, compact Show Entries/search, native column sorting, pagination and table-only horizontal scrolling; no extra filter row.
+- Changed files: `resources/views/supplier/users.blade.php`, `resources/css/supplier/users.css`, `resources/js/supplier/users.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/users` / `supplier.users`; replace its placeholder.
+- Checks passed: JavaScript syntax and isolated last-active-Admin deactivation/demotion safeguards, email uniqueness, fixed roles, generated ID and no stored-secret tests. Owner approved local UI; independent browser/current production-build checks were not verified.
+- UI-only sample state resets on refresh. Password hashing, actual account creation/login, first-login enforcement, server permissions, session invalidation and durable audit events remain backend work.
+- Application commit/push is not yet verified. Current task: build/check, stage, commit and push User Management, then confirm application push success.
+- Audit Trail code has already been supplied as an unapproved draft. Do not mark it completed; review it after the User Management push is confirmed. Supplier UI completion and Client storefront/backend progression still require review.
+
+
 ## Reports dependency setup — 2026-11-04
 
 - Owner accepted Reports after export dependency guidance and requested the setup command be retained in MD.
@@ -570,7 +588,8 @@ Earlier dated session entries below describe historical planning states, not the
 
 
 
-Build/check, commit and push the approved mixed Stem/Bouquet Orders and Sales & Payments update and verify application push success. Then begin Reports UI with unit-aware quantities and approved financial/inventory reporting rules.
+
+Build/check, stage, commit and push approved User Management UI and verify application push success. Then review the supplied Audit Trail draft; do not mark Audit Trail completed before owner approval.
 
 
 ### 2026-11-02 — Delivery Management requirements
