@@ -1,7 +1,7 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-03  
-**Project status:** Flower, Inventory, Batch, Spoilage Prediction, Supplier Client Management and Order Management UI are owner-approved. Flower Management remains the design reference, with compact Show Entries/search/native sorting/pagination and no extra filter rows by default. Build/check and verify the Order Management application push before Delivery Management UI. Order stock, payments and fulfillment remain standalone sample behavior; cross-module/backend work and the separate Client storefront remain deferred.
+**Last updated:** 2026-11-04  
+**Project status:** Flower, Inventory, Batch, Spoilage Prediction, Supplier Client Management, Order Management and Delivery Management UI are owner-approved. Flower Management remains the design reference with compact table controls and no extra filter rows by default. Build/check and verify the Delivery Management application push before Sales & Payments UI. Delivery proof and workflow use browser-session samples; actual Order/Inventory/Sales synchronization and the separate Client storefront remain deferred.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
