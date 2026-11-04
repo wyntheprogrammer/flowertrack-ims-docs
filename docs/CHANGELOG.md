@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Updated — Reports export setup
+
+- Added `npm install jspdf jspdf-autotable exceljs` and the build command to the Windows setup guide.
+- Documented PDF table and real Excel workbook package roles, lockfile staging and `npm ci` for fresh checkouts.
+- Recorded unresolved-import troubleshooting without externalizing the required browser packages.
+- Owner accepted the Reports work after dependency guidance; independent browser/export/build results and application push remain unverified.
+
 ### Approved — Mixed Stem / Bouquet Orders and Sales UI
 
 - Owner accepted mixed order lines, unit-aware quantity/price labels, type/unit/price snapshots and sample mixed Sales Records.
