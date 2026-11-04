@@ -17,6 +17,20 @@
 
 
 
+
+## Supplier final cleanup — prepared 2026-11-04
+
+- Prepared complete replacement files from reviewed application commit `c24664d5f5b669656013e374966f053898744acf`: shared layout, dashboard, app CSS/JS, Flower/Client/Order JS and new Supplier shell JS.
+- Replaced all seven Dashboard # links with named routes; Add Flower/New Order open their creation forms. Renamed New Sale shortcut to New Order to preserve completed-order sales recognition.
+- Added responsive sidebar toggle, accessible labels/expanded state, Escape/outside dismissal and a sample notification panel with real Inventory/Order links.
+- Dashboard period selector now changes a labelled sample loose-stem inventory chart. Excludes sales money and Bouquet counts from that chart's common unit axis; dashboard values explicitly marked samples.
+- Fixed explicit Flower image removal on Save, preserved cancel/no-removal behavior and replacement selection, and added object-URL reuse/cleanup.
+- Fixed Client ongoing count to include Processing and Ready for Delivery; removed obsolete Preparing status.
+- Passed syntax for five changed/new JS files and isolated image persistence/replacement, six ongoing-stage counts, link routing, menu/notification state and chart-change checks.
+- No real browser run: Chromium executable unavailable. Current Laravel/production build and PDF/Excel/print smoke tests remain local verification tasks; earlier npm offline cache limitation still applies.
+- Files supplied for local replacement only; no application push or owner final-cleanup approval is claimed. Current task: apply all eight files, build and smoke-test, then commit/push and verify before full Supplier UI sign-off.
+
+
 ## Supplier UI readiness review — 2026-11-04
 
 - Reviewed application main commit `c24664d5f5b669656013e374966f053898744acf` (`Complete approved Audit Trail UI`). Audit push is now verified at this commit.
@@ -624,7 +638,8 @@ Earlier dated session entries below describe historical planning states, not the
 
 
 
-Resolve final Supplier UI review findings (dashboard links/controls, Flower image removal, Client ongoing-status counts), then verify local production build, responsive routes/forms and report exports before final UI sign-off and backend implementation.
+
+Apply the supplied eight Supplier cleanup files, run local build and desktop/mobile/forms/export smoke checks, then approve/commit/push and verify success before Supplier UI sign-off and backend implementation.
 
 
 ### 2026-11-02 — Delivery Management requirements
