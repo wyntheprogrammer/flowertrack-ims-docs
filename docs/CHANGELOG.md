@@ -6,6 +6,14 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Approved — Sales & Payments UI
+
+- Owner accepted Selling Prices, Sales Records, Payments, financial details/history, summaries and sample charts.
+- Documented payment-dropdown eligibility and separate sample Order data; recording creates Pending payments, followed by manual confirmation.
+- Recorded immutable order price snapshots, integer-centavo calculations, completed-order sales recognition, partial payments, reference checks and capped refunds retaining original history.
+- Recorded missing Blade-view troubleshooting and prototype financial/reporting boundaries; no actual bank, Orders or database integration.
+- Independent build/browser run and application push remain unverified. Next: build/check and push this module, verify success, then Reports UI.
+
 ### Approved — Delivery Management UI
 
 - Owner approved details, scheduling/rescheduling, assignment/reassignment, dispatch, proof-backed Delivered, failed attempts, cancellation and history.
