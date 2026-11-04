@@ -12,6 +12,25 @@
 
 
 
+
+## Mixed Stem / Bouquet Orders and Sales UI — owner-approved 2026-11-04
+
+This is the current milestone and next-task reference. Earlier adaptation tasks are historical.
+
+- Owner approved the mixed-item Order Management and Sales & Payments update.
+- Order editor supports loose Stem and supplier-made finished Bouquet items in the same order; item selection and quantity/details labels show each unit.
+- Snapshot item type, base unit and unit price on order lines; preserve existing price snapshots when editing. Stock availability/reservations and collection deductions are per item code; bouquet sales never consume component stems.
+- Sales selling-price labels use per-unit wording. Completed sales preserve mixed line snapshots and include the applicable delivery fee.
+- Top-selling quantities are grouped and ranked separately for Stem and Bouquet units, avoiding comparisons of incompatible quantities.
+- Preserved one exact full payment per order, Pending verification/duplicate lock, manual confirmation and original payment/refund history.
+- Preserved actual Pickup collection → Completed deduction once; Delivery completion coordination remains separate. No deduction at Ready for Pickup/Delivery.
+- Changed files: `resources/js/supplier/orders.js`, `resources/views/supplier/orders.blade.php`, `resources/js/supplier/sales-payments.js`, `resources/views/supplier/sales-payments.blade.php`; existing CSS retained.
+- Checks passed: syntax, mixed totals, unit snapshots, bouquet availability, per-item collection deduction, repeat protection, exact sample full payments and immutable Sales snapshots. Owner accepted local UI; independent browser and current local production build were not verified here.
+- Catalog, Inventory, Batch, Order and Sales still use separate in-memory sample datasets. UI adaptation does not establish backend synchronization or persistence.
+- Current task: build/check, stage, commit and push this mixed-item update, then verify application push success. No successful application push is claimed by this documentation update.
+- Next module: Reports UI. Use unit-aware quantities, completed-order sales/refunds, actual spoilage events and distinguish physical stock from reservations. Keep approved typography; confirm any specialized report filters instead of automatically adding extra filter rows.
+
+
 ## Stem / Bouquet Inventory and Batch UI — owner-approved 2026-11-04
 
 This is the current implementation milestone and next-task reference. Earlier module next-task entries are historical.
@@ -27,7 +46,7 @@ This is the current implementation milestone and next-task reference. Earlier mo
 - Validation passed: JavaScript syntax, bouquet receiving, conversion rejection, FIFO splitting, loose-stem isolation, completed-pickup gate, repeated-issue prevention and metadata-only batch edit checks. Owner accepted local UI; independent browser/current local production build was not verified here.
 - Inventory, Batch and catalog still use separate in-memory samples; reset on refresh. No database persistence or automatic module synchronization.
 - Application commit/push for this update is not yet verified. Current task: build/check, stage, commit, push and confirm success.
-- Next: adapt Order Management and Sales & Payments to mixed Stem/Bouquet items, unit/price snapshots and unit-aware quantities; preserve one exact full payment per order. Then resume Reports UI.
+- Mixed Stem/Bouquet Order and Sales UI is now owner-approved; verify its application push, then resume Reports UI. See current milestone above.
 
 
 ## Stem / Bouquet catalog UI — owner-approved 2026-11-04
@@ -540,7 +559,8 @@ Earlier dated session entries below describe historical planning states, not the
 
 
 
-Build/check, commit and push the approved Stem/Bouquet Inventory and Batch update and verify application push success. Then adapt Orders and Sales & Payments to mixed item units before Reports.
+
+Build/check, commit and push the approved mixed Stem/Bouquet Orders and Sales & Payments update and verify application push success. Then begin Reports UI with unit-aware quantities and approved financial/inventory reporting rules.
 
 
 ### 2026-11-02 — Delivery Management requirements
