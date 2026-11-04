@@ -1,6 +1,6 @@
 # FlowerTrack IMS — Windows Setup Guide
 
-**Last updated:** 2026-11-02  
+**Last updated:** 2026-11-04  
 **Purpose:** Prepare a new Windows computer for FlowerTrack IMS development, including official installer links, installation steps, PHP configuration, and verification.
 
 This guide is for the Laravel application. The documentation repository and application repository are separate:
@@ -441,3 +441,24 @@ In one FlowerTrack development setup, this error was resolved because **two XAMP
 - [Technology Stack and References](TECHNOLOGY_STACK_AND_REFERENCES.md)
 - [Development Progress](DEVELOPMENT_PROGRESS.md)
 - [UI/UX Guidelines](UI_UX_GUIDELINES.md)
+
+
+## Reports PDF and Excel export dependencies
+
+From Windows CMD in the application directory, install the Reports export packages before building the frontend:
+
+```bat
+cd /d C:\xampp\htdocs\FlowerTrack
+npm install jspdf jspdf-autotable exceljs
+npm run build
+```
+
+| Package | Purpose |
+|---|---|
+| `jspdf` | Generate PDF reports in the browser |
+| `jspdf-autotable` | Render paginated report tables inside the PDF |
+| `exceljs` | Generate actual Excel `.xlsx` workbooks |
+
+Commit both `package.json` and `package-lock.json` with the Reports implementation. On a fresh checkout where these dependencies are already committed, use `npm ci` followed by `npm run build`; there is no need to reinstall them individually.
+
+If Vite reports a failed/unresolved import for one of these packages, run the install command above from the application root and rebuild. Do not mark the package external merely to suppress the error; the report code needs the dependency bundled for browser exports. Package versions should follow the application's committed lockfile; none are asserted by this guide.
