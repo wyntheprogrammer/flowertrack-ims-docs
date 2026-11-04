@@ -6,6 +6,14 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Approved — Stem / Bouquet Inventory and Batch UI
+
+- Owner applied and accepted finished-bouquet receiving, item-unit labels, separate stock totals, bouquet batches and item-specific FIFO/Stock-Out.
+- Bouquet receipt requires Bouquet unit/factor 1; stem conversions do not apply. Bouquet issue never consumes loose stems.
+- Preserved collected Pickup Completed eligibility, repeated-issue protection and metadata-only Batch edits.
+- Syntax and isolated stock/unit/FIFO checks passed; owner approved local UI. Independent browser/build and application push remain unverified.
+- Next: build/check and push Inventory/Batch, verify success, then adapt Orders and Sales & Payments mixed units before Reports.
+
 ### Approved — Stem / Bouquet Flower Management catalog UI
 
 - Owner applied and approved item type in Add/table/details, automatic base unit, minimum-stock unit labels and sample supplier-made bouquets.
