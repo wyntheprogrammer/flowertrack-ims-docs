@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Approved — Mixed Stem / Bouquet Orders and Sales UI
+
+- Owner accepted mixed order lines, unit-aware quantity/price labels, type/unit/price snapshots and sample mixed Sales Records.
+- Separated top-selling quantity rankings by Stem and Bouquet; retained exact full-payment and actual-collection Stock-Out rules.
+- Syntax and isolated total/snapshot/availability/deduction/payment checks passed. Owner approved local UI; independent browser/build and application push remain unverified.
+- Next: build/check and push this update, verify success, then Reports UI. Modules still use separate sample data.
+
 ### Approved — Stem / Bouquet Inventory and Batch UI
 
 - Owner applied and accepted finished-bouquet receiving, item-unit labels, separate stock totals, bouquet batches and item-specific FIFO/Stock-Out.
