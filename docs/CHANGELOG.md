@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Started — Supplier backend authentication foundation
+
+- Owner verified database connection and users account-field migration, updated User model/role constants and saved initial active Admin with required password change.
+- Clarified that the 28-table listing includes 19 phpMyAdmin tables; the application has 9 tables at this checkpoint.
+- AuthController scaffold created; login/password-change/middleware implementation remains next.
+- Owner delegates MD/push timing: document meaningful progress and push after a coherent tested authentication milestone. Backend application push remains unverified; no passwords recorded.
+
 ### Prepared — Supplier UI final cleanup fixes
 
 - Supplied complete replacements for Dashboard route shortcuts, sidebar/notification controls, chart period switching, Flower image removal and Client ongoing-status counts.
