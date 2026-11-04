@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Changed — one full payment per order
+
+- Owner replaced partial/multiple payments with exactly one payment matching the full order total.
+- Auto-fill/read-only amount; reject partial, excess and duplicate payments. Existing Pending payment hides the order from the dropdown; confirmation changes Unpaid to Paid.
+- Removed partial-payment sample states; preserved verification, references, refund history and completed-order sales recognition.
+- Prepared and isolated-tested JS changes. Application write blocked by integration HTTP 403; local application build/push remains pending. Earlier payment-policy entries below are historical and superseded.
+
 ### Approved — Sales & Payments UI
 
 - Owner accepted Selling Prices, Sales Records, Payments, financial details/history, summaries and sample charts.
