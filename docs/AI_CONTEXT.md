@@ -8,6 +8,20 @@
 
 
 
+
+## Pickup Stock-Out timing — owner decision 2026-11-04
+
+This decision supersedes all earlier Ready for Pickup Stock-Out instructions.
+
+- Confirmed reserves the full order quantity without reducing Inventory On-Hand or Batch Remaining.
+- Ready for Pickup means prepared and awaiting collection. Keep the reservation active; do not create Stock-Out or deduct batch quantities.
+- When staff confirms the customer actually collected the order and marks the Pickup order Completed, Inventory performs Stock-Out using FIFO batch allocation. Reduce On-Hand and Batch Remaining and consume the reservation in the same transaction, exactly once.
+- Repeated completion requests must not deduct twice. Keep an order-linked movement and enforce transactional/idempotent fulfillment processing in the backend.
+- Delivery timing remains successful Delivered; payment confirmation alone never deducts stock.
+- Cancellation before actual pickup releases the reservation without a stock restoration because no pickup Stock-Out has occurred.
+- Documentation updated only for this decision. Existing Order/Inventory prototype code still needs its trigger, active reservation states, confirmation text and sample data changed from Ready for Pickup to actual collection/Completed. No application change/build/push is claimed here.
+
+
 ## Payment policy — single full payment (2026-11-04)
 
 This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
@@ -71,7 +85,7 @@ This is an earlier UI milestone; the Delivery Management milestone above is the 
 - Approved screen: Add/Edit orders before Processing, multiple flower items, generated Order ID, registered client selection, Delivery/Pickup, required delivery address, optional notes, price snapshots, calculated subtotal/fee/total, view details, status history and cancellation with a reason.
 - Reuse Flower typography, Show Entries, compact search, native column sorting, pagination and table-only horizontal scrolling. No extra filter row.
 - Approval is in Order Management: Pending → Confirmed via the next-status arrow and Mark Confirmed. Confirmation checks full sample availability and reserves stock without reducing physical on-hand.
-- Pickup flow: Pending → Confirmed → Processing → Ready for Pickup → Completed. Ready for Pickup simulates Stock-Out once; completion confirms collection without another deduction.
+- Pickup flow: Pending → Confirmed → Processing → Ready for Pickup → Completed. Ready for Pickup keeps stock reserved; actual collection confirmed as Completed triggers Inventory Stock-Out once.
 - Delivery flow: Pending → Confirmed → Processing → Ready for Delivery → Out for Delivery → Completed. This prototype stops at Ready for Delivery; Delivery Management will own dispatch and Delivered proof. Future successful Delivered coordinates Inventory Stock-Out and Order completion.
 - Order Status and Payment Status are separate. Payments are read-only samples; Sales & Payments owns transactions and refunds.
 - Reject insufficient full sample allocation; aggregate repeated flower quantities. No partial fulfillment or pending-stock queue. Pending orders do not reserve stock.
@@ -395,11 +409,11 @@ Relevant local files include `resources/css/app.css`, `resources/views/layouts/s
 - Orders can be created through the Client Panel or manually by Supplier/Admin; Admin manually reviews and confirms.
 - Generated unique Order ID; registered Client; automatic Order Date; at least one item; each item has a Flower and positive quantity.
 - Unit Price comes from Sales and Payment Management and is snapshotted per order item; subtotals and order total are calculated. Delivery Address is required for Delivery; Order Notes are optional.
-- Separate Order Status and Payment Status. Order statuses: Pending, Confirmed, Processing, Ready for Delivery or Ready for Pickup, Out for Delivery (Delivery only), Completed, Cancelled. Payment statuses: Unpaid, Partially Paid, Paid, Refunded.
+- Separate Order Status and Payment Status. Order statuses: Pending, Confirmed, Processing, Ready for Delivery or Ready for Pickup, Out for Delivery (Delivery only), Completed, Cancelled. Payment statuses: Unpaid, Paid, Refunded.
 - Sales and Payment Management owns payment recording/transactions; Order Management displays payment status and summary only.
 - Check available-to-allocate stock before confirmation, accounting for reservations already held by other confirmed orders. Reject an order if the full quantity is unavailable; no pending-stock queue or overselling.
 - Reserve stock when Confirmed. Reservation does not reduce physical on-hand quantity and is not a Stock-Out.
-- Actual Stock-Out triggers: Delivery when successfully marked Delivered; Customer Pickup when marked Ready for Pickup. Coordinate reservation and Stock-Out to prevent double deduction. No partial fulfillment.
+- Actual Stock-Out triggers: Delivery when successfully marked Delivered; Customer Pickup when actual collection is confirmed / Completed. Coordinate reservation and Stock-Out to prevent double deduction. No partial fulfillment.
 - Clients may edit/cancel Pending orders. Admin may edit before Processing and cancel later non-completed orders with a required reason. Completed orders cannot be cancelled.
 - Cancellation releases reservations. If Stock-Out occurred, inventory must be corrected/restored before cancellation is finalized. Retain cancelled orders and status history.
 - Support Delivery and Customer Pickup. Delivery Management owns assignment and delivery-specific tracking; Pickup skips Out for Delivery.
