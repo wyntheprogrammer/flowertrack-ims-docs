@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Approved — Stem / Bouquet Flower Management catalog UI
+
+- Owner applied and approved item type in Add/table/details, automatic base unit, minimum-stock unit labels and sample supplier-made bouquets.
+- Existing items default to Stem; type is locked in Edit. Retained original codes, visual design and compact table controls.
+- Syntax and isolated Add/Edit/unit/default/detail checks passed; owner approved local UI. Independent production build/browser run and application push remain unverified.
+- Next: build/check and push catalog update, verify success, then adapt Inventory/Batch and dependent Order/Sales units before Reports.
+
 ### Confirmed — loose stems and supplier-made pre-made bouquets
 
 - Owner confirmed the shop sells loose stems and bouquets already assembled by its supplier.
