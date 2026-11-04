@@ -13,6 +13,16 @@
 
 
 
+
+## Reports dependency setup — 2026-11-04
+
+- Owner accepted Reports after export dependency guidance and requested the setup command be retained in MD.
+- Required install from `C:\xampp\htdocs\FlowerTrack`: `npm install jspdf jspdf-autotable exceljs`, then `npm run build`.
+- Setup guide now explains package roles, unresolved-import troubleshooting and lockfile-based fresh checkout installs.
+- Reports UI uses seven report types, read-only sample tables/summaries/charts, search/sorting/pagination, PDF, Excel and print. No extra date/status filters were added.
+- Syntax and isolated report calculation checks passed earlier; current local production build, browser/export output and application push have not been independently verified.
+- Next task: review/commit/push Reports including `package.json` and `package-lock.json`, verify application push, then User Management UI.
+
 ## Mixed Stem / Bouquet Orders and Sales UI — owner-approved 2026-11-04
 
 This is the current milestone and next-task reference. Earlier adaptation tasks are historical.
