@@ -16,6 +16,23 @@
 
 
 
+
+## Supplier authentication — owner reports working locally, 2026-11-04
+
+This is the current implementation checkpoint. Earlier auth-scaffold-only instructions are historical.
+
+- Owner applied AuthController, login/change-password views, account-active/password-change/role middleware, aliases and protected routes; reported the flow working locally.
+- Controller handles email/password verification against users, active-account login condition, email/IP attempt limiting, session regeneration, password change with current-password validation, and POST logout/session invalidation.
+- Required temporary-password change precedes Supplier route access. Admin/Supplier operational routes are protected; Reports/Users/Audit are Admin-only.
+- Shared Delivery list is currently restricted to Admin/Supplier. Delivery Personnel assigned-only endpoints/filtering remain pending; do not claim Delivery Personnel backend access is complete.
+- Migration `database/migrations/2026_11_04_134311_add_account_fields_to_users_table.php`, updated `app/Models/User.php`, `app/Http/Controllers/AuthController.php`, three `app/Http/Middleware/Ensure*.php` files, `bootstrap/app.php`, `routes/web.php`, auth views and layout logout form comprise this checkpoint.
+- User model/account schema and initial Admin were verified by owner terminal output; controller syntax passed by owner report. Successful local auth flow is owner-reported; independent end-to-end, rate-limit/role/inactive tests and production build are not verified here.
+- Do not commit .env, credentials or database exports. The local Admin database record is not pushed through Git.
+- Current task: check/build, stage the targeted authentication files, commit and push, then verify push output before the next feature.
+- Next backend module: Flower Management catalog persistence for Stem/Bouquet records, retaining approved UI. No Flower/Inventory/Order/Payment business tables or persistence are established by this authentication checkpoint.
+- MD/push timing remains delegated to the assistant at coherent feature checkpoints.
+
+
 ## Backend authentication foundation — local checkpoint 2026-11-04
 
 This is the current phase and next-task reference. It supersedes earlier next-task instructions awaiting UI-only review. Preserve independent verification limits.
