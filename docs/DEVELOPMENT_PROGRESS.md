@@ -10,6 +10,22 @@
 
 
 
+
+## Stem / Bouquet catalog UI — owner-approved 2026-11-04
+
+This is the current implementation milestone and next-task reference; earlier scope-only notes and module next tasks are historical.
+
+- Owner applied and approved the Flower Management catalog update supporting supplier-made ready-made bouquets alongside loose stems.
+- Added Item Type (Stem / Bouquet) in Add, table and details; automatic read-only Base Unit; unit-aware minimum-stock labels; two sample bouquet records.
+- Existing catalog samples default to Stem. Existing item type is locked in Edit to preserve stock-unit meaning. Existing FLW codes and navigation are retained; no module rename.
+- Preserved approved typography, compact Show Entries/search, native sorting, balanced table columns, details, image handling and actions. No additional filters.
+- Changed files: `resources/views/supplier/flowers.blade.php`, `resources/css/supplier/flowers.css`, `resources/js/supplier/flowers.js`.
+- Validation: JavaScript syntax and isolated legacy-default, bouquet creation, derived-unit, type-lock editing and detail/unit-label checks passed; owner approved local UI. No independent browser run or local production build was verified here.
+- Catalog changes remain in-memory UI samples. Inventory, Batch, Orders and Sales still require type/unit adaptation and do not automatically consume this catalog.
+- Current task: build/check, commit and push this approved catalog update and verify application push success. Application push is not yet verified.
+- Next implementation: Inventory and Batch Stem/Bouquet support, followed by dependent Order/Sales unit handling before Reports. Keep one-full-payment policy and actual collection/Completed fulfillment Stock-Out rules.
+
+
 ## Stems and supplier-made bouquets — confirmed 2026-11-04
 
 This current scope supersedes earlier stem-only catalog/order assumptions.
@@ -25,8 +41,8 @@ This current scope supersedes earlier stem-only catalog/order assumptions.
 - Selling a bouquet deducts finished Bouquet units only; never deduct its component stems again.
 - Keep the confirmed one-exact-full-payment rule. Payment itself does not deduct stock.
 - Required implementation scope: catalog item type/unit, Inventory receiving/reservation/Stock-Out, Batch units, mixed Order lines, Sales price labels/snapshots and Reports unit-aware quantities. Preserve the approved visual design and compact table controls.
-- UI/code changes for bouquet support are not implemented by this documentation update. Existing approved screens are a visual baseline and still require functional adaptation.
-- Next task: adapt the Flower Management catalog to distinguish Stem and Bouquet items, then update dependent modules before continuing Reports. Keep naming/navigation changes for separate review; no automatic module rename is implied.
+- Catalog Stem/Bouquet UI is now owner-approved (2026-11-04); dependent Inventory, Batch, Order and Sales adaptations remain pending. See the current milestone above.
+- Next task: verify catalog application push, then adapt Inventory/Batch and dependent modules before Reports. Keep naming/navigation changes for separate review; no automatic module rename is implied.
 
 
 ## Pickup Stock-Out timing — owner decision 2026-11-04
@@ -503,7 +519,8 @@ Earlier dated session entries below describe historical planning states, not the
 
 
 
-Build/check, commit and push approved Sales & Payments and verify application push success. Then begin Reports UI, preserving the Flower design reference and confirming any specialized report controls when implementing that module.
+
+Build/check, commit and push the approved Stem/Bouquet catalog update and verify application push success. Then adapt Inventory and Batch to separate Stem and Bouquet stock units, followed by Orders/Sales before Reports.
 
 
 ### 2026-11-02 — Delivery Management requirements
