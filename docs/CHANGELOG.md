@@ -1,8 +1,18 @@
 # Changelog
 
-**Last updated:** 2026-11-03
+**Last updated:** 2026-11-04
 
 All meaningful documentation and project-planning updates are recorded here.
+
+## 2026-11-04
+
+### Approved — Delivery Management UI
+
+- Owner approved details, scheduling/rescheduling, assignment/reassignment, dispatch, proof-backed Delivered, failed attempts, cancellation and history.
+- Kept Flower typography and compact search/Show Entries/native sorting/pagination without extra filters; only the table scrolls horizontally.
+- Recorded recipient/remarks/photo requirements, session-only images, failed-attempt retry flow and delivery/order cancellation distinction.
+- Documented local sample completion only; no real Order, Inventory, Sales or durable-upload integration.
+- Independent build/browser validation and Delivery application push remain unverified. Next: build/check and push, verify success, then Sales & Payments UI.
 
 ## 2026-11-03
 
