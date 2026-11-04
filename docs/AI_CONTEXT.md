@@ -11,9 +11,28 @@
 
 
 
+
+## Stem / Bouquet Inventory and Batch UI — owner-approved 2026-11-04
+
+This is the current implementation milestone and next-task reference. Earlier module next-task entries are historical.
+
+- Owner applied and approved the Inventory and Batch Stem/Bouquet update after the catalog update.
+- Added separate supplier-made finished Bouquet sample items/batches alongside legacy Stem records. Item identity/options/details show the base unit; minimum-stock and movement/allocation labels use stems or bouquets as appropriate.
+- Inventory summary displays Stem and Bouquet totals separately instead of combining incompatible quantities.
+- Bouquet Stock-In accepts only finished Bouquet units with factor 1; reject Stem units or bouquet-to-stem conversions. Stem items retain their configured receiving conversions and historical batch conversion snapshots.
+- Bouquet FIFO allocation and Stock-Out affect only the selected bouquet item's batches; no loose-stem deduction or production workflow.
+- Unit configuration is unavailable for bouquets. Batch editing remains metadata-only and preserves quantities.
+- Preserved confirmed pickup timing: Ready for Pickup is not Stock-Out eligible; collected Pickup Completed is eligible once. Delivery remains successful Delivered coordinated with linked-order Completed. No actual cross-module transaction is implemented in this prototype.
+- Changed files: `resources/js/supplier/inventory.js`, `resources/views/supplier/inventory.blade.php`, `resources/js/supplier/batches.js`, `resources/views/supplier/batches.blade.php`. Existing CSS/visual design retained.
+- Validation passed: JavaScript syntax, bouquet receiving, conversion rejection, FIFO splitting, loose-stem isolation, completed-pickup gate, repeated-issue prevention and metadata-only batch edit checks. Owner accepted local UI; independent browser/current local production build was not verified here.
+- Inventory, Batch and catalog still use separate in-memory samples; reset on refresh. No database persistence or automatic module synchronization.
+- Application commit/push for this update is not yet verified. Current task: build/check, stage, commit, push and confirm success.
+- Next: adapt Order Management and Sales & Payments to mixed Stem/Bouquet items, unit/price snapshots and unit-aware quantities; preserve one exact full payment per order. Then resume Reports UI.
+
+
 ## Stem / Bouquet catalog UI — owner-approved 2026-11-04
 
-This is the current implementation milestone and next-task reference; earlier scope-only notes and module next tasks are historical.
+This is an earlier catalog milestone; the Inventory/Batch approval above is the current next-task reference.
 
 - Owner applied and approved the Flower Management catalog update supporting supplier-made ready-made bouquets alongside loose stems.
 - Added Item Type (Stem / Bouquet) in Add, table and details; automatic read-only Base Unit; unit-aware minimum-stock labels; two sample bouquet records.
@@ -41,7 +60,7 @@ This current scope supersedes earlier stem-only catalog/order assumptions.
 - Selling a bouquet deducts finished Bouquet units only; never deduct its component stems again.
 - Keep the confirmed one-exact-full-payment rule. Payment itself does not deduct stock.
 - Required implementation scope: catalog item type/unit, Inventory receiving/reservation/Stock-Out, Batch units, mixed Order lines, Sales price labels/snapshots and Reports unit-aware quantities. Preserve the approved visual design and compact table controls.
-- Catalog Stem/Bouquet UI is now owner-approved (2026-11-04); dependent Inventory, Batch, Order and Sales adaptations remain pending. See the current milestone above.
+- Catalog, Inventory and Batch Stem/Bouquet UI are now owner-approved (2026-11-04); Order and Sales adaptations remain pending. See the current milestone above.
 - Next task: verify catalog application push, then adapt Inventory/Batch and dependent modules before Reports. Keep naming/navigation changes for separate review; no automatic module rename is implied.
 
 
