@@ -3,7 +3,7 @@
 **Last updated:** 2026-11-04  
 **Payment policy:** One exact full payment per order; no partial payments or installments. Application patch/build/push is pending because integration write access returned HTTP 403.
 
-**Project status:** User Management UI is now owner-approved, including fixed roles, temporary-password reset preview and last-active-Admin protection. Build/check and verify its application push before reviewing the supplied Audit Trail draft. Earlier Supplier UI approvals remain recorded; backend authentication, authorization, persistence and cross-module synchronization remain pending.
+**Project status:** Audit Trail UI is now owner-approved, completing the planned Supplier module screen sequence at the UI level. Build/check and verify the Audit application push, then review the full Supplier UI before choosing the next phase. Frontend samples remain separate; authentication, permissions, durable audit logging, database persistence and cross-module synchronization are pending. The Client storefront remains deferred.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
