@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Changed — Pickup stock deduction at actual collection
+
+- Owner moved Customer Pickup Stock-Out from Ready for Pickup to staff-confirmed collection / Completed.
+- Ready for Pickup retains the reservation without reducing On-Hand or Batch Remaining. Completed consumes the reservation and performs FIFO Stock-Out exactly once.
+- Delivery remains Delivered; payment does not deduct inventory. Earlier pickup timing entries below are historical and superseded.
+- Application Order/Inventory prototype updates, build and push are still pending; this change updates documentation only.
+
 ### Changed — one full payment per order
 
 - Owner replaced partial/multiple payments with exactly one payment matching the full order total.
