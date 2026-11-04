@@ -7,9 +7,31 @@
 
 
 
+
+## Sales & Payments UI — owner-approved 2026-11-04
+
+This is the current milestone and next-task reference; earlier module milestones are historical.
+
+- Owner approved Selling Prices, Sales Records and Payments tabs, financial details/history, summary cards, top-flower quantities and sample sales trend.
+- Keep Flower typography, compact Show Entries/search, native column sorting, pagination and table-only horizontal scrolling. No extra filter row.
+- Selling prices are per stem. Changes apply to future orders; existing order/Sales item price snapshots are preserved. Amounts use integer centavos and positive two-decimal input validation.
+- One sample Sales Record is generated per Completed sample order; payment receipt alone does not create a sale. Cancelled orders are excluded. Sales Records are read-only.
+- Record Payment's Order dropdown uses this module's separate sample orders, not live Order Management records. Eligible orders are not Cancelled, have no recorded refund and have a positive balance after confirmed and pending payment amounts. Pending, Confirmed, Processing and Completed orders may appear when eligible.
+- Cash, Bank Transfer and E-wallet are supported; online methods require a reference. Recording creates Pending; Admin confirmation requires verification remarks. Pending amounts do not count as confirmed payments or sales, but reserve the unrecorded collection allowance to prevent duplicate over-recording.
+- Reject overpayments and repeated references for the same online method in this prototype. Recheck eligibility/balance before confirmation. Preserve automatic IDs/date/time and payment history.
+- Admin-approved sample refunds require an amount and reason, cannot exceed the remaining refundable amount of the linked confirmed payment, and retain the original payment. No actual money transfer occurs.
+- Refunded order status and financial breakdown show confirmed payments, refunds, net collected, pending payments and outstanding before refunds. Further collection is blocked on refunded sample orders pending the detailed adjustment workflow.
+- Prototype reporting: refunds reduce the original completed sale/date bucket; top flowers show completed quantities before refund adjustment. Final report-period/refund treatment remains for Reports design. PDF/Excel exports are not implemented here.
+- All prices/orders/payments/refunds/history are in-memory samples and reset on refresh. No actual Orders sync, payment gateway, bank verification, database or server authorization.
+- Application areas: `resources/views/supplier/sales-payments.blade.php`, `resources/css/supplier/sales-payments.css`, `resources/js/supplier/sales-payments.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/sales-payments` / `supplier.sales-payments` and replace its placeholder.
+- Troubleshooting: supplied log identified `View [supplier.sales-payments] not found`; ensure the Blade file exists at the exact path above, then clear compiled views. Owner subsequently reviewed and approved the UI.
+- Validation: owner accepted local UI. No independent current production build, browser run or Sales & Payments application commit/push has been verified.
+- Current task: build/check, stage, commit and push Sales & Payments; verify application push. Next module: Reports UI. Separate Client storefront and backend/database work remain deferred.
+
+
 ## Delivery Management UI — owner-approved 2026-11-04
 
-This is the current milestone and next-task reference. Earlier dated milestone sections are historical.
+This is an earlier milestone; the Sales & Payments milestone above is the current next-task reference.
 
 - Owner approved Delivery Management UI. Preserve Flower Management typography, compact Show Entries/search, native column sorting, pagination and table-only horizontal scrolling; no extra filter row.
 - Approved operations: View Details, Schedule/Reschedule with remarks, Assign/Reassign active authorized delivery personnel, Dispatch, Delivered with proof, Failed attempt with reason, Cancel Delivery and timestamped actor/status history.
