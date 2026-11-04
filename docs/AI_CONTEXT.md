@@ -15,6 +15,23 @@
 
 
 
+
+## Backend authentication foundation — local checkpoint 2026-11-04
+
+This is the current phase and next-task reference. It supersedes earlier next-task instructions awaiting UI-only review. Preserve independent verification limits.
+
+- Owner reported final Supplier UI fixes applied and chose to begin Supplier backend; separate Client storefront remains deferred.
+- Existing database connection verified by owner output: MariaDB 10.11.16, mysql connection, flowertrack_ims. The displayed 28 tables span two schemas: 9 application tables and 19 phpMyAdmin tables; do not treat phpMyAdmin tables as application tables.
+- Initial three default migrations were Ran. Added local migration `2026_11_04_134311_add_account_fields_to_users_table.php`; owner verified users now has 11 columns, including role, is_active and must_change_password. Role defaults to client; both boolean fields default true.
+- User model updated with role constants admin/supplier/delivery/client, boolean casts and role helper methods, retaining password hashed cast and fillable name/email/password only. Initial undefined ROLE_ADMIN was resolved after replacing the default model; owner confirmed the constant returns admin.
+- Owner saved and verified initial Administrator account (ID 1): role admin, active true, must_change_password true. Do not recreate it or record its password. No credential is retained in these docs.
+- Owner confirmed `php artisan make:controller AuthController` completed. Controller logic, auth routes/views, active-account/role middleware and required-password-change enforcement are not yet implemented by this checkpoint.
+- Current next step: implement AuthController/login/logout, then password-change flow, middleware and route protection; test together as one authentication milestone.
+- Owner delegates MD and push checkpoint timing to the assistant. Update MD at meaningful verified progress/decision points; provide a targeted application commit/push script after a coherent working/tested feature, rather than after every artisan command. Keep the existing practice of documenting completed milestones before the push script.
+- Planned application checkpoint: working/tested login, logout, inactive-account rejection, attempt limiting, session handling, mandatory password change and authorized Supplier route access. No successful backend application commit/push is claimed yet.
+- Do not stage .env or credentials. Application database records are not included in Git commits. Local changes are owner-reported; independent browser/production build validation remains outstanding.
+
+
 ## Audit Trail UI — owner-approved 2026-11-04
 
 This is the current approval and next-task reference; earlier draft/pending-approval statements below are historical.
