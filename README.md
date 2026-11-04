@@ -3,7 +3,7 @@
 **Last updated:** 2026-11-04  
 **Payment policy:** One exact full payment per order; no partial payments or installments. Application patch/build/push is pending because integration write access returned HTTP 403.
 
-**Project status:** The Stem / Bouquet Flower Management catalog UI is now owner-approved. Build/check and verify its application push, then adapt Inventory and Batch followed by Orders/Sales units before Reports. Existing Supplier UI approvals remain visual baselines; cross-module synchronization and backend/database implementation remain deferred.
+**Project status:** Stem / Bouquet catalog, Inventory and Batch UI updates are owner-approved. Build/check and verify the Inventory/Batch application push, then adapt Orders and Sales & Payments for mixed item units before Reports. Separate in-memory module samples remain unsynchronized; backend/database work and the Client storefront remain deferred.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
