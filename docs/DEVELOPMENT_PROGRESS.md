@@ -8,6 +8,20 @@
 
 
 
+
+## Pickup Stock-Out timing — owner decision 2026-11-04
+
+This decision supersedes all earlier Ready for Pickup Stock-Out instructions.
+
+- Confirmed reserves the full order quantity without reducing Inventory On-Hand or Batch Remaining.
+- Ready for Pickup means prepared and awaiting collection. Keep the reservation active; do not create Stock-Out or deduct batch quantities.
+- When staff confirms the customer actually collected the order and marks the Pickup order Completed, Inventory performs Stock-Out using FIFO batch allocation. Reduce On-Hand and Batch Remaining and consume the reservation in the same transaction, exactly once.
+- Repeated completion requests must not deduct twice. Keep an order-linked movement and enforce transactional/idempotent fulfillment processing in the backend.
+- Delivery timing remains successful Delivered; payment confirmation alone never deducts stock.
+- Cancellation before actual pickup releases the reservation without a stock restoration because no pickup Stock-Out has occurred.
+- Documentation updated only for this decision. Existing Order/Inventory prototype code still needs its trigger, active reservation states, confirmation text and sample data changed from Ready for Pickup to actual collection/Completed. No application change/build/push is claimed here.
+
+
 ## Payment policy — single full payment (2026-11-04)
 
 This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
@@ -71,7 +85,7 @@ This is an earlier UI milestone; the Delivery Management milestone above is the 
 - Approved screen: Add/Edit orders before Processing, multiple flower items, generated Order ID, registered client selection, Delivery/Pickup, required delivery address, optional notes, price snapshots, calculated subtotal/fee/total, view details, status history and cancellation with a reason.
 - Reuse Flower typography, Show Entries, compact search, native column sorting, pagination and table-only horizontal scrolling. No extra filter row.
 - Approval is in Order Management: Pending → Confirmed via the next-status arrow and Mark Confirmed. Confirmation checks full sample availability and reserves stock without reducing physical on-hand.
-- Pickup flow: Pending → Confirmed → Processing → Ready for Pickup → Completed. Ready for Pickup simulates Stock-Out once; completion confirms collection without another deduction.
+- Pickup flow: Pending → Confirmed → Processing → Ready for Pickup → Completed. Ready for Pickup keeps stock reserved; actual collection confirmed as Completed triggers Inventory Stock-Out once.
 - Delivery flow: Pending → Confirmed → Processing → Ready for Delivery → Out for Delivery → Completed. This prototype stops at Ready for Delivery; Delivery Management will own dispatch and Delivered proof. Future successful Delivered coordinates Inventory Stock-Out and Order completion.
 - Order Status and Payment Status are separate. Payments are read-only samples; Sales & Payments owns transactions and refunds.
 - Reject insufficient full sample allocation; aggregate repeated flower quantities. No partial fulfillment or pending-stock queue. Pending orders do not reserve stock.
@@ -298,7 +312,7 @@ This file list is a working-session snapshot. The initial Supplier/Admin and Cli
 - [ ] Confirm supplier/vendor management scope.
 - [x] Finalize client account creation, required fields, account access, deactivation, duplicate email, and client history rules.
 - [ ] Confirm checkout and detailed client ordering rules.
-- [x] Finalize initial order, delivery, sales, and payment lifecycles; Stock-Out timing is finalized (Delivered / Ready for Pickup); detailed return/reconciliation design remains open.
+- [x] Finalize initial order, delivery, sales, and payment lifecycles; Stock-Out timing is finalized (Delivery: Delivered / Pickup: actual collection confirmed as Completed); detailed return/reconciliation design remains open.
 - [x] Confirm Admin, Supplier/Staff and Delivery Personnel roles and fixed permissions.
 - [x] Finalize Reports requirements; retain the approved role restrictions and export/print scope.
 - [ ] Confirm single-store versus multi-branch scope.
