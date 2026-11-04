@@ -8,6 +8,20 @@ Status labels:
 - **Proposed** — a suggestion, not an approved requirement.
 
 
+
+## Pickup Stock-Out timing — owner decision 2026-11-04
+
+This decision supersedes all earlier Ready for Pickup Stock-Out instructions.
+
+- Confirmed reserves the full order quantity without reducing Inventory On-Hand or Batch Remaining.
+- Ready for Pickup means prepared and awaiting collection. Keep the reservation active; do not create Stock-Out or deduct batch quantities.
+- When staff confirms the customer actually collected the order and marks the Pickup order Completed, Inventory performs Stock-Out using FIFO batch allocation. Reduce On-Hand and Batch Remaining and consume the reservation in the same transaction, exactly once.
+- Repeated completion requests must not deduct twice. Keep an order-linked movement and enforce transactional/idempotent fulfillment processing in the backend.
+- Delivery timing remains successful Delivered; payment confirmation alone never deducts stock.
+- Cancellation before actual pickup releases the reservation without a stock restoration because no pickup Stock-Out has occurred.
+- Documentation updated only for this decision. Existing Order/Inventory prototype code still needs its trigger, active reservation states, confirmation text and sample data changed from Ready for Pickup to actual collection/Completed. No application change/build/push is claimed here.
+
+
 ## Payment policy — single full payment (2026-11-04)
 
 This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
@@ -179,7 +193,7 @@ The confirmed initial navigation order is:
 - Payment statuses displayed by Order Management: Unpaid, Paid, and Refunded. Sales and Payment Management owns payment recording and transactions.
 - Check available-to-allocate stock before confirmation, subtracting quantities already reserved by other confirmed orders. Reject an order if the full quantity is unavailable; do not create a pending-stock queue or allow overselling.
 - Reserve inventory when an order is Confirmed. Reservation does not reduce physical on-hand stock and is not a Stock-Out.
-- Actual customer-order Stock-Out is recorded through Inventory Management at the fulfillment-specific trigger: Delivery is stocked out only when successfully marked Delivered; Customer Pickup is stocked out when marked Ready for Pickup. Coordinate reservation and Stock-Out to prevent double deduction.
+- Actual customer-order Stock-Out is recorded through Inventory Management at the fulfillment-specific trigger: Delivery is stocked out only when successfully marked Delivered; Customer Pickup is stocked out only on confirmed actual collection / Completed. Coordinate reservation and Stock-Out to prevent double deduction.
 - Partial fulfillment is not allowed in the initial scope.
 - Clients may edit and cancel Pending orders. Supplier/Admin may edit orders before Processing and may cancel later non-completed orders with a required reason. Completed orders cannot be cancelled.
 - Release reservations when an order is cancelled. If Stock-Out already occurred, inventory must be corrected/restored through Inventory Management before cancellation is finalized.
