@@ -6,9 +6,31 @@
 
 
 
+
+## Sales & Payments UI — owner-approved 2026-11-04
+
+This is the current milestone and next-task reference; earlier module milestones are historical.
+
+- Owner approved Selling Prices, Sales Records and Payments tabs, financial details/history, summary cards, top-flower quantities and sample sales trend.
+- Keep Flower typography, compact Show Entries/search, native column sorting, pagination and table-only horizontal scrolling. No extra filter row.
+- Selling prices are per stem. Changes apply to future orders; existing order/Sales item price snapshots are preserved. Amounts use integer centavos and positive two-decimal input validation.
+- One sample Sales Record is generated per Completed sample order; payment receipt alone does not create a sale. Cancelled orders are excluded. Sales Records are read-only.
+- Record Payment's Order dropdown uses this module's separate sample orders, not live Order Management records. Eligible orders are not Cancelled, have no recorded refund and have a positive balance after confirmed and pending payment amounts. Pending, Confirmed, Processing and Completed orders may appear when eligible.
+- Cash, Bank Transfer and E-wallet are supported; online methods require a reference. Recording creates Pending; Admin confirmation requires verification remarks. Pending amounts do not count as confirmed payments or sales, but reserve the unrecorded collection allowance to prevent duplicate over-recording.
+- Reject overpayments and repeated references for the same online method in this prototype. Recheck eligibility/balance before confirmation. Preserve automatic IDs/date/time and payment history.
+- Admin-approved sample refunds require an amount and reason, cannot exceed the remaining refundable amount of the linked confirmed payment, and retain the original payment. No actual money transfer occurs.
+- Refunded order status and financial breakdown show confirmed payments, refunds, net collected, pending payments and outstanding before refunds. Further collection is blocked on refunded sample orders pending the detailed adjustment workflow.
+- Prototype reporting: refunds reduce the original completed sale/date bucket; top flowers show completed quantities before refund adjustment. Final report-period/refund treatment remains for Reports design. PDF/Excel exports are not implemented here.
+- All prices/orders/payments/refunds/history are in-memory samples and reset on refresh. No actual Orders sync, payment gateway, bank verification, database or server authorization.
+- Application areas: `resources/views/supplier/sales-payments.blade.php`, `resources/css/supplier/sales-payments.css`, `resources/js/supplier/sales-payments.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/sales-payments` / `supplier.sales-payments` and replace its placeholder.
+- Troubleshooting: supplied log identified `View [supplier.sales-payments] not found`; ensure the Blade file exists at the exact path above, then clear compiled views. Owner subsequently reviewed and approved the UI.
+- Validation: owner accepted local UI. No independent current production build, browser run or Sales & Payments application commit/push has been verified.
+- Current task: build/check, stage, commit and push Sales & Payments; verify application push. Next module: Reports UI. Separate Client storefront and backend/database work remain deferred.
+
+
 ## Delivery Management UI — owner-approved 2026-11-04
 
-This is the current milestone and next-task reference. Earlier dated milestone sections are historical.
+This is an earlier milestone; the Sales & Payments milestone above is the current next-task reference.
 
 - Owner approved Delivery Management UI. Preserve Flower Management typography, compact Show Entries/search, native column sorting, pagination and table-only horizontal scrolling; no extra filter row.
 - Approved operations: View Details, Schedule/Reschedule with remarks, Assign/Reassign active authorized delivery personnel, Dispatch, Delivered with proof, Failed attempt with reason, Cancel Delivery and timestamped actor/status history.
@@ -69,10 +91,10 @@ This is an earlier UI milestone; the Delivery Management milestone above is the 
 ## Current development state — 2026-11-03
 
 - **Phase:** Supplier/Admin UI implementation.
-- **Approved UI modules:** Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Supplier Client Management and Order Management (2026-11-03); Delivery Management (2026-11-04).
+- **Approved UI modules:** Flower Management, Inventory Management, Batch Management, Spoilage Prediction, Supplier Client Management and Order Management (2026-11-03); Delivery Management and Sales & Payments (2026-11-04).
 - **Visual reference:** Keep the approved Flower Management module design and shared Supplier dashboard scheme.
-- **Current task:** Build/check, commit and push the approved Delivery Management UI, then verify the application push.
-- **Next module:** Sales & Payments UI after Delivery Management application push verification.
+- **Current task:** Build/check, commit and push the approved Sales & Payments UI, then verify the application push.
+- **Next module:** Reports UI after Sales & Payments application push verification.
 - **Batch UI decisions:** View and metadata Edit actions only; flower/status/date filters and the separate Mark as Spoiled action are removed. Keep compact Show Entries/search, native header sorting, and table-only horizontal scrolling with results/pagination outside the scroller.
 - **Spoilage ownership:** Inventory records the human-confirmed spoilage Stock-Out with required remarks. In backend integration, when it consumes a batch's entire remaining quantity, that transaction also sets the batch status to Spoiled. Partial spoilage leaves the usable remainder; Batch Management does not perform another deduction or separate marking action.
 - **Prototype boundary:** Batch and Inventory currently use separate in-memory sample data. UI approval does not establish cross-module/backend synchronization or database persistence.
@@ -109,7 +131,7 @@ The owner accepted the shared sidebar link and route setup. Keep `Route::prefix(
 | Client Management | /supplier/clients | supplier.clients | supplier.clients |
 | Order Management | /supplier/orders | supplier.orders | supplier.orders |
 | Delivery Management | /supplier/deliveries | supplier.deliveries | supplier.deliveries |
-| Sales & Payments | /supplier/sales-payments | supplier.sales-payments | supplier.module-placeholder |
+| Sales & Payments | /supplier/sales-payments | supplier.sales-payments | supplier.sales-payments |
 | Reports | /supplier/reports | supplier.reports | supplier.module-placeholder |
 | User Management | /supplier/users | supplier.users | supplier.module-placeholder |
 | Audit Trail | /supplier/audit-trail | supplier.audit-trail | supplier.module-placeholder |
