@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Approved — Audit Trail UI
+
+- Owner confirmed completion and approved read-only activity listing, search/sorting/pagination, details and PDF/Excel/Print exports.
+- Recorded previous/new values, actor/role snapshots, failed/unauthenticated examples, secret exclusion and reuse of Reports styles/export dependencies.
+- Syntax and isolated sample/export-field checks passed; owner approved local UI. Independent build/browser/export verification and application push remain unverified.
+- Supplier module screen sequence has reached its final UI approval. Next: build/check and push Audit, confirm success, then full Supplier UI review. Backend/access/audit integration is not complete.
+
 ### Approved — User Management UI
 
 - Owner explicitly approved Add/Edit, details, Activate/Deactivate, temporary-password reset preview, fixed roles and session activity.
