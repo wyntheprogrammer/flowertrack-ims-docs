@@ -15,6 +15,24 @@
 
 
 
+
+## Audit Trail UI — owner-approved 2026-11-04
+
+This is the current approval and next-task reference; earlier draft/pending-approval statements below are historical.
+
+- Owner confirmed Audit Trail is done and approved its UI.
+- Approved screen: read-only seeded activity records, compact search/Show Entries, native column sorting, pagination, table-only horizontal scrolling and activity detail modal. No manual Add/Edit/Delete or extra filter row.
+- Search covers displayed actor name/User ID, module, action and affected record. Details show Audit ID, timestamp, actor/User ID, role snapshot, module/action/record, Success/Failed, source IP, description and previous/new values.
+- Includes sample failed security-sensitive and unauthenticated events, alongside operational changes. Do not retain passwords, temporary passwords, credential hashes, tokens or secrets in actual logs.
+- PDF, real Excel .xlsx and print export all matching rows across pages. Current exports contain the configured main event fields; previous/new values are available in the detail modal.
+- Reuses existing Reports page/table CSS and export dependencies (`jspdf`, `jspdf-autotable`, `exceljs`). Audit-specific modal/detail CSS is separate.
+- Changed files: `resources/views/supplier/audit-trail.blade.php`, `resources/css/supplier/audit-trail.css`, `resources/js/supplier/audit-trail.js`, app CSS/JS imports and `routes/web.php`. Keep `/supplier/audit-trail` / `supplier.audit-trail`; replace its placeholder mapping.
+- Checks passed: syntax, unique sample IDs, failed/unauthenticated coverage, immutable sample records, export field coverage and no credential-valued sample fields. Owner accepted local UI; independent current production build, browser and export output checks were not verified here.
+- Samples are read-only frontend examples; server-generated durable audit logging, Admin-only authorization and backend integration remain pending. UI approval does not establish those capabilities.
+- Audit application commit/push is not yet verified. Current task: build/check and push Audit Trail, verify success, then review the full Supplier UI for consistency before choosing the next phase.
+- All planned Supplier module UI screens have now been supplied and owner accepted the final Audit screen. This is a UI milestone only; do not declare the full application or backend complete. Separate Client storefront work remains deferred pending the Supplier review.
+
+
 ## User Management UI — owner-approved 2026-11-04
 
 This is the current approval and next-task reference. Earlier module next-task entries are historical.
@@ -29,7 +47,7 @@ This is the current approval and next-task reference. Earlier module next-task e
 - Checks passed: JavaScript syntax and isolated last-active-Admin deactivation/demotion safeguards, email uniqueness, fixed roles, generated ID and no stored-secret tests. Owner approved local UI; independent browser/current production-build checks were not verified.
 - UI-only sample state resets on refresh. Password hashing, actual account creation/login, first-login enforcement, server permissions, session invalidation and durable audit events remain backend work.
 - Application commit/push is not yet verified. Current task: build/check, stage, commit and push User Management, then confirm application push success.
-- Audit Trail code has already been supplied as an unapproved draft. Do not mark it completed; review it after the User Management push is confirmed. Supplier UI completion and Client storefront/backend progression still require review.
+- Audit Trail UI is now owner-approved (2026-11-04); see current milestone above. Its application push and full Supplier review remain pending.
 
 
 ## Reports dependency setup — 2026-11-04
@@ -589,7 +607,8 @@ Earlier dated session entries below describe historical planning states, not the
 
 
 
-Build/check, stage, commit and push approved User Management UI and verify application push success. Then review the supplied Audit Trail draft; do not mark Audit Trail completed before owner approval.
+
+Build/check, commit and push approved Audit Trail UI and verify application push success. Then review the full Supplier UI for consistency and outstanding integration requirements before choosing the next phase.
 
 
 ### 2026-11-02 — Delivery Management requirements
