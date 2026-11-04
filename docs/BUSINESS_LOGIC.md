@@ -4,6 +4,22 @@
 
 **Status:** Partially confirmed. Only rules explicitly approved by the project owner are listed as confirmed below. All other rules remain undecided.
 
+
+## Payment policy — single full payment (2026-11-04)
+
+This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
+
+- Each order accepts one payment for exactly its entire order total, including any delivery fee. Partial payments, installments, split payments and second collections are prohibited.
+- Record Payment lists only non-cancelled orders with no existing payment record and no recorded refund. A pending full payment also removes the order from the dropdown.
+- Amount is auto-filled/read-only. Validate exact equality again on record and confirmation; reject underpayment, overpayment and duplicate order payments. Future backend must enforce the same rule transactionally with an order-level uniqueness constraint.
+- Recording remains Pending verification; Pending is a transaction state, not paid status. After Admin verifies the whole payment, the order becomes Paid. Unpaid orders may exist awaiting payment; remove Partially Paid from order status options/samples.
+- Preserve Cash, Bank Transfer, E-wallet and required online references. Refunds retain their original payment/history, remain capped by the refundable confirmed amount and do not allow another collection in this prototype.
+- Payment timing relative to fulfillment is not newly decided by this rule; this change does not add an unapproved payment gate to Order/Delivery transitions.
+- Updated prototype logic prepared for `resources/js/supplier/sales-payments.js` and the partial sample in `resources/js/supplier/orders.js`. Isolated checks passed for exact totals, partial rejection, pending lock, duplicates and confirmation. Local build/browser verification remains pending.
+- Application repository write was blocked by GitHub integration HTTP 403; application changes have not been pushed. Apply the supplied local changes and build/push separately. Documentation commits are independent.
+- Current task: apply and verify the single-full-payment change, then proceed to Reports UI. Backend/database integration remains deferred.
+
+
 ## Areas requiring decisions
 
 ### Flowers and products
@@ -88,7 +104,7 @@
 - Unit Price is sourced from Sales and Payment Management and snapshotted per order item; future price changes do not modify existing orders. Item subtotals and order total are calculated.
 - Delivery Address is required for Delivery; Order Notes are optional. Customer Pickup does not require a delivery address.
 - Order Status and Payment Status are independent. Order statuses are Pending, Confirmed, Processing, Ready for Delivery or Ready for Pickup, Out for Delivery (Delivery only), Completed, and Cancelled.
-- Payment statuses shown on orders are Unpaid, Partially Paid, Paid, and Refunded. Sales and Payment Management owns payment recording and transactions; Order Management displays status and summary only.
+- Payment statuses shown on orders are Unpaid, Paid, and Refunded. Sales and Payment Management owns payment recording and transactions; Order Management displays status and summary only.
 - Admin confirmation is manual. Check available-to-allocate stock before confirmation, accounting for quantities already reserved by other confirmed orders. Reject an order if the full quantity cannot be allocated; do not create a pending-stock queue or allow overselling.
 - Reserve inventory when an order becomes Confirmed. Reservation does not reduce physical on-hand stock and is not a Stock-Out.
 - Actual customer-order Stock-Out is recorded through Inventory Management at the fulfillment-specific trigger: Delivery orders are stocked out only when successfully marked Delivered; Customer Pickup orders are stocked out when marked Ready for Pickup.
@@ -110,7 +126,7 @@
 - Payment transactions are separate from Sales Records. Each transaction has a unique Payment ID, Order ID, automatically recorded date/time, payment method, amount paid, status, and applicable reference number.
 - Accepted payment methods are Cash, Bank Transfer, and E-wallet. Require a reference number for applicable online payments (Bank Transfer and E-wallet).
 - Admin manually verifies/confirms online payments and records/confirms cash payments.
-- Partial payments and multiple payment transactions per order are allowed. Track Unpaid, Partially Paid, Paid, and Refunded, plus payment history and outstanding balance.
+- Partial payments and multiple collections per order are prohibited; require one exact full payment. Track Unpaid, Paid, and Refunded, plus payment history and outstanding balance.
 - Admin records and approves refunds. Preserve the original payment and refund history.
 - Provide daily, weekly, monthly, and yearly sales summaries and PDF/Excel exports.
 - Order Management displays payment status and summary; Sales and Payment Management owns selling prices, Sales Records, payment transactions, and refunds.
