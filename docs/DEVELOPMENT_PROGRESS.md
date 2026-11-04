@@ -7,6 +7,22 @@
 
 
 
+
+## Payment policy — single full payment (2026-11-04)
+
+This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
+
+- Each order accepts one payment for exactly its entire order total, including any delivery fee. Partial payments, installments, split payments and second collections are prohibited.
+- Record Payment lists only non-cancelled orders with no existing payment record and no recorded refund. A pending full payment also removes the order from the dropdown.
+- Amount is auto-filled/read-only. Validate exact equality again on record and confirmation; reject underpayment, overpayment and duplicate order payments. Future backend must enforce the same rule transactionally with an order-level uniqueness constraint.
+- Recording remains Pending verification; Pending is a transaction state, not paid status. After Admin verifies the whole payment, the order becomes Paid. Unpaid orders may exist awaiting payment; remove Partially Paid from order status options/samples.
+- Preserve Cash, Bank Transfer, E-wallet and required online references. Refunds retain their original payment/history, remain capped by the refundable confirmed amount and do not allow another collection in this prototype.
+- Payment timing relative to fulfillment is not newly decided by this rule; this change does not add an unapproved payment gate to Order/Delivery transitions.
+- Updated prototype logic prepared for `resources/js/supplier/sales-payments.js` and the partial sample in `resources/js/supplier/orders.js`. Isolated checks passed for exact totals, partial rejection, pending lock, duplicates and confirmation. Local build/browser verification remains pending.
+- Application repository write was blocked by GitHub integration HTTP 403; application changes have not been pushed. Apply the supplied local changes and build/push separately. Documentation commits are independent.
+- Current task: apply and verify the single-full-payment change, then proceed to Reports UI. Backend/database integration remains deferred.
+
+
 ## Sales & Payments UI — owner-approved 2026-11-04
 
 This is the current milestone and next-task reference; earlier module milestones are historical.
@@ -381,7 +397,7 @@ Earlier dated session entries below describe historical planning states, not the
 - Confirmed order sources: Client Panel and manual Supplier/Admin creation; Admin manually reviews and confirms orders.
 - Confirmed order data: generated Order ID, registered Client, automatic Order Date, at least one item, required Flower and positive quantity per item, computed subtotals/total, conditional Delivery Address, and optional Order Notes.
 - Confirmed pricing ownership: Sales and Payment Management maintains prices; each order item stores a price snapshot so later price changes do not rewrite historical orders.
-- Confirmed separate Order Status and Payment Status. Order statuses are Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, and Cancelled. Payment statuses displayed are Unpaid, Partially Paid, Paid, and Refunded; actual payment transactions remain in Sales and Payment Management.
+- Confirmed separate Order Status and Payment Status. Order statuses are Pending, Confirmed, Processing, Ready for Delivery / Pickup, Out for Delivery (Delivery only), Completed, and Cancelled. Payment statuses displayed are Unpaid, Paid, and Refunded; actual payment transactions remain in Sales and Payment Management.
 - Confirmed inventory rules: check stock before confirmation, reserve inventory at confirmation, do not allow partial fulfillment, and record actual Stock-Out separately through Inventory Management at fulfillment. Reservation must not itself deduct stock.
 - Confirmed editing/cancellation: clients may edit/cancel Pending orders; Admin may edit before Processing and cancel later non-completed orders with a required reason; Completed orders cannot be cancelled. Release reservations on cancellation; if Stock-Out occurred, inventory must be corrected/restored before cancellation is finalized.
 - Confirmed Delivery and Customer Pickup; Delivery Management owns assignment and delivery-specific tracking, while Pickup skips Out for Delivery.
