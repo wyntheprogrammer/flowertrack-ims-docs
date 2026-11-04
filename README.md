@@ -3,7 +3,7 @@
 **Last updated:** 2026-11-04  
 **Payment policy:** One exact full payment per order; no partial payments or installments. Application patch/build/push is pending because integration write access returned HTTP 403.
 
-**Project status:** Stem / Bouquet catalog, Inventory and Batch UI updates are owner-approved. Build/check and verify the Inventory/Batch application push, then adapt Orders and Sales & Payments for mixed item units before Reports. Separate in-memory module samples remain unsynchronized; backend/database work and the Client storefront remain deferred.
+**Project status:** Stem / Bouquet adaptations for the catalog, Inventory, Batch, Orders and Sales & Payments UI are owner-approved. Build/check and verify the latest mixed Order/Sales application push, then resume Reports UI. Preserve one exact full payment and stock deduction at actual fulfillment. Module samples remain separate; backend synchronization, persistence and the Client storefront remain deferred.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
