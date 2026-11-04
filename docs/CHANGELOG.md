@@ -6,6 +6,13 @@ All meaningful documentation and project-planning updates are recorded here.
 
 ## 2026-11-04
 
+### Checkpoint — Supplier authentication working locally
+
+- Owner reported login/authentication flow working after applying controller, views, active/password-change/role middleware and protected routes.
+- Recorded targeted migration/model/auth/layout files for the application commit checkpoint; credentials and database records stay out of Git.
+- Delivery Personnel assigned-only implementation and business-module persistence remain pending.
+- Independent end-to-end/security checks and application push are unverified. Next: check/build and push authentication, verify success, then Flower catalog backend.
+
 ### Started — Supplier backend authentication foundation
 
 - Owner verified database connection and users account-field migration, updated User model/role constants and saved initial active Admin with required password change.
