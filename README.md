@@ -1,6 +1,8 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-04  
+**Payment policy:** One exact full payment per order; no partial payments or installments. Application patch/build/push is pending because integration write access returned HTTP 403.
+
 **Project status:** Flower, Inventory, Batch, Spoilage Prediction, Supplier Client Management, Order Management, Delivery Management and Sales & Payments UI are owner-approved. Keep Flower typography and compact table controls without extra filter rows by default. Build/check and verify the Sales & Payments application push before Reports UI. Financial and cross-module behavior remains sample-only; backend/database work and the separate Client storefront remain deferred.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
