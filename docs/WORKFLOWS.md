@@ -5,6 +5,20 @@
 **Status:** The Inventory-owned spoilage workflow below is confirmed as of 2026-11-03. Other sections retain their previously documented topic/proposal status.
 
 
+
+## Pickup Stock-Out timing — owner decision 2026-11-04
+
+This decision supersedes all earlier Ready for Pickup Stock-Out instructions.
+
+- Confirmed reserves the full order quantity without reducing Inventory On-Hand or Batch Remaining.
+- Ready for Pickup means prepared and awaiting collection. Keep the reservation active; do not create Stock-Out or deduct batch quantities.
+- When staff confirms the customer actually collected the order and marks the Pickup order Completed, Inventory performs Stock-Out using FIFO batch allocation. Reduce On-Hand and Batch Remaining and consume the reservation in the same transaction, exactly once.
+- Repeated completion requests must not deduct twice. Keep an order-linked movement and enforce transactional/idempotent fulfillment processing in the backend.
+- Delivery timing remains successful Delivered; payment confirmation alone never deducts stock.
+- Cancellation before actual pickup releases the reservation without a stock restoration because no pickup Stock-Out has occurred.
+- Documentation updated only for this decision. Existing Order/Inventory prototype code still needs its trigger, active reservation states, confirmation text and sample data changed from Ready for Pickup to actual collection/Completed. No application change/build/push is claimed here.
+
+
 ## Payment policy — single full payment (2026-11-04)
 
 This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
