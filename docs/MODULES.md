@@ -8,6 +8,22 @@
 
 
 
+
+## Payment policy — single full payment (2026-11-04)
+
+This owner decision supersedes all earlier partial/installment/multiple-payment requirements and UI descriptions below.
+
+- Each order accepts one payment for exactly its entire order total, including any delivery fee. Partial payments, installments, split payments and second collections are prohibited.
+- Record Payment lists only non-cancelled orders with no existing payment record and no recorded refund. A pending full payment also removes the order from the dropdown.
+- Amount is auto-filled/read-only. Validate exact equality again on record and confirmation; reject underpayment, overpayment and duplicate order payments. Future backend must enforce the same rule transactionally with an order-level uniqueness constraint.
+- Recording remains Pending verification; Pending is a transaction state, not paid status. After Admin verifies the whole payment, the order becomes Paid. Unpaid orders may exist awaiting payment; remove Partially Paid from order status options/samples.
+- Preserve Cash, Bank Transfer, E-wallet and required online references. Refunds retain their original payment/history, remain capped by the refundable confirmed amount and do not allow another collection in this prototype.
+- Payment timing relative to fulfillment is not newly decided by this rule; this change does not add an unapproved payment gate to Order/Delivery transitions.
+- Updated prototype logic prepared for `resources/js/supplier/sales-payments.js` and the partial sample in `resources/js/supplier/orders.js`. Isolated checks passed for exact totals, partial rejection, pending lock, duplicates and confirmation. Local build/browser verification remains pending.
+- Application repository write was blocked by GitHub integration HTTP 403; application changes have not been pushed. Apply the supplied local changes and build/push separately. Documentation commits are independent.
+- Current task: apply and verify the single-full-payment change, then proceed to Reports UI. Backend/database integration remains deferred.
+
+
 ## Sales & Payments UI — owner-approved 2026-11-04
 
 This is the current milestone and next-task reference; earlier module milestones are historical.
@@ -301,7 +317,7 @@ The project owner supplied the following module order. This is also the initial 
 - Cancelled — terminal status; retain the order and cancellation reason for history and audit.
 
 **Payment status display**
-- Track Unpaid, Partially Paid, Paid, and Refunded separately from Order Status.
+- Track Unpaid, Paid, and Refunded separately from Order Status.
 - Order Management displays payment status and summary only.
 - Sales and Payment Management owns payment recording and transaction operations.
 
@@ -407,8 +423,8 @@ The project owner supplied the following module order. This is also the initial 
 - Supported payment methods: Cash, Bank Transfer, and E-wallet.
 - Require a Reference Number for applicable online payments (Bank Transfer and E-wallet).
 - Admin manually verifies and confirms online payments. Cash payments are also recorded and confirmed by Admin.
-- Allow partial payments and multiple payment transactions for one order.
-- Track payment statuses: Unpaid, Partially Paid, Paid, and Refunded.
+- Require one full payment exactly equal to the order total; installments and additional payment transactions are prohibited.
+- Track payment statuses: Unpaid, Paid, and Refunded.
 - Show payment history, total amount paid, and outstanding balance per order.
 - Admin records and approves refunds; retain the original payment and refund history.
 - Support searching/filtering payment records and payment summaries.
@@ -421,7 +437,7 @@ The project owner supplied the following module order. This is also the initial 
 - Sales are recognized when the related order reaches Completed, not merely when payment is received.
 - Sales reporting is based on completed orders and subtracts recorded refunds. Partial payments must not be counted as additional sales.
 - Payment transactions are separate from Sales Records.
-- Payment Status is Unpaid until a confirmed payment is recorded; Partially Paid when confirmed payments are below the required total; Paid when confirmed payments meet the required total; Refunded when a refund is recorded according to the refund workflow.
+- Payment Status is Unpaid until a confirmed payment is recorded; Paid only when the single confirmed payment exactly matches the required total; Refunded when a refund is recorded according to the refund workflow.
 - Order Management displays payment status and summary; Sales and Payment Management owns price setting, Sales Records, payment transactions, and refunds.
 - Cancelled orders are not recognized as completed sales.
 - Delivery fees are included in the order total when applicable, using the fixed fee configured in system settings.
