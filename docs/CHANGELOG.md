@@ -2,6 +2,18 @@
 
 **Last updated:** 2026-11-05
 
+## Inventory Management backend approved — 2026-11-05
+
+- Owner reported Inventory working and explicitly approved the module as done.
+- Owner supplied Laravel test output: InventoryBackendTest — 8 passed, 73 assertions, 2.18 seconds. These are isolated SQLite service tests, not MariaDB concurrency, HTTP authorization or browser automation tests.
+- Acceptance covers the delivered Inventory module: database listing, Stock-In, receipt correction/history, FIFO/manual Stock-Out, spoilage and receiving-unit configuration.
+- The test migration-discovery fix is included; generated migration timestamps may vary. Keep exactly one *_create_inventory_tables.php migration.
+- This owner acceptance supersedes earlier package-stage pending-installation/verification notes. No separate production migration output was supplied; local working status is owner-reported.
+- Reservation table remains a foundation: actual order reservations and automatic collection/delivery-completion stock deduction remain for future Order/Delivery backend integration. Standalone Batch Management page backend is next.
+- Documentation checkpoint saved. Targeted application commit/push commands are to be provided; Inventory application push is not yet confirmed. Leave unrelated Audit Trail/sales-payment/tatus changes untouched.
+
+
+
 ## Inventory test migration discovery fix — 2026-11-05
 
 - Owner reported all eight Inventory tests failing in setup because the test hardcoded a migration filename not present locally.
