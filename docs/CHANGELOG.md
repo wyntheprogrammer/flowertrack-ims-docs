@@ -1,8 +1,16 @@
 # Changelog
 
-**Last updated:** 2026-11-04
+**Last updated:** 2026-11-05
 
 All meaningful documentation and project-planning updates are recorded here.
+
+
+## 2026-11-05
+
+### Added — Database and Backend Engineer subagent briefs
+
+- Saved owner-requested specialist roles, professional characteristics, responsibilities, coordination rules and reuse prompts in two linked MD files.
+- Linked from README, AI context and progress. Both agents were spawned and acknowledged review-only initial assignments; no app/database mutation or permanent background process is implied.
 
 ## 2026-11-04
 
