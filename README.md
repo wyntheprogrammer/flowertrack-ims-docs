@@ -1,6 +1,6 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-04  
+**Last updated:** 2026-11-05  
 **Payment policy:** One exact full payment per order; no partial payments or installments. Application patch/build/push is pending because integration write access returned HTTP 403.
 
 **Project status:** Audit Trail UI is now owner-approved, completing the planned Supplier module screen sequence at the UI level. Build/check and verify the Audit application push, then review the full Supplier UI before choosing the next phase. Frontend samples remain separate; authentication, permissions, durable audit logging, database persistence and cross-module synchronization are pending. The Client storefront remains deferred.
@@ -8,6 +8,16 @@
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
 > This repository is documentation-only. The application source code is maintained separately in the public [`flowertrack-ims`](https://github.com/wyntheprogrammer/flowertrack-ims) repository. The local working copy is `C:\xampp\htdocs\FlowerTrack`.
+
+
+## Database and backend specialists — 2026-11-05
+
+- [Database Engineer](docs/DATABASE_ENGINEER_SUBAGENT.md): MariaDB/MySQL schema, migrations, constraints/indexes, quantity/money integrity and transaction design.
+- [Backend Engineer](docs/BACKEND_ENGINEER_SUBAGENT.md): Laravel/PHP authentication, authorization, validation, persistence, secure uploads and feature tests.
+- Owner explicitly requested both agents; they were spawned as `database_engineer` and `backend_engineer`, received project rules, acknowledged their roles and are awaiting implementation assignments.
+- Primary agent coordinates schema/API contracts and reviews combined work. No application or database changes were performed merely by creating these roles.
+- These files preserve reusable instructions; they do not persist a running agent across chats. Resume/recreate agents explicitly when appropriate.
+
 
 ## Development workflow
 
