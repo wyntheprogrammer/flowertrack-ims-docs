@@ -2,6 +2,10 @@
 
 **Last updated:** 2026-11-05
 
+## Migration filename correction — 2026-11-05
+
+The test originally required a fixed migration timestamp. Owner reported eight setup failures before assertions because Artisan generated a different filename. The corrected InventoryBackendTest locates exactly one migrations/*_create_inventory_tables.php file, so timestamps do not need to match. Keep the generated filename, particularly if it has already been migrated; do not create a duplicate migration. If necessary, use php artisan migrate instead of the example fixed-path migrate command below, after checking pending migrations. Updated PHP test still requires owner execution.
+
 ## Status and scope
 
 Complete replacement source prepared for the Inventory module; owner installation and PHP/runtime verification are pending. This is not a claim that the application repository was updated or pushed.
