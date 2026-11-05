@@ -2,6 +2,18 @@
 
 **Last updated:** 2026-11-05
 
+## Batch Management backend package prepared — 2026-11-05
+
+- Full Batch module source and [setup instructions](BATCH_BACKEND_SETUP.md) prepared for owner installation; not yet owner-approved or application-pushed.
+- Reuses Inventory batches/movements/operations. No new migration, stock ledger, physical deduction, or manual Batch spoilage endpoint.
+- Includes full replacement shared InventoryService (only two new methods), BatchController, UpdateBatchRequest, approved Blade/JS integration and seven isolated SQLite tests.
+- Metadata-only edits preserve stock identity/quantities/units/spoilage; append zero-quantity signed history with before/after snapshots. UUID replay and stale-version checks use the shared Flower-first transaction lock.
+- Database/Backend specialists reviewed actual code and integration contracts. JavaScript syntax and 14 focused checks passed. PHP lint, new Batch tests and Inventory regression tests remain owner-run because PHP is unavailable here.
+- Existing Inventory 2025b83 is the last owner-confirmed application push; keep unrelated working-tree changes untouched.
+- Next checkpoint: owner installs files/routes, runs lint/build/both suites, checks shared Inventory/Batch balances and metadata persistence, then reports acceptance before commit/push.
+
+
+
 ## Inventory Management backend pushed — 2026-11-05
 
 - Owner supplied git log: 2025b83 (HEAD -> main, origin/main, origin/HEAD) Complete approved Inventory Management backend.
