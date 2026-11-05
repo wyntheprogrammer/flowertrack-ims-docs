@@ -18,6 +18,18 @@
 
 
 
+
+## Flower Management backend package — 2026-11-05
+
+- Owner requested complete backend implementation per module, with full replacement files, setup/testing instructions, explanations, and CSS-style section comments in JavaScript. Use this workflow instead of many single-method steps.
+- Owner confirmed the flowers migration ran, Flower::count() returned zero, and database-backed listing showed the connected/empty notice. The duplicated supplier route prefix was corrected.
+- Complete Flower module source prepared: model; Store/Update/Deactivate FormRequests; controller; approved Blade integration; commented JavaScript; five protected route definitions.
+- Features prepared: database listing, add/view/edit, idempotent deactivate, reactivate through Edit status, generated FLW codes, image upload/replace/remove (JPG/PNG/WebP, 2 MB), validation errors and CSRF/session handling.
+- Product type remains immutable after creation. Catalog changes do not deduct stock, create batches, change prices, or create order/payment transactions. No hard-delete endpoint.
+- Database and Backend subagents reviewed schema/transaction and frontend/backend contracts. JavaScript syntax and 10 focused mocked-request checks passed.
+- Verification boundary: no PHP runtime or owner database is available here. Laravel/PHP runtime, actual uploads, authorization and refresh persistence for the complete package remain pending owner verification. Do not label the module runtime-complete or application changes pushed.
+- Next checkpoint: owner installs files, registers the five routes inside the existing protected supplier group, runs PHP lint/route checks/build, then tests create/edit/deactivate/reactivate and image lifecycle. Update documentation and provide targeted application commit/push commands after those checks pass.
+
 ## Database and backend specialists — 2026-11-05
 
 - [Database Engineer](DATABASE_ENGINEER_SUBAGENT.md): MariaDB/MySQL schema, migrations, constraints/indexes, quantity/money integrity and transaction design.
