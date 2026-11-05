@@ -1,6 +1,6 @@
 # Development Progress
 
-**Last updated:** 2026-11-04
+**Last updated:** 2026-11-05
 
 
 
@@ -18,6 +18,16 @@
 
 
 
+
+
+
+## Database and backend specialists — 2026-11-05
+
+- [Database Engineer](DATABASE_ENGINEER_SUBAGENT.md): MariaDB/MySQL schema, migrations, constraints/indexes, quantity/money integrity and transaction design.
+- [Backend Engineer](BACKEND_ENGINEER_SUBAGENT.md): Laravel/PHP authentication, authorization, validation, persistence, secure uploads and feature tests.
+- Owner explicitly requested both agents; they were spawned as `database_engineer` and `backend_engineer`, received project rules, acknowledged their roles and are awaiting implementation assignments.
+- Primary agent coordinates schema/API contracts and reviews combined work. No application or database changes were performed merely by creating these roles.
+- These files preserve reusable instructions; they do not persist a running agent across chats. Resume/recreate agents explicitly when appropriate.
 
 
 ## Supplier authentication — owner reports working locally, 2026-11-04
