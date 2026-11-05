@@ -2,6 +2,14 @@
 
 **Last updated:** 2026-11-05
 
+## Inventory test migration discovery fix — 2026-11-05
+
+- Owner reported all eight Inventory tests failing in setup because the test hardcoded a migration filename not present locally.
+- Corrected supplied test to discover exactly one *_create_inventory_tables.php migration, independent of the Artisan timestamp.
+- Existing migration filename and database remain unchanged. No duplicate migration or database reset is required.
+- Corrected test awaits owner execution; no PHP runtime available here.
+
+
 ## Inventory Management backend package prepared — 2026-11-05
 
 - Full module source prepared with complete file downloads and setup instructions in [Inventory Backend Setup](INVENTORY_BACKEND_SETUP.md).
