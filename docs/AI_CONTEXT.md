@@ -2,6 +2,19 @@
 
 **Last updated:** 2026-11-06
 
+## Order Management backend package prepared — 2026-11-06
+
+- Owner explicitly requested proceeding; Client application push confirmation remains absent. Last confirmed application commit remains Batch330b885.
+- Full [Order backend package](ORDER_BACKEND_SETUP.md) prepared: six-table migration/models, exact-cent Money helper, order service/requests/controller, Inventory reservation-fulfillment extension, Sales-owned price setup command/fee config, approved UI integration, live Client order history and regression tests.
+- Confirmation Admin-only reserves full quantities without deduction. Actual complete pickup collection atomically consumes holds, records FIFO Stock-Out once and creates one immutable Sales Record. Delivery stops Ready for Delivery; actual Delivery completion integration is later.
+- Existing single-full-payment recording rule is preserved; payment state remains separate and read-only here. No new Paid-beforeCompletion gate, fabricated payment, refund, or default selling price/fee.
+- Prices must be explicitly configured through sales:set-price setup; new Delivery requires explicit ORDER_DELIVERY_FEE. These are foundations for later Sales/Payments backend, not its completed UI.
+- Current locks, canonical creation UUID replay (rechecked after Client serialization), stale versions, aggregated item caps and full mixed-item rollback were reviewed by Database/Backend agents.
+- JavaScript syntax and 19 Order plus5 Client-history checks passed. Ten Order PHP tests + updatedClient suite supplied; PHP tests/build/migrations/browser operation remain owner-run.
+- SpoilagePrediction and Clientportal/login remain deferred. Do not claim Order installed/approved/pushed until owner evidence. Next checkpoint is source installation, configuration, migration/build and four regression suites, then browser acceptance and targeted commit/push.
+
+
+
 ## Supplier Client Management backend approved — 2026-11-06
 
 - Owner reported browser checks done and requested proceeding. Supplier-side Client Management is owner-approved.
