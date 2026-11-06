@@ -2,6 +2,19 @@
 
 **Last updated:** 2026-11-06
 
+## Supplier Client Management backend approved — 2026-11-06
+
+- Owner reported browser checks done and requested proceeding. Supplier-side Client Management is owner-approved.
+- Owner supplied the consolidated ClientBackendTest result: 8 passed, 92 assertions, 1.34 seconds. These are isolated SQLite service/validation tests, not independent HTTP/browser or MariaDB concurrency automation.
+- Owner accepted consolidation to one canonical migration file: 2026_11_06_141604_create_clients_table.php with the full clients schema. Supplied test now uses one *_create_clients_table.php and asserts clients exists.
+- Instructions removed the uncommitted corrective file and its exact migration-history entry without deleting clients records. Subsequent tests passed; no separate raw file listing/migration-status output was supplied after consolidation.
+- Scope: real account/profile Add/View/Edit/Activate/Deactivate, fixed client role, hashed temporary password, first-change flag, global email uniqueness, protected profile updates and secret-free DTOs.
+- Client portal/login and Order-derived purchase/history integration remain deferred. Spoilage Prediction is explicitly deferred by owner.
+- Documentation checkpoint saved. Targeted application commit/push commands are next; no Client application push is confirmed. Last confirmed application commit remains Batch 330b885.
+- Next backend after Client checkpoint push confirmation: Order Management. Preserve the approved full-payment and actual-collection/delivery-completion stock-deduction rules; no payment-triggered or ready-status stock deduction.
+
+
+
 ## Spoilage deferred; Supplier Client backend prepared — 2026-11-06
 
 - Owner explicitly deferred Spoilage Prediction and requested the next module. Do not resume ML work or invent date-based risk classifications; no model/dataset was supplied.
