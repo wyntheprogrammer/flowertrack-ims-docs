@@ -2,6 +2,16 @@
 
 **Last updated:** 2026-11-06
 
+## Client migration repair — 2026-11-06
+
+Owner supplied the actual migration and status: 2026_11_06_141604_create_clients_table is Ran, but its up() creates clients_tables with only id/timestamps. Renaming the file did not change the generated schema body. This causes no such table: clients in the isolated test.
+
+For this affected database, preserve the applied migration/history and add a new *_create_clients_table_correctly.php migration that creates the proper clients schema (code, user_id unique FK, phone, address, timestamps). Do not run fresh, rollback unrelated migrations or remove records. Keep the incorrectly named table unchanged during this repair.
+
+The supplied ClientBackendTest now prefers exactly one corrective migration if present, otherwise the original create_clients_table suffix, and asserts that clients exists after running it in its isolated memory connection. Corrective migration and tests await owner execution. On installations where the proper clients table already exists, do not add this targeted repair unnecessarily.
+
+
+
 ## Spoilage deferred; Supplier Client backend prepared — 2026-11-06
 
 - Owner explicitly deferred Spoilage Prediction and requested the next module. Do not resume ML work or invent date-based risk classifications; no model/dataset was supplied.
