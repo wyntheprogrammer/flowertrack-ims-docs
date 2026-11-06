@@ -2,6 +2,19 @@
 
 **Last updated:** 2026-11-06
 
+## Spoilage deferred; Supplier Client backend prepared — 2026-11-06
+
+- Owner explicitly deferred Spoilage Prediction and requested the next module. Do not resume ML work or invent date-based risk classifications; no model/dataset was supplied.
+- Full [Supplier Client backend package](CLIENT_BACKEND_SETUP.md) prepared: clients migration/model, four validation requests, transactional service/controller, approved Blade integration/commented JS and eight isolated SQLite tests.
+- users is the single source for identity/auth/status; clients holds code/contact/address. Fixed role client, hashed temporary password, required first-change flag, global case-insensitive email uniqueness, stale-edit checks and desired-state status updates.
+- No credentials/privileges in public client DTOs, no hard deletion, no User/auth-route changes. Client portal/login is still deferred and current Supplier login does not admit clients.
+- No sample orders or fabricated purchase totals; order history remains unavailable until Order backend integration.
+- Backend/Database specialists reviewed schema/invariants/contracts. JavaScript syntax and 13 focused checks passed; PHP lint, eight prepared service/validation tests, migration and actual browser operation remain owner-run.
+- Package has not yet been installed/approved/pushed by owner. Last confirmed application push remains Batch 330b885.
+- Next checkpoint: owner installs files, runs migration/build/tests, verifies CRUD/status, approves and pushes; then Order backend. Whole-module file delivery/explanations remain the agreed workflow.
+
+
+
 ## Batch Management backend pushed — 2026-11-06
 
 - Owner supplied git log: 330b885 (HEAD -> main, origin/main) Complete approved Batch Management backend.
