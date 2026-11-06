@@ -1,10 +1,23 @@
 # Batch Management Backend Setup
 
-**Last updated:** 2026-11-05
+**Last updated:** 2026-11-06
+
+## Batch Management backend approved — 2026-11-06
+
+- Owner explicitly reported Batch completed and tested. Module accepted on the owner's report.
+- No raw Laravel test output or assertion count was supplied for Batch; do not claim a specific test pass count or independent runtime verification.
+- Delivered scope: shared Inventory batch listing/details/history, metadata-only edit, zero-quantity before/after history, stale-version protection and safe matching retries. No new migration or duplicate physical deduction.
+- Owner acceptance supersedes earlier package-stage pending-owner-validation notes. Reservation/order-completion integration remains outside this Batch module.
+- Documentation checkpoint saved. Targeted application commit/push instructions are next; no Batch application push is confirmed yet.
+- Last owner-confirmed application milestone remains Inventory 2025b83 until Batch push evidence is supplied.
+- Owner is using another development device. Use single-line git add commands compatible with both CMD and PowerShell; preserve .env, uploaded files and unrelated working-tree changes.
+- Next planned module after Batch commit/push confirmation: Spoilage Prediction backend, advisory only; actual spoilage remains an Inventory Stock-Out.
+
+
 
 ## Status
 
-Complete Batch source prepared; owner installation and PHP/browser validation are pending. Last owner-confirmed Inventory commit is 2025b83. No Batch application commit or push has been claimed.
+Owner reported Batch completed and tested on 2026-11-06. Specific raw test counts were not supplied. Last owner-confirmed application commit is Inventory 2025b83; Batch application push remains unconfirmed.
 
 ## Scope and files
 
