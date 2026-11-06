@@ -2,6 +2,16 @@
 
 **Last updated:** 2026-11-06
 
+## Owner-requested Client migration consolidation — 2026-11-06
+
+Owner clarified that they want ONE migration file retained, not merely removal of an unused database table. Screenshot shows the two new Client migration files are untracked/uncommitted. For this specific local, unpushed migration pair, prepare one canonical 2026_11_06_141604_create_clients_table.php with the complete correct clients schema. Remove the corrective 2026_11_06_143751_create_clients_table_correctly.php file and its EXACT migration-history row only, preserving the original migration's Ran row and all actual clients records. No rollback/fresh is involved.
+
+Supplied ClientBackendTest returns to discovering exactly one *_create_clients_table.php and verifies clients exists after its up(). Previous repair instructions are superseded by this owner-requested consolidation. This is not a general instruction to rewrite already-shared migrations. Other devices that have run the corrective migration need the same exact history reconciliation after source synchronization.
+
+Owner previously reported the corrective migration applied and ClientBackendTest passed all eight tests, 92 assertions. Consolidated files/history still await owner execution and verification. Unused clients_tables data is not deleted by the file/history consolidation.
+
+
+
 ## Client migration repair — 2026-11-06
 
 Owner supplied the actual migration and status: 2026_11_06_141604_create_clients_table is Ran, but its up() creates clients_tables with only id/timestamps. Renaming the file did not change the generated schema body. This causes no such table: clients in the isolated test.
