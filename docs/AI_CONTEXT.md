@@ -2,6 +2,17 @@
 
 **Last updated:** 2026-11-07
 
+## Sales & Payments owner approved — 2026-11-07
+
+- Owner explicitly approved saving Sales & Payments and proceeding. User approval is recorded; application commit/push remains pending verification.
+- Owner generated the finance migration through make:migration create_finance_tables after an invalid make:database attempt. Actual generated filename and migration/test output were not supplied; do not invent a migration name in targeted staging or assert PHP tests passed.
+- Clarified: Sales Records are automatic immutable snapshots created only by completed Pickup or actual Delivered fulfillment, with client/items/unit-price/subtotal/delivery-fee/total/completion date. They are separate from payment confirmation.
+- Sales Trend groups net completed Sales by day in Asia/Manila; recorded refunds adjust the original Sale completion day, not the refund day.
+- Top Selling Items ranks completed-order quantities separately for Stem and Bouquet. Refund amounts do not reduce historical item quantities in the current implementation.
+- Existing single-full-payment, independent payment/order state, no payment-triggered stock deduction, exact cents and Admin-only bounded refunds remain unchanged.
+- Last confirmed application push remains 9556331. Next action: inspect targeted Git status and provide commit/push commands. Reports backend is the planned next Supplier module, while actual ML Spoilage Prediction remains explicitly deferred.
+- Preserve known verification limits: no owner Sales test counts/output or explicit final personnel/Delivery browser acceptance were provided in this approval turn.
+
 ## Sales & Payments backend package prepared — 2026-11-07
 
 - Complete 15-file implementation prepared against application checkpoint 9556331. [Setup](SALES_BACKEND_SETUP.md) and [full replacement code](SALES_BACKEND_FULL_CODE.md) are available for reliable browser viewing. Owner installation, PHP tests, browser acceptance and application push are pending.
