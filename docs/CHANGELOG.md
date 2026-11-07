@@ -2,6 +2,13 @@
 
 **Last updated:** 2026-11-07
 
+## Delivery checkpoint push confirmed — 2026-11-07
+
+- Owner supplied git log: 43695bf (HEAD -> main, origin/main) Save Delivery backend checkpoint pending personnel verification. Application Delivery checkpoint push is confirmed.
+- Final Delivery browser acceptance remains pending creation of active delivery personnel through User Management.
+- Next: complete User Management backend using existing users table. Preserve Admin-only account management, operational roles, temporary passwords/forced change, last-active-Admin protection, and Client profile separation.
+- Source review at 43695bf found AuthController redirects delivery-role users to supplier.deliveries while those routes allow only admin/supplier. Do not broaden operational Delivery Management access to delivery-role accounts; keep personnel self-service separately scoped or explicitly deferred and explain the login destination limitation before calling User Management complete.
+
 ## Delivery checkpoint saved; User Management backend next — 2026-11-07
 
 - Owner explicitly authorized saving this checkpoint and proceeding to User Management because no delivery personnel account exists for assignment.
