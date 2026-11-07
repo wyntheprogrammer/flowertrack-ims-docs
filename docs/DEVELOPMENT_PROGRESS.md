@@ -1,6 +1,15 @@
 # Development Progress
 
-**Last updated:** 2026-11-06
+**Last updated:** 2026-11-07
+
+## Order backend approved; Delivery backend next — 2026-11-07
+
+- Owner approved saving the Order module and proceeding. Owner-run OrderBackendTest: 10 passed, 151 assertions.
+- Fixed missing remaining() test helper; supplied OrderHistory model and missing OrderActionRequest after browser HTTP 500 log identified the absent class. No separate browser retest output supplied after the request fix.
+- Selling prices are explicitly set using php artisan sales:set-price FLOWER_CODE AMOUNT, stored as integer cents in flower_prices; price management UI belongs to the later Sales & Payments backend.
+- Application commit/push is pending verification; do not claim it has been pushed.
+- Next module: Delivery backend. Stock deduction occurs only on actual completed delivery, atomically and once; dispatch/Ready for Delivery does not deduct.
+- Owner now requests concise, step-by-step instructions to reduce token usage. Preserve explanations, keep each turn focused on one step.
 
 ## Order Management backend package prepared — 2026-11-06
 
