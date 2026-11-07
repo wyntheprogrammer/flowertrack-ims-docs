@@ -2,6 +2,18 @@
 
 **Last updated:** 2026-11-07
 
+## Sales & Payments backend package prepared — 2026-11-07
+
+- Complete 15-file implementation prepared against application checkpoint 9556331. [Setup](SALES_BACKEND_SETUP.md) and [full replacement code](SALES_BACKEND_FULL_CODE.md) are available for reliable browser viewing. Owner installation, PHP tests, browser acceptance and application push are pending.
+- New migration 2026_11_07_090000_create_finance_tables.php adds finance_operations (atomic actor-bound UUID replay and durable per-method normalized reference uniqueness) and append-only payment_refunds. Existing flower_prices, order_payments and immutable sales_records remain.
+- Admin/Supplier selling-price management, one full Pending payment per eligible non-cancelled order, manual receipt confirmation, Admin-only bounded partial/full refunds, financial history and actual Sales UI integration are supplied with all six routes.
+- Payment, confirmation and refund never alter inventory/reservations/fulfillment or create/delete Sales Records. Existing price and commercial snapshots remain immutable. No partial installments or additional payments; no new Paid-before-Completion gate.
+- Any refund sets payment status Refunded while retaining original confirmed receipt amount/method/reference/timestamp; remaining refundable balance supports later refunds up to original amount. OrderService paidCents retains that original confirmed amount for Refunded receipts. Refunds are manual recordkeeping, not a gateway transfer or stock return.
+- Financial writes lock Order→Payment or Flower→Price and replay UUID before stale checks. Read datasets use a consistent read transaction. New UI has exact bounded cents/overflow checks, Philippine date summaries, canonical-only updates, and retained UUID/payload retries on uncertain failures.
+- Supplied SalesBackendTest: 11 isolated SQLite tests including signed-session HTTP access/validation, money/full-payment restrictions, UUID/reference uniqueness, roles, refunds, stale versions, immutable snapshots and inventory independence. Backend/database specialists reviewed actual code. PHP remains unavailable here; no assistant-run PHP result, Vite build or browser acceptance claimed.
+- Node syntax and focused Sales UI tests passed, including money maximum/aggregate overflow, retries and permissions. No new npm dependency or CSS change is required.
+- Latest confirmed application push remains 9556331. Prior User PHP tests/final personnel and Delivery browser acceptance remain unreported. Follow owner preference: complete module functionality and tests together, full-file replacements, concise installation steps.
+
 ## User Management checkpoint push confirmed — 2026-11-07
 
 - Owner supplied git log: 9556331 (HEAD -> main, origin/main) Save User Management backend and personnel access checkpoint. Application push is confirmed.
