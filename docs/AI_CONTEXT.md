@@ -2,6 +2,14 @@
 
 **Last updated:** 2026-11-07
 
+## User Management installation checkpoint; Sales & Payments next — 2026-11-07
+
+- Owner reported "done next module" after receiving the complete code via docs/USER_BACKEND_FULL_CODE.md and supplied Git status showing the expected 21 User Management/security/personnel integration files.
+- Save this as an installation checkpoint. No explicit owner PHP test output/count or final personnel/Delivery browser acceptance was provided in this handoff; do not invent passed results or mark Delivery acceptance verified.
+- Targeted application commit/push commands are being supplied; User Management application push is not yet confirmed. Last confirmed application push remains 43695bf (Delivery checkpoint).
+- Next module requested: Sales & Payments backend. Reuse existing flower_prices, order_payments and sales_records foundations. Preserve single-full-payment recording, independent payment/order status, server-owned exact-cent prices, no stock deduction on payment, and actual fulfillment-only once-only stock issue.
+- Retain complete module implementations with tests and full-file replacements, concise step-by-step installation and explanations. Use GitHub-readable full-code documentation when chat source-file previews fail.
+
 ## User Management backend package prepared — 2026-11-07
 
 - Full replacements prepared against application 43695bf; owner installation/tests/browser approval and application push are pending. See [User backend setup](USER_BACKEND_SETUP.md).
