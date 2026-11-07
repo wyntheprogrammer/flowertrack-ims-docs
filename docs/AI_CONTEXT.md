@@ -2,6 +2,12 @@
 
 **Last updated:** 2026-11-07
 
+## User Management checkpoint push confirmed — 2026-11-07
+
+- Owner supplied git log: 9556331 (HEAD -> main, origin/main) Save User Management backend and personnel access checkpoint. Application push is confirmed.
+- Owner PHP test results and final personnel/Delivery browser acceptance remain unreported; preserve that verification limit.
+- Next: Sales & Payments backend, with complete functionality/tests and full-file replacements. Existing exact-cent pricing/payment/sale foundations must be inspected before schema changes.
+
 ## User Management installation checkpoint; Sales & Payments next — 2026-11-07
 
 - Owner reported "done next module" after receiving the complete code via docs/USER_BACKEND_FULL_CODE.md and supplied Git status showing the expected 21 User Management/security/personnel integration files.
