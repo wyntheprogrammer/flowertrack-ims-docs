@@ -2,6 +2,16 @@
 
 **Last updated:** 2026-11-07
 
+## User Management backend package prepared — 2026-11-07
+
+- Full replacements prepared against application 43695bf; owner installation/tests/browser approval and application push are pending. See [User backend setup](USER_BACKEND_SETUP.md).
+- Existing users table and User model are reused; no new migration or dependency. Admin-only operational account create/edit/status/reset, global case-insensitive email uniqueness, forced temporary-password change, bcrypt byte/null protection, self-access and last-active-Admin safeguards, sorted Admin locks and stale-write versions are included.
+- New account session signature middleware, AuthController integration and remember-token rotation revoke older access. Current unsigned sessions must sign in again after install.
+- Actual delivery-role login now has a separately scoped Assigned Deliveries workspace. Only assigned deliveries/details/private proof and fail/deliver actions are allowed. Supplier routes remain admin/supplier only. Request authorization and locked service assignment checks both enforce ownership.
+- Full User and Delivery JS/Blade replacements preserve the approved UI. No fake accounts/password history; safe account event metadata goes to Laravel logs pending later Audit Trail integration. The Supplier private-proof route absent from the pushed checkpoint is restored.
+- Supplied PHP tests: 12 UserBackendTest cases and 11 DeliveryBackendTest cases plus existing Order regressions. PHP is unavailable here; no assistant-run PHP result is claimed. Two JS syntax checks, nine User UI checks and five personnel UI checks passed in preparation.
+- Owner requires complete module functionality/tests and full-file replacements; step-by-step installation and concise explanations, never line-search edits. Delivery browser acceptance remains pending; after installation create an active delivery account and verify scheduling/assignment/dispatch/actual completion/proof before marking Delivery complete.
+
 ## Delivery checkpoint push confirmed — 2026-11-07
 
 - Owner supplied git log: 43695bf (HEAD -> main, origin/main) Save Delivery backend checkpoint pending personnel verification. Application Delivery checkpoint push is confirmed.
