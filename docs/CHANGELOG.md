@@ -2,6 +2,21 @@
 
 **Last updated:** 2026-11-07
 
+## Delivery checkpoint saved; User Management backend next — 2026-11-07
+
+- Owner explicitly authorized saving this checkpoint and proceeding to User Management because no delivery personnel account exists for assignment.
+- Delivery implementation supplied: deliveries and delivery_histories migration, Delivery/DeliveryHistory models, DeliveryActionRequest, DeliveryController, DeliveryService, SyncReadyDeliveries command, protected routes/proof streaming, database-backed approved Blade/JS UI and DeliveryBackendTest.
+- Actual migration filename: 2026_11_07_025736_create_delivery_tables.php. The initial stub had already created delivery_tables. Corrected migration was rerun after deleting only its exact migration-history row. Owner confirmed DONE; sync returned Processed: 0, Skipped: 0. Old delivery_tables count was 0 and a targeted drop command was provided; execution of that cleanup was not separately confirmed.
+- Scheduling and assignment may occur in either order. Dispatch requires a schedule, active delivery-role personnel, and Ready for Delivery order. Schedule arrival never automatically dispatches or completes delivery. Shop schedule input/display uses Asia/Manila.
+- Dispatch does not deduct stock. Actual Delivered requires recipient, remarks and validated JPEG/PNG/WebP proof (max 5 MB), stored privately on the local disk. Completion atomically sets Order Completed, consumes reservations, performs FIFO stock issue once using stable item fulfillment UUIDs, and creates one immutable Sales Record. Payment remains independent; no new paid-before-completion gate.
+- Failed attempt retains reservations and stock. Reschedule restores the linked order to Ready for Delivery. Cancel Delivery requires a reason and preserves the linked order and its reservations; active dispatched deliveries cannot be cancelled before recording failure. Cancelled delivery records are terminal.
+- Owner output: OrderBackendTest 10 passed, 161 assertions after Delivery integration. Initial DeliveryBackendTest 5 passed, 1 failed due invalid image acceptance; actual byte inspection added and owner subsequently reported all passed. Cancellation then added with two additional tests; no exact final post-cancellation count/output supplied.
+- Nine focused JS checks passed in this environment. No PHP executable here; never claim assistant-run PHP tests or complete browser verification.
+- Browser screenshot verified pending delivery/manage actions. Final assignment, dispatch, Delivered/proof browser verification remains blocked by absence of active personnel. User Management backend must create operational accounts in existing users table; delivery role value confirmed as delivery. No separate personnel table is needed.
+- Application Delivery commit/push is not yet verified. Last confirmed application push: 990f4c8 Complete approved Order Management backend.
+- Owner now requires complete file replacements, never line-search edits. Deliver complete module functionality and tests together; installation/explanation can remain step-by-step and concise. Avoid repeated replacement rounds for known actions.
+- Next workflow: inspect targeted git status, save/push Delivery checkpoint, implement complete User Management backend, create active delivery personnel, then return to final Delivery browser acceptance before marking Delivery finished.
+
 ## Order backend push confirmed — 2026-11-07
 
 - Owner supplied git log: 990f4c8 (HEAD -> main, origin/main) Complete approved Order Management backend. Application push is confirmed.
