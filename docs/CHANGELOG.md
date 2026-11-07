@@ -2,6 +2,13 @@
 
 **Last updated:** 2026-11-07
 
+## Sales backend push confirmed — 2026-11-07
+
+- Owner supplied git log: 8e2ec1b (HEAD -> main, origin/main) Complete approved Sales and Payments backend. Application push is confirmed.
+- Actual finance migration filename: 2026_11_07_095917_create_finance_tables.php. Deprecated sales-payment.blade.php deletion was deliberately excluded from targeted staging; do not assume working tree clean.
+- Next Supplier module: Reports backend. Preserve existing approved Reports UI and PDF/Excel exports, exact-cent financial definitions and fulfillment-only stock issue. Review current source before implementation; provide complete functionality/tests and whole-file replacements.
+- Owner Sales PHP test results and final personnel/Delivery browser acceptance remain unreported; no passed counts should be invented.
+
 ## Sales & Payments owner approved — 2026-11-07
 
 - Owner explicitly approved saving Sales & Payments and proceeding. User approval is recorded; application commit/push remains pending verification.
