@@ -1,6 +1,6 @@
 # Audit Trail backend tests
 
-Status: owner verified on 2026-11-10. All 11 Audit tests passed; the full application suite passed 89 tests / 1,247 assertions and the production build succeeded. PHP was not run in the assistant environment. Application commit/push and explicit browser PDF/Excel/Print acceptance remain pending.
+Status: owner verified on 2026-11-10. All 11 Audit tests passed; the full application suite passed 89 tests / 1,247 assertions and the production build succeeded. PHP was not run in the assistant environment. Application commit/push confirmed: `0ed6c7f` on main/origin/main. Explicit browser PDF/Excel/Print acceptance remains pending.
 
 ## Installation
 
@@ -33,7 +33,7 @@ Verified owner result: 11 Audit tests passed. The full application suite also pa
 10. Order edits record deleted/replacement item snapshots.
 11. Export data includes all matching rows rather than just the visible page.
 
-Limits: model guards do not make the database tamper-proof against direct SQL. Browser-generated PDF/Excel/Print output still needs a manual check; these backend tests cover export data selection, not browser file creation. The full application regression suite passed; explicit browser export acceptance and application commit/push are still pending.
+Limits: model guards do not make the database tamper-proof against direct SQL. Browser-generated PDF/Excel/Print output still needs a manual check; these backend tests cover export data selection, not browser file creation. The full application regression suite passed; application commit/push is confirmed at `0ed6c7f`; explicit browser export acceptance is still pending.
 
 ## Complete tests/Feature/AuditBackendTest.php
 
