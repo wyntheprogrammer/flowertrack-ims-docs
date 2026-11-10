@@ -2,6 +2,16 @@
 
 **Last updated:** 2026-11-10
 
+## Reports approved and daily usage budget — 2026-11-10
+
+- Owner reports Reports is working and explicitly approves proceeding. Owner earlier reported all tests passed (no exact counts/output supplied); Vite Blade entry issue was fixed and the Inventory report confirmed connected to actual DB data. Do not invent detailed PDF/Excel/Print acceptance results.
+- User sets a maximum daily budget of 12% of the TOTAL weekly ChatGPT Work allowance (12 percentage points per day, not 12% of the remaining allowance). At that rate seven days use 84%, leaving a 16% reserve.
+- Keep explanations concise, batch useful independent work, reuse verified repository context, and deliver complete reviewed module files/tests rather than repeated partial replacements. Do not compromise required correctness or checks to claim quota savings.
+- Remind owner of the daily budget during development, especially before substantial work. Assistant cannot access live Work weekly-usage percentage through available tools, cannot measure today's actual percent or guarantee a threshold alert, and must never fabricate estimates from token/message counts.
+- Exact threshold notification is not configured. A scheduled manual-usage-check reminder can be created after clarifying the preferred schedule; do not silently substitute it for live threshold monitoring.
+- Reports application commit/push is pending. Inspect git status for targeted staging, then provide owner app commit/push commands. Last confirmed app push remains 8e2ec1b.
+- Planned next Supplier backend: Audit Trail, including Admin-only append-only records and safe handling of security events. Actual ML Spoilage Prediction remains deferred.
+
 ## Reports Vite integration fixed — 2026-11-10
 
 - Owner reported all backend tests passed (no exact output/count supplied), then page GET failed because the Reports Blade requested resources/js/supplier/reports.js as a standalone Vite manifest entry.
