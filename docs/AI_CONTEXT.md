@@ -2,6 +2,11 @@
 
 **Last updated:** 2026-11-10
 
+## Usage reminder cancelled; owner checks manually — 2026-11-10
+
+- Owner explicitly requested removal of the 9:12 PM reminder after clarifying they wanted automatic actual-usage checking after every prompt. Reminder has been disabled.
+- Owner will check usage manually. Keep the 12-percentage-point daily budget as a preference; do not send unsolicited daily reminders or claim automatic after-prompt usage measurement. Available tools do not expose the account's live weekly consumption percentage.
+
 ## Daily usage-check reminder scheduled — 2026-11-10
 
 - Owner chose 9:12 PM Philippine time. Enabled recurring daily reminder created for 21:12 Asia/Manila.
