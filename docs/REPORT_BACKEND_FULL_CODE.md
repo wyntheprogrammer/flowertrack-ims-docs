@@ -533,9 +533,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 @endsection
 
 
-@push('scripts')
-    @vite('resources/js/supplier/reports.js')
-@endpush
+
 ```
 
 ## `routes/web.php`
