@@ -2,6 +2,11 @@
 
 **Last updated:** 2026-11-10
 
+## Reports Vite integration fixed — 2026-11-10
+
+- Owner reported all backend tests passed (no exact output/count supplied), then page GET failed because the Reports Blade requested resources/js/supplier/reports.js as a standalone Vite manifest entry.
+- Repository app.js already imports ./supplier/reports; vite.config.js defines app.js as the entry. Removed the redundant @vite/scripts push from the complete Blade and full code guide, preserving the existing bundling approach. Browser/export verification remains pending.
+
 ## Reports backend package completed for installation — 2026-11-10
 
 - Resumed this chat and reread current repository/docs. App ReportService.php is not yet pushed; Reports JS and routes still match the 8e2ec1b baseline. Do not overwrite a different local uncommitted candidate without reviewing its diff.
