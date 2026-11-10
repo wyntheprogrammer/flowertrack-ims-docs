@@ -47,3 +47,7 @@ Verification performed here: Node syntax check and focused Reports UI/export che
 - Verify non-Admin accounts cannot load the report page/data. Refresh should not mutate the underlying records.
 
 After owner approval: update docs with actual results, inspect targeted Git status, provide app commit/push commands, then continue to the next module. Assistant pushes docs; owner pushes the application.
+
+## Vite integration fix — 2026-11-10
+
+Reports JS is already imported by resources/js/app.js. The Reports Blade must not call @vite('resources/js/supplier/reports.js') as a standalone manifest entry. The full code guide now removes that redundant scripts push. Clear compiled views and rebuild app assets after applying the corrected full Blade. Owner reported backend tests passed, but page/browser/export verification is still pending.
