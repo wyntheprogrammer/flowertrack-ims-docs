@@ -1,6 +1,6 @@
 # Audit Trail backend tests
 
-Status: prepared on 2026-11-10; owner execution pending. These tests have not been run in the assistant environment because PHP is unavailable there. Do not mark the Audit module complete from this document alone.
+Status: owner verified on 2026-11-10. All 11 Audit tests passed; the full application suite passed 89 tests / 1,247 assertions and the production build succeeded. PHP was not run in the assistant environment. Application commit/push and explicit browser PDF/Excel/Print acceptance remain pending.
 
 ## Installation
 
@@ -17,7 +17,7 @@ php -l tests/Feature/AuditBackendTest.php
 php artisan test --filter=AuditBackendTest
 ```
 
-Expected: 11 tests pass. Assertion count is not claimed in advance. If any test fails, retain the complete failure output. After these pass, run the existing Order and other module regression tests as the final integration check.
+Verified owner result: 11 Audit tests passed. The full application suite also passed 89 tests / 1,247 assertions. If future runs fail, retain the complete failure output. Re-run regression tests after material code changes.
 
 ## Coverage
 
@@ -33,7 +33,7 @@ Expected: 11 tests pass. Assertion count is not claimed in advance. If any test 
 10. Order edits record deleted/replacement item snapshots.
 11. Export data includes all matching rows rather than just the visible page.
 
-Limits: model guards do not make the database tamper-proof against direct SQL. Browser-generated PDF/Excel/Print output still needs a manual check; these backend tests cover export data selection, not browser file creation. The entire module is still pending final integration and acceptance.
+Limits: model guards do not make the database tamper-proof against direct SQL. Browser-generated PDF/Excel/Print output still needs a manual check; these backend tests cover export data selection, not browser file creation. The full application regression suite passed; explicit browser export acceptance and application commit/push are still pending.
 
 ## Complete tests/Feature/AuditBackendTest.php
 
