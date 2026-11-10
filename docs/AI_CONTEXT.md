@@ -2,6 +2,14 @@
 
 **Last updated:** 2026-11-10
 
+## Reports backend push confirmed — 2026-11-10
+
+- Owner supplied successful push 8e2ec1b..0457270 main -> main and git log: 0457270 (HEAD -> main, origin/main, origin/HEAD) Complete approved Reports backend. Application push is confirmed.
+- Owner reported tests passed and Reports working against actual DB. Exact test counts/output and separate PDF/Excel/Print rendering results were not supplied; do not invent these details.
+- Remaining local changes explicitly reported: modified resources/views/supplier/audit-trail.blade.php, deleted resources/views/supplier/sales-payment.blade.php, untracked tatus. These were excluded from Reports staging; do not delete/stage/overwrite them implicitly.
+- Next: Audit Trail backend. Inspect the owner's existing local Audit Trail Blade diff before preparing its full replacement. Preserve Admin-only access, append-only audit history, previous/new safe values, actor/IP/result where available, appropriate security failures and PDF/Excel/Print export, indefinite retention. Never retain credentials/tokens/session cookies in audit events.
+- Usage reminder is disabled at owner request. Owner checks live usage manually; no assistant auto-measurement or unsolicited reminders.
+
 ## Usage reminder cancelled; owner checks manually — 2026-11-10
 
 - Owner explicitly requested removal of the 9:12 PM reminder after clarifying they wanted automatic actual-usage checking after every prompt. Reminder has been disabled.
