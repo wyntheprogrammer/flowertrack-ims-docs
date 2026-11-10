@@ -2,6 +2,20 @@
 
 **Last updated:** 2026-11-10
 
+## Audit backend verification — 2026-11-10
+
+- Owner supplied full terminal output: `php artisan test` passed **89 tests / 1,247 assertions**, including all **11 AuditBackendTest** cases and the existing Batch, Client, Delivery, Inventory, Order, Reports, Sales, User and example tests. Duration 9.09 seconds. These are owner-run results, not assistant-local PHP execution.
+- `npm.cmd run build` completed successfully in 843 ms. Non-blocking warnings remain: runtime image references `/images/bloom-business.jpg` and `/images/flower-banner.png`, and a minified application chunk above 500 kB (about 1,535 kB). Do not claim these warnings were fixed.
+- Actual database Audit history was verified for ORD-002: separate Created/Pending event 9, Pending→Confirmed event 20, Confirmed→Cancelled event 22. Earlier entries remained; initial confusion was pagination.
+- Owner confirmed operational changes, login/failed-login/logout, and rejected-request logging work. Fixed authentication subscriber registration and moved its file from erroneous `app/Listenings` to `app/Listeners`.
+- Implementation: append-only AuditEvent model; safe scalar previous/new values; same-connection transactional model observer writes; Admin-only database table/search/sort/pagination/date/module/user/action/result filters; filtered export dataset; authentication subscriber; rejected-request middleware and exception hook with deduplication. Password/hash/token/path/raw-body values are excluded.
+- OrderService cancellation now saves each released hold, and editable item replacement deletes each old model, enabling observer history inside the existing order transaction.
+- Audit migration already ran: `2026_11_10_132243_create_audit_events_table.php`. Do not generate another. Model guards do not protect against privileged direct SQL; no historical events are fabricated.
+- Whole dedicated test file and setup: [AUDIT_BACKEND_TESTS.md](AUDIT_BACKEND_TESTS.md). Manual browser PDF/Excel/Print rendering acceptance has not yet been explicitly reported; backend export selection tests passed.
+- Application commit/push is **pending**. Latest confirmed prior app commit remains `0457270` (Reports). Do not invent an Audit commit SHA.
+- Stage only the Audit-related files shown in the owner status, including `resources/css/supplier/audit-trail.css`, OrderService, provider/bootstrap/routes, and the new Audit files/test. Exclude unrelated deleted `resources/views/supplier/sales-payment.blade.php` and untracked `tatus`.
+- Next: owner reviews staged Audit changes, commits/pushes app, supplies HEAD/origin confirmation; record confirmed SHA. Browser export check remains outstanding until owner reports it.
+
 ## Reports backend push confirmed — 2026-11-10
 
 - Owner supplied successful push 8e2ec1b..0457270 main -> main and git log: 0457270 (HEAD -> main, origin/main, origin/HEAD) Complete approved Reports backend. Application push is confirmed.
