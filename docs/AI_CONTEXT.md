@@ -2,6 +2,11 @@
 
 **Last updated:** 2026-11-10
 
+## Daily usage-check reminder scheduled — 2026-11-10
+
+- Owner chose 9:12 PM Philippine time. Enabled recurring daily reminder created for 21:12 Asia/Manila.
+- Reminder asks the owner to check usage manually against the 12-percentage-point daily budget. It does not monitor live account usage or trigger at the actual threshold.
+
 ## Reports approved and daily usage budget — 2026-11-10
 
 - Owner reports Reports is working and explicitly approves proceeding. Owner earlier reported all tests passed (no exact counts/output supplied); Vite Blade entry issue was fixed and the Inventory report confirmed connected to actual DB data. Do not invent detailed PDF/Excel/Print acceptance results.
