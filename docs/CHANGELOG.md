@@ -1,6 +1,16 @@
 # Changelog
 
-**Last updated:** 2026-11-07
+**Last updated:** 2026-11-10
+
+## Reports backend package completed for installation — 2026-11-10
+
+- Resumed this chat and reread current repository/docs. App ReportService.php is not yet pushed; Reports JS and routes still match the 8e2ec1b baseline. Do not overwrite a different local uncommitted candidate without reviewing its diff.
+- Six full replacement files are supplied in [Reports setup](REPORT_BACKEND_SETUP.md) and [full code](REPORT_BACKEND_FULL_CODE.md): ReportService, ReportController, Reports JS/Blade, routes and ReportBackendTest. No migration, model, CSS or npm dependency change.
+- Seven real Admin-only read-only report sources: Sales, Payments, Inventory, Orders, Delivery, Clients and actual Spoilage movements. Refunds-to-date restate original completed-sale days; payments separately retain verified gross/refund/net; client aggregates use stable IDs; negative availability and separate Stem/Bouquet units are preserved.
+- PDF/Excel/Print use all searched rows across pages from the same loaded snapshot, with generation time and reporting definitions. Refresh preserves old data on failure; numeric precision and escaping are checked.
+- Completed the previously incomplete PHP test draft. Nine isolated ReportBackendTest cases now cover all seven datasets, no writes, stable identities, unchanged price snapshots, payment/stock separation, actual spoilage, negative availability, Philippine dates and Admin/session access.
+- Node syntax and focused Reports UI/export checks passed. PHP remains unavailable here, so no PHP result, full Vite build, actual browser export rendering or owner acceptance is claimed.
+- Last confirmed app push: 8e2ec1b. Owner should install the full package, run Reports plus existing regression tests, verify browser exports, approve, then follow MD update and targeted application commit/push workflow. Assistant pushes docs; owner pushes app.
 
 ## Sales backend push confirmed — 2026-11-07
 
