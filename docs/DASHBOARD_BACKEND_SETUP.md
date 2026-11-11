@@ -1,6 +1,6 @@
 # Supplier Dashboard backend setup
 
-Prepared 2026-11-11. **Owner installation/testing pending.** Baseline application checkpoint: `0ed6c7f` — Complete tested Audit Trail backend. Previous full suite: 89 passed / 1,247 assertions. That result predates these Dashboard changes.
+Verified by owner 2026-11-11: **9 Dashboard tests passed / 130 assertions; full suite 98 passed / 1,377 assertions; production build passed**. Owner confirmed the Dashboard working with MySQL and approved proceeding. Application commit/push remains pending; latest confirmed app checkpoint is `0ed6c7f` (Audit).
 
 ## Resulting behavior
 
