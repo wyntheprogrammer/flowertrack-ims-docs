@@ -1,6 +1,6 @@
 # Supplier Dashboard backend — complete replacement files
 
-Prepared 2026-11-11 against the reviewed app checkpoint `0ed6c7f` (Audit). Owner installation verified 2026-11-11: 9 Dashboard tests passed / 130 assertions; full suite 98 passed / 1,377 assertions; production build passed. Owner confirmed the Dashboard working with MySQL and approved saving. Application commit/push remains pending; do not invent a pushed Dashboard commit.
+Prepared 2026-11-11 against the reviewed app checkpoint `0ed6c7f` (Audit). Owner installation verified 2026-11-11: 9 Dashboard tests passed / 130 assertions; full suite 98 passed / 1,377 assertions; production build passed. Owner confirmed the Dashboard working with MySQL and approved saving. Application commit/push confirmed: `fdb2d9a` on main/origin/main — Complete approved Supplier Dashboard backend.
 
 Read [DASHBOARD_BACKEND_SETUP.md](DASHBOARD_BACKEND_SETUP.md) first. Each code block below is the **whole file** for the stated application path. Create the new files and replace the existing files; do not append the code blocks. No application migration or npm dependency is added.
 
