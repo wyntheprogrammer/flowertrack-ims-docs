@@ -2,6 +2,18 @@
 
 **Last updated:** 2026-11-11
 
+## Supplier Dashboard verified and approved for saving — 2026-11-11
+
+- Owner confirmed Dashboard working against the actual MySQL database and requested proceeding. Initial optimize:clear failure was a refused connection on 127.0.0.1:3306 during database-cache clearing; owner subsequently reported working. Do not attribute that environment connectivity error to failed Dashboard tests.
+- Owner supplied dedicated Dashboard results: **9 passed / 130 assertions**. Production Vite build succeeded in 4.68 seconds, with previously known unresolved runtime image references and large-chunk warnings. These warnings were not fixed.
+- Owner supplied final full regression output: **98 passed / 1,377 assertions**, duration 14.18 seconds. This includes Audit, Dashboard and all existing suites; results were run by owner, not assistant-local PHP.
+- Dashboard implementation and definitions remain in [setup](DASHBOARD_BACKEND_SETUP.md) and [whole code](DASHBOARD_BACKEND_FULL_CODE.md): real business tables, separate inventory units, available-based low-stock count, Pending-only orders, completed net sales, gross item ranking from snapshots, privacy-safe business activity and role-aware shell.
+- Application commit/push is **pending**; latest confirmed app checkpoint remains `0ed6c7f` (Audit). Do not fabricate a Dashboard commit SHA.
+- Owner status contains exactly nine Dashboard-related files: modified app.css, supplier/shell.js, layouts/supplier.blade.php, supplier/dashboard.blade.php, routes/web.php; new DashboardController, DashboardService, dashboard.css, DashboardBackendTest. Provide targeted staging for these only.
+- Unrelated deleted `resources/views/supplier/sales-payment.blade.php` and untracked `tatus` remain excluded. Do not delete, restore, or stage them implicitly.
+- Next: owner reviews staged diff, commits/pushes application, supplies HEAD/origin confirmation; assistant records the confirmed commit. No further implementation or repeated tests are needed before saving unless owner reports a new issue.
+- Earlier Audit browser PDF/Excel/Print explicit acceptance remains unreported; Dashboard verification does not establish it.
+
 ## Supplier Dashboard package prepared — 2026-11-11
 
 - Reviewed pushed app baseline `0ed6c7f`: Dashboard cards/products/activity and shell chart were seeded examples; shared account label and notification count were hardcoded. Audit remains the latest confirmed app push (89 tests / 1,247 assertions before Dashboard changes).
