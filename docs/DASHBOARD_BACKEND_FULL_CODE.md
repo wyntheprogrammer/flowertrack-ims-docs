@@ -234,7 +234,7 @@ class DashboardController extends Controller
     private function snapshot(Request $request): array
     {
         $values = $request->validate([
-            'unit' => ['nullable', Rule::in(['Stem', 'Bouquet'])],
+            'unit' => ['nullable', 'string', Rule::in(['Stem', 'Bouquet'])],
         ]);
 
         return $this->dashboard->data($request->user(), $values['unit'] ?? 'Stem');
