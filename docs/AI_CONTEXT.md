@@ -2,6 +2,15 @@
 
 **Last updated:** 2026-11-11
 
+## Supplier Dashboard push confirmed — 2026-11-11
+
+- Owner supplied successful push `0ed6c7f..fdb2d9a main -> main` and HEAD/origin confirmation: `fdb2d9a (HEAD -> main, origin/main, origin/HEAD) Complete approved Supplier Dashboard backend`. Dashboard application commit and remote push are confirmed.
+- Latest verified full suite: **98 passed / 1,377 assertions**; dedicated Dashboard suite: **9 passed / 130 assertions**. Production build succeeded. Owner confirmed actual MySQL Dashboard working. Previously recorded image/chunk warnings remain.
+- Remaining local changes are unrelated deleted `resources/views/supplier/sales-payment.blade.php` and untracked `tatus`. Both were excluded; do not stage/delete/restore implicitly.
+- Tested/approved Supplier Dashboard backend is saved remotely. No application commit or repeated verification is outstanding for this Dashboard checkpoint.
+- Next work should review remaining Supplier integration and the deferred Spoilage Prediction backend before choosing scope. Do not claim real ML predictions already exist or invent risk scores. Earlier explicit Audit browser export rendering acceptance remains unreported.
+- This confirmation supersedes older Dashboard installation/push-pending notes below.
+
 ## Supplier Dashboard verified and approved for saving — 2026-11-11
 
 - Owner confirmed Dashboard working against the actual MySQL database and requested proceeding. Initial optimize:clear failure was a refused connection on 127.0.0.1:3306 during database-cache clearing; owner subsequently reported working. Do not attribute that environment connectivity error to failed Dashboard tests.
