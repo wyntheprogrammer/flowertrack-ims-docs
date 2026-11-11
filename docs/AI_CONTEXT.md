@@ -1,6 +1,17 @@
 # AI Context — FlowerTrack IMS
 
-**Last updated:** 2026-11-10
+**Last updated:** 2026-11-11
+
+## Supplier Dashboard package prepared — 2026-11-11
+
+- Reviewed pushed app baseline `0ed6c7f`: Dashboard cards/products/activity and shell chart were seeded examples; shared account label and notification count were hardcoded. Audit remains the latest confirmed app push (89 tests / 1,247 assertions before Dashboard changes).
+- Full nine-file Dashboard package: [setup](DASHBOARD_BACKEND_SETUP.md) and [whole-file code](DASHBOARD_BACKEND_FULL_CODE.md). No migration or npm dependency change. Assistant has changed/pushed docs only; application installation, tests/build and acceptance are **pending**.
+- Uses separate Stem/Bouquet on-hand totals, active-item low-stock from available quantities, Pending-only order count, all-time completed-sales net of linked refunds, gross completed-item ranking using saved order prices, and safe operational history from Orders/Inventory/Sales (not Admin audit/security history).
+- Replaces the sample period chart with a current-stock chart and unit selector. Removes fabricated percentage changes; no historical inventory or ML predictions are invented. Existing dashboard visual classes are retained with scoped CSS.
+- Shared layout shows actual account name/role, hides Admin-only navigation for Supplier, and shows snapshot alert counts on Dashboard; other pages link to Dashboard for counts. No push/polling notification backend is claimed.
+- Nine isolated DashboardBackendTest cases prepared for empty data/read-only behavior, separate units/reservations/negative availability/spoilage, pending confirmation, completed sales/refunds/price snapshots, unfulfilled payments, HTTP/role/Blade access, privacy, and account-state guards.
+- Local verification: Node syntax for shell, SQLite multi-refund aggregation shape, and static fixture isolation/sample removal checks passed. PHP and browser are unavailable locally: no PHP pass/build/render claim. Owner must install all files, run the nine tests and build, then full regressions and browser verification.
+- Continue owner-paced installation with complete file replacements and concise explanations. Preserve untracked `tatus` and unrelated deleted `resources/views/supplier/sales-payment.blade.php`; do not stage them in Dashboard work.
 
 ## Audit backend push confirmed — 2026-11-10
 
