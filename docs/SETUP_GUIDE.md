@@ -1,6 +1,6 @@
 # FlowerTrack IMS — Windows Setup Guide
 
-**Last updated:** 2026-11-04  
+**Last updated:** 2026-11-15  
 **Purpose:** Prepare a new Windows computer for FlowerTrack IMS development, including official installer links, installation steps, PHP configuration, and verification.
 
 This guide is for the Laravel application. The documentation repository and application repository are separate:
@@ -462,3 +462,116 @@ npm run build
 Commit both `package.json` and `package-lock.json` with the Reports implementation. On a fresh checkout where these dependencies are already committed, use `npm ci` followed by `npm run build`; there is no need to reinstall them individually.
 
 If Vite reports a failed/unresolved import for one of these packages, run the install command above from the application root and rebuild. Do not mark the package external merely to suppress the error; the report code needs the dependency bundled for browser exports. Package versions should follow the application's committed lockfile; none are asserted by this guide.
+
+
+## Spoilage Python setup and device transfer — 2026-11-15
+
+The Spoilage engine checkpoint is application commit `53251a5`. Python runs as a local process invoked by Laravel; no separate Python web server is required.
+
+### Verified environment
+
+| Component | Owner-verified version |
+|---|---|
+| Python | 3.14.10, Windows x64 |
+| NumPy | 2.5.4 |
+| pandas | 2.3.3 |
+| statsmodels | 0.15.0 |
+
+These are the versions reported on the owner's working device, not a requirement to upgrade every computer to a newer release. Install compatible Python separately on each computer; venv creates an isolated environment using an already installed interpreter. A venv and its libraries are not transferred by Git.
+
+### First, prepare the dependency manifest on the working device
+
+At the time this guide was updated, `requirements.txt` was not present in the remote application repository. Create it from the working environment before using the new-device installation command. In PowerShell, from `C:\\xampp\\htdocs\\FlowerTrack`:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip freeze | Set-Content -Encoding utf8 requirements.txt
+```
+
+This captures installed dependencies and their versions, including transitive dependencies. UTF-8 avoids Windows PowerShell's default UTF-16 redirection encoding.
+
+Add these entries to the application's existing `.gitignore` without replacing its other entries:
+
+```gitignore
+/.venv/
+__pycache__/
+*.py[cod]
+```
+
+The inspected remote .gitignore did not yet include these Python entries. Then review and save only those files:
+
+```powershell
+git add requirements.txt .gitignore
+git diff --cached --stat
+git commit -m "Record Spoilage Python dependencies and ignore local environment"
+git push origin main
+```
+
+These are owner-side application steps; updating this documentation does not create or commit the manifest/ignore rules in the application repository.
+
+### Set up another device
+
+1. Install XAMPP/PHP, Composer, Git, Node/npm and compatible Python as described in this guide. Start MySQL before database-dependent Laravel commands.
+2. Clone the application if it is absent, or pull the existing clean checkout. Preserve any wanted local changes before pulling.
+3. Install dependencies and configure the local environment:
+
+```powershell
+cd C:\xampp\htdocs
+git clone https://github.com/wyntheprogrammer/flowertrack-ims.git FlowerTrack
+cd FlowerTrack
+composer install
+npm.cmd ci
+Copy-Item .env.example .env
+php artisan key:generate
+```
+
+Clone/copy/key generation above are for a **new local checkout only**. On an existing checkout use `git pull origin main`, `composer install`, and `npm.cmd ci`; preserve its existing .env and APP_KEY. Configure DB_DATABASE=flowertrack_ims and the device's actual DB host/port/user/password. Create the database in phpMyAdmin if absent. Project .env files, uploaded images/private delivery proofs and database contents are not restored by git pull.
+
+4. Create the Python environment and install the committed requirements:
+
+```powershell
+py -3.14 --version
+py -3.14 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Use `py --list` if the requested interpreter cannot be found. Do not run the requirements install before the manifest is committed and pulled. If a package version cannot install on a different Python/platform, match the working Python environment rather than silently changing the pins. No Activate.ps1 or execution-policy change is needed because commands call the venv executable directly.
+
+5. Verify the Python engine and Laravel bridge:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\spoilage\predict.py --self-test
+php artisan config:clear
+php artisan tinker --execute="dump(app(\App\Services\SpoilagePythonService::class)->health());"
+```
+
+Expected: self-test returns status ok; health returns Python/NumPy/pandas/statsmodels versions. `config/spoilage.php` defaults to the project's .venv/Scripts/python.exe on Windows and .venv/bin/python on other systems. Set SPOILAGE_PYTHON_BINARY only if using a different absolute executable path, then clear config cache. Do not copy a different device's absolute path.
+
+6. Prepare database and frontend:
+
+```powershell
+php artisan migrate
+php artisan storage:link
+npm.cmd run build
+php artisan serve
+```
+
+Migrate executes pending files in database/migrations and records them in the migrations table. It creates/updates schema; it does not copy accounts, stock or historical observations from the other device. Do not use migrate:fresh on a database whose contents you want to keep. For the supplied complete SQL snapshot, follow the import steps below instead of resetting it with migrate:fresh.
+
+### Reusable presentation SQL in the same database
+
+Owner explicitly chose **flowertrack_ims**. Download/extract the supplied FlowerTrack_Presentation_Database.zip, back up current records, then import flowertrack_ims_presentation.sql through phpMyAdmin. Its explicit USE selects flowertrack_ims, and DROP/CREATE statements replace the listed existing tables and records. Repeating the import restores the exact same sample data and clears old sessions.
+
+Copy the extracted storage folder into the project, merging folders. The private synthetic proof resides at storage/app/private/delivery-proofs/presentation-demo-proof.png under Laravel's default local disk root. Keep .env and APP_KEY; run config:clear and view:clear and log in again. Sample Admin: admin@demo.example.test / DemoFlower!2026. These are public synthetic local-test credentials.
+
+The snapshot includes October–November 2026 sales/history and prediction snapshots dated 15–21 November 2026. Date-based reports must include those dates. It is not a rolling dataset and does not establish model accuracy. The earlier separate-demo-database seeder/reset package is an alternative artifact, **not required for this same-database SQL import**.
+
+### Runtime boundaries and troubleshooting
+
+- `npm.ps1 cannot be loaded`: use `npm.cmd` in PowerShell.
+- DB connection refused: check XAMPP MySQL and .env host/port, then config:clear. Clearing a database-backed cache needs MySQL running.
+- No account after migrate: migrations do not create a login account. Restore the SQL/backup or follow the existing Admin-account setup; never assume credentials are transferred through Git.
+- Missing Python executable/import: create .venv on this device and install requirements using that exact executable.
+- Failed health/self-test: resolve it before relying on forecasts. InsufficientData is a legitimate lack-of-history result, not Low risk.
+- Git does not store the local database or .venv. Store code/config/migrations/requirements in Git and keep private database backups separately.
+- The saved checkpoint provides models, historical profile building and the Python bridge/engine. It does not itself prove that a daily collector, scheduler, UI API or automatic refresh coordinator is installed. The owner reports local Spoilage/refresh working; inspect any uncommitted integration before treating it as part of commit 53251a5.
+
