@@ -1,6 +1,21 @@
 # Development Progress
 
-**Last updated:** 2026-11-11
+**Last updated:** 2026-11-15
+
+
+## Spoilage engine checkpoint and presentation data — 2026-11-15
+
+- Confirmed application commit: [`53251a5`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/53251a524ec1f514c0e9c6fd837f760bfd185ee3), **Save Spoilage prediction engine and historical profiles checkpoint**. Owner supplied HEAD/main/origin confirmation; commit was also inspected on GitHub.
+- Saved eight files: BatchDailyObservation and BatchSpoilagePrediction models; SpoilageProfileService and SpoilagePythonService; config/spoilage.php; the two observation/prediction migrations; scripts/spoilage/predict.py.
+- Owner verified local Python **3.14.10**, NumPy **2.5.4**, pandas **2.3.3**, statsmodels **0.15.0**; Python health, forecast self-test and Laravel-to-Python sample call succeeded. These are owner-run checks, not a newly executed full Laravel regression suite.
+- Profiles use completed, reconciled observations strictly before the forecast date, pooled by flower/storage/age with Stem and Bouquet kept separate. Own-batch ARIMA is attempted after six prior completed daily records; the configured order is (0,1,0), horizon seven days. Forecasts include release rates to account for stock leaving inventory.
+- Low <10%, Medium 10–<25%, High 25–<50%, Critical ≥50%. Unsupported history returns InsufficientData; do not invent a zero-risk result or promise 90% accuracy.
+- At the owner's request, generated a reusable **same-database `flowertrack_ims` SQL snapshot**, not a separate demo database. It contains synthetic presentation records: 11 accounts, 10 catalog items, 97 batches, 40 orders, 28 sales, 14 deliveries, 1,088 completed daily observations and 65 prediction snapshots. A clearly marked synthetic private delivery proof and import guide accompany the ZIP. No production data or real delivery proof is represented.
+- Owner confirmed SQL import and Spoilage working, and subsequently reported the refresh working. Record this as **owner-reported local acceptance**. The inspected checkpoint does not include a Spoilage controller/UI connection, daily-observation collector, scheduler or refresh coordinator; verify actual local implementation before claiming these are committed or adding duplicate integrations.
+- The presentation snapshot has fixed dates: observations 4 October–14 November 2026; predictions 15–21 November 2026. Reimport replaces the listed tables/accounts/sessions in flowertrack_ims and restores the same fixture; it does not move dates forward or install code.
+- Follow [the updated setup guide](SETUP_GUIDE.md#spoilage-python-setup-and-device-transfer--2026-11-15) for per-device venv creation and checks. Never copy or commit .venv.
+- Repository check during this update: requirements.txt is not yet available remotely and .gitignore does not yet contain .venv/. Documented dependency freeze/commit and ignore steps are **pending owner application changes**, not completed by this documentation update.
+- Next: save the Python dependency manifest and ignore rules, verify setup on the other device, then inspect any local integration files needed for complete end-to-end Spoilage behavior. No additional Spoilage test totals or fresh full-suite result were supplied.
 
 ## Supplier Dashboard push confirmed — 2026-11-11
 
