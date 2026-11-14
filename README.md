@@ -1,9 +1,9 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-05  
-**Payment policy:** One exact full payment per order; no partial payments or installments. Application patch/build/push is pending because integration write access returned HTTP 403.
+**Last updated:** 2026-11-15  
+**Payment policy:** One exact full payment per order; no partial payments or installments.
 
-**Project status:** Audit Trail UI is now owner-approved, completing the planned Supplier module screen sequence at the UI level. Build/check and verify the Audit application push, then review the full Supplier UI before choosing the next phase. Frontend samples remain separate; authentication, permissions, durable audit logging, database persistence and cross-module synchronization are pending. The Client storefront remains deferred.
+**Project status:** Supplier operational backends and Dashboard are saved. Latest confirmed application checkpoint: `53251a5`, Spoilage prediction engine and historical profiles. Owner reports presentation import and local Spoilage working. See the current progress entry for committed scope and remaining integration/dependency checks.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -38,6 +38,14 @@ Current workflow: implement and review Supplier/Admin modules one at a time in t
 10. [`docs/UI_UX_DESIGNER_SUBAGENT.md`](docs/UI_UX_DESIGNER_SUBAGENT.md) — reusable UI/UX designer subagent role, project constraints, current Flower Management layout brief, and reuse prompt.
 
 For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX_GUIDELINES.md#approved-module-ui-reference--flower-management-2026-11-03).
+
+## Latest checkpoint — 2026-11-15
+
+- Application: [`53251a5`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/53251a524ec1f514c0e9c6fd837f760bfd185ee3), Spoilage Python engine/bridge, historical profiles and observation/prediction models/migrations.
+- Working Python: 3.14.10; NumPy 2.5.4; pandas 2.3.3; statsmodels 0.15.0.
+- [Updated Python/device setup](docs/SETUP_GUIDE.md#spoilage-python-setup-and-device-transfer--2026-11-15): recreate .venv per device, install committed requirements, verify self-test/health. Dependency manifest and Python ignore entries still need an application commit.
+- Owner chose reusable synthetic SQL data in the same `flowertrack_ims` database. Import replaces current records; back up first. Owner reports successful import and Spoilage operation; imported predictions alone do not establish automatic collection/refresh.
+- Historical UI-only notes below are retained as earlier context; current status is in [Development Progress](docs/DEVELOPMENT_PROGRESS.md).
 
 ## Local setup snapshot
 
