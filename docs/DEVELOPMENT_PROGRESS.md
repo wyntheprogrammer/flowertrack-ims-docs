@@ -1,7 +1,24 @@
 # Development Progress
 
-**Last updated:** 2026-11-15
+**Last updated:** 2026-11-16
 
+
+
+## Automatic Spoilage refresh saved — 2026-11-16
+
+- Owner confirmed `46e4145 (HEAD -> main, origin/main) Add tested automatic Spoilage prediction refresh`. Application commit/push is confirmed. Earlier dependency setup was also pushed as `f213583` (requirements.txt and Python ignore rules).
+- Owner-run full regression suite: **107 tests passed / 1,439 assertions**, duration **10.01 seconds**. Dedicated SpoilageAutoRefreshTest: **9 passed / 62 assertions**. These are owner-run Laravel results, not assistant-local PHPUnit execution.
+- Python batch self-test and Vite production build passed on the owner device. Previously reported unresolved image references and large JS chunk warnings remain; they were not fixed by this checkpoint.
+- Page refresh loads saved DB results first, then JavaScript automatically POSTs if predictions are missing/outdated. No Update All/per-row Generate button remains. One Python process handles the changed batches; matching saved results, including InsufficientData, are reused.
+- Committed scope: SpoilagePredictionController, SpoilagePredictionService, updated SpoilagePythonService, Spoilage JS/routes, predict.py, new predict_many.py, and SpoilageAutoRefreshTest. GET data is read-only; POST refresh performs generation. Existing single-batch API remains for compatibility.
+- Freshness fingerprints include date, stock, flower/base unit, harvest/received dates, storage, eligible own/reference history, settings and engine/requirements contents. A shared cache lock avoids duplicate computation. Python runs outside inventory locks; input changes during processing cause obsolete results to be skipped.
+- Fixed Windows WinError 10106 by explicitly passing SystemRoot/WINDIR to the Python child process. Owner verified the strengthened health check and browser single-batch save before the automatic-refresh change.
+- Fixed SQLite same-day cache reuse: date-cast values may contain a midnight time component; read and write lookups now compare calendar dates with whereDate. Existing tests were preserved and subsequently all passed.
+- This is browser-triggered asynchronous HTTP processing while the page is open, **not a queue worker or scheduled job**. No extra worker is required. Closing the page/server timeouts can interrupt updates; a later browser refresh retries missing results. Do not claim continuous updating with the page closed.
+- Dedicated tests cover read-only plans, one-call batching/cache reuse, stock/storage/history/date/settings invalidation, concurrent-stock stale rejection, unavailable-result caching, overlapping-run locks and depleted exclusion. Final browser acceptance of the new automatic flow was not explicitly supplied with the test/commit output; do not invent that verification.
+- **Next remaining Spoilage work:** review/implement collection of completed daily observations from actual Inventory movements, including zero-spoilage days, reconciliation, storage capture and day-closing rules. Importing the presentation SQL is not an automatic data-collection pipeline. Dashboard prediction alerts and any daily scheduling need separate integration/verification.
+- The synthetic presentation snapshot remains reusable in the same flowertrack_ims DB. No new SQL reset/migration is needed for this automatic-refresh patch. No real-world model accuracy was established or forced.
+- This entry supersedes older claims that the Python requirements/ignore commit or page integration is still pending. Preserve older sections as dated history.
 
 ## Spoilage engine checkpoint and presentation data — 2026-11-15
 
