@@ -4,6 +4,43 @@
 
 
 
+
+## Current review and remaining work — 2026-11-16
+
+This is the current task/status reference. Older dated UI-only milestones, pending-push notes and open decisions below are historical and must not override later confirmed work.
+
+### Verified checkpoint
+
+- Application `46e4145`: automatic Spoilage page refresh saved on main/origin. Dependency manifest/ignore checkpoint `f213583`.
+- Owner full regression: **107 passed / 1,439 assertions**; dedicated Spoilage service suite: **9 passed / 62 assertions**. Python batch self-test and build passed. Known runtime image-reference and large-chunk build warnings remain.
+- Saved Supplier operational backends: Flower, Inventory, Batch, Client Management, Order, Delivery/personnel access, Sales/Payments, Reports, User Management, Audit Trail and Dashboard. This is a tested checkpoint, not a claim that every planned integration, Client storefront, deployment or real-world ML validation is complete.
+- Automatic Spoilage predictions load saved results and refresh changed inputs via browser-triggered POST, batched Python, fingerprints and shared cache locking. No manual Update All is required. Daily observation creation/scheduling is not provided by this refresh.
+- Final browser acceptance of the new automatic flow, particularly an unchanged second refresh and changed-stock refresh, has not been explicitly reported with the suite/commit output. Ask for that result only if needed; do not repeat already passed tests without a new reason.
+
+### Remaining work in priority order
+
+| Priority | Work | Evidence and boundary |
+|---|---|---|
+| 1 | Capture actual storage condition | Committed StockInRequest, UpdateBatchRequest and InventoryService contain no storage_condition handling. Add an agreed field/workflow and validation before expecting future ordinary receipts to have usable storage metadata. Never invent storage for old batches. |
+| 2 | Collect completed daily batch observations | Observation tables/models exist, but current inventory writes and console routes do not provide a collector. Record opening, actual daily spoilage, other releases and closing per batch/date; include verified zero-spoilage days, reconcile movements, preserve Stem/Bouquet units, handle late/corrected transactions and prevent duplicate day rows. Missing history is not zero history. |
+| 3 | Decide/run day closing | After the collector is reviewed and tested, choose reliable Philippine-time day-closing execution/catch-up behavior. No scheduled collector is currently evidenced; do not claim browser refresh runs with the page closed. |
+| 4 | Integrate live risk alerts in Dashboard | Current DashboardService has no Spoilage prediction reference. Add/verify current-only High/Critical summaries and authorized links if proceeding with the approved alert requirement. Avoid counting stale/unsupported snapshots. |
+| 5 | Complete browser integration acceptance | Verify real MySQL/browser automatic refresh once, changed inputs and unavailable results, plus any still-unreported export/mobile acceptance. Service tests mock Python and do not establish all browser flows. |
+| 6 | Client storefront phase | Starter client Blade files exist, but current routes have no Client portal group and AuthController's operational role allowlist excludes client. Supplier Client Management is complete separately; do not call the storefront functional. Confirm checkout/account/order ownership scope before that phase. |
+| 7 | Real-data evaluation and deployment readiness | Synthetic presentation history cannot prove real-world accuracy. Verify the required ARIMA/RF/XGBoost comparison artifacts if still required by the thesis, and evaluate honestly on held-out data. Hosting, operational Python/cache/timeouts, backup/restore, security and final end-to-end acceptance remain release work. |
+
+Recommended next implementation: **storage capture + trustworthy completed-day observation collection**, delivered with full files and tests. Do not start another Supplier UI module or rebuild already completed backends.
+
+### Documentation corrections and scope discipline
+
+- ARIMA (0,1,0), minimum six own-batch completed days, seven-day horizon and experimental risk boundaries are already selected for the current implementation; they are not still undecided. Six days is not a reliability guarantee.
+- Python communication is already local process/JSON; requirements.txt and .venv ignore rules are committed. Recreate venv on each device.
+- Product scope already includes loose Stem and supplier-made finished Bouquet stock; no bouquet assembly/BOM deduction is approved.
+- Exact-full single payment and fulfillment-only stock issue are already implemented/tested. Do not restore old partial-payment or Ready-for-Pickup deduction behavior from historical notes.
+- Legacy requirements mentioning operational-user contact numbers or other fields should be reconciled with the owner-approved User backend before adding new columns; treat such discrepancies as review items, not automatic scope expansion.
+- Keep physical adjustment/counting, production/BOM, public self-registration and GPS excluded/deferred unless Wyn explicitly changes scope.
+- This review updates documentation only; it does not implement a collector, change application code or generate history.
+
 ## Automatic Spoilage refresh saved — 2026-11-16
 
 - Owner confirmed `46e4145 (HEAD -> main, origin/main) Add tested automatic Spoilage prediction refresh`. Application commit/push is confirmed. Earlier dependency setup was also pushed as `f213583` (requirements.txt and Python ignore rules).
