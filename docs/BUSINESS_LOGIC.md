@@ -1,11 +1,21 @@
 # Business Logic
 
-**Last updated:** 2026-11-03
+**Last updated:** 2026-11-16
 
 **Status:** Partially confirmed. Only rules explicitly approved by the project owner are listed as confirmed below. All other rules remain undecided.
 
 
 
+
+## Current implementation interpretation — 2026-11-16
+
+The tested automatic Spoilage refresh is committed at `46e4145` (107 full-suite tests / 1,439 assertions). Laravel now persists prediction snapshots and rebuilds eligible historical reference profiles when checking inputs. Browser page load/refresh can automatically POST for changed predictions; matching snapshots are reused.
+
+This supersedes earlier future-tense Laravel-integration notes only for implemented page generation/persistence/profile refresh. It does **not** mean completed daily observations are automatically collected or a scheduler runs with the page closed. Storage capture, reconciled day-closing collection and current-risk Dashboard alerts remain to be completed/verified.
+
+Current reference eligibility is per flower ID and base unit, with storage/age matching and same-unit fallback. The target batch is excluded from its reference profiles. First-ever unsupported flowers still receive InsufficientData; daily observation creation must not fabricate zero outcomes or infer unknown storage. No prediction deducts physical stock.
+
+The numerical thresholds remain experimental; no guaranteed accuracy or forced ARIMA win is approved. The notebook-specific evaluation rules in the historical section below are not a claim that operational Laravel profiles stay frozen forever. Other old “pending prototype/backend” notes are dated context; follow [current progress](DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
 
 ## Seven-day batch spoilage predictions — verified rules (2026-11-14)
 
@@ -29,7 +39,7 @@ These rules clarify the owner's batch-prediction pointers. Verified against `Flo
 - The notebook freezes reference profiles from its allowed training/development records for evaluation. Merely adding ten operational batches does **not** automatically make them part of those frozen profiles. A future controlled profile/model refresh must incorporate eligible completed historical records, preserve time cutoffs, and validate newly supported flowers.
 - One historical batch may supply rates, but neither one batch nor six records guarantees reliability. More relevant, accurate historical records can help; accuracy is measured on held-out data, never guaranteed at 90%.
 
-### Laravel integration still required
+### Laravel integration notes — historical scope, 2026-11-14
 
 - Automatic prediction after Stock-In, daily refresh, database snapshot persistence, scheduled execution, new-flower onboarding, and historical-profile rebuilding are **not implemented by the Colab notebook or this documentation update**.
 - Intended behavior: on receipt or a daily refresh, use an eligible batch-specific ARIMA forecast when available; otherwise use a supported historical fallback and clearly show the method. If no supported estimate exists, show Insufficient data / unsupported flower instead of fabricating a Low–Critical result.
