@@ -1,7 +1,8 @@
 # FlowerTrack IMS Documentation
 
 **Last updated:** 2026-11-16  
-**Payment policy:** One exact full payment per order; no partial payments or installments.
+**Payment policy:** One exact full payment per order; no partial payments or installments.  
+**Communication:** Address the owner as **Wyn** in every response; see [AI Context](docs/AI_CONTEXT.md#communication-preference--wyn-2026-11-16).
 
 **Project status:** Latest confirmed application checkpoint: `46e4145`, tested automatic Spoilage prediction refresh. Owner full suite: 107 passed / 1,439 assertions. Python dependencies/ignore rules are saved in `f213583`. Completed-day observation collection remains separate work.
 
@@ -38,6 +39,12 @@ Current workflow: implement and review Supplier/Admin modules one at a time in t
 10. [`docs/UI_UX_DESIGNER_SUBAGENT.md`](docs/UI_UX_DESIGNER_SUBAGENT.md) — reusable UI/UX designer subagent role, project constraints, current Flower Management layout brief, and reuse prompt.
 
 For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX_GUIDELINES.md#approved-module-ui-reference--flower-management-2026-11-03).
+
+## Current remaining work — reviewed 2026-11-16
+
+Next: actual storage capture and completed-day observation collection, followed by day closing, Dashboard prediction alerts and final browser integration verification. The separate Client storefront and real-data ML/deployment validation remain later work. Full evidence and priorities: [Current Review](docs/DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
+
+Older dated UI-only sections are historical. Do not restart already saved Supplier backends or treat placeholder Client pages as a working storefront.
 
 ## Latest checkpoint — 2026-11-16
 
