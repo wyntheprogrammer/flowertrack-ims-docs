@@ -1,14 +1,18 @@
 # Development Plan
 
-**Last updated:** 2026-11-03
+**Last updated:** 2026-11-16
 
 ## Guiding rule
 
-**Finish and review the UI before beginning backend implementation.**
+Preserve Wyn's approved Supplier UI and implement/review backends incrementally. The earlier Supplier UI-first milestone has already been completed; the separate Client storefront remains deferred. Do not interpret the old phase numbering as requiring completed Client UI before continuing the already-approved Supplier backend work.
 
-## Current milestone — 2026-11-03
+## Current milestone — 2026-11-16
 
-Flower Management, Inventory Management and Batch Management UI are owner-approved. Flower Management remains the visual reference. Flower commit `3f580e5` and Inventory commit `e758bf8` are verified on GitHub. Complete Batch documentation and verify its application build/commit/push, then start Spoilage Prediction UI. Keep Supplier UI before Client UI and backend/database implementation after full UI review.
+Supplier operational backends and automatic Spoilage refresh are saved through `46e4145`; full suite 107 passed / 1,439 assertions. Python setup/requirements are saved in `f213583`.
+
+Immediate work: capture actual storage condition in ordinary receiving/batch workflows; build trustworthy completed-day observation collection; then day-closing execution, Dashboard risk integration and final browser acceptance. The Client storefront is a later, separately reviewed phase. See [current review](DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
+
+The numbered phases below retain the original roadmap. Supplier phases already completed are not new tasks; Client/deployment stages remain uncompleted unless explicitly verified.
 
 ## Phase 0 — Requirements and documentation
 
