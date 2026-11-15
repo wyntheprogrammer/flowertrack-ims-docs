@@ -1,6 +1,6 @@
 # FlowerTrack IMS — Windows Setup Guide
 
-**Last updated:** 2026-11-15  
+**Last updated:** 2026-11-16  
 **Purpose:** Prepare a new Windows computer for FlowerTrack IMS development, including official installer links, installation steps, PHP configuration, and verification.
 
 This guide is for the Laravel application. The documentation repository and application repository are separate:
@@ -481,7 +481,7 @@ These are the versions reported on the owner's working device, not a requirement
 
 ### First, prepare the dependency manifest on the working device
 
-At the time this guide was updated, `requirements.txt` was not present in the remote application repository. Create it from the working environment before using the new-device installation command. In PowerShell, from `C:\\xampp\\htdocs\\FlowerTrack`:
+The owner confirmed requirements.txt and Python ignore rules pushed in commit `f213583`. New devices install from that committed manifest. The freeze command below is for intentionally recording a later dependency change on the working device; it is not required again merely to pull the project. In PowerShell, from `C:\\xampp\\htdocs\\FlowerTrack`:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip freeze | Set-Content -Encoding utf8 requirements.txt
@@ -497,7 +497,7 @@ __pycache__/
 *.py[cod]
 ```
 
-The inspected remote .gitignore did not yet include these Python entries. Then review and save only those files:
+These Python ignore entries were saved in `f213583`. When intentionally changing the manifest or ignore rules later, review and save only those files:
 
 ```powershell
 git add requirements.txt .gitignore
@@ -506,7 +506,7 @@ git commit -m "Record Spoilage Python dependencies and ignore local environment"
 git push origin main
 ```
 
-These are owner-side application steps; updating this documentation does not create or commit the manifest/ignore rules in the application repository.
+The manifest/ignore commit is already confirmed. The commands above are retained for later dependency changes; routine setup on another device uses the next section.
 
 ### Set up another device
 
@@ -573,5 +573,22 @@ The snapshot includes October–November 2026 sales/history and prediction snaps
 - Missing Python executable/import: create .venv on this device and install requirements using that exact executable.
 - Failed health/self-test: resolve it before relying on forecasts. InsufficientData is a legitimate lack-of-history result, not Low risk.
 - Git does not store the local database or .venv. Store code/config/migrations/requirements in Git and keep private database backups separately.
-- The saved checkpoint provides models, historical profile building and the Python bridge/engine. It does not itself prove that a daily collector, scheduler, UI API or automatic refresh coordinator is installed. The owner reports local Spoilage/refresh working; inspect any uncommitted integration before treating it as part of commit 53251a5.
+- Checkpoint `46e4145` now includes the Spoilage page API and automatic browser-triggered refresh. The initial engine-only scope of `53251a5` is historical. A completed-day observation collector and daily scheduler are still separate work; do not fabricate missing history.
+
+
+
+## Automatic Spoilage page refresh — 2026-11-16
+
+Application checkpoint: `46e4145`. Dependency manifest/ignore checkpoint: `f213583`. Pull both through the latest main branch before setting up another device.
+
+- Run `.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt` after creating that device's venv.
+- Run `.\\.venv\\Scripts\\python.exe scripts\\spoilage\\predict_many.py --self-test`.
+- Run `php artisan test --filter=SpoilageAutoRefreshTest` and `npm.cmd run build`, then clear compiled views if necessary.
+- Open the Spoilage page and use Ctrl + F5 after a new frontend build. Saved results load first; stale/missing inputs trigger one automatic POST and one Python process for the changed batch set. Unchanged results do not run Python.
+- No manual Update All click, extra Python web server, queue worker, new migration or database reset is needed for this checkpoint.
+- Retain the SystemRoot/WINDIR environment forwarding in SpoilagePythonService on Windows. The enhanced health check tests socket/asyncio and the ARIMA import, not only package version imports.
+- The request uses the shared Laravel cache lock; the configured cache backend and existing cache tables must work. Overlapping tabs wait for the current computation. Python timeout defaults to 120 seconds; PHP refresh execution is allowed up to 180 seconds and the lock expires after 240 seconds if a process dies.
+- Same-day saved-date comparisons use whereDate for MySQL/SQLite compatibility. Do not revert the service to the earlier plain string date comparison.
+- Owner verification: full suite 107 passed / 1,439 assertions; dedicated suite 9 passed / 62 assertions. Build passed with existing image/chunk warnings. Final browser acceptance of this automatic flow has not been explicitly supplied.
+- This refresh requires an open page request and existing valid completed observations. It does not collect those observations automatically or run while the page is closed.
 
