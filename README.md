@@ -1,9 +1,9 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-15  
+**Last updated:** 2026-11-16  
 **Payment policy:** One exact full payment per order; no partial payments or installments.
 
-**Project status:** Supplier operational backends and Dashboard are saved. Latest confirmed application checkpoint: `53251a5`, Spoilage prediction engine and historical profiles. Owner reports presentation import and local Spoilage working. See the current progress entry for committed scope and remaining integration/dependency checks.
+**Project status:** Latest confirmed application checkpoint: `46e4145`, tested automatic Spoilage prediction refresh. Owner full suite: 107 passed / 1,439 assertions. Python dependencies/ignore rules are saved in `f213583`. Completed-day observation collection remains separate work.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -39,13 +39,13 @@ Current workflow: implement and review Supplier/Admin modules one at a time in t
 
 For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX_GUIDELINES.md#approved-module-ui-reference--flower-management-2026-11-03).
 
-## Latest checkpoint — 2026-11-15
+## Latest checkpoint — 2026-11-16
 
-- Application: [`53251a5`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/53251a524ec1f514c0e9c6fd837f760bfd185ee3), Spoilage Python engine/bridge, historical profiles and observation/prediction models/migrations.
-- Working Python: 3.14.10; NumPy 2.5.4; pandas 2.3.3; statsmodels 0.15.0.
-- [Updated Python/device setup](docs/SETUP_GUIDE.md#spoilage-python-setup-and-device-transfer--2026-11-15): recreate .venv per device, install committed requirements, verify self-test/health. Dependency manifest and Python ignore entries still need an application commit.
-- Owner chose reusable synthetic SQL data in the same `flowertrack_ims` database. Import replaces current records; back up first. Owner reports successful import and Spoilage operation; imported predictions alone do not establish automatic collection/refresh.
-- Historical UI-only notes below are retained as earlier context; current status is in [Development Progress](docs/DEVELOPMENT_PROGRESS.md).
+- Application: [`46e4145`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/46e4145), automatic Spoilage page refresh with one Python batch process, input-based cache reuse, concurrency protection and corrected SQLite date lookup.
+- Owner full tests: **107 passed / 1,439 assertions**; dedicated Spoilage tests: **9 passed / 62 assertions**. Build passed with known image/chunk warnings.
+- Python environment is recreated per device using committed requirements.txt; .venv is ignored (`f213583`). See [Setup Guide](docs/SETUP_GUIDE.md#automatic-spoilage-page-refresh--2026-11-16).
+- Refresh is asynchronous and browser-triggered; it is not a scheduled worker. Daily observation collection still needs implementation/review. Final automatic-flow browser acceptance is not inferred from passing service tests.
+- Older sections below are historical; current scope and evidence are in [Development Progress](docs/DEVELOPMENT_PROGRESS.md).
 
 ## Local setup snapshot
 
