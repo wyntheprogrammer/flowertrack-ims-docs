@@ -4,6 +4,16 @@
 
 
 
+
+## Documentation review and Wyn's communication preference — 2026-11-16
+
+- Wyn requested a review before continuing and explicitly asked to be addressed as Wyn in every response. Recorded in AI Context, Requirements and README, including progress/final replies. Name use is a continuity preference, not proof that files were read.
+- Reviewed README, AI Context, Development Progress/Plan, Modules, Requirements, Business Logic and Changelog, plus committed request/inventory/dashboard/auth/routes and repository structure for the identified integration gaps.
+- Reconciled stale UI-only milestones and obsolete “open” decisions with saved backend checkpoint 46e4145 and 107 passed / 1,439 assertions. Kept older dated entries as history.
+- Current ordered gaps: actual storage capture; completed daily observation collection/reconciliation and zero-outcome days; day closing/catch-up; Dashboard risk alerts; final browser acceptance; later Client storefront and real-data/deployment validation.
+- Did not introduce a new module, implementation, migration, schedule or new scope. Legacy field discrepancies require review before adding columns.
+- Added the current review table to progress/context/modules and linked it from the roadmap, requirements and README.
+
 ## Automatic Spoilage refresh saved — 2026-11-16
 
 - Owner confirmed `46e4145 (HEAD -> main, origin/main) Add tested automatic Spoilage prediction refresh`. Application commit/push is confirmed. Earlier dependency setup was also pushed as `f213583` (requirements.txt and Python ignore rules).
