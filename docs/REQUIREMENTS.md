@@ -1,6 +1,6 @@
 # Requirements
 
-**Last updated:** 2026-11-03
+**Last updated:** 2026-11-16
 
 Status labels:
 - **Confirmed** — explicitly provided or approved by the project owner.
@@ -9,6 +9,18 @@ Status labels:
 
 
 
+
+
+## Communication preference — Wyn (2026-11-16)
+
+- Address the owner as **Wyn** in every user-facing response, including progress updates and final replies.
+- Wyn explicitly requested this as a continuity reminder. If omitted and Wyn asks for a reread, reread the relevant current Markdown before continuing.
+- Using the name alone is not evidence that files were read. Actually consult current relevant documentation/source when the task requires it, and never claim a review that was not performed.
+- Keep explanations concise and understandable. Supply complete replacement files/blocks or a complete downloadable package rather than asking Wyn to hunt individual lines.
+
+## Current interpretation — 2026-11-16
+
+Use the [current review](DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16) and latest verified checkpoint over older implementation-pending statements. Supplier backends and automatic browser-triggered prediction refresh are saved; daily observation collection, storage capture, day closing, Dashboard prediction alerts and Client storefront integration remain separate work. This does not approve new business scope.
 
 ## Stems and supplier-made bouquets — confirmed 2026-11-04
 
@@ -278,33 +290,22 @@ The confirmed initial navigation order is:
 - Scheduled email delivery, custom report builder, automatic sharing, and predictive business analytics are excluded from the initial scope.
 - This is a planning milestone only; no Reports UI, backend, database schema, report generator, exports, or print implementation has been created.
 
-## 7. Business requirements still to gather
+## 7. Remaining requirements and acceptance decisions — reviewed 2026-11-16
 
-- Flower product categories, varieties, selling units, and additional product attributes beyond the confirmed Flower Management fields.
-- Whether products include bouquets, plants, vases, wrappers, gifts, or other items.
-- Any additional batch receiving validations or lifecycle behavior beyond the confirmed Batch Management scope.
-- Other stock movement rules, including damaged, missing, reserved, returned, and adjusted quantities.
-- Batch aging, shelf-life, and spoilage definition.
-- Spoilage prediction data, method, and intended output.
-- Whether a separate supplier/vendor directory is needed for any future purchasing workflow; Supplier / Source is not part of the approved Batch Management record.
-- Checkout presentation and guest shopping policy; client account creation and initial access are already confirmed.
-- Returns and post-completion order corrections.
-- Detailed delivery personnel administration and any future delivery enhancements beyond the approved delivery workflow.
-- Detailed reconciliation/accounting treatment beyond the approved Sales and Payment Management rules.
-- Roles, permissions, and account lifecycle.
-- Audit trail events and retention.
-- Single-store or multi-branch operation.
-- Security, backup, hosting, and deployment requirements.
+- Confirm the storage-condition choices/capture workflow and treatment of unknown historical storage.
+- Define completed-day observation reconciliation, late/backdated transactions, receipt corrections, same-day depletion and idempotent catch-up before scheduling the collector.
+- Review Dashboard current-risk alerts and final real-browser acceptance of automatic refresh.
+- Confirm Client storefront checkout/account access, permitted profile changes and order/payment ownership before implementing that separate phase.
+- Confirm any returns/post-completion corrections beyond the existing bounded finance-refund workflow; do not silently implement stock returns or accounting rules.
+- Confirm single-store/multi-branch operation and deployment/backup/security requirements when entering deployment planning.
+- Verify real-data validation and the required algorithm-comparison deliverables; synthetic presentation data does not establish accuracy.
+- Reconcile legacy operational-user Contact Number wording against the approved User backend before treating it as a missing required column.
 
-## 8. Open decisions
+Already settled: Stem and supplier-made Bouquet products; one exact full payment; actual fulfillment-only stock deduction; Admin/Supplier/Delivery account rules and audit retention; the current Laravel/Python stack; local JSON process bridge; current ARIMA configuration. Do not ask these again as undecided without evidence of a scope change.
 
-Do not implement these as settled decisions until confirmed:
-- Exact Laravel/PHP/Node versions.
-- Laravel starter/authentication approach.
-- Whether to use a UI admin template or build the Supplier/Admin UI from Bootstrap components.
-- Whether Python is needed and how it communicates with Laravel.
-- Exact FlowerTrack brand colors, fonts, and final design tokens; derive the brand palette from the official FlowerTrack logo when supplied.
-- Exact database schema and technical implementation details.
+## 8. Deferred scope
+
+Physical stock counting/adjustment, bouquet assembly/BOM, supplier/vendor purchasing, GPS, public self-registration and additional ecommerce features are excluded/deferred unless Wyn explicitly authorizes them. Phase requirements below are dated records; statements such as “no backend implemented” describe their original date, not the current checkpoint.
 
 ### Delivery Management — approved scope (2026-11-02)
 
