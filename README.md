@@ -1,10 +1,10 @@
 # FlowerTrack IMS Documentation
 
-**Last updated:** 2026-11-16  
+**Last updated:** 2026-11-17  
 **Payment policy:** One exact full payment per order; no partial payments or installments.  
 **Communication:** Address the owner as **Wyn** in every response; see [AI Context](docs/AI_CONTEXT.md#communication-preference--wyn-2026-11-16).
 
-**Project status:** Latest confirmed application checkpoint: `46e4145`, tested automatic Spoilage prediction refresh. Owner full suite: 107 passed / 1,439 assertions. Python dependencies/ignore rules are saved in `f213583`. Completed-day observation collection remains separate work.
+**Project status:** Approved storage-condition capture and dropdowns: local commit `1aef81d` (push pending: HTTPS credentials rejected, SSH public key unavailable, and GitHub integration denied application write access). Agent full suite: 109 passed / 1,467 assertions. Completed-day observation collection is next.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -40,13 +40,24 @@ Current workflow: implement and review Supplier/Admin modules one at a time in t
 
 For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX_GUIDELINES.md#approved-module-ui-reference--flower-management-2026-11-03).
 
-## Current remaining work — reviewed 2026-11-16
+## Current remaining work — reviewed 2026-11-17
 
-Next: actual storage capture and completed-day observation collection, followed by day closing, Dashboard prediction alerts and final browser integration verification. The separate Client storefront and real-data ML/deployment validation remain later work. Full evidence and priorities: [Current Review](docs/DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
+Storage capture is complete. Next: completed-day observation collection, followed by day closing, Dashboard prediction alerts and final browser integration verification. The separate Client storefront and real-data ML/deployment validation remain later work. Full evidence and priorities: [Current Review](docs/DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
 
 Older dated UI-only sections are historical. Do not restart already saved Supplier backends or treat placeholder Client pages as a working storefront.
 
-## Latest checkpoint — 2026-11-16
+## Storage-condition capture approved — 2026-11-17
+
+- Wyn reviewed the storage workflow, requested dropdowns, and approved committing/pushing the application and updating this documentation.
+- Stock-In requires actual storage condition. Stock-In and Batch Edit use Ambient/Chilled dropdowns; existing saved custom values are retained as an option when editing. Batch Edit permits Unknown (null). Backend validation remains required string, maximum 30 characters for new receipts; optional/nullable string, maximum 30 characters for metadata edits. The dropdown change does not add an enum restriction to the API.
+- Inventory and Batch detail responses/display include storage. Receipt corrections display storage without editing it; changes to existing storage go through Batch Management.
+- Storage is saved on the existing inventory_batches column and included in receipt/metadata snapshots, batch version checks and audit safe fields. Edits append zero-quantity metadata history and do not alter stock, reservations or historical daily observations. No migration or inferred legacy storage was added.
+- Required repository setup installed Laravel Boost v2.10.4 and generated AGENTS.md/CLAUDE.md guidelines plus boost.json; dependency lock changes are included.
+- Agent-run verification: full suite **109 passed / 1,467 assertions**; dedicated Batch suite **9 passed / 146 assertions**; Pint, Composer validation, production build and diff whitespace checks passed. Build retains the known image-reference and large-chunk warnings. Wyn's acceptance is for this storage UI/workflow, not a new claim of completed forecasting browser acceptance or real-world accuracy.
+- Application checkpoint: local commit `1aef81d` (push pending: HTTPS credentials rejected, SSH public key unavailable, and GitHub integration denied application write access).
+- **Next:** trustworthy completed-day observation collection and reconciliation, then reviewed day closing/catch-up. Dashboard current-risk alerts, final automatic-refresh browser acceptance, Client storefront and real-data/deployment validation remain separate work.
+
+## Previous checkpoint — 2026-11-16
 
 - Application: [`46e4145`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/46e4145), automatic Spoilage page refresh with one Python batch process, input-based cache reuse, concurrency protection and corrected SQLite date lookup.
 - Owner full tests: **107 passed / 1,439 assertions**; dedicated Spoilage tests: **9 passed / 62 assertions**. Build passed with known image/chunk warnings.

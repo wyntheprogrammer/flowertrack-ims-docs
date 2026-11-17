@@ -1,6 +1,17 @@
 # System Modules
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-17
+
+## Storage-condition capture approved — 2026-11-17
+
+- Wyn reviewed the storage workflow, requested dropdowns, and approved committing/pushing the application and updating this documentation.
+- Stock-In requires actual storage condition. Stock-In and Batch Edit use Ambient/Chilled dropdowns; existing saved custom values are retained as an option when editing. Batch Edit permits Unknown (null). Backend validation remains required string, maximum 30 characters for new receipts; optional/nullable string, maximum 30 characters for metadata edits. The dropdown change does not add an enum restriction to the API.
+- Inventory and Batch detail responses/display include storage. Receipt corrections display storage without editing it; changes to existing storage go through Batch Management.
+- Storage is saved on the existing inventory_batches column and included in receipt/metadata snapshots, batch version checks and audit safe fields. Edits append zero-quantity metadata history and do not alter stock, reservations or historical daily observations. No migration or inferred legacy storage was added.
+- Required repository setup installed Laravel Boost v2.10.4 and generated AGENTS.md/CLAUDE.md guidelines plus boost.json; dependency lock changes are included.
+- Agent-run verification: full suite **109 passed / 1,467 assertions**; dedicated Batch suite **9 passed / 146 assertions**; Pint, Composer validation, production build and diff whitespace checks passed. Build retains the known image-reference and large-chunk warnings. Wyn's acceptance is for this storage UI/workflow, not a new claim of completed forecasting browser acceptance or real-world accuracy.
+- Application checkpoint: local commit `1aef81d` (push pending: HTTPS credentials rejected, SSH public key unavailable, and GitHub integration denied application write access).
+- **Next:** trustworthy completed-day observation collection and reconciliation, then reviewed day closing/catch-up. Dashboard current-risk alerts, final automatic-refresh browser acceptance, Client storefront and real-data/deployment validation remain separate work.
 
 
 
@@ -33,7 +44,7 @@ This is the current task/status reference. Older dated UI-only milestones, pendi
 
 | Priority | Work | Evidence and boundary |
 |---|---|---|
-| 1 | Capture actual storage condition | Committed StockInRequest, UpdateBatchRequest and InventoryService contain no storage_condition handling. Add an agreed field/workflow and validation before expecting future ordinary receipts to have usable storage metadata. Never invent storage for old batches. |
+| Complete (2026-11-17) | Capture actual storage condition | Approved Stock-In/Batch Edit dropdowns, validation, persistence, snapshots and audit tracking are implemented. Preserve unknown legacy storage; see the latest checkpoint above. |
 | 2 | Collect completed daily batch observations | Observation tables/models exist, but current inventory writes and console routes do not provide a collector. Record opening, actual daily spoilage, other releases and closing per batch/date; include verified zero-spoilage days, reconcile movements, preserve Stem/Bouquet units, handle late/corrected transactions and prevent duplicate day rows. Missing history is not zero history. |
 | 3 | Decide/run day closing | After the collector is reviewed and tested, choose reliable Philippine-time day-closing execution/catch-up behavior. No scheduled collector is currently evidenced; do not claim browser refresh runs with the page closed. |
 | 4 | Integrate live risk alerts in Dashboard | Current DashboardService has no Spoilage prediction reference. Add/verify current-only High/Critical summaries and authorized links if proceeding with the approved alert requirement. Avoid counting stale/unsupported snapshots. |
@@ -41,7 +52,7 @@ This is the current task/status reference. Older dated UI-only milestones, pendi
 | 6 | Client storefront phase | Starter client Blade files exist, but current routes have no Client portal group and AuthController's operational role allowlist excludes client. Supplier Client Management is complete separately; do not call the storefront functional. Confirm checkout/account/order ownership scope before that phase. |
 | 7 | Real-data evaluation and deployment readiness | Synthetic presentation history cannot prove real-world accuracy. Verify the required ARIMA/RF/XGBoost comparison artifacts if still required by the thesis, and evaluate honestly on held-out data. Hosting, operational Python/cache/timeouts, backup/restore, security and final end-to-end acceptance remain release work. |
 
-Recommended next implementation: **storage capture + trustworthy completed-day observation collection**, delivered with full files and tests. Do not start another Supplier UI module or rebuild already completed backends.
+Recommended next implementation: **trustworthy completed-day observation collection**, delivered with full files and tests. Do not start another Supplier UI module or rebuild already completed backends.
 
 ### Documentation corrections and scope discipline
 

@@ -1,6 +1,17 @@
 # Business Logic
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-17
+
+## Storage-condition capture approved — 2026-11-17
+
+- Wyn reviewed the storage workflow, requested dropdowns, and approved committing/pushing the application and updating this documentation.
+- Stock-In requires actual storage condition. Stock-In and Batch Edit use Ambient/Chilled dropdowns; existing saved custom values are retained as an option when editing. Batch Edit permits Unknown (null). Backend validation remains required string, maximum 30 characters for new receipts; optional/nullable string, maximum 30 characters for metadata edits. The dropdown change does not add an enum restriction to the API.
+- Inventory and Batch detail responses/display include storage. Receipt corrections display storage without editing it; changes to existing storage go through Batch Management.
+- Storage is saved on the existing inventory_batches column and included in receipt/metadata snapshots, batch version checks and audit safe fields. Edits append zero-quantity metadata history and do not alter stock, reservations or historical daily observations. No migration or inferred legacy storage was added.
+- Required repository setup installed Laravel Boost v2.10.4 and generated AGENTS.md/CLAUDE.md guidelines plus boost.json; dependency lock changes are included.
+- Agent-run verification: full suite **109 passed / 1,467 assertions**; dedicated Batch suite **9 passed / 146 assertions**; Pint, Composer validation, production build and diff whitespace checks passed. Build retains the known image-reference and large-chunk warnings. Wyn's acceptance is for this storage UI/workflow, not a new claim of completed forecasting browser acceptance or real-world accuracy.
+- Application checkpoint: local commit `1aef81d` (push pending: HTTPS credentials rejected, SSH public key unavailable, and GitHub integration denied application write access).
+- **Next:** trustworthy completed-day observation collection and reconciliation, then reviewed day closing/catch-up. Dashboard current-risk alerts, final automatic-refresh browser acceptance, Client storefront and real-data/deployment validation remain separate work.
 
 **Status:** Partially confirmed. Only rules explicitly approved by the project owner are listed as confirmed below. All other rules remain undecided.
 
@@ -11,7 +22,7 @@
 
 The tested automatic Spoilage refresh is committed at `46e4145` (107 full-suite tests / 1,439 assertions). Laravel now persists prediction snapshots and rebuilds eligible historical reference profiles when checking inputs. Browser page load/refresh can automatically POST for changed predictions; matching snapshots are reused.
 
-This supersedes earlier future-tense Laravel-integration notes only for implemented page generation/persistence/profile refresh. It does **not** mean completed daily observations are automatically collected or a scheduler runs with the page closed. Storage capture, reconciled day-closing collection and current-risk Dashboard alerts remain to be completed/verified.
+This supersedes earlier future-tense Laravel-integration notes only for implemented page generation/persistence/profile refresh. It does **not** mean completed daily observations are automatically collected or a scheduler runs with the page closed. Storage capture is implemented and approved as of 2026-11-17; reconciled day-closing collection and current-risk Dashboard alerts remain to be completed/verified.
 
 Current reference eligibility is per flower ID and base unit, with storage/age matching and same-unit fallback. The target batch is excluded from its reference profiles. First-ever unsupported flowers still receive InsufficientData; daily observation creation must not fabricate zero outcomes or infer unknown storage. No prediction deducts physical stock.
 
