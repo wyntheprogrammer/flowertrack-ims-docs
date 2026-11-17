@@ -10,7 +10,7 @@
 - Storage is saved on the existing inventory_batches column and included in receipt/metadata snapshots, batch version checks and audit safe fields. Edits append zero-quantity metadata history and do not alter stock, reservations or historical daily observations. No migration or inferred legacy storage was added.
 - Required repository setup installed Laravel Boost v2.10.4 and generated AGENTS.md/CLAUDE.md guidelines plus boost.json; dependency lock changes are included.
 - Agent-run verification: full suite **109 passed / 1,467 assertions**; dedicated Batch suite **9 passed / 146 assertions**; Pint, Composer validation, production build and diff whitespace checks passed. Build retains the known image-reference and large-chunk warnings. Wyn's acceptance is for this storage UI/workflow, not a new claim of completed forecasting browser acceptance or real-world accuracy.
-- Application checkpoint: local commit `1aef81d` (push pending: HTTPS credentials rejected, SSH public key unavailable, and GitHub integration denied application write access).
+- Application checkpoint: [`3db137b`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/3db137b3a12194d9ba8a56c7f76c5426492f39e9) (published and verified on main).
 - **Next:** trustworthy completed-day observation collection and reconciliation, then reviewed day closing/catch-up. Dashboard current-risk alerts, final automatic-refresh browser acceptance, Client storefront and real-data/deployment validation remain separate work.
 
 Status labels:
