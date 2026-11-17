@@ -1,10 +1,18 @@
 # FlowerTrack IMS Documentation
 
+## Live daily observations and user-activity catch-up - approved checkpoint, 2026-11-17
+
+Steps 2 and 3 use live daily drafts and user-activity catch-up. Stock-In inserts one draft per batch and Philippine date; spoilage, actual pickup/delivery completion and other inventory movements rebuild that same day's values from the ledger inside the inventory transaction. Successful eligible Admin/Supplier login and logout verify missing completed days, including zero-movement days. Today stays a draft. There is no periodic/date-based scheduler; without eligible login/logout, catch-up waits.
+
+Late changes invalidate derived history and rewind the checkpoint; a revision prevents advancing past a concurrent invalidation. Login/logout share the lock, process at most seven pending dates per event by default, and leave failures pending without blocking authentication. Failed, inactive, temporary-password, Client and Delivery accounts do not trigger catch-up. Existing business and prediction-eligibility rules are preserved. The prior Windows task is disabled and its installer/runner scripts are removed. See [Daily Observations](docs/DAILY_OBSERVATIONS.md) for setup and review.
+
+**Approved checkpoint:** [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468) is published on application main after Wyn's review/approval. Agent-run full regression: **137 passed / 1,760 assertions**; activity observation suite: **28 passed / 239 assertions**. No periodic observation scheduler remains; the prior local Windows task is disabled. This section supersedes older collector-only and timer-based descriptions below.
+
 **Last updated:** 2026-11-17  
 **Payment policy:** One exact full payment per order; no partial payments or installments.  
 **Communication:** Address the owner as **Wyn** in every response; see [AI Context](docs/AI_CONTEXT.md#communication-preference--wyn-2026-11-16).
 
-**Project status:** Approved storage-condition capture and dropdowns: [`3db137b`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/3db137b3a12194d9ba8a56c7f76c5426492f39e9) (published and verified on main). Agent full suite: 109 passed / 1,467 assertions. Completed-day observation collection is next.
+**Project status:** Approved live daily observations and login/logout catch-up are saved at [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468). Agent full suite: **137 passed / 1,760 assertions**. No date-based scheduler. See [Daily Observations](docs/DAILY_OBSERVATIONS.md).
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -42,7 +50,7 @@ For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX
 
 ## Current remaining work — reviewed 2026-11-17
 
-Storage capture is complete. Next: completed-day observation collection, followed by day closing, Dashboard prediction alerts and final browser integration verification. The separate Client storefront and real-data ML/deployment validation remain later work. Full evidence and priorities: [Current Review](docs/DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
+Storage capture and live observation/login/logout catch-up are saved. Next: Dashboard risk alerts and remaining browser integration acceptance. Client storefront and real-data/deployment validation remain later work.
 
 Older dated UI-only sections are historical. Do not restart already saved Supplier backends or treat placeholder Client pages as a working storefront.
 

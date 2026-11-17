@@ -1,5 +1,13 @@
 # System Modules
 
+## Live daily observations and user-activity catch-up - approved checkpoint, 2026-11-17
+
+Steps 2 and 3 use live daily drafts and user-activity catch-up. Stock-In inserts one draft per batch and Philippine date; spoilage, actual pickup/delivery completion and other inventory movements rebuild that same day's values from the ledger inside the inventory transaction. Successful eligible Admin/Supplier login and logout verify missing completed days, including zero-movement days. Today stays a draft. There is no periodic/date-based scheduler; without eligible login/logout, catch-up waits.
+
+Late changes invalidate derived history and rewind the checkpoint; a revision prevents advancing past a concurrent invalidation. Login/logout share the lock, process at most seven pending dates per event by default, and leave failures pending without blocking authentication. Failed, inactive, temporary-password, Client and Delivery accounts do not trigger catch-up. Existing business and prediction-eligibility rules are preserved. The prior Windows task is disabled and its installer/runner scripts are removed. See [Daily Observations](DAILY_OBSERVATIONS.md) for setup and review.
+
+**Approved checkpoint:** [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468) is published on application main after Wyn's review/approval. Agent-run full regression: **137 passed / 1,760 assertions**; activity observation suite: **28 passed / 239 assertions**. No periodic observation scheduler remains; the prior local Windows task is disabled. This section supersedes older collector-only and timer-based descriptions below.
+
 **Last updated:** 2026-11-17
 
 ## Storage-condition capture approved — 2026-11-17
@@ -45,8 +53,8 @@ This is the current task/status reference. Older dated UI-only milestones, pendi
 | Priority | Work | Evidence and boundary |
 |---|---|---|
 | Complete (2026-11-17) | Capture actual storage condition | Approved Stock-In/Batch Edit dropdowns, validation, persistence, snapshots and audit tracking are implemented. Preserve unknown legacy storage; see the latest checkpoint above. |
-| 2 | Collect completed daily batch observations | Observation tables/models exist, but current inventory writes and console routes do not provide a collector. Record opening, actual daily spoilage, other releases and closing per batch/date; include verified zero-spoilage days, reconcile movements, preserve Stem/Bouquet units, handle late/corrected transactions and prevent duplicate day rows. Missing history is not zero history. |
-| 3 | Decide/run day closing | After the collector is reviewed and tested, choose reliable Philippine-time day-closing execution/catch-up behavior. No scheduled collector is currently evidenced; do not claim browser refresh runs with the page closed. |
+| 2 | Live daily observations | Approved and saved: Stock-In drafts and transaction-bound ledger rebuilds for spoilage, releases and actual fulfillment; one row per batch/Philippine date. |
+| 3 | Verify days on login/logout | Approved and saved: successful eligible Admin/Supplier authentication activity catches up past Philippine dates; no periodic schedule. Live drafts and valid completed-only prediction inputs remain. |
 | 4 | Integrate live risk alerts in Dashboard | Current DashboardService has no Spoilage prediction reference. Add/verify current-only High/Critical summaries and authorized links if proceeding with the approved alert requirement. Avoid counting stale/unsupported snapshots. |
 | 5 | Complete browser integration acceptance | Verify real MySQL/browser automatic refresh once, changed inputs and unavailable results, plus any still-unreported export/mobile acceptance. Service tests mock Python and do not establish all browser flows. |
 | 6 | Client storefront phase | Starter client Blade files exist, but current routes have no Client portal group and AuthController's operational role allowlist excludes client. Supplier Client Management is complete separately; do not call the storefront functional. Confirm checkout/account/order ownership scope before that phase. |

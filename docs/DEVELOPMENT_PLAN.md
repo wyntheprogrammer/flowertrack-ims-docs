@@ -1,5 +1,13 @@
 # Development Plan
 
+## Live daily observations and user-activity catch-up - approved checkpoint, 2026-11-17
+
+Steps 2 and 3 use live daily drafts and user-activity catch-up. Stock-In inserts one draft per batch and Philippine date; spoilage, actual pickup/delivery completion and other inventory movements rebuild that same day's values from the ledger inside the inventory transaction. Successful eligible Admin/Supplier login and logout verify missing completed days, including zero-movement days. Today stays a draft. There is no periodic/date-based scheduler; without eligible login/logout, catch-up waits.
+
+Late changes invalidate derived history and rewind the checkpoint; a revision prevents advancing past a concurrent invalidation. Login/logout share the lock, process at most seven pending dates per event by default, and leave failures pending without blocking authentication. Failed, inactive, temporary-password, Client and Delivery accounts do not trigger catch-up. Existing business and prediction-eligibility rules are preserved. The prior Windows task is disabled and its installer/runner scripts are removed. See [Daily Observations](DAILY_OBSERVATIONS.md) for setup and review.
+
+**Approved checkpoint:** [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468) is published on application main after Wyn's review/approval. Agent-run full regression: **137 passed / 1,760 assertions**; activity observation suite: **28 passed / 239 assertions**. No periodic observation scheduler remains; the prior local Windows task is disabled. This section supersedes older collector-only and timer-based descriptions below.
+
 **Last updated:** 2026-11-16
 
 ## Guiding rule
@@ -10,7 +18,7 @@ Preserve Wyn's approved Supplier UI and implement/review backends incrementally.
 
 Supplier operational backends and automatic Spoilage refresh are saved through `46e4145`; full suite 107 passed / 1,439 assertions. Python setup/requirements are saved in `f213583`.
 
-Immediate work: capture actual storage condition in ordinary receiving/batch workflows; build trustworthy completed-day observation collection; then day-closing execution, Dashboard risk integration and final browser acceptance. The Client storefront is a later, separately reviewed phase. See [current review](DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
+Live daily observations and user-activity catch-up are approved and saved. Next: Dashboard current-risk integration and remaining browser acceptance. No periodic day-closing scheduler is configured. Client storefront remains separately reviewed. See [Daily Observations](DAILY_OBSERVATIONS.md).
 
 The numbered phases below retain the original roadmap. Supplier phases already completed are not new tasks; Client/deployment stages remain uncompleted unless explicitly verified.
 
