@@ -1,6 +1,6 @@
 # FlowerTrack IMS — Windows Setup Guide
 
-**Last updated:** 2026-11-16  
+**Last updated:** 2026-11-17  
 **Purpose:** Prepare a new Windows computer for FlowerTrack IMS development, including official installer links, installation steps, PHP configuration, and verification.
 
 This guide is for the Laravel application. The documentation repository and application repository are separate:
@@ -9,6 +9,15 @@ This guide is for the Laravel application. The documentation repository and appl
 - **Documentation:** https://github.com/wyntheprogrammer/flowertrack-ims-docs
 
 > **Version rule:** Match the project's committed `composer.lock` and `package-lock.json`. The versions below reflect the verified FlowerTrack development environment as of this guide's update. Patch releases may be newer; use a compatible stable release and do not upgrade project dependencies casually.
+
+## New-device setup: read these steps too
+
+Run each command separately, press Enter, and wait for it to finish. Do not paste several commands as one continuous line.
+
+- Before `npm ci` in PowerShell, follow [PowerShell npm setup](#powershell-npm-setup).
+- After installing PHP/frontend dependencies, complete [Python setup for every device](#python-setup-for-every-device).
+- To restore accounts and records, follow [Import database data](#import-database-data). Git pull and migrations do not transfer database records.
+- The application now has database-backed modules; database and Python setup are needed to use those modules and Spoilage prediction.
 
 ## 1. Compatibility and installer checklist
 
@@ -246,6 +255,28 @@ code .
 
 If the `FlowerTrack` folder already exists, do not clone over it. Open that folder and check `git status` first.
 
+### PowerShell npm setup
+
+If using PowerShell (including VS Code's PowerShell terminal), allow local scripts for your Windows account before running `npm ci`:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+If prompted, enter `Y` and press Enter. This persists for the current Windows user and normally does not require Administrator access. RemoteSigned permits local scripts while requiring downloaded scripts to be signed. It can resolve the `npm.ps1 cannot be loaded because running scripts is disabled` error.
+
+Verify the effective setting:
+
+```powershell
+Get-ExecutionPolicy
+```
+
+An organization Group Policy may override this setting. You can instead run `npm.cmd ci` and `npm.cmd run build`, or use Command Prompt; those commands do not require changing PowerShell policy. The execution-policy command is PowerShell-only, not a Command Prompt command.
+
+Reference: [Microsoft Set-ExecutionPolicy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy).
+
+The message “packages are looking for funding” is informational; it is not an installation failure.
+
 ## 9. Install project dependencies
 
 Run these commands from the application root, where `composer.json`, `composer.lock`, `package.json`, and `package-lock.json` are located:
@@ -273,9 +304,9 @@ php artisan key:generate
 
 If a local `.env` already exists, do not overwrite it blindly. Keep the local configuration and review it instead.
 
-The application is currently in a UI-first development phase. Database configuration is only needed when database-backed features are being implemented or tested.
+The application includes implemented database-backed modules. Configure MariaDB before opening them. Python is also required for generating Spoilage predictions; follow the dedicated setup below.
 
-## 11. Database setup (when database work begins)
+## 11. Database setup
 
 1. Open XAMPP Control Panel.
 2. Start **MySQL** (the bundled server is MariaDB) when database access is needed.
@@ -294,13 +325,106 @@ DB_PASSWORD=
 
 Use the actual username, password, host, and port configured on that computer. Do not assume the example credentials are correct for every installation.
 
-When migrations are ready and the schema is confirmed, run:
+For a new empty database, run the committed migrations. If restoring a full SQL backup or presentation snapshot, import it first using the instructions below, then run only pending migrations:
 
 ```cmd
 php artisan migrate
 ```
 
 Do not run migrations on a shared or production database without confirming the target environment and migration impact.
+
+### Import database data
+
+Migrations create/update table structure. They do not copy users, stock, orders or daily history from another device.
+
+#### Transfer your current records from another device
+
+1. On the old device, open phpMyAdmin, select `flowertrack_ims`, then choose **Export → Quick → SQL → Export**.
+2. Transfer that SQL file privately to the new device.
+3. On the new device, start Apache and MySQL in XAMPP. Open `http://localhost/phpmyadmin`.
+4. Select `flowertrack_ims` (create it if absent), choose **Import**, select the SQL file, and click **Import/Go**.
+5. Prefer an empty target for a full backup. If the target already has records, export a backup first. A dump containing DROP statements replaces those tables; one without them may report existing-table conflicts. Do not blindly import a full dump over data you want to retain.
+6. Confirm local `.env` points to `flowertrack_ims`, then run each command separately:
+
+```cmd
+php artisan config:clear
+php artisan migrate
+php artisan migrate:status
+php artisan view:clear
+php artisan storage:link
+```
+
+Keep the restored `migrations` table: it tells Laravel which schema changes already ran. Never use `migrate:fresh` to restore records; it drops tables.
+
+Copy uploaded files separately: SQL contains image/proof paths, not the actual files. Merge the old device's `storage/app/public` and `storage/app/private` contents into the new project's matching folders. Keep the new device's DB settings local; do not commit `.env` or private SQL exports.
+
+#### Use the supplied presentation records instead
+
+Download [FlowerTrack_Presentation_Database.zip](https://chatgpt.com/library?file_id=libfile_9226141c730481919411b81df2222dc5&account_id=personal), extract it, and import `flowertrack_ims_presentation.sql` through phpMyAdmin using the steps above.
+
+**This supplied SQL explicitly selects flowertrack_ims and drops/recreates its listed tables, replacing their records, accounts and sessions. Back up existing data before importing.** Reimporting restores the same sample records and replaces changes made since the previous import.
+
+Merge the extracted `storage` folder into `C:\\xampp\\htdocs\\FlowerTrack`; it includes the private synthetic delivery proof. Run the post-import commands above and log in again.
+
+Local presentation login: `admin@demo.example.test` / `DemoFlower!2026`. These are public test credentials for synthetic data, not production credentials. Historical records use October–November 2026 dates, and the supplied prediction snapshots cover 15–21 November 2026. Use matching report filters; current predictions can regenerate from available history.
+
+### Python setup for every device
+
+The project's `.venv` is excluded from Git. Create it separately on each computer; do not copy the old device's venv. Install Python from [python.org Windows downloads](https://www.python.org/downloads/windows/) if `py --version` is not recognized. The new device's Python **3.14.2** passed the forecast self-test on 2026-11-17; the earlier working device used 3.14.10. Install the committed requirements rather than manually selecting library versions.
+
+Open the terminal in `C:\\xampp\\htdocs\\FlowerTrack`. **Run the following blocks one at a time**, waiting for each to finish.
+
+1. Check Python:
+
+```cmd
+py --version
+```
+
+2. Create the environment:
+
+```cmd
+py -m venv .venv
+```
+
+3. Update pip inside it:
+
+```cmd
+.\\.venv\\Scripts\\python.exe -m pip install --upgrade pip
+```
+
+4. Install the project's pinned libraries:
+
+```cmd
+.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt
+```
+
+5. Test the forecasting engine:
+
+```cmd
+.\\.venv\\Scripts\\python.exe scripts\\spoilage\\predict.py --self-test
+```
+
+Expected:
+
+```json
+{"status": "ok", "message": "Forecast self-test passed."}
+```
+
+6. Test batch forecasting and the Laravel bridge:
+
+```cmd
+.\\.venv\\Scripts\\python.exe scripts\\spoilage\\predict_many.py --self-test
+php artisan config:clear
+php artisan tinker --execute="dump(app(\\App\\Services\\SpoilagePythonService::class)->health());"
+```
+
+Health should return status `ok` and installed Python/library versions. If a command fails, resolve it before continuing.
+
+No activation or Activate.ps1 is needed: these commands directly use the environment's executable. The PowerShell npm policy change above is separate from this Python setup. Laravel defaults to `.venv/Scripts/python.exe` on Windows. If `SPOILAGE_PYTHON_BINARY` is set in `.env`, make sure it points to this device's executable, then clear config cache.
+
+If you see “unrecognized arguments” after `py -m venv`, check whether multiple commands were accidentally joined together. If “The system cannot find the path specified” follows, successfully create `.venv` before running its Python executable.
+
+After the engine/bridge checks pass, open Spoilage Prediction and wait for the automatic refresh to finish. A self-test verifies the engine; the browser check also verifies Laravel integration and available database history.
 
 ## 12. Build and run FlowerTrack IMS
 
@@ -531,6 +655,7 @@ Clone/copy/key generation above are for a **new local checkout only**. On an exi
 ```powershell
 py -3.14 --version
 py -3.14 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
@@ -567,7 +692,7 @@ The snapshot includes October–November 2026 sales/history and prediction snaps
 
 ### Runtime boundaries and troubleshooting
 
-- `npm.ps1 cannot be loaded`: use `npm.cmd` in PowerShell.
+- `npm.ps1 cannot be loaded`: follow [PowerShell npm setup](#powershell-npm-setup), or use `npm.cmd` in PowerShell.
 - DB connection refused: check XAMPP MySQL and .env host/port, then config:clear. Clearing a database-backed cache needs MySQL running.
 - No account after migrate: migrations do not create a login account. Restore the SQL/backup or follow the existing Admin-account setup; never assume credentials are transferred through Git.
 - Missing Python executable/import: create .venv on this device and install requirements using that exact executable.
