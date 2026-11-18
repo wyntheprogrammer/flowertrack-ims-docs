@@ -1,5 +1,16 @@
 # Supplier Dashboard backend setup
 
+## Approved Dashboard spoilage alerts - 2026-11-18
+
+- Wyn approved the current-only High/Critical risk integration, the reference-image redesign of only the alerts section, and removal of the redundant Dashboard Refresh button and visible Updated timestamp.
+- Dashboard reads reuse the existing prediction input fingerprint and current-day cache checks. Stale, missing, insufficient-data, unsupported or invalid forecasts are excluded from alert counts; they are not treated as low risk. Reading the Dashboard does not run Python or save forecasts.
+- The card uses existing fonts and Bootstrap Icons, an outlined green View predictions button, dynamic Critical/High counts and forecast range, and up to five highest-risk rows. Flower appears above batch code; estimated percentage appears above the quantity in Stem/Bouquet units, with a proportional decorative bar. Missing-forecast notice and compact coverage footer appear only when relevant.
+- Existing eligibility, risk ordering, five-row limit, authorization, and units remain. All View/Review links use the existing authorized Spoilage Prediction route; there is no invented batch deep-link or unsupported action. Notification counts include all current High/Critical batches, not just the five displayed.
+- Surrounding dashboard charts, summary cards, navigation and existing login/logout observation catch-up are preserved. Backend generatedAt remains in the data response; only the visible Updated line and manual page-refresh control were removed.
+- Verification: Full regression: **142 passed / 1,857 assertions**; Dashboard suite: **14 passed / 227 assertions**. Production build, Pint and whitespace checks passed. Existing unresolved image-reference and large-chunk build warnings remain. Headless Chrome desktop and true 390px mobile emulation used isolated backend fixtures; mobile page width remained 390px with the table scrolling inside the card. No production stock fixtures were inserted, and these visual checks do not establish every real Python/MySQL browser flow.
+- Application checkpoint: [`1181d06`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/1181d067e99e65a47acb7da590a86035b71154e2) (verified on main).
+- Next: remaining real-browser acceptance for automatic prediction refresh (unchanged reload, changed stock/history and unavailable forecasts), plus any outstanding exports/mobile checks. Client storefront and real-data evaluation/deployment remain later work. No new business scope is approved by this checkpoint.
+
 Verified by owner 2026-11-11: **9 Dashboard tests passed / 130 assertions; full suite 98 passed / 1,377 assertions; production build passed**. Owner confirmed the Dashboard working with MySQL and approved proceeding. Application commit/push confirmed: `fdb2d9a` on main/origin/main — Complete approved Supplier Dashboard backend.
 
 ## Resulting behavior

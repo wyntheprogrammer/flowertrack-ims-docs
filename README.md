@@ -1,5 +1,16 @@
 # FlowerTrack IMS Documentation
 
+## Approved Dashboard spoilage alerts - 2026-11-18
+
+- Wyn approved the current-only High/Critical risk integration, the reference-image redesign of only the alerts section, and removal of the redundant Dashboard Refresh button and visible Updated timestamp.
+- Dashboard reads reuse the existing prediction input fingerprint and current-day cache checks. Stale, missing, insufficient-data, unsupported or invalid forecasts are excluded from alert counts; they are not treated as low risk. Reading the Dashboard does not run Python or save forecasts.
+- The card uses existing fonts and Bootstrap Icons, an outlined green View predictions button, dynamic Critical/High counts and forecast range, and up to five highest-risk rows. Flower appears above batch code; estimated percentage appears above the quantity in Stem/Bouquet units, with a proportional decorative bar. Missing-forecast notice and compact coverage footer appear only when relevant.
+- Existing eligibility, risk ordering, five-row limit, authorization, and units remain. All View/Review links use the existing authorized Spoilage Prediction route; there is no invented batch deep-link or unsupported action. Notification counts include all current High/Critical batches, not just the five displayed.
+- Surrounding dashboard charts, summary cards, navigation and existing login/logout observation catch-up are preserved. Backend generatedAt remains in the data response; only the visible Updated line and manual page-refresh control were removed.
+- Verification: Full regression: **142 passed / 1,857 assertions**; Dashboard suite: **14 passed / 227 assertions**. Production build, Pint and whitespace checks passed. Existing unresolved image-reference and large-chunk build warnings remain. Headless Chrome desktop and true 390px mobile emulation used isolated backend fixtures; mobile page width remained 390px with the table scrolling inside the card. No production stock fixtures were inserted, and these visual checks do not establish every real Python/MySQL browser flow.
+- Application checkpoint: [`1181d06`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/1181d067e99e65a47acb7da590a86035b71154e2) (verified on main).
+- Next: remaining real-browser acceptance for automatic prediction refresh (unchanged reload, changed stock/history and unavailable forecasts), plus any outstanding exports/mobile checks. Client storefront and real-data evaluation/deployment remain later work. No new business scope is approved by this checkpoint.
+
 ## Live daily observations and user-activity catch-up - approved checkpoint, 2026-11-17
 
 Steps 2 and 3 use live daily drafts and user-activity catch-up. Stock-In inserts one draft per batch and Philippine date; spoilage, actual pickup/delivery completion and other inventory movements rebuild that same day's values from the ledger inside the inventory transaction. Successful eligible Admin/Supplier login and logout verify missing completed days, including zero-movement days. Today stays a draft. There is no periodic/date-based scheduler; without eligible login/logout, catch-up waits.
@@ -8,11 +19,11 @@ Late changes invalidate derived history and rewind the checkpoint; a revision pr
 
 **Approved checkpoint:** [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468) is published on application main after Wyn's review/approval. Agent-run full regression: **137 passed / 1,760 assertions**; activity observation suite: **28 passed / 239 assertions**. No periodic observation scheduler remains; the prior local Windows task is disabled. This section supersedes older collector-only and timer-based descriptions below.
 
-**Last updated:** 2026-11-17  
+**Last updated:** 2026-11-18
 **Payment policy:** One exact full payment per order; no partial payments or installments.  
 **Communication:** Address the owner as **Wyn** in every response; see [AI Context](docs/AI_CONTEXT.md#communication-preference--wyn-2026-11-16).
 
-**Project status:** Approved live daily observations and login/logout catch-up are saved at [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468). Agent full suite: **137 passed / 1,760 assertions**. No date-based scheduler. See [Daily Observations](docs/DAILY_OBSERVATIONS.md).
+**Project status:** Approved Dashboard current-risk alerts and reference card layout: [`1181d06`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/1181d067e99e65a47acb7da590a86035b71154e2) (verified on main). Full regression: **142 passed / 1,857 assertions**; Dashboard suite: **14 passed / 227 assertions**. Login/logout catch-up remains unchanged; no periodic observation scheduler.
 
 This repository contains the planning, requirements, technical references, design rules, workflows, setup instructions, and development progress for **FlowerTrack IMS**.
 
@@ -50,7 +61,7 @@ For the reusable approved module-page pattern, see [UI/UX Guidelines](docs/UI_UX
 
 ## Current remaining work — reviewed 2026-11-17
 
-Storage capture and live observation/login/logout catch-up are saved. Next: Dashboard risk alerts and remaining browser integration acceptance. Client storefront and real-data/deployment validation remain later work.
+Storage capture, live observations/login/logout catch-up and Dashboard risk alerts are saved. Next: remaining real-browser prediction-refresh acceptance and outstanding export/mobile checks. Client storefront and real-data/deployment validation remain later work.
 
 Older dated UI-only sections are historical. Do not restart already saved Supplier backends or treat placeholder Client pages as a working storefront.
 
