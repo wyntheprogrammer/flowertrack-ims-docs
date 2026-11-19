@@ -1,5 +1,13 @@
 # Development Progress
 
+## Client storefront published — 2026-11-20
+
+Gemma’s Flower Shop is available at `/shop`. The nine Client pages share a responsive navbar and the approved botanical design. The catalog and product pages show active products, current selling prices per stem or bouquet, and stock available after active reservations. The session cart supports quantity changes and removal. Checkout reviews pickup and configured delivery totals without submitting an order or reserving stock. [Application commit f01874a](https://github.com/wyntheprogrammer/flowertrack-ims/commit/f01874afd42d8cc4bdbe4a14b581c1464efaba3b)
+
+Orders, tracking, payments, and profile have storefront layouts. Personal records, profile editing, and order submission remain pending. Confirm customer sign-in, record ownership, and checkout access before connecting those workflows.
+
+The full test suite passed with 145 tests and 1,897 assertions. The production build and Pint passed. Chrome checks covered all nine pages at 320, 390, 820, and 1280 pixels, including mobile navigation and cart-to-checkout review. The final browser pass used isolated SQLite data while local MySQL was offline.
+
 ## Approved Dashboard spoilage alerts - 2026-11-18
 
 - Wyn approved the current-only High/Critical risk integration, the reference-image redesign of only the alerts section, and removal of the redundant Dashboard Refresh button and visible Updated timestamp.

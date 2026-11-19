@@ -1,5 +1,9 @@
 # FlowerTrack IMS Documentation
 
+## Client storefront published — 2026-11-20
+
+The Client storefront now supports live catalog browsing, a session cart, and checkout review. Customer sign-in and order submission remain pending. [Storefront progress and verification](docs/DEVELOPMENT_PROGRESS.md#client-storefront-published--2026-11-20)
+
 ## Approved Dashboard spoilage alerts - 2026-11-18
 
 - Wyn approved the current-only High/Critical risk integration, the reference-image redesign of only the alerts section, and removal of the redundant Dashboard Refresh button and visible Updated timestamp.

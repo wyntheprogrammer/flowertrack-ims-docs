@@ -1,5 +1,9 @@
 # AI Context — FlowerTrack IMS
 
+## Client storefront checkpoint — 2026-11-20
+
+The storefront is published through checkout review. Earlier entries describing empty Client views are historical. Confirm customer authentication and order ownership before connecting personal records or order submission. [Published scope and test results](DEVELOPMENT_PROGRESS.md#client-storefront-published--2026-11-20)
+
 ## Approved Dashboard spoilage alerts - 2026-11-18
 
 - Wyn approved the current-only High/Critical risk integration, the reference-image redesign of only the alerts section, and removal of the redundant Dashboard Refresh button and visible Updated timestamp.
