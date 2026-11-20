@@ -1,5 +1,12 @@
 # Development Progress
 
+## Customer homepage design checkpoint — 2026-11-21
+
+Wyn approved the Gemma’s Flower Shop homepage mockup and reported that the initial implementation is in place. The design gives shoppers separate entry points for bouquets and individual stems. Catalog supports product browsing, Collections groups flowers by occasion, About has its own page, and the footer carries shop contact details.
+
+Requested refinements await desktop and mobile visual verification. Give sections more breathing room, add noticeable desktop hero-photo parallax and a one-time card reveal, remove decorative arrows, and use color-only link hover with visible keyboard focus. Keep a floating circular back-to-top arrow. Verify that reduced-motion preferences are respected and that the two shopping buttons open the correct catalog selections.
+
+
 ## Client storefront published — 2026-11-20
 
 Gemma’s Flower Shop is available at `/shop`. The nine Client pages share a responsive navbar and the approved botanical design. The catalog and product pages show active products, current selling prices per stem or bouquet, and stock available after active reservations. The session cart supports quantity changes and removal. Checkout reviews pickup and configured delivery totals without submitting an order or reserving stock. [Application commit f01874a](https://github.com/wyntheprogrammer/flowertrack-ims/commit/f01874afd42d8cc4bdbe4a14b581c1464efaba3b)
