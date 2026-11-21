@@ -1,5 +1,11 @@
 # Development Progress
 
+## My Orders review and Order Tracking scope — 2026-11-21
+
+Wyn’s screenshot showed populated order history. Application `main` still serves a static My Orders placeholder, and its footer selects the text back-to-top link for that route. Publication of the populated list and detail pages and desktop/mobile verification remain pending. Requested refinements include readable order metadata, color-only link hover, fewer decorative arrows, and the shared storefront footer with its circular back-to-top control.
+
+Next proposed module: read-only customer Order Tracking. Open tracking from an owned order, show the current fulfillment status and recorded milestones in Philippine time, and use pickup or delivery history as applicable. Distinguish scheduled steps from completed events. Include recorded cancellations, failed delivery attempts and rescheduling where available. Keep staff notes and private proof files outside the customer view.
+
 ## Customer order submission on main — 2026-11-21
 
 Application `main` now registers a POST checkout route and a GET order confirmation route through `CheckoutOrderController`. Both routes use session blocking. This source check confirms the routes are published. End-to-end order placement, duplicate submission handling, and confirmation ownership were not tested in this checkpoint.
