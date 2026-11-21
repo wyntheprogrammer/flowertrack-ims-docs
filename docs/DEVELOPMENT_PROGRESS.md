@@ -1,5 +1,11 @@
 # Development Progress
 
+## About page on main and Product Details review — 2026-11-21
+
+The About template on application `main` now includes Gemma’s shop story, stems and bouquets, a Catalog link, and a Visit the shop section. The lazy-loaded mini map and directions link both use the supplied coordinates 14.6114375, 120.9863871. The page also links to the supplied Facebook profile. Verification for this checkpoint covered repository source. Live map rendering and mobile layout remain to be checked.
+
+Next design discussion: Product Details. The current page already reads the product photo, description, unit price and available quantity and submits to the existing cart. Proposed focus: clearer price and stock placement, consistent missing-photo treatment, and an accessible quantity and add-to-cart area.
+
 ## Collections removal decision — 2026-11-21
 
 Wyn chose Catalog as the single browsing page, superseding the earlier occasion-based Collections proposal. The removal brief redirects `/shop/collections` to Catalog, sends the homepage stem and bouquet links to their corresponding Catalog filters, and removes Collections navigation and references. On application `main`, the Collections route still renders its view and About still links to `client.collections`. Publication and verification of the removal are pending.
