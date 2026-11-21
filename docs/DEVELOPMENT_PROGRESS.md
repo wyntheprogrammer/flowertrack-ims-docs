@@ -1,5 +1,11 @@
 # Development Progress
 
+## Customer My Payments on main — 2026-11-21
+
+The published customer payments route uses PaymentHistoryController. The view shows each payment’s order link, original amount, method, Philippine time, status and recorded refunds, with pagination and an empty state. This checkpoint verifies source only. Customer isolation, browser rendering and the footer were not tested here.
+
+Next proposed module: My Profile. The current page displays the signed-in user’s name and email and directs customers to the shop for updates. Extend the read-only view with phone and address from the linked client record, reuse the account layout and shared footer, and keep changes to account details with the shop under the existing admin-managed policy. Verify customer isolation and mobile layout.
+
 ## Customer Order Tracking on main — 2026-11-21
 
 The storefront tracking route now uses OrderTrackingController with an optional order ID. Its view includes a paginated order picker, an empty state, and an individual order’s fulfillment method and current status. This checkpoint verifies published source. Runtime ownership checks, timeline behavior and desktop/mobile presentation were not independently tested here.
