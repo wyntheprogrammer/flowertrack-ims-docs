@@ -1,5 +1,9 @@
 # Development Progress
 
+## Customer order submission on main — 2026-11-21
+
+Application `main` now registers a POST checkout route and a GET order confirmation route through `CheckoutOrderController`. Both routes use session blocking. This source check confirms the routes are published. End-to-end order placement, duplicate submission handling, and confirmation ownership were not tested in this checkpoint.
+
 ## Customer sign-in checkpoint and order submission plan — 2026-11-21
 
 Customer sign-in requirements cover admin-created active client accounts, required password changes, and returning to checkout with the cart selection preserved. The routes reviewed on application `main` show the operational login and read-only checkout. Storefront sign-in and its end-to-end behavior remain unverified.
