@@ -1,5 +1,11 @@
 # Development Progress
 
+## Checkout Review on main — 2026-11-21
+
+Cart selection is stored in the session. The checkout controller passes eligible selected lines to a dedicated checkout view and calculates the subtotal from current cart data. Pickup and delivery are supported for review. The storefront checkout route is read-only. This checkpoint verifies repository source; browser behavior and tests were not rerun.
+
+Next proposed module: Customer Sign-in. Use existing admin-created client accounts, enforce active status and required password changes, preserve the shopper’s cart and selection across sign-in, and return the customer to checkout. Verify role boundaries before enabling order submission in a later module.
+
 ## Cart selection and automatic quantities — 2026-11-21
 
 Wyn requested per-item checkout selection, Select all, a selected subtotal, and automatic quantity saving through plus/minus controls or typed edits. Preserve unchecked items in the session cart. Wait for pending edits before checkout, validate stock and prices server-side, and keep the shared storefront footer. The cart template reviewed on application `main` still uses the manual quantity form. Selection and autosave await implementation verification.
