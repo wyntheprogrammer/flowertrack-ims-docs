@@ -1,5 +1,11 @@
 # Development Progress
 
+## Collections removal decision — 2026-11-21
+
+Wyn chose Catalog as the single browsing page, superseding the earlier occasion-based Collections proposal. The removal brief redirects `/shop/collections` to Catalog, sends the homepage stem and bouquet links to their corresponding Catalog filters, and removes Collections navigation and references. On application `main`, the Collections route still renders its view and About still links to `client.collections`. Publication and verification of the removal are pending.
+
+Next page for discussion: About Gemma’s Flower Shop. Review its shop introduction, shopping instructions and Catalog link against the approved homepage design, with contact details in the shared footer.
+
 ## Catalog review and Collections plan — 2026-11-21
 
 The Catalog redesign brief is ready. The application’s main branch still shows the Collection dropdown for Stems and Bouquets. The brief calls for visible product-type choices, preserved search and category filters, 4:3 product photos, readable unit prices and availability, and homepage-consistent hover and focus states. Application publication and browser verification are pending.
