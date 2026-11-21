@@ -1,5 +1,11 @@
 # Development Progress
 
+## Customer Order Tracking on main — 2026-11-21
+
+The storefront tracking route now uses OrderTrackingController with an optional order ID. Its view includes a paginated order picker, an empty state, and an individual order’s fulfillment method and current status. This checkpoint verifies published source. Runtime ownership checks, timeline behavior and desktop/mobile presentation were not independently tested here.
+
+Next proposed module: My Payments. Replace the static payments route with a read-only history scoped to the signed-in client’s orders. Show the saved payment amount, method, order code and recorded status (Pending, Confirmed or Refunded). Link to the owned order detail and show a clear empty state. Keep payment recording, confirmation and refunds in the existing staff workflow.
+
 ## My Orders review and Order Tracking scope — 2026-11-21
 
 Wyn’s screenshot showed populated order history. Application `main` still serves a static My Orders placeholder, and its footer selects the text back-to-top link for that route. Publication of the populated list and detail pages and desktop/mobile verification remain pending. Requested refinements include readable order metadata, color-only link hover, fewer decorative arrows, and the shared storefront footer with its circular back-to-top control.
