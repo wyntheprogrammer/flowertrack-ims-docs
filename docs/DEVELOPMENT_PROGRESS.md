@@ -1,5 +1,11 @@
 # Development Progress
 
+## Product Details brief and Shopping Cart review — 2026-11-21
+
+The Product Details brief covers unit-specific quantity labels, a live item total, add-to-cart confirmation and stock-change feedback. The template checked on application `main` still renders a generic Quantity label and has no item-total element. The redesign awaits publication and verification.
+
+Next module: Shopping Cart. The current cart shares a Blade template with checkout review. Proposed cart changes place the unit price, quantity and line total together, show actionable stock or pricing messages beside the affected item, and keep the subtotal and Review checkout action visible on mobile. Cart updates use the existing session flow. Stock deduction remains tied to completed pickup or delivery.
+
 ## About page on main and Product Details review — 2026-11-21
 
 The About template on application `main` now includes Gemma’s shop story, stems and bouquets, a Catalog link, and a Visit the shop section. The lazy-loaded mini map and directions link both use the supplied coordinates 14.6114375, 120.9863871. The page also links to the supplied Facebook profile. Verification for this checkpoint covered repository source. Live map rendering and mobile layout remain to be checked.
