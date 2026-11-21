@@ -1,5 +1,11 @@
 # Development Progress
 
+## Cart selection and automatic quantities — 2026-11-21
+
+Wyn requested per-item checkout selection, Select all, a selected subtotal, and automatic quantity saving through plus/minus controls or typed edits. Preserve unchecked items in the session cart. Wait for pending edits before checkout, validate stock and prices server-side, and keep the shared storefront footer. The cart template reviewed on application `main` still uses the manual quantity form. Selection and autosave await implementation verification.
+
+Next module: Checkout Review. Carry forward the saved selection and quantities, show pickup or eligible delivery with its configured fee, and calculate totals from current server data. Returning to the cart should preserve the selection. Review remains separate from order submission, payment and inventory changes.
+
 ## Product Details brief and Shopping Cart review — 2026-11-21
 
 The Product Details brief covers unit-specific quantity labels, a live item total, add-to-cart confirmation and stock-change feedback. The template checked on application `main` still renders a generic Quantity label and has no item-total element. The redesign awaits publication and verification.
