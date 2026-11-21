@@ -1,5 +1,11 @@
 # Development Progress
 
+## Catalog review and Collections plan — 2026-11-21
+
+The Catalog redesign brief is ready. The application’s main branch still shows the Collection dropdown for Stems and Bouquets. The brief calls for visible product-type choices, preserved search and category filters, 4:3 product photos, readable unit prices and availability, and homepage-consistent hover and focus states. Application publication and browser verification are pending.
+
+Collections currently links to those same two Catalog filters. Proposed next step: organize Collections by occasion, starting with Birthday and Thank You if the shop can curate products for each. Use real product photos and existing product detail links. Confirm product membership before publishing each collection.
+
 ## Customer homepage design checkpoint — 2026-11-21
 
 Wyn approved the Gemma’s Flower Shop homepage mockup and reported that the initial implementation is in place. The design gives shoppers separate entry points for bouquets and individual stems. Catalog supports product browsing, Collections groups flowers by occasion, About has its own page, and the footer carries shop contact details.
