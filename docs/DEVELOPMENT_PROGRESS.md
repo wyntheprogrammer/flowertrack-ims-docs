@@ -1,5 +1,11 @@
 # Development Progress
 
+## Customer sign-in checkpoint and order submission plan — 2026-11-21
+
+Customer sign-in requirements cover admin-created active client accounts, required password changes, and returning to checkout with the cart selection preserved. The routes reviewed on application `main` show the operational login and read-only checkout. Storefront sign-in and its end-to-end behavior remain unverified.
+
+Next module after sign-in verification: Customer Order Submission. Bind the order to the authenticated client, revalidate selected quantities, prices and fulfillment fees, and request renewed confirmation if totals change. Reuse the existing pending-order workflow and request-key handling with ownership checks. Clear only purchased lines after success; preserve the cart on failure. Confirmation should show the order code and Pending status. Submission does not record payment or issue inventory; admin confirmation reserves stock and completed fulfillment deducts it.
+
 ## Checkout Review on main — 2026-11-21
 
 Cart selection is stored in the session. The checkout controller passes eligible selected lines to a dedicated checkout view and calculates the subtotal from current cart data. Pickup and delivery are supported for review. The storefront checkout route is read-only. This checkpoint verifies repository source; browser behavior and tests were not rerun.
