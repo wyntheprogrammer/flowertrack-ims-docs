@@ -26,44 +26,59 @@ Late changes invalidate derived history and rewind the checkpoint; a revision pr
 
 
 
-## Current implementation interpretation — 2026-11-16
+## Flower-level ARIMA forecasting
 
-The tested automatic Spoilage refresh is committed at `46e4145` (107 full-suite tests / 1,439 assertions). Laravel now persists prediction snapshots and rebuilds eligible historical reference profiles when checking inputs. Browser page load/refresh can automatically POST for changed predictions; matching snapshots are reused.
+Batch daily observations remain the inventory record. Laravel reads completed, unexcluded rows before the Philippine forecast date with positive opening stock and spoiled quantity between zero and opening stock. It groups by flower_id and calendar observation_date, summing opening_quantity and spoiled_quantity. This query leaves every batch record intact. The Flower-level daily spoilage rate is SUM(spoiled_quantity) / SUM(opening_quantity). For example, losses of 2 from 10 and 3 from 90 on the same day give a flower rate of 5/100. Verified zero-spoilage days count; a missing calendar date remains missing.
 
-This supersedes earlier future-tense Laravel-integration notes only for implemented page generation/persistence/profile refresh. It does **not** mean completed daily observations are automatically collected or a scheduler runs with the page closed. Storage capture is implemented and approved as of 2026-11-17; reconciled day-closing collection and current-risk Dashboard alerts remain to be completed/verified.
+### Training and evaluation
 
-Current reference eligibility is per flower ID and base unit, with storage/age matching and same-unit fallback. The target batch is excluded from its reference profiles. First-ever unsupported flowers still receive InsufficientData; daily observation creation must not fabricate zero outcomes or infer unknown storage. No prediction deducts physical stock.
+```mermaid
+flowchart TD
+ A["Completed batch observations"] --> B["Pool quantities by flower and date"]
+ B --> C["Split daily rates chronologically: 70 / 10 / 20"]
+ C --> D["Training: ADF and candidate fitting"]
+ D --> E["Validation: select order by forecast error"]
+ E --> F["Refit selected order on Training + Validation"]
+ F --> G["Forecast untouched Test period and measure errors"]
+```
 
-The numerical thresholds remain experimental; no guaranteed accuracy or forced ARIMA win is approved. The notebook-specific evaluation rules in the historical section below are not a claim that operational Laravel profiles stay frozen forever. Other old “pending prototype/backend” notes are dated context; follow [current progress](DEVELOPMENT_PROGRESS.md#current-review-and-remaining-work--2026-11-16).
+Run `php artisan spoilage:train` for all flowers or supply one flower ID. For N continuous days the Training set ends at floor(0.70N) and Validation ends at floor(0.80N). Test contains the remaining days. FlowerTrack requires 30 Training observations and nonempty Validation and Test sets. At 43 days the split is 30/4/9; at 42 days Training has only 29. This is a project safeguard. Training also rejects gaps and constant Training history.
 
-## Seven-day batch spoilage predictions — verified rules (2026-11-14)
+The ADF test uses Training alone. An original-series p-value below 0.05 selects d=0. Otherwise the code checks first differences when they vary and uses d=1 even if stationarity is inconclusive. Here d counts differencing operations. With d fixed, p and q each range from 0 through 4, excluding the pair (0,0). For up to 24 candidates, fit on Training, forecast the full Validation period and clip finite predicted rates to [0,1]. Skip failed or invalid candidates. Record Validation MAE, MSE and RMSE plus fitted AIC and BIC. Rank by lowest Validation RMSE, then MAE, AIC and BIC.
 
-These rules clarify the owner's batch-prediction pointers. Verified against `FlowerTrack_ARIMA_Step_by_Step.ipynb`, current version 1, specifically `build_profiles`, `historical_rates`, `arima_predictions`, `make_asof_snapshots`, and `forecast_batches`. Distinguish current experimental behavior from future Laravel requirements. This section supersedes earlier undecided algorithm/threshold wording only for the current ARIMA learning experiment; it does not claim production validation.
+Fit a new final model of the selected order on Training + Validation and forecast exactly as many days as are in Test. Clip rates to [0,1] and compare with actual daily Test rates. For error e = predicted rate − actual rate:
 
-### Corrected pointers
+| Test metric | Calculation | Interpretation |
+|---|---|---|
+| MAE | mean(abs(e)) | Typical absolute miss on the rate scale |
+| MSE | mean(e²) | Squared error, giving larger misses greater weight |
+| RMSE | sqrt(MSE) | Error on the rate scale, sensitive to larger misses |
 
-1. A first-ever batch is not excluded from prediction because it is a “basis.” It needs usable information. With no historical model/reference data, the future application must display **Insufficient data**, not invent a risk. The current notebook assumes an existing development dataset and does not implement an empty-data startup workflow. Its public forecasting function explicitly rejects flower types absent from that development dataset. Even six records do not bypass that unseen-flower guard; onboarding/rebuilding and validation are required before that flower can pass the public forecast function.
-2. A second or later batch can receive a seven-day estimate immediately when added **only if its flower type is already supported and usable historical profiles exist**. A newly received batch must be passed as known receipt metadata. Its opening stock, harvest date, receipt date and storage condition are known inputs; future spoilage/releases are not known inputs. Having a first batch entry alone is not enough.
-3. Multiple older batches can contribute to the historical estimate, but only when their records are included in the reference dataset used to build the profiles. Profiles group by flower type, storage condition and age in days. They pool daily quantities: spoilage rate = total spoiled / total opening stock; release rate = total released / total stock after spoilage. They are quantity-weighted rates, not an unweighted average of batch percentages. For each forecast day, the function selects the nearest recorded age for the matching flower/storage group. If that group is absent, the internal fallback uses pooled global rates; however, the public forecast still rejects a completely unseen flower type.
-4. The output is a **predicted spoilage risk**: Low (<10%), Medium (10% to <25%), High (25% to <50%), or Critical (50% or more) of current opening stock predicted to spoil over seven days. These are current experimental thresholds, not validated biological cutoffs or probabilities that a batch is already spoiled. Keep **Insufficient data** separate from Low. Predictions never mark physical stock spoiled or deduct inventory.
+Lower is better. MAE of 0.03 means a mean absolute miss of three percentage points. These measures quantify daily rate errors; they do not establish a percentage of batches classified correctly. Test outcomes play no role in selecting the order.
 
-### What ARIMA actually does
+### Live production forecast
 
-- The forecast horizon is seven days including the as-of date through as-of +6 days. It is a rolling forecast window, not a seven-day waiting period or calendar-week status.
-- Before trying a batch-specific ARIMA fit, the code requires at least **six completed daily observations from that same batch**. Six is the current configurable minimum, not an ARIMA standard or accuracy guarantee. Other batches support fallback profiles; their records are not concatenated into the new batch's own ARIMA time series.
-- It fits two rate series: daily spoilage and daily release. It forecasts both for seven days, then simulates spoilage followed by releases on the surviving stock each day. Predicted spoiled quantity = simulated spoiled fraction × current opening stock. This is not a direct forecast of risk labels or an assumption that sales are spoilage.
-- Recorded zero spoilage is valid information; missing records must not be interpreted as zero. Older batches with no spoilage during their observed days do not prove that later spoilage is impossible.
-- Fit/forecast failures use historical fallback rates. The current loop attempts the initial fit once per batch during that run, extends successful models as completed daily outcomes arrive, and does not promise automatic refitting after a failed attempt.
-- All history used for an as-of forecast must precede that date. Existing active batches require an up-to-date previous-day record. Forecasts must not use future outcomes, and depleted batches are excluded.
-- The notebook freezes reference profiles from its allowed training/development records for evaluation. Merely adding ten operational batches does **not** automatically make them part of those frozen profiles. A future controlled profile/model refresh must incorporate eligible completed historical records, preserve time cutoffs, and validate newly supported flowers.
-- One historical batch may supply rates, but neither one batch nor six records guarantees reliability. More relevant, accurate historical records can help; accuracy is measured on held-out data, never guaranteed at 90%.
+```mermaid
+flowchart TD
+ A["Saved order + current flower history"] --> B{"Eligible history and successful fit?"}
+ B -->|Yes| C["Refit saved order and forecast seven daily rates"]
+ B -->|No usable ARIMA| D["Use same-flower weighted historical rate if available"]
+ C --> E["Accumulate losses on surviving stock"]
+ D --> E
+ E --> F["Apply fraction to each batch and classify risk"]
+```
 
-### Laravel integration notes — historical scope, 2026-11-14
+Laravel saves the selected order, ADF result, split sizes, validation and test metrics, version, training date and history range/hash in the nullable JSON flowers.spoilage_model column. Production reuses order metadata and refits coefficients on available history, including days previously held out for evaluation. It skips the candidate search. A version-matching order with history ending before the forecast date, at least 43 continuous dates through yesterday, and a successful finite forecast yield **Flower ARIMA**. Changed batches sharing a flower can reuse its forecast in the bulk Python call.
 
-- Automatic prediction after Stock-In, daily refresh, database snapshot persistence, scheduled execution, new-flower onboarding, and historical-profile rebuilding are **not implemented by the Colab notebook or this documentation update**.
-- Intended behavior: on receipt or a daily refresh, use an eligible batch-specific ARIMA forecast when available; otherwise use a supported historical fallback and clearly show the method. If no supported estimate exists, show Insufficient data / unsupported flower instead of fabricating a Low–Critical result.
-- A daily refresh looks ahead another seven days. It does not wait a week to change. Newly recorded completed-day outcomes may change the next forecast; automatic refresh requires a backend trigger/scheduler.
-- Keep actual batch status, manually recorded spoilage, inventory quantities and predicted risk separate. Preserve the previously approved fulfillment and manual-spoilage rules.
+If the order is unavailable, history is short or gapped, or a supported fit/forecast failure occurs, **Flower historical fallback** repeats that flower’s total spoiled / total opening over the horizon. Empty history yields **InsufficientData**, with no risk label. Missing days are never filled with zero.
+
+ARIMA produces daily rates. Inventory logic converts them to a seven-day fraction from today through day six: begin with F=0; for each clipped daily rate r, update F = F + (1−F) × r. For example, two successive 10% daily losses yield 19% cumulative loss. Laravel multiplies the final fraction by each eligible batch’s current remaining quantity, in its own unit. Two batches of the same flower can therefore have the same fraction but different predicted quantities.
+
+| Low | Medium | High | Critical |
+|---|---|---|---|
+| F < 10% | 10% ≤ F < 25% | 25% ≤ F < 50% | F ≥ 50% |
+
+Predictions are advisory. Actual inventory spoilage is recorded separately. [Verified application source](https://github.com/wyntheprogrammer/flowertrack-ims/tree/b32634471a9dbbadf829ca7d013f11b25fb61b40/scripts/spoilage).
 
 ## Stems and supplier-made bouquets — confirmed 2026-11-04
 
@@ -166,14 +181,14 @@ This owner decision supersedes all earlier partial/installment/multiple-payment 
 
 **Confirmed — Spoilage Prediction (2026-11-02)**
 - Use Machine Learning (ML) to estimate spoilage risk for flower batches.
-- Use Harvest Date and Expected Freshness / Expiry Date as the confirmed date basis. The expiry/freshness date remains optional; batches without it must be handled using supported available data.
-- Use four risk levels: Low, Medium, High, and Critical. Numerical thresholds and algorithm selection remain pending dataset assessment and model validation.
+- Model input is the daily spoiled quantity divided by daily opening quantity, pooled by flower and date.
+- Apply configured cumulative fraction thresholds of 10%, 25% and 50% for Medium, High and Critical.
 - Show spoilage-risk summaries/alerts on the Supplier/Admin Dashboard and provide a dedicated Spoilage Prediction page.
 - Provide warnings and recommendations only, including a recommendation to prioritize high-risk batches for Stock-Out.
 - Predictions must not automatically change batch status, deduct stock, alter FIFO allocation, or create Stock-Out transactions. Actual spoilage remains manual.
 - Active risk monitoring applies to batches with remaining usable inventory.
-- Record actual Spoilage Events linked to Flower and Batch, including Spoilage Date, Spoiled Quantity, and Spoilage Reason. These records form the labeled historical dataset for future ML training and evaluation.
-- Do not claim model accuracy until training and validation demonstrate it. The ML algorithm and risk thresholds are not yet selected.
+- Record actual Spoilage Events linked to Flower and Batch, including Spoilage Date, Spoiled Quantity, and Spoilage Reason. Reconcile events into completed daily observations for forecasting.
+- See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting) for training, live forecasting and held-out evaluation.
 - Historical risk-assessment snapshots and manual condition-observation scoring are excluded from the initial scope.
 
 ### Client accounts
@@ -227,7 +242,7 @@ This owner decision supersedes all earlier partial/installment/multiple-payment 
 ### Spoilage
 - What does spoiled/at-risk mean for each flower type?
 - Is there an entered expiry/shelf-life date, condition score, or observation history?
-- Assess the volume, quality, and representativeness of Spoilage Event Records before selecting an ML algorithm or claiming prediction accuracy.
+- See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting) for training, live forecasting and held-out evaluation.
 - Decide the model implementation/runtime and calibrated numerical risk thresholds during technical design after dataset assessment.
 
 ### Orders and sales — remaining decisions

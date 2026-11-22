@@ -55,7 +55,7 @@ Backdated received/harvest dates do not fabricate outcomes before the first reco
 
 Python does not connect to the database directly. Laravel supplies eligible history from batch_daily_observations to Python.
 
-Both the prediction planner and historical profile builder continue to require completed observations, no exclusion reason, known storage, valid quantities/dates and dates strictly before the forecast day. Live drafts are excluded even if their quantities already reconcile. Invalidated days leave prediction inputs immediately; corrected history changes the input fingerprint. This revision does not change ARIMA settings or claim real-world accuracy.
+The forecasting query pools completed, unexcluded observations with valid opening and spoiled quantities before the forecast date. Storage is not a grouping key or filter in that query. Corrections change the input fingerprint. See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting).
 
 ## Preserved business rules
 

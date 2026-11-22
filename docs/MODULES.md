@@ -75,7 +75,7 @@ Recommended next implementation: **trustworthy completed-day observation collect
 
 ### Documentation corrections and scope discipline
 
-- ARIMA (0,1,0), minimum six own-batch completed days, seven-day horizon and experimental risk boundaries are already selected for the current implementation; they are not still undecided. Six days is not a reliability guarantee.
+- See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting) for training, live forecasting and held-out evaluation.
 - Python communication is already local process/JSON; requirements.txt and .venv ignore rules are committed. Recreate venv on each device.
 - Product scope already includes loose Stem and supplier-made finished Bouquet stock; no bouquet assembly/BOM deduction is approved.
 - Exact-full single payment and fulfillment-only stock issue are already implemented/tested. Do not restore old partial-payment or Ready-for-Pickup deduction behavior from historical notes.
@@ -448,17 +448,17 @@ The project owner supplied the following module order. This is also the initial 
 **Purpose:** Use a Machine Learning (ML) model to estimate spoilage risk for flower batches and help the owner prioritize attention. Predictions are advisory only.
 
 **Prediction inputs**
-- Harvest Date and Expected Freshness / Expiry Date are the two confirmed date inputs.
+- Model input is the daily spoiled quantity divided by daily opening quantity, pooled by flower and date.
 - Expected Freshness / Expiry Date is optional; the prediction workflow must handle batches where it is not provided, using only supported available inputs.
 - Relevant batch context may include Flower, Date Received, and Remaining Quantity when supported by the trained model and available data.
-- The exact ML algorithm, numerical risk thresholds, and model metrics are not selected yet; determine these only after dataset assessment and model validation.
+- See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting) for training, live forecasting and held-out evaluation.
 
 **Risk levels**
 - Low — low predicted spoilage risk.
 - Medium — increasing spoilage concern.
 - High — high predicted spoilage risk.
 - Critical — very high predicted risk requiring prompt attention.
-- Do not invent fixed percentage thresholds before model calibration and validation.
+- Apply configured cumulative fraction thresholds of 10%, 25% and 50% for Medium, High and Critical.
 
 **Dashboard and prediction page**
 - Show spoilage-risk summaries and at-risk batch counts on the Supplier/Admin Dashboard.
@@ -475,7 +475,7 @@ The project owner supplied the following module order. This is also the initial 
 **Spoilage Event Records for ML training**
 - Record actual spoilage outcomes and link each event to the relevant Flower and Batch.
 - Capture Spoilage Date, Spoiled Quantity, and Spoilage Reason.
-- Use accumulated event records as labeled historical data for future model training and evaluation.
+- Train on completed daily observations, including verified zero-spoilage days.
 - Do not claim prediction accuracy until a model has been trained, tested, and validated using sufficiently representative data.
 - Historical risk-assessment snapshots and manual condition-observation scoring are not included in the initial scope.
 

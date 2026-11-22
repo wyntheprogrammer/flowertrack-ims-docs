@@ -409,19 +409,15 @@ py -m venv .venv
 5. Test the forecasting engine:
 
 ```cmd
-.\\.venv\\Scripts\\python.exe scripts\\spoilage\\predict.py --self-test
+.\.venv\Scripts\python.exe scripts\spoilage\test_predict.py
 ```
 
-Expected:
-
-```json
-{"status": "ok", "message": "Forecast self-test passed."}
-```
+Expected: the Python unittest suite finishes with OK.
 
 6. Test batch forecasting and the Laravel bridge:
 
 ```cmd
-.\\.venv\\Scripts\\python.exe scripts\\spoilage\\predict_many.py --self-test
+php artisan spoilage:train
 php artisan config:clear
 php artisan tinker --execute="dump(app(\\App\\Services\\SpoilagePythonService::class)->health());"
 ```
@@ -672,12 +668,12 @@ Use `py --list` if the requested interpreter cannot be found. Do not run the req
 5. Verify the Python engine and Laravel bridge:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\spoilage\predict.py --self-test
+.\.venv\Scripts\python.exe scripts\spoilage\test_predict.py
 php artisan config:clear
 php artisan tinker --execute="dump(app(\App\Services\SpoilagePythonService::class)->health());"
 ```
 
-Expected: self-test returns status ok; health returns Python/NumPy/pandas/statsmodels versions. `config/spoilage.php` defaults to the project's .venv/Scripts/python.exe on Windows and .venv/bin/python on other systems. Set SPOILAGE_PYTHON_BINARY only if using a different absolute executable path, then clear config cache. Do not copy a different device's absolute path.
+Expected: Python unittest reports OK; health returns Python/NumPy/pandas/statsmodels versions. `config/spoilage.php` defaults to the project's .venv/Scripts/python.exe on Windows and .venv/bin/python on other systems. Set SPOILAGE_PYTHON_BINARY only if using a different absolute executable path, then clear config cache. Do not copy a different device's absolute path.
 
 6. Prepare database and frontend:
 
@@ -715,7 +711,7 @@ The snapshot includes October–November 2026 sales/history and prediction snaps
 Application checkpoint: `46e4145`. Dependency manifest/ignore checkpoint: `f213583`. Pull both through the latest main branch before setting up another device.
 
 - Run `.\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt` after creating that device's venv.
-- Run `.\\.venv\\Scripts\\python.exe scripts\\spoilage\\predict_many.py --self-test`.
+- Train eligible flowers with `php artisan spoilage:train`.
 - Run `php artisan test --filter=SpoilageAutoRefreshTest` and `npm.cmd run build`, then clear compiled views if necessary.
 - Open the Spoilage page and use Ctrl + F5 after a new frontend build. Saved results load first; stale/missing inputs trigger one automatic POST and one Python process for the changed batch set. Unchanged results do not run Python.
 - No manual Update All click, extra Python web server, queue worker, new migration or database reset is needed for this checkpoint.

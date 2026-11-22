@@ -214,16 +214,16 @@ The confirmed initial navigation order is:
 
 ### Spoilage Prediction — confirmed 2026-11-02
 - Use Machine Learning (ML) to estimate spoilage risk for flower batches.
-- Use Harvest Date and Expected Freshness / Expiry Date as the two confirmed date inputs. Expected Freshness / Expiry Date is optional; batches without it must be handled using supported available data.
-- Classify risk into Low, Medium, High, and Critical. Do not hardcode numerical thresholds until the model is calibrated and validated.
+- Model input is the daily spoiled quantity divided by daily opening quantity, pooled by flower and date.
+- Apply configured cumulative fraction thresholds of 10%, 25% and 50% for Medium, High and Critical.
 - Display spoilage-risk summaries and alerts on the Supplier/Admin Dashboard.
 - Provide a dedicated prediction page with a batch risk list, search by Batch Number or Flower Name, filters by risk level and flower, prediction details, and available prediction explanations.
 - Show warnings and recommendations only, including recommendations to prioritize high-risk batches for Stock-Out.
 - Predictions must not automatically change batch status, deduct inventory, alter FIFO allocation, or create Stock-Out transactions. Actual spoilage remains manual.
 - Include only batches with remaining usable inventory in active risk monitoring.
-- Add Spoilage Event Records linked to Flower and Batch, capturing Spoilage Date, Spoiled Quantity, and Spoilage Reason. Use accumulated actual outcomes as labeled historical data for future ML training and evaluation.
+- Add Spoilage Event Records linked to Flower and Batch, capturing Spoilage Date, Spoiled Quantity, and Spoilage Reason. Use reconciled daily opening and spoiled quantities for forecasting.
 - Do not claim model accuracy until the model has been trained, tested, and validated against sufficiently representative data.
-- The exact ML algorithm, numerical risk thresholds, and model performance criteria remain for technical design after dataset assessment.
+- See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting) for training, live forecasting and held-out evaluation.
 - Historical risk-assessment snapshots and manual condition-observation scoring are not included in the initial scope.
 
 ### Client Management — confirmed 2026-11-02

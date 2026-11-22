@@ -16,7 +16,7 @@ The database schema will be designed after UI requirements and business workflow
 - Delivery assignment, address, fee, and delivery status.
 - Payments, payment method, verification, refunds, and references.
 - User accounts, roles, permissions, and audit events.
-- Prediction inputs, outputs, timestamps, and model/version details if prediction is approved.
+- BatchDailyObservation retains batch-level source data. The nullable JSON flowers.spoilage_model stores per-flower order and evaluation metadata. BatchSpoilagePrediction stores per-batch results. See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting).
 
 ## Schema documentation format
 
