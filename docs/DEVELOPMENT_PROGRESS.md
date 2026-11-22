@@ -2,7 +2,9 @@
 
 ## Flower forecasting and My Profile — 2026-11-22
 
-Application commit b326344 publishes the flower-level ARIMA training and production workflow. See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting). My Profile on main still shows name and email. Linked contact fields and the voluntary Change password entry remain pending verification. This checkpoint reviewed source only.
+Application commit b326344 publishes the flower-level ARIMA training and production workflow. See the [flower-level forecasting methodology](BUSINESS_LOGIC.md#flower-level-arima-forecasting). My Profile now uses the shared client account layout and displays name, sign-in email, linked phone and address, with a shop contact link for corrections. The Security section links to Change password. After a voluntary client password change, the controller redirects to My Profile. Verified on application main by source review. Browser acceptance remains pending.
+
+Next milestone: verify one customer pickup order end to end, then repeat with delivery. Follow the order across checkout, staff fulfillment, customer tracking and payment history. Check customer isolation and the shared account layout on desktop and mobile.
 
 ## Customer My Payments on main — 2026-11-21
 
