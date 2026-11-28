@@ -8,7 +8,7 @@ Late changes invalidate derived history and rewind the checkpoint; a revision pr
 
 **Approved checkpoint:** [`bb8d9bb`](https://github.com/wyntheprogrammer/flowertrack-ims/commit/bb8d9bbbc989e8069587e78fefc364286c4fe468) is published on application main after Wyn's review/approval. Agent-run full regression: **137 passed / 1,760 assertions**; activity observation suite: **28 passed / 239 assertions**. No periodic observation scheduler remains; the prior local Windows task is disabled. This section supersedes older collector-only and timer-based descriptions below.
 
-**Last updated:** 2026-11-17  
+**Last updated:** 2026-11-28  
 **Purpose:** Prepare a new Windows computer for FlowerTrack IMS development, including official installer links, installation steps, PHP configuration, and verification.
 
 This guide is for the Laravel application. The documentation repository and application repository are separate:
@@ -24,7 +24,7 @@ Run each command separately, press Enter, and wait for it to finish. Do not past
 
 - Before `npm ci` in PowerShell, follow [PowerShell npm setup](#powershell-npm-setup).
 - After installing PHP/frontend dependencies, complete [Python setup for every device](#python-setup-for-every-device).
-- To restore accounts and records, follow [Import database data](#import-database-data). Git pull and migrations do not transfer database records.
+- For the reusable local presentation environment, use the committed presentation seeder with `php artisan migrate:fresh --seed`. A separate presentation SQL/database is no longer required.
 - The application now has database-backed modules; database and Python setup are needed to use those modules and Spoilage prediction.
 
 ## 1. Compatibility and installer checklist
@@ -341,40 +341,39 @@ php artisan migrate
 
 Do not run migrations on a shared or production database without confirming the target environment and migration impact.
 
-### Import database data
+### Reusable local presentation database
 
-Migrations create/update table structure. They do not copy users, stock, orders or daily history from another device.
+The current presentation/development workflow uses the normal local database name **`flowertrack_ims`**. A separate `flowertrack_ims_demo` database and the older downloadable presentation SQL snapshot are no longer required for a fresh presentation setup.
 
-#### Transfer your current records from another device
+> **Warning:** `php artisan migrate:fresh --seed` drops all tables in the configured database before recreating and seeding them. Use it only when the local database is disposable or when you intentionally want to reset it to the committed presentation dataset.
 
-1. On the old device, open phpMyAdmin, select `flowertrack_ims`, then choose **Export → Quick → SQL → Export**.
-2. Transfer that SQL file privately to the new device.
-3. On the new device, start Apache and MySQL in XAMPP. Open `http://localhost/phpmyadmin`.
-4. Select `flowertrack_ims` (create it if absent), choose **Import**, select the SQL file, and click **Import/Go**.
-5. Prefer an empty target for a full backup. If the target already has records, export a backup first. A dump containing DROP statements replaces those tables; one without them may report existing-table conflicts. Do not blindly import a full dump over data you want to retain.
-6. Confirm local `.env` points to `flowertrack_ims`, then run each command separately:
+For a fresh/reusable presentation setup:
 
-```cmd
+1. Start MySQL in XAMPP.
+2. Create an empty database named `flowertrack_ims` in phpMyAdmin if it does not already exist.
+3. Confirm the local `.env` points to that database.
+4. From the application root, run:
+
+```powershell
 php artisan config:clear
-php artisan migrate
-php artisan migrate:status
-php artisan view:clear
+php artisan migrate:fresh --seed
+php artisan spoilage:train
 php artisan storage:link
+npm.cmd run build
 ```
 
-Keep the restored `migrations` table: it tells Laravel which schema changes already ran. Never use `migrate:fresh` to restore records; it drops tables.
+The presentation seeder recreates the coherent local demonstration data, including demo users, inventory/movements, orders, payments, deliveries, and synthetic historical spoilage observations used by the forecasting feature. The spoilage training command then trains eligible flower models from that seeded history.
 
-Copy uploaded files separately: SQL contains image/proof paths, not the actual files. Merge the old device's `storage/app/public` and `storage/app/private` contents into the new project's matching folders. Keep the new device's DB settings local; do not commit `.env` or private SQL exports.
+Current local presentation Admin login:
 
-#### Use the supplied presentation records instead
+```text
+Email: admin@demo.example.test
+Password: 123
+```
 
-Download [FlowerTrack_Presentation_Database.zip](https://chatgpt.com/library?file_id=libfile_9226141c730481919411b81df2222dc5&account_id=personal), extract it, and import `flowertrack_ims_presentation.sql` through phpMyAdmin using the steps above.
+The credentials above are synthetic local-test credentials only.
 
-**This supplied SQL explicitly selects flowertrack_ims and drops/recreates its listed tables, replacing their records, accounts and sessions. Back up existing data before importing.** Reimporting restores the same sample records and replaces changes made since the previous import.
-
-Merge the extracted `storage` folder into `C:\\xampp\\htdocs\\FlowerTrack`; it includes the private synthetic delivery proof. Run the post-import commands above and log in again.
-
-Local presentation login: `admin@demo.example.test` / `DemoFlower!2026`. These are public test credentials for synthetic data, not production credentials. Historical records use October–November 2026 dates, and the supplied prediction snapshots cover 15–21 November 2026. Use matching report filters; current predictions can regenerate from available history.
+If you need to preserve real local records from another computer, do **not** use `migrate:fresh --seed`. Export/import that database separately and copy any required storage files, then run only pending migrations with `php artisan migrate`.
 
 ### Python setup for every device
 
@@ -675,24 +674,28 @@ php artisan tinker --execute="dump(app(\App\Services\SpoilagePythonService::clas
 
 Expected: Python unittest reports OK; health returns Python/NumPy/pandas/statsmodels versions. `config/spoilage.php` defaults to the project's .venv/Scripts/python.exe on Windows and .venv/bin/python on other systems. Set SPOILAGE_PYTHON_BINARY only if using a different absolute executable path, then clear config cache. Do not copy a different device's absolute path.
 
-6. Prepare database and frontend:
+6. Prepare the reusable presentation database and frontend:
 
 ```powershell
-php artisan migrate
+php artisan migrate:fresh --seed
+php artisan spoilage:train
 php artisan storage:link
 npm.cmd run build
 php artisan serve
 ```
 
-Migrate executes pending files in database/migrations and records them in the migrations table. It creates/updates schema; it does not copy accounts, stock or historical observations from the other device. Do not use migrate:fresh on a database whose contents you want to keep. For the supplied complete SQL snapshot, follow the import steps below instead of resetting it with migrate:fresh.
+This is the current fresh-device presentation workflow. It intentionally resets the configured local `flowertrack_ims` database and recreates the committed presentation data before training eligible spoilage models. If the database contains records you need to preserve, do not use `migrate:fresh --seed`; restore/preserve those records separately and use `php artisan migrate` for pending schema changes instead.
 
-### Reusable presentation SQL in the same database
+### Current presentation reset workflow
 
-Owner explicitly chose **flowertrack_ims**. Download/extract the supplied FlowerTrack_Presentation_Database.zip, back up current records, then import flowertrack_ims_presentation.sql through phpMyAdmin. Its explicit USE selects flowertrack_ims, and DROP/CREATE statements replace the listed existing tables and records. Repeating the import restores the exact same sample data and clears old sessions.
+The former reusable presentation SQL/snapshot workflow has been superseded by the committed presentation seeder. For a disposable local presentation database, use `flowertrack_ims` and run:
 
-Copy the extracted storage folder into the project, merging folders. The private synthetic proof resides at storage/app/private/delivery-proofs/presentation-demo-proof.png under Laravel's default local disk root. Keep .env and APP_KEY; run config:clear and view:clear and log in again. Sample Admin: admin@demo.example.test / DemoFlower!2026. These are public synthetic local-test credentials.
+```powershell
+php artisan migrate:fresh --seed
+php artisan spoilage:train
+```
 
-The snapshot includes October–November 2026 sales/history and prediction snapshots dated 15–21 November 2026. Date-based reports must include those dates. It is not a rolling dataset and does not establish model accuracy. The earlier separate-demo-database seeder/reset package is an alternative artifact, **not required for this same-database SQL import**.
+Do not download or import the older `FlowerTrack_Presentation_Database.zip` for the current fresh-device presentation workflow.
 
 ### Runtime boundaries and troubleshooting
 
